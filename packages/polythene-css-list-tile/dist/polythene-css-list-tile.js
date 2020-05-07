@@ -1,2 +1,758 @@
-!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports,require("polythene-core-css"),require("polythene-theme")):"function"==typeof define&&define.amd?define(["exports","polythene-core-css","polythene-theme"],e):e((t=t||self).polythene={},t["polythene-core-css"],t["polythene-theme"])}(this,function(t,e,i){"use strict";function l(t,e,i){return e in t?Object.defineProperty(t,e,{value:i,enumerable:!0,configurable:!0,writable:!0}):t[e]=i,t}function r(){return(r=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var i=arguments[e];for(var l in i)Object.prototype.hasOwnProperty.call(i,l)&&(t[l]=i[l])}return t}).apply(this,arguments)}function n(t){for(var e=1;e<arguments.length;e++){var i=null!=arguments[e]?arguments[e]:{},r=Object.keys(i);"function"==typeof Object.getOwnPropertySymbols&&(r=r.concat(Object.getOwnPropertySymbols(i).filter(function(t){return Object.getOwnPropertyDescriptor(i,t).enumerable}))),r.forEach(function(e){l(t,e,i[e])})}return t}var o=function(t,i,l){var r=i["color_"+l+"_selected_text"];return e.sel(t,n({},"inherit"!==r?{"&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle":{color:r}}:void 0,{" .pe-list-tile__primary, pe-list-tile__secondary":{backgroundColor:i["color_"+l+"_selected_background"]}}))},_={general_styles:function(t){return[e.sel(t,{".pe-list-tile--header":{" .pe-list-tile__primary, pe-list-tile__secondary":{backgroundColor:"inherit"}},":not(.pe-list-tile--disabled):not(.pe-list-tile--selected)":{" a.pe-list-tile__primary:focus, a.pe-list-tile__secondary:focus":{outline:"none",backgroundColor:"inherit"}},"&.pe-list-tile--sticky":{backgroundColor:"inherit"}})]}},s=function(t){var i;return l(i={},"color_"+t+"_title",function(i,l){return[e.sel(i,{color:l["color_"+t+"_title"]})]}),l(i,"color_"+t+"_background",function(i,l){return[e.sel(i,{backgroundColor:l["color_"+t+"_background"],"&.pe-list-tile--sticky":{backgroundColor:l["color_"+t+"_background"]}})]}),l(i,"color_"+t+"_list_header",function(i,l){return[e.sel(i,{".pe-list-tile--header":{color:l["color_"+t+"_list_header"]}})]}),l(i,"color_"+t+"_subtitle",function(i,l){return[e.sel(i,{" .pe-list-tile__subtitle":{color:l["color_"+t+"_subtitle"]}})]}),l(i,"color_"+t+"_secondary",function(i,l){return[e.sel(i,{" .pe-list-tile__secondary":{color:l["color_"+t+"_secondary"]}})]}),l(i,"color_"+t+"_front",function(i,l){return[e.sel(i,{" .pe-list-tile__content-front":{color:l["color_"+t+"_front"]}})]}),l(i,"color_"+t+"_text_disabled",function(i,l){return[e.sel(i,{".pe-list-tile--disabled":{"&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle":{color:l["color_"+t+"_text_disabled"]}}})]}),l(i,"color_"+t+"_highlight_background",function(i,l){return[e.sel(i,{".pe-list-tile--highlight:not(.pe-list-tile--selected)":{" .pe-list-tile__primary, pe-list-tile__secondary":{backgroundColor:l["color_"+t+"_highlight_background"]}}})]}),l(i,"color_"+t+"_focus_background",function(i,l){return[e.sel(i,{":not(.pe-list-tile--disabled):not(.pe-list-tile--selected)":{" a.pe-list-tile__primary:focus, a.pe-list-tile__secondary:focus":{backgroundColor:l["color_"+t+"_focus_background"]}}})]}),l(i,"color_"+t+"_selected_text",function(i,l){return[e.sel(i,{".pe-list-tile--selected":o(i,l,t)})]}),l(i,"color_"+t+"_selected_background",function(i,l){return[e.sel(i,{".pe-list-tile--selected":o(i,l,t)})]}),i},a=function(t){var i;return l(i={},"color_"+t+"_hover",function(i,l){return[e.sel(i,{".pe-list-tile--hoverable:not(.pe-list-tile--selected)":{color:l["color_"+t+"_hover"]}})]}),l(i,"color_"+t+"_hover_background",function(i,l){return[e.sel(i,{".pe-list-tile--hoverable:not(.pe-list-tile--selected)":{" .pe-list-tile__primary, .pe-list-tile__secondary":{backgroundColor:l["color_"+t+"_hover_background"]}}})]}),l(i,"color_"+t+"_hover_front",function(i,l){return[e.sel(i,{".pe-list-tile--hoverable:not(.pe-list-tile--selected)":{" .pe-list-tile__primary .pe-list-tile__content-front":{color:l["color_"+t+"_hover_front"]}}})]}),i},d=function(t){return{selected:function(e,i){return i.selected&&o(e,i,t)}}},c=r({},_,s("light"),d("light")),p=r({},_,s("dark"),d("dark")),u=a("light"),g=a("dark"),h=e.createColor({varFns:{lightTintFns:c,darkTintFns:p,lightTintHoverFns:u,darkTintHoverFns:g}}),f=function(t){return function(e){return{" .pe-list-tile__content-front + .pe-list-tile__content":l({},t?"paddingRight":"paddingLeft",0)}}},b=f(!1),v=f(!0),y=function(t){return{"padding-left":t+"px","padding-right":(arguments.length>1&&void 0!==arguments[1]?arguments[1]:t)+"px"}},m=function(t){return{"padding-top":t+"px","padding-bottom":(arguments.length>1&&void 0!==arguments[1]?arguments[1]:t)+"px"}},k=function(t,i){return e.sel(t,{lineHeight:i.single_line_height+"px",".pe-list-tile--navigation":{" .pe-list-tile__title":{minHeight:i.single_line_height+"px"}}," .pe-list-tile__title":[e.mixin.ellipsis(i.title_line_count,i.single_line_height,"px")]})},x=function(t,i){return e.sel(t,{"&, a":{pointerEvents:"none"}})},w=function(t,e){return z(t,e),S(t,e)},z=function(t,i){var l=i.inset_h_size;return e.sel(t,{marginLeft:l+"px",marginRight:l+"px"," .pe-list-tile__content":{marginLeft:-l+"px",marginRight:-l+"px"}})},S=function(t,i){var l=i.inset_v_size;return e.sel(t,{marginTop:l+"px",marginBottom:l+"px"})},O=function(t,i){return e.sel(t,{"&, .pe-list-tile__primary":{borderRadius:i.rounded_border_radius+"px"}})},C={general_styles:function(t,i){return[e.sel(t,[b(i),e.flex.layout,{position:"relative",".pe-list-tile--navigation":{" .pe-list-tile__title":{whiteSpace:"pre-wrap"}},".pe-list-tile--sticky":e.mixin.sticky(2),".pe-list-tile--inset-h":z(t,i),".pe-list-tile--inset-v":S(t,i)," .pe-list-tile__primary":{width:"100%"}," .pe-list-tile__primary, .pe-list-tile__secondary":[e.flex.layoutHorizontal,e.mixin.defaultTransition("background",".200s"),{textDecoration:"none",color:"inherit",border:"none"}],":not(.pe-list-tile--header) .pe-list-tile__primary":[e.flex.flex(),{position:"relative"," .pe-list-tile__content:not(.pe-list-tile__content-front)":[e.flex.flex()]}],":not(.pe-list-tile--disabled)":{outline:"none"}," .pe-list-tile__secondary":{textAlign:"right",position:"relative"}," .pe-list-tile__content":[e.flex.layoutVertical,e.flex.selfCenter,{width:"100%",".pe-list-tile__content-front":{flexShrink:0}}]," .pe-list-tile__title":{whiteSpace:"normal"}," .pe-list-tile__subtitle":[e.mixin.ellipsis(i.subtitle_line_count,i.line_height_subtitle,"px"),{fontSize:i.font_size_subtitle+"px",fontWeight:i.font_weight_subtitle,lineHeight:i.line_height_subtitle+"px",".pe-list-tile__high-subtitle":[e.mixin.ellipsis(i.high_subtitle_line_count,i.line_height_subtitle,"px"),{whiteSpace:"normal"}]}],".pe-list-tile--selected, &.pe-list-tile--disabled":x(t),".pe-list-tile--subtitle":{" .pe-list-tile__content":{" .pe-list-tile__title":{padding:0}}},".pe-list-tile--high-subtitle":{" .pe-list-tile--high-subtitle .pe-list-tile__secondary":[e.flex.layoutHorizontal,e.flex.layoutStart]," .pe-list-tile__content":[e.flex.selfStart,{" .pe-list-tile__title":{padding:0}}]},".pe-list-tile--header":{pointerEvents:"none"," .pe-list-tile__content":{paddingTop:0,paddingBottom:0}," .pe-list-tile__title":{padding:0}},"@supports (-moz-appearance:none) and (display:contents)":{" .pe-list-tile__primary, .pe-list-tile__content":{overflow:"hidden"}},".pe-dialog .pe-menu__content &":{" .pe-list-tile__content":{paddingLeft:"24px",paddingRight:"24px"}," .pe-list-tile__content-front":{paddingRight:0,width:"64px",marginRight:"-7px"}," .pe-list-tile__title":e.mixin.ellipsis("none")},".pe-menu__content &":{":not(.pe-list-tile--disabled)":{cursor:"default","&, .pe-list-tile__primary, .pe-list-tile__secondary":{" .pe-list-tile__title, .pe-list-tile__subtitle":{userSelect:"none","-moz-user-select":"none"}}}},"html.pe-no-touch &.pe-list-tile--hoverable,         html.pe-no-touch &.pe-list-tile--selectable":{":not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover":{cursor:"pointer"}}}]),l({},e.selectorRTL(t),v(i))]},title_line_count:function(t,e){return[k(t,e)]},single_line_height:function(t,e){return[k(t,e)]},font_size_title:function(t,i){return[e.sel(t,{fontSize:i.font_size_title+"px"," .pe-list-tile__secondary":{fontSize:i.font_size_title+"px"}})]},font_weight_title:function(t,i){return[e.sel(t,{fontWeight:i.font_weight_title})]},font_size_navigation_title:function(t,i){return[e.sel(t,{".pe-list-tile--navigation":{fontSize:i.font_size_navigation_title+"px"}})]},font_weight_navigation_title:function(t,i){return[e.sel(t,{".pe-list-tile--navigation":{fontWeight:i.font_weight_navigation_title}})]},padding:function(t,i){return[e.sel(t,{":not(.pe-list-tile--header)":{" .pe-list-tile__content:not(.pe-list-tile__content-front)":[m(i.padding,i.padding+1)]}," .pe-list-tile__content":{".pe-list-tile__content-front":[m(i.padding-5)]}})]},side_padding:function(t,i){return[e.sel(t,{" .pe-list-tile__content":[y(i.side_padding)]})]},inset_size:function(t,i){return[e.sel(t,{".pe-list-tile--inset":w(t,i)})]},rounded_border_radius:function(t,i){return[e.sel(t,{".pe-list-tile--rounded":O(t,i)})]},compact_front_item_width:function(t,i){return[e.sel(t,{" .pe-list-tile__content-front":{".pe-list-tile--compact-front":{width:i.compact_front_item_width+"px"}}})]},front_item_width:function(t,i){return[e.sel(t,{" .pe-list-tile__content-front":{":not(.pe-list-tile--compact-front)":{width:i.front_item_width+"px"}}})]},font_size_small:function(t,i){return[e.sel(t,{" .pe-list-tile__content":{" small":{fontSize:i.font_size_small+"px"}}})]},has_high_subtitle_padding:function(t,i){return[e.sel(t,{".pe-list-tile--high-subtitle":{" .pe-list-tile__content":[m(i.has_high_subtitle_padding,i.has_high_subtitle_padding+1)]}})]},has_subtitle_padding:function(t,i){return[e.sel(t,{".pe-list-tile--subtitle":{" .pe-list-tile__content":[m(i.has_subtitle_padding,i.has_subtitle_padding+1)]}})]},single_height:function(t,i){return[e.sel(t,{".pe-list-tile--header":{height:i.single_height+"px"," .pe-list-tile__title":[e.mixin.ellipsis(1,i.single_height,"px"),{lineHeight:i.single_height+"px",padding:0}]}})]},font_size_list_header:function(t,i){return[e.sel(t,{".pe-list-tile--header":{" .pe-list-tile__title":{fontSize:i.font_size_list_header+"px"}}})]},font_weight_list_header:function(t,i){return[e.sel(t,{".pe-list-tile--header":{" .pe-list-tile__title":{fontWeight:i.font_weight_list_header}}})]},compact_padding:function(t,i){return[e.sel(t,{" .pe-list--compact &, &.pe-list-tile--compact":{":not(.pe-list-tile--header)":{" .pe-list-tile__content:not(.pe-list-tile__content-front)":m(i.compact_padding,i.compact_padding+1)}}})]},inset:function(t,e){return e.inset&&w(t,e)},inset_h:function(t,e){return e.inset_h&&z(t,e)},inset_v:function(t,e){return e.inset_h&&S(t,e)},rounded:function(t,e){return e.rounded&&O(t,e)},selected:function(t,e){return e.selected&&x(t)}},j=e.createLayout({varFns:C}),H=n({general_styles:!0,compact_front_item_width:64,compact_padding:9,compact_side_padding:1*i.vars.grid_unit_component,font_size_list_header:14,font_size_navigation_title:14,font_size_small:12,font_size_subtitle:14,font_size_title:16,font_weight_list_header:i.vars.font_weight_medium,font_weight_navigation_title:i.vars.font_weight_medium,font_weight_subtitle:i.vars.font_weight_normal,font_weight_title:i.vars.font_weight_normal,front_item_width:72,has_high_subtitle_padding:13,has_subtitle_padding:15,high_subtitle_line_count:2,inset_h_size:1*i.vars.grid_unit_component,inset_v_size:1*i.vars.grid_unit_component,line_height_subtitle:20,padding:13,rounded_border_radius:i.vars.unit_item_border_radius,side_padding:2*i.vars.grid_unit_component,single_height:48,single_line_height:21,single_with_icon_height:56,single_with_icon_line_height:29,subtitle_line_count:1,title_line_count:1,color_light_title:e.rgba(i.vars.color_light_foreground,i.vars.blend_light_text_primary),color_light_subtitle:e.rgba(i.vars.color_light_foreground,i.vars.blend_light_text_secondary),color_light_info:e.rgba(i.vars.color_light_foreground,i.vars.blend_light_text_tertiary),color_light_front:e.rgba(i.vars.color_light_foreground,i.vars.blend_light_text_secondary),color_light_text_disabled:e.rgba(i.vars.color_light_foreground,i.vars.blend_light_text_disabled),color_light_list_header:e.rgba(i.vars.color_light_foreground,i.vars.blend_light_text_tertiary),color_light_secondary:e.rgba(i.vars.color_light_foreground,i.vars.blend_light_text_secondary),color_light_hover:e.rgba(i.vars.color_light_foreground,i.vars.blend_light_text_primary),color_light_hover_front:e.rgba(i.vars.color_light_foreground,i.vars.blend_light_text_primary),color_light_hover_background:e.rgba(i.vars.color_light_foreground,i.vars.blend_light_background_hover),color_light_focus_background:e.rgba(i.vars.color_light_foreground,i.vars.blend_light_background_hover),color_light_selected_text:"inherit",color_light_selected_background:e.rgba(i.vars.color_light_foreground,i.vars.blend_light_background_hover),color_light_highlight_background:e.rgba(i.vars.color_light_foreground,i.vars.blend_light_background_hover),color_dark_title:e.rgba(i.vars.color_dark_foreground,i.vars.blend_dark_text_primary),color_dark_subtitle:e.rgba(i.vars.color_dark_foreground,i.vars.blend_dark_text_secondary),color_dark_info:e.rgba(i.vars.color_dark_foreground,i.vars.blend_dark_text_tertiary),color_dark_front:e.rgba(i.vars.color_dark_foreground,i.vars.blend_dark_text_secondary),color_dark_text_disabled:e.rgba(i.vars.color_dark_foreground,i.vars.blend_dark_text_disabled),color_dark_list_header:e.rgba(i.vars.color_dark_foreground,i.vars.blend_dark_text_tertiary),color_dark_secondary:e.rgba(i.vars.color_dark_foreground,i.vars.blend_dark_text_secondary),color_dark_hover:e.rgba(i.vars.color_dark_foreground,i.vars.blend_dark_text_primary),color_dark_hover_front:e.rgba(i.vars.color_dark_foreground,i.vars.blend_dark_text_primary),color_dark_hover_background:e.rgba(i.vars.color_dark_foreground,i.vars.blend_dark_background_hover),color_dark_selected_text:"inherit",color_dark_selected_background:e.rgba(i.vars.color_dark_foreground,i.vars.blend_dark_background_hover),color_dark_highlight_background:e.rgba(i.vars.color_dark_foreground,i.vars.blend_dark_background_hover)},{inset:!1,inset_h:!1,inset_v:!1,selected:!1,rounded:!1}),R=[j,h],T=".".concat("pe-list-tile"),F=e.styler.createAddStyle(T,R,H),L=e.styler.createGetStyle(T,R,H);e.styler.addStyle({selectors:[T],fns:R,vars:H}),t.addStyle=F,t.getStyle=L,t.color=h,t.layout=j,t.vars=H,Object.defineProperty(t,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-core-css'], global['polythene-theme']));
+}(this, function (exports, polytheneCoreCss, polytheneTheme) { 'use strict';
+
+  var classes = {
+    component: "pe-list-tile",
+    // elements
+    content: "pe-list-tile__content",
+    highSubtitle: "pe-list-tile__high-subtitle",
+    primary: "pe-list-tile__primary",
+    secondary: "pe-list-tile__secondary",
+    subtitle: "pe-list-tile__subtitle",
+    title: "pe-list-tile__title",
+    contentFront: "pe-list-tile__content-front",
+    // states  
+    compact: "pe-list-tile--compact",
+    compactFront: "pe-list-tile--compact-front",
+    disabled: "pe-list-tile--disabled",
+    hasFront: "pe-list-tile--front",
+    hasHighSubtitle: "pe-list-tile--high-subtitle",
+    hasSubtitle: "pe-list-tile--subtitle",
+    header: "pe-list-tile--header",
+    hoverable: "pe-list-tile--hoverable",
+    insetH: "pe-list-tile--inset-h",
+    insetV: "pe-list-tile--inset-v",
+    selectable: "pe-list-tile--selectable",
+    selected: "pe-list-tile--selected",
+    rounded: "pe-list-tile--rounded",
+    highlight: "pe-list-tile--highlight",
+    sticky: "pe-list-tile--sticky",
+    navigation: "pe-list-tile--navigation"
+  };
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  function _objectSpread(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+      var ownKeys = Object.keys(source);
+
+      if (typeof Object.getOwnPropertySymbols === 'function') {
+        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+        }));
+      }
+
+      ownKeys.forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    }
+
+    return target;
+  }
+
+  var _selected = function selected(selector, vars, tint) {
+    var selectedTextColor = vars["color_" + tint + "_selected_text"];
+    return polytheneCoreCss.sel(selector, _objectSpread({}, selectedTextColor !== "inherit" ? {
+      "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
+        color: selectedTextColor
+      }
+    } : undefined, {
+      " .pe-list-tile__primary, pe-list-tile__secondary": {
+        backgroundColor: vars["color_" + tint + "_selected_background"]
+      }
+    }));
+  };
+
+  var generalFns = {
+    general_styles: function general_styles(selector) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--header": {
+          " .pe-list-tile__primary, pe-list-tile__secondary": {
+            backgroundColor: "inherit"
+          }
+        },
+        ":not(.pe-list-tile--disabled):not(.pe-list-tile--selected)": {
+          " a.pe-list-tile__primary:focus, a.pe-list-tile__secondary:focus": {
+            outline: "none",
+            backgroundColor: "inherit"
+          }
+        },
+        "&.pe-list-tile--sticky": {
+          backgroundColor: "inherit"
+        }
+      })];
+    }
+  };
+
+  var tintFns = function tintFns(tint) {
+    var _ref;
+
+    return _ref = {}, _defineProperty(_ref, "color_" + tint + "_title", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        color: vars["color_" + tint + "_title"]
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        backgroundColor: vars["color_" + tint + "_background"],
+        "&.pe-list-tile--sticky": {
+          backgroundColor: vars["color_" + tint + "_background"]
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_list_header", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--header": {
+          color: vars["color_" + tint + "_list_header"]
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_subtitle", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-list-tile__subtitle": {
+          color: vars["color_" + tint + "_subtitle"]
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_secondary", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-list-tile__secondary": {
+          color: vars["color_" + tint + "_secondary"]
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_front", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-list-tile__content-front": {
+          color: vars["color_" + tint + "_front"]
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_text_disabled", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--disabled": {
+          "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
+            color: vars["color_" + tint + "_text_disabled"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_highlight_background", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--highlight:not(.pe-list-tile--selected)": {
+          " .pe-list-tile__primary, pe-list-tile__secondary": {
+            backgroundColor: vars["color_" + tint + "_highlight_background"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_focus_background", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ":not(.pe-list-tile--disabled):not(.pe-list-tile--selected)": {
+          " a.pe-list-tile__primary:focus, a.pe-list-tile__secondary:focus": {
+            backgroundColor: vars["color_" + tint + "_focus_background"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_selected_text", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--selected": _selected(selector, vars, tint)
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_selected_background", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--selected": _selected(selector, vars, tint)
+      })];
+    }), _ref;
+  };
+
+  var hoverTintFns = function hoverTintFns(tint) {
+    var _ref2;
+
+    return _ref2 = {}, _defineProperty(_ref2, "color_" + tint + "_hover", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--hoverable:not(.pe-list-tile--selected)": {
+          color: vars["color_" + tint + "_hover"]
+        }
+      })];
+    }), _defineProperty(_ref2, "color_" + tint + "_hover_background", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--hoverable:not(.pe-list-tile--selected)": {
+          " .pe-list-tile__primary, .pe-list-tile__secondary": {
+            backgroundColor: vars["color_" + tint + "_hover_background"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref2, "color_" + tint + "_hover_front", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--hoverable:not(.pe-list-tile--selected)": {
+          " .pe-list-tile__primary .pe-list-tile__content-front": {
+            color: vars["color_" + tint + "_hover_front"]
+          }
+        }
+      })];
+    }), _ref2;
+  };
+
+  var themeFns = function themeFns(tint) {
+    return {
+      selected: function selected(selector, vars) {
+        return vars.selected && _selected(selector, vars, tint);
+      }
+    };
+  };
+
+  var lightTintFns = _extends({}, generalFns, tintFns("light"), themeFns("light"));
+
+  var darkTintFns = _extends({}, generalFns, tintFns("dark"), themeFns("dark"));
+
+  var lightTintHoverFns = hoverTintFns("light");
+  var darkTintHoverFns = hoverTintFns("dark");
+  var color = polytheneCoreCss.createColor({
+    varFns: {
+      lightTintFns: lightTintFns,
+      darkTintFns: darkTintFns,
+      lightTintHoverFns: lightTintHoverFns,
+      darkTintHoverFns: darkTintHoverFns
+    }
+  });
+
+  var alignSide = function alignSide(isRTL) {
+    return function (vars) {
+      return {
+        // eslint-disable-line no-unused-vars
+        " .pe-list-tile__content-front + .pe-list-tile__content": _defineProperty({}, isRTL ? "paddingRight" : "paddingLeft", 0)
+      };
+    };
+  }; // eslint-disable-line no-unused-vars
+
+
+  var alignLeft = alignSide(false);
+  var alignRight = alignSide(true);
+  /**
+   * @param {number} left
+   * @param {number} [right]
+   */
+
+  var paddingH = function paddingH(left) {
+    var right = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : left;
+    return {
+      "padding-left": left + "px",
+      "padding-right": right + "px"
+    };
+  };
+  /**
+   * @param {number} top 
+   * @param {number} [bottom] 
+   */
+
+
+  var paddingV = function paddingV(top) {
+    var bottom = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : top;
+    return {
+      "padding-top": top + "px",
+      "padding-bottom": bottom + "px"
+    };
+  };
+  /**
+   * @param {string} selector 
+   * @param {ListTileVars} vars 
+   */
+
+
+  var title_line_count_single_line_height = function title_line_count_single_line_height(selector, vars) {
+    return polytheneCoreCss.sel(selector, {
+      lineHeight: vars.single_line_height + "px",
+      ".pe-list-tile--navigation": {
+        " .pe-list-tile__title": {
+          minHeight: vars.single_line_height + "px"
+        }
+      },
+      " .pe-list-tile__title": [polytheneCoreCss.mixin.ellipsis(vars.title_line_count, vars.single_line_height, "px")]
+    });
+  };
+  /**
+   * @param {string} selector 
+   * @param {ListTileVars} vars 
+   */
+
+
+  var unSelectable = function unSelectable(selector, vars) {
+    return (// eslint-disable-line no-unused-vars 
+      polytheneCoreCss.sel(selector, {
+        "&, a": {
+          pointerEvents: "none"
+        }
+      })
+    );
+  };
+  /**
+   * @param {string} selector 
+   * @param {ListTileVars} vars 
+   */
+
+
+  var _inset = function inset(selector, vars) {
+    return insetH(selector, vars), insetV(selector, vars);
+  };
+  /**
+   * @param {string} selector 
+   * @param {ListTileVars} vars 
+   */
+
+
+  var insetH = function insetH(selector, vars) {
+    var margin = vars.inset_h_size;
+    return polytheneCoreCss.sel(selector, {
+      marginLeft: margin + "px",
+      marginRight: margin + "px",
+      " .pe-list-tile__content": {
+        marginLeft: -margin + "px",
+        marginRight: -margin + "px"
+      }
+    });
+  };
+  /**
+   * @param {string} selector 
+   * @param {ListTileVars} vars 
+   */
+
+
+  var insetV = function insetV(selector, vars) {
+    var margin = vars.inset_v_size;
+    return polytheneCoreCss.sel(selector, {
+      marginTop: margin + "px",
+      marginBottom: margin + "px"
+    });
+  };
+  /**
+   * @param {string} selector 
+   * @param {ListTileVars} vars 
+   */
+
+
+  var _rounded = function rounded(selector, vars) {
+    return polytheneCoreCss.sel(selector, {
+      "&, .pe-list-tile__primary": {
+        borderRadius: vars.rounded_border_radius + "px"
+      }
+    });
+  };
+
+  var varFns = {
+    /**
+     * @param {string} selector 
+     * @param {ListTileVars} vars 
+     */
+    general_styles: function general_styles(selector, vars) {
+      return [polytheneCoreCss.sel(selector, [alignLeft(vars), polytheneCoreCss.flex.layout, {
+        position: "relative",
+        ".pe-list-tile--navigation": {
+          " .pe-list-tile__title": {
+            whiteSpace: "pre-wrap"
+          }
+        },
+        ".pe-list-tile--sticky": polytheneCoreCss.mixin.sticky(2),
+        ".pe-list-tile--inset-h": insetH(selector, vars),
+        ".pe-list-tile--inset-v": insetV(selector, vars),
+        " .pe-list-tile__primary": {
+          width: "100%"
+        },
+        " .pe-list-tile__primary, .pe-list-tile__secondary": [polytheneCoreCss.flex.layoutHorizontal, polytheneCoreCss.mixin.defaultTransition("background", ".200s"), {
+          textDecoration: "none",
+          color: "inherit",
+          border: "none"
+        }],
+        ":not(.pe-list-tile--header) .pe-list-tile__primary": [polytheneCoreCss.flex.flex(), {
+          position: "relative",
+          " .pe-list-tile__content:not(.pe-list-tile__content-front)": [polytheneCoreCss.flex.flex()]
+        }],
+        ":not(.pe-list-tile--disabled)": {
+          outline: "none"
+        },
+        " .pe-list-tile__secondary": {
+          textAlign: "right",
+          position: "relative"
+        },
+        " .pe-list-tile__content": [polytheneCoreCss.flex.layoutVertical, polytheneCoreCss.flex.selfCenter, {
+          width: "100%",
+          ".pe-list-tile__content-front": {
+            flexShrink: 0
+          }
+        }],
+        " .pe-list-tile__title": {
+          whiteSpace: "normal"
+        },
+        " .pe-list-tile__subtitle": [polytheneCoreCss.mixin.ellipsis(vars.subtitle_line_count, vars.line_height_subtitle, "px"), {
+          fontSize: vars.font_size_subtitle + "px",
+          fontWeight: vars.font_weight_subtitle,
+          lineHeight: vars.line_height_subtitle + "px",
+          ".pe-list-tile__high-subtitle": [polytheneCoreCss.mixin.ellipsis(vars.high_subtitle_line_count, vars.line_height_subtitle, "px"), {
+            whiteSpace: "normal"
+          }]
+        }],
+        ".pe-list-tile--selected, &.pe-list-tile--disabled": unSelectable(selector, vars),
+        ".pe-list-tile--subtitle": {
+          " .pe-list-tile__content": {
+            " .pe-list-tile__title": {
+              padding: 0
+            }
+          }
+        },
+        ".pe-list-tile--high-subtitle": {
+          " .pe-list-tile--high-subtitle .pe-list-tile__secondary": [polytheneCoreCss.flex.layoutHorizontal, polytheneCoreCss.flex.layoutStart],
+          " .pe-list-tile__content": [polytheneCoreCss.flex.selfStart, {
+            " .pe-list-tile__title": {
+              padding: 0
+            }
+          }]
+        },
+        // List header
+        ".pe-list-tile--header": {
+          pointerEvents: "none",
+          " .pe-list-tile__content": {
+            paddingTop: 0,
+            paddingBottom: 0
+          },
+          " .pe-list-tile__title": {
+            padding: 0
+          }
+        },
+        // Firefox only
+        "@supports (-moz-appearance:none) and (display:contents)": {
+          " .pe-list-tile__primary, .pe-list-tile__content": {
+            overflow: "hidden"
+          }
+        },
+        // Menu
+        ".pe-dialog .pe-menu__content &": {
+          " .pe-list-tile__content": {
+            paddingLeft: "24px",
+            paddingRight: "24px"
+          },
+          " .pe-list-tile__content-front": {
+            paddingRight: 0,
+            width: "64px",
+            marginRight: "-7px"
+          },
+          " .pe-list-tile__title": polytheneCoreCss.mixin.ellipsis("none")
+        },
+        ".pe-menu__content &": {
+          ":not(.pe-list-tile--disabled)": {
+            cursor: "default",
+            "&, .pe-list-tile__primary, .pe-list-tile__secondary": {
+              " .pe-list-tile__title, .pe-list-tile__subtitle": {
+                userSelect: "none",
+                "-moz-user-select": "none"
+              }
+            }
+          }
+        },
+        // Non-touch
+        "html.pe-no-touch &.pe-list-tile--hoverable, \
+        html.pe-no-touch &.pe-list-tile--selectable": {
+          ":not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover": {
+            cursor: "pointer"
+          }
+        }
+      }]), _defineProperty({}, polytheneCoreCss.selectorRTL(selector), alignRight(vars))];
+    },
+    title_line_count: function title_line_count(selector, vars) {
+      return [title_line_count_single_line_height(selector, vars)];
+    },
+    single_line_height: function single_line_height(selector, vars) {
+      return [title_line_count_single_line_height(selector, vars)];
+    },
+    font_size_title: function font_size_title(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        fontSize: vars.font_size_title + "px",
+        " .pe-list-tile__secondary": {
+          fontSize: vars.font_size_title + "px"
+        }
+      })];
+    },
+    font_weight_title: function font_weight_title(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        fontWeight: vars.font_weight_title
+      })];
+    },
+    font_size_navigation_title: function font_size_navigation_title(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--navigation": {
+          fontSize: vars.font_size_navigation_title + "px"
+        }
+      })];
+    },
+    font_weight_navigation_title: function font_weight_navigation_title(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--navigation": {
+          fontWeight: vars.font_weight_navigation_title
+        }
+      })];
+    },
+    padding: function padding(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ":not(.pe-list-tile--header)": {
+          " .pe-list-tile__content:not(.pe-list-tile__content-front)": [paddingV(vars.padding, vars.padding + 1)]
+        },
+        " .pe-list-tile__content": {
+          ".pe-list-tile__content-front": [paddingV(vars.padding - 5)]
+        }
+      })];
+    },
+    side_padding: function side_padding(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-list-tile__content": [paddingH(vars.side_padding)]
+      })];
+    },
+    inset_size: function inset_size(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--inset": _inset(selector, vars)
+      })];
+    },
+    rounded_border_radius: function rounded_border_radius(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--rounded": _rounded(selector, vars)
+      })];
+    },
+    compact_front_item_width: function compact_front_item_width(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-list-tile__content-front": {
+          ".pe-list-tile--compact-front": {
+            width: vars.compact_front_item_width + "px"
+          }
+        }
+      })];
+    },
+    front_item_width: function front_item_width(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-list-tile__content-front": {
+          ":not(.pe-list-tile--compact-front)": {
+            width: vars.front_item_width + "px"
+          }
+        }
+      })];
+    },
+    font_size_small: function font_size_small(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-list-tile__content": {
+          " small": {
+            fontSize: vars.font_size_small + "px"
+          }
+        }
+      })];
+    },
+    has_high_subtitle_padding: function has_high_subtitle_padding(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--high-subtitle": {
+          " .pe-list-tile__content": [paddingV(vars.has_high_subtitle_padding, vars.has_high_subtitle_padding + 1)]
+        }
+      })];
+    },
+    has_subtitle_padding: function has_subtitle_padding(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--subtitle": {
+          " .pe-list-tile__content": [paddingV(vars.has_subtitle_padding, vars.has_subtitle_padding + 1)]
+        }
+      })];
+    },
+    single_height: function single_height(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--header": {
+          height: vars.single_height + "px",
+          " .pe-list-tile__title": [polytheneCoreCss.mixin.ellipsis(1, vars.single_height, "px"), {
+            lineHeight: vars.single_height + "px",
+            padding: 0
+          }]
+        }
+      })];
+    },
+    font_size_list_header: function font_size_list_header(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--header": {
+          " .pe-list-tile__title": {
+            fontSize: vars.font_size_list_header + "px"
+          }
+        }
+      })];
+    },
+    font_weight_list_header: function font_weight_list_header(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--header": {
+          " .pe-list-tile__title": {
+            fontWeight: vars.font_weight_list_header
+          }
+        }
+      })];
+    },
+    compact_padding: function compact_padding(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-list--compact &, &.pe-list-tile--compact": {
+          ":not(.pe-list-tile--header)": {
+            " .pe-list-tile__content:not(.pe-list-tile__content-front)": paddingV(vars.compact_padding, vars.compact_padding + 1)
+          }
+        }
+      })];
+    },
+    // Theme vars
+    inset: function inset(selector, vars) {
+      return vars.inset && _inset(selector, vars);
+    },
+    inset_h: function inset_h(selector, vars) {
+      return vars.inset_h && insetH(selector, vars);
+    },
+    inset_v: function inset_v(selector, vars) {
+      return vars.inset_h && insetV(selector, vars);
+    },
+    rounded: function rounded(selector, vars) {
+      return vars.rounded && _rounded(selector, vars);
+    },
+    selected: function selected(selector, vars) {
+      return vars.selected && unSelectable(selector, vars);
+    }
+  };
+  var layout = polytheneCoreCss.createLayout({
+    varFns: varFns
+  });
+
+  //
+  // heights:
+  // single line: 48
+  // single line, dense: 40
+  // single line, with icon: 48
+  // single line, with icon, dense: 40
+  // single line, with avatar: 56
+  // single line, with avatar, dense: 48
+  // two-line: 72
+  // two-line, dense: 60
+  // three-line: 88
+  // three-line, dense: 76
+
+  var single_height = 48;
+  var padding = 8;
+  var single_with_icon_height = 56;
+  var themeVars = {
+    inset: false,
+    inset_h: false,
+    inset_v: false,
+    selected: false,
+    rounded: false
+  };
+  /**
+   * @type {ListTileVars} listTileVars
+   */
+
+  var listTileVars = _objectSpread({
+    /**
+     * Generate general styles, not defined by variables
+     */
+    general_styles: true,
+    compact_front_item_width: 64,
+    compact_padding: 9,
+    compact_side_padding: 1 * polytheneTheme.vars.grid_unit_component,
+    font_size_list_header: 14,
+    font_size_navigation_title: 14,
+    font_size_small: 12,
+    font_size_subtitle: 14,
+    font_size_title: 16,
+    font_weight_list_header: polytheneTheme.vars.font_weight_medium,
+    font_weight_navigation_title: polytheneTheme.vars.font_weight_medium,
+    font_weight_subtitle: polytheneTheme.vars.font_weight_normal,
+    font_weight_title: polytheneTheme.vars.font_weight_normal,
+    front_item_width: 72,
+    has_high_subtitle_padding: 13,
+    has_subtitle_padding: 15,
+    high_subtitle_line_count: 2,
+    inset_h_size: 1 * polytheneTheme.vars.grid_unit_component,
+    // 8
+    inset_v_size: 1 * polytheneTheme.vars.grid_unit_component,
+    // 8
+    line_height_subtitle: 20,
+    padding: 13,
+    rounded_border_radius: polytheneTheme.vars.unit_item_border_radius,
+    side_padding: 2 * polytheneTheme.vars.grid_unit_component,
+    // 16
+    single_height: single_height,
+    single_line_height: single_height - 2 * padding - (2 * 5 + 1),
+    single_with_icon_height: single_with_icon_height,
+    single_with_icon_line_height: single_with_icon_height - 2 * padding - (2 * 5 + 1),
+    subtitle_line_count: 1,
+    title_line_count: 1,
+    color_light_title: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
+    color_light_subtitle: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
+    color_light_info: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_tertiary),
+    color_light_front: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
+    color_light_text_disabled: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_disabled),
+    color_light_list_header: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_tertiary),
+    color_light_secondary: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
+    color_light_hover: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
+    color_light_hover_front: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
+    color_light_hover_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
+    color_light_focus_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
+    color_light_selected_text: "inherit",
+    color_light_selected_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
+    color_light_highlight_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
+    // background color may be set in theme; disabled by default
+    // color_light_background:          "inherit",
+    color_dark_title: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
+    color_dark_subtitle: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary),
+    color_dark_info: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_tertiary),
+    color_dark_front: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary),
+    color_dark_text_disabled: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled),
+    color_dark_list_header: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_tertiary),
+    color_dark_secondary: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary),
+    color_dark_hover: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
+    color_dark_hover_front: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
+    color_dark_hover_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover),
+    color_dark_selected_text: "inherit",
+    color_dark_selected_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover),
+    color_dark_highlight_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover)
+  }, themeVars);
+
+  // @ts-check
+  var fns = [layout, color];
+  var selector = ".".concat(classes.component);
+  var addStyle = polytheneCoreCss.styler.createAddStyle(selector, fns, listTileVars);
+  var getStyle = polytheneCoreCss.styler.createGetStyle(selector, fns, listTileVars);
+  polytheneCoreCss.styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: listTileVars
+  });
+
+  exports.addStyle = addStyle;
+  exports.getStyle = getStyle;
+  exports.color = color;
+  exports.layout = layout;
+  exports.vars = listTileVars;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-css-list-tile.js.map

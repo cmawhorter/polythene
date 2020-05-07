@@ -1,2 +1,16 @@
-!function(e,p){"object"==typeof exports&&"undefined"!=typeof module?p(exports,require("polythene-react-base"),require("polythene-core-ripple")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core-ripple"],p):p((e=e||self).polythene={},e["polythene-react-base"],e["polythene-core-ripple"])}(this,function(e,p,o){"use strict";var t=p.ComponentCreator(o.coreRipple);t.displayName="Ripple",e.Ripple=t,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core-ripple')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core-ripple'], factory) :
+	(global = global || self, factory(global.polythene = {}, global['polythene-react-base'], global['polythene-core-ripple']));
+}(this, function (exports, polytheneReactBase, polytheneCoreRipple) { 'use strict';
+
+	// @ts-check
+	var Ripple = polytheneReactBase.ComponentCreator(polytheneCoreRipple.coreRipple);
+	Ripple["displayName"] = "Ripple";
+
+	exports.Ripple = Ripple;
+
+	Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-react-ripple.js.map

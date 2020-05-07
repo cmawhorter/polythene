@@ -1,2 +1,65 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core")):"function"==typeof define&&define.amd?define(["exports","polythene-core"],t):t((e=e||self).polythene={},e["polythene-core"])}(this,function(e,t){"use strict";function n(){return(n=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e}).apply(this,arguments)}var r={component:"pe-icon",avatar:"pe-icon--avatar",large:"pe-icon--large",medium:"pe-icon--medium",regular:"pe-icon--regular",small:"pe-icon--small"},o=Object.freeze({getElement:function(e){return e.attrs.element||"div"},createProps:function(e,o){var a=o.keys,c=e.attrs;return n({},t.filterSupportedAttributes(c),{className:[r.component,t.classForSize(r,c.size),c.avatar?r.avatar:null,"dark"===c.tone?"pe-dark-tone":null,"light"===c.tone?"pe-light-tone":null,c.className||c[a.class]].join(" ")},c.events)},createContent:function(e,t){var n=t.renderer,r=t.SVG,o=e.attrs;return o.content?o.content:o.svg?n(r,o.svg):o.src?n("img",{src:o.src}):o.children||e.children}});e.coreIcon=o,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-core']));
+}(this, function (exports, polytheneCore) { 'use strict';
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  var classes = {
+    component: "pe-icon",
+    // states
+    avatar: "pe-icon--avatar",
+    large: "pe-icon--large",
+    medium: "pe-icon--medium",
+    regular: "pe-icon--regular",
+    small: "pe-icon--small"
+  };
+
+  var getElement = function getElement(vnode) {
+    return vnode.attrs.element || "div";
+  };
+  var createProps = function createProps(vnode, _ref) {
+    var k = _ref.keys;
+    var attrs = vnode.attrs;
+    return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
+      className: [classes.component, polytheneCore.classForSize(classes, attrs.size), attrs.avatar ? classes.avatar : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    }, attrs.events);
+  };
+  var createContent = function createContent(vnode, _ref2) {
+    var h = _ref2.renderer,
+        SVG = _ref2.SVG;
+    var attrs = vnode.attrs;
+    return attrs.content ? attrs.content : attrs.svg ? h(SVG, attrs.svg) : attrs.src ? h("img", {
+      src: attrs.src
+    }) : attrs.children || vnode.children;
+  };
+
+  var icon = /*#__PURE__*/Object.freeze({
+    getElement: getElement,
+    createProps: createProps,
+    createContent: createContent
+  });
+
+  exports.coreIcon = icon;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-core-icon.js.map

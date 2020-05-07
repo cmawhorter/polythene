@@ -1,2 +1,320 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core-css"),require("polythene-theme")):"function"==typeof define&&define.amd?define(["exports","polythene-core-css","polythene-theme"],t):t((e=e||self).polythene={},e["polythene-core-css"],e["polythene-theme"])}(this,function(e,t,i){"use strict";function n(e,t,i){return t in e?Object.defineProperty(e,t,{value:i,enumerable:!0,configurable:!0,writable:!0}):e[t]=i,e}function l(){return(l=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var i=arguments[t];for(var n in i)Object.prototype.hasOwnProperty.call(i,n)&&(e[n]=i[n])}return e}).apply(this,arguments)}var _={general_styles:function(e){return[t.sel(e,{" .pe-textfield__input-area":{backgroundColor:"transparent"}})]}},r=function(e){var i;return n(i={},"color_"+e+"_background",function(i,n){return[t.sel(i,{backgroundColor:n["color_"+e+"_background"]})]}),n(i,"color_"+e+"_label_text",function(i,n){return[t.sel(i,{" .pe-textfield":{" .pe-textfield__label":{color:n["color_"+e+"_label_text"]}}})]}),n(i,"color_"+e+"_input_text",function(i,n){return[t.sel(i,{" .pe-textfield":{" .pe-textfield__input":{color:n["color_"+e+"_input_text"]}}})]}),i},d=l({},_,r("light")),a=l({},_,r("dark")),p=t.createColor({varFns:{lightTintFns:d,darkTintFns:a}}),o=function(e,i){var n=(i.inset_height-i.line_height_input)/2;return t.sel(e,{".pe-search--inset":{" .pe-textfield__input, .pe-textfield__label":{paddingTop:n+"px",paddingBottom:n+"px"}}})},u=function(e,i){var n=(i.full_width_height-i.line_height_input)/2;return t.sel(e,{".pe-search--full-width":{" .pe-textfield__input, .pe-textfield__label":{paddingTop:n+"px",paddingBottom:n+"px"}}})},s={general_styles:function(e){return[t.sel(e,[t.flex.flex(),{position:"relative"," .pe-textfield":[t.flex.flex(),{alignItems:"center",padding:0,position:"relative",zIndex:1," .pe-textfield__input-area":{padding:0,":after":{display:"none"}}," .pe-textfield__input":{border:"none"}," .pe-textfield__label":{top:0,bottom:0}}]," .pe-search__content":{"&, .pe-textfield":t.flex.layoutHorizontal,"&, .pe-textfield__input-area":{flexGrow:1}}," .pe-search__content > *":[t.flex.layoutVertical,t.flex.selfCenter],".pe-search--inset":{"&, .pe-textfield__input-area, .pe-textfield__input, .pe-textfield__label":{padding:0}}}])]},font_size_input:function(e,i){return[t.sel(e,{" .pe-textfield":{" .pe-textfield__input, .pe-textfield__label":{fontSize:i.font_size_input+"px"}}})]},line_height_input:function(e,i){return[t.sel(e,{" .pe-textfield__input, .pe-textfield__label":{lineHeight:i.line_height_input+"px"}}),o(e,i)]},inset_border_radius:function(e,i){return[t.sel(e,{".pe-search--inset":{"border-radius":i.inset_border_radius+"px"}})]},inset_side_padding:function(e,i){return[t.sel(e,{".pe-search--inset":{padding:"0 "+i.inset_side_padding+"px"}})]},inset_height:function(e,i){return[t.sel(e,{".pe-search--inset":{"&, .pe-textfield__input-area, .pe-textfield__input, .pe-textfield__label":{padding:0,height:i.inset_height+"px"}}}),o(e,i)]},full_width_height:function(e,i){return[t.sel(e,{".pe-search--full-width":{"&, .pe-textfield__input-area, .pe-textfield__input, .pe-textfield__label":{height:i.full_width_height+"px"}}}),u(e,i)]},inset_input_indent:function(e,i){return[t.sel(e,{".pe-search--inset":{" .pe-textfield__input, .pe-textfield__label":{paddingLeft:i.inset_input_indent+"px"}}})]},inset_input_right_padding:function(e,i){return[t.sel(e,{".pe-search--inset":{" .pe-textfield__input, .pe-textfield__label":{paddingRight:i.inset_input_right_padding+"px"}}})]},full_width_side_padding:function(e,n){var l=i.vars.unit_indent-n.full_width_side_padding-i.vars.grid_unit_icon_button;return t.sel(e,{".pe-search--full-width":{padding:"0 "+n.full_width_side_padding+"px"," .pe-textfield__input, .pe-textfield__label":{paddingLeft:l+"px"}},".pe-search--full-width + .pe-list .pe-list-tile":{"> :first-child":{paddingLeft:n.full_width_side_padding+"px"},"> :last-child":{paddingRight:n.full_width_side_padding+"px"}}})},full_width_border_radius:function(e,i){return[t.sel(e,{".pe-search--full-width":{borderRadius:i.full_width_border_radius+"px"}})]},full_width_input_right_padding:function(e,i){return[t.sel(e,{".pe-search--full-width":{" .pe-textfield__input, .pe-textfield__label":{paddingRight:i.full_width_input_right_padding+"px"}}})]}},f=t.createLayout({varFns:s}),h={general_styles:!0,font_size_input:20,full_width_border_radius:0,full_width_height:56,full_width_input_right_padding:0,full_width_side_margin:0,full_width_side_padding:8,inset_border_radius:i.vars.unit_block_border_radius,inset_height:48,inset_input_indent:16,inset_input_right_padding:0,inset_side_padding:0,line_height_input:20,color_light_label_text:t.rgba(i.vars.color_light_foreground,i.vars.blend_light_text_disabled),color_light_input_text:t.rgba(i.vars.color_light_foreground,i.vars.blend_light_text_primary),color_light_background:t.rgba(i.vars.color_light_background),color_dark_label_text:t.rgba(i.vars.color_dark_foreground,i.vars.blend_dark_text_disabled),color_dark_input_text:t.rgba(i.vars.color_dark_foreground,i.vars.blend_dark_text_primary),color_dark_background:t.rgba(i.vars.color_dark_background)},c=[f,p],g=".".concat("pe-search"),x=t.styler.createAddStyle(g,c,h),b=t.styler.createGetStyle(g,c,h);t.styler.addStyle({selectors:[g],fns:c,vars:h}),e.addStyle=x,e.getStyle=b,e.color=p,e.layout=f,e.vars=h,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-core-css'], global['polythene-theme']));
+}(this, function (exports, polytheneCoreCss, polytheneTheme) { 'use strict';
+
+  var classes = {
+    component: "pe-search",
+    // elements
+    content: "pe-search__content",
+    // states
+    searchFullWidth: "pe-search--full-width",
+    searchInset: "pe-search--inset"
+  };
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  var generalFns = {
+    general_styles: function general_styles(selector) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-textfield__input-area": {
+          backgroundColor: "transparent"
+        }
+      })];
+    }
+  };
+
+  var tintFns = function tintFns(tint) {
+    var _ref;
+
+    return _ref = {}, _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        backgroundColor: vars["color_" + tint + "_background"]
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_label_text", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-textfield": {
+          " .pe-textfield__label": {
+            color: vars["color_" + tint + "_label_text"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_input_text", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-textfield": {
+          " .pe-textfield__input": {
+            color: vars["color_" + tint + "_input_text"]
+          }
+        }
+      })];
+    }), _ref;
+  };
+
+  var lightTintFns = _extends({}, generalFns, tintFns("light"));
+
+  var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+  var color = polytheneCoreCss.createColor({
+    varFns: {
+      lightTintFns: lightTintFns,
+      darkTintFns: darkTintFns
+    }
+  });
+
+  // @ts-check
+
+  var inset_height_line_height_input = function inset_height_line_height_input(selector, vars) {
+    var inset_input_padding_v = (vars.inset_height - vars.line_height_input) / 2;
+    return polytheneCoreCss.sel(selector, {
+      ".pe-search--inset": {
+        " .pe-textfield__input, .pe-textfield__label": {
+          paddingTop: inset_input_padding_v + "px",
+          paddingBottom: inset_input_padding_v + "px"
+        }
+      }
+    });
+  };
+
+  var full_width_height_line_height_input = function full_width_height_line_height_input(selector, vars) {
+    var full_width_input_padding_v = (vars.full_width_height - vars.line_height_input) / 2;
+    return polytheneCoreCss.sel(selector, {
+      ".pe-search--full-width": {
+        " .pe-textfield__input, .pe-textfield__label": {
+          paddingTop: full_width_input_padding_v + "px",
+          paddingBottom: full_width_input_padding_v + "px"
+        }
+      }
+    });
+  };
+
+  var varFns = {
+    general_styles: function general_styles(selector) {
+      return [polytheneCoreCss.sel(selector, [polytheneCoreCss.flex.flex(), {
+        position: "relative",
+        // necessary when a shadow is added
+        " .pe-textfield": [polytheneCoreCss.flex.flex(), {
+          alignItems: "center",
+          padding: 0,
+          // prevent that neighboring icon button with ripple hides the cursor
+          position: "relative",
+          zIndex: 1,
+          " .pe-textfield__input-area": {
+            padding: 0,
+            ":after": {
+              display: "none"
+            }
+          },
+          " .pe-textfield__input": {
+            // reset
+            border: "none"
+          },
+          " .pe-textfield__label": {
+            // reset
+            top: 0,
+            bottom: 0
+          }
+        }],
+        " .pe-search__content": {
+          "&, .pe-textfield": polytheneCoreCss.flex.layoutHorizontal,
+          "&, .pe-textfield__input-area": {
+            flexGrow: 1
+          }
+        },
+        " .pe-search__content > *": [polytheneCoreCss.flex.layoutVertical, polytheneCoreCss.flex.selfCenter],
+        ".pe-search--inset": {
+          "&, .pe-textfield__input-area, .pe-textfield__input, .pe-textfield__label": {
+            padding: 0
+          }
+        }
+      }])];
+    },
+    font_size_input: function font_size_input(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-textfield": {
+          " .pe-textfield__input, .pe-textfield__label": {
+            fontSize: vars.font_size_input + "px"
+          }
+        }
+      })];
+    },
+    line_height_input: function line_height_input(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-textfield__input, .pe-textfield__label": {
+          lineHeight: vars.line_height_input + "px"
+        }
+      }), inset_height_line_height_input(selector, vars)];
+    },
+    inset_border_radius: function inset_border_radius(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-search--inset": {
+          "border-radius": vars.inset_border_radius + "px"
+        }
+      })];
+    },
+    inset_side_padding: function inset_side_padding(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-search--inset": {
+          padding: "0 " + vars.inset_side_padding + "px"
+        }
+      })];
+    },
+    inset_height: function inset_height(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-search--inset": {
+          "&, .pe-textfield__input-area, .pe-textfield__input, .pe-textfield__label": {
+            padding: 0,
+            height: vars.inset_height + "px"
+          }
+        }
+      }), inset_height_line_height_input(selector, vars)];
+    },
+    full_width_height: function full_width_height(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-search--full-width": {
+          "&, .pe-textfield__input-area, .pe-textfield__input, .pe-textfield__label": {
+            height: vars.full_width_height + "px"
+          }
+        }
+      }), full_width_height_line_height_input(selector, vars)];
+    },
+    inset_input_indent: function inset_input_indent(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-search--inset": {
+          " .pe-textfield__input, .pe-textfield__label": {
+            paddingLeft: vars.inset_input_indent + "px"
+          }
+        }
+      })];
+    },
+    inset_input_right_padding: function inset_input_right_padding(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-search--inset": {
+          " .pe-textfield__input, .pe-textfield__label": {
+            paddingRight: vars.inset_input_right_padding + "px"
+          }
+        }
+      })];
+    },
+    full_width_side_padding: function full_width_side_padding(selector, vars) {
+      var full_width_input_indent = polytheneTheme.vars.unit_indent - vars.full_width_side_padding - polytheneTheme.vars.grid_unit_icon_button;
+      return polytheneCoreCss.sel(selector, {
+        ".pe-search--full-width": {
+          padding: "0 " + vars.full_width_side_padding + "px",
+          " .pe-textfield__input, .pe-textfield__label": {
+            paddingLeft: full_width_input_indent + "px"
+          }
+        },
+        ".pe-search--full-width + .pe-list .pe-list-tile": {
+          "> :first-child": {
+            paddingLeft: vars.full_width_side_padding + "px"
+          },
+          "> :last-child": {
+            paddingRight: vars.full_width_side_padding + "px"
+          }
+        }
+      });
+    },
+    full_width_border_radius: function full_width_border_radius(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-search--full-width": {
+          borderRadius: vars.full_width_border_radius + "px"
+        }
+      })];
+    },
+    full_width_input_right_padding: function full_width_input_right_padding(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-search--full-width": {
+          " .pe-textfield__input, .pe-textfield__label": {
+            paddingRight: vars.full_width_input_right_padding + "px"
+          }
+        }
+      })];
+    }
+  };
+  var layout = polytheneCoreCss.createLayout({
+    varFns: varFns
+  });
+
+  // @ts-check
+  /**
+   * @type {SearchVars} searchVars
+   */
+
+  var searchVars = {
+    /**
+     * Generate general styles, not defined by variables
+     */
+    general_styles: true,
+    font_size_input: 20,
+    full_width_border_radius: 0,
+    full_width_height: 56,
+    full_width_input_right_padding: 0,
+    full_width_side_margin: 0,
+    full_width_side_padding: 8,
+    inset_border_radius: polytheneTheme.vars.unit_block_border_radius,
+    inset_height: 48,
+    inset_input_indent: 16,
+    inset_input_right_padding: 0,
+    inset_side_padding: 0,
+    line_height_input: 20,
+    color_light_label_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_disabled),
+    color_light_input_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
+    color_light_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_background),
+    color_dark_label_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled),
+    color_dark_input_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
+    color_dark_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_background)
+  };
+
+  // @ts-check
+  var fns = [layout, color];
+  var selector = ".".concat(classes.component);
+  var addStyle = polytheneCoreCss.styler.createAddStyle(selector, fns, searchVars);
+  var getStyle = polytheneCoreCss.styler.createGetStyle(selector, fns, searchVars);
+  polytheneCoreCss.styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: searchVars
+  });
+
+  exports.addStyle = addStyle;
+  exports.getStyle = getStyle;
+  exports.color = color;
+  exports.layout = layout;
+  exports.vars = searchVars;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-css-search.js.map

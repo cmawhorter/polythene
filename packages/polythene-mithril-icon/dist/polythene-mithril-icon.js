@@ -1,2 +1,60 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-mithril-base"),require("polythene-core-icon"),require("polythene-mithril-svg")):"function"==typeof define&&define.amd?define(["exports","polythene-mithril-base","polythene-core-icon","polythene-mithril-svg"],t):t((e=e||self).polythene={},e["polythene-mithril-base"],e["polythene-core-icon"],e["polythene-mithril-svg"])}(this,function(e,t,n,o){"use strict";function r(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function i(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{},o=Object.keys(n);"function"==typeof Object.getOwnPropertySymbols&&(o=o.concat(Object.getOwnPropertySymbols(n).filter(function(e){return Object.getOwnPropertyDescriptor(n,e).enumerable}))),o.forEach(function(t){r(e,t,n[t])})}return e}var c=t.ComponentCreator(i({},n.coreIcon,{createProps:function(e,t){return n.coreIcon.createProps(e,i({},t,{SVG:o.SVG}))},createContent:function(e,t){return n.coreIcon.createContent(e,i({},t,{SVG:o.SVG}))}}));c.displayName="Icon",e.Icon=c,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-mithril-base'), require('polythene-core-icon'), require('polythene-mithril-svg')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-mithril-base', 'polythene-core-icon', 'polythene-mithril-svg'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-mithril-base'], global['polythene-core-icon'], global['polythene-mithril-svg']));
+}(this, function (exports, polytheneMithrilBase, polytheneCoreIcon, polytheneMithrilSvg) { 'use strict';
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _objectSpread(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+      var ownKeys = Object.keys(source);
+
+      if (typeof Object.getOwnPropertySymbols === 'function') {
+        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+        }));
+      }
+
+      ownKeys.forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    }
+
+    return target;
+  }
+
+  var Icon = polytheneMithrilBase.ComponentCreator(_objectSpread({}, polytheneCoreIcon.coreIcon, {
+    createProps: function createProps(vnode, args) {
+      return polytheneCoreIcon.coreIcon.createProps(vnode, _objectSpread({}, args, {
+        SVG: polytheneMithrilSvg.SVG
+      }));
+    },
+    createContent: function createContent(vnode, args) {
+      return polytheneCoreIcon.coreIcon.createContent(vnode, _objectSpread({}, args, {
+        SVG: polytheneMithrilSvg.SVG
+      }));
+    }
+  }));
+  Icon["displayName"] = "Icon";
+
+  exports.Icon = Icon;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-mithril-icon.js.map

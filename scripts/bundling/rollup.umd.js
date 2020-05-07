@@ -20,7 +20,7 @@ const targetConfig = Object.assign({}, baseConfig, {
     }
   )
 });
-targetConfig.plugins.push(terser());
+// targetConfig.plugins.push(terser());
 
 export default targetConfig;
 

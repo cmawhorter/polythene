@@ -1,2 +1,62 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-mithril-base"),require("polythene-core-list-tile"),require("polythene-mithril-icon"),require("polythene-mithril-ripple")):"function"==typeof define&&define.amd?define(["exports","polythene-mithril-base","polythene-core-list-tile","polythene-mithril-icon","polythene-mithril-ripple"],t):t((e=e||self).polythene={},e["polythene-mithril-base"],e["polythene-core-list-tile"],e["polythene-mithril-icon"],e["polythene-mithril-ripple"])}(this,function(e,t,i,r,n){"use strict";function o(e,t,i){return t in e?Object.defineProperty(e,t,{value:i,enumerable:!0,configurable:!0,writable:!0}):e[t]=i,e}function l(e){for(var t=1;t<arguments.length;t++){var i=null!=arguments[t]?arguments[t]:{},r=Object.keys(i);"function"==typeof Object.getOwnPropertySymbols&&(r=r.concat(Object.getOwnPropertySymbols(i).filter(function(e){return Object.getOwnPropertyDescriptor(i,e).enumerable}))),r.forEach(function(t){o(e,t,i[t])})}return e}var p=t.ComponentCreator(l({},i.coreListTile,{createProps:function(e,t){return i.coreListTile.createProps(e,l({},t,{Icon:r.Icon,Ripple:n.Ripple}))},createContent:function(e,t){return i.coreListTile.createContent(e,l({},t,{Icon:r.Icon,Ripple:n.Ripple}))}}));p.displayName="ListTile",e.ListTile=p,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-mithril-base'), require('polythene-core-list-tile'), require('polythene-mithril-icon'), require('polythene-mithril-ripple')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-mithril-base', 'polythene-core-list-tile', 'polythene-mithril-icon', 'polythene-mithril-ripple'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-mithril-base'], global['polythene-core-list-tile'], global['polythene-mithril-icon'], global['polythene-mithril-ripple']));
+}(this, function (exports, polytheneMithrilBase, polytheneCoreListTile, polytheneMithrilIcon, polytheneMithrilRipple) { 'use strict';
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _objectSpread(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+      var ownKeys = Object.keys(source);
+
+      if (typeof Object.getOwnPropertySymbols === 'function') {
+        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+        }));
+      }
+
+      ownKeys.forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    }
+
+    return target;
+  }
+
+  var ListTile = polytheneMithrilBase.ComponentCreator(_objectSpread({}, polytheneCoreListTile.coreListTile, {
+    createProps: function createProps(vnode, args) {
+      return polytheneCoreListTile.coreListTile.createProps(vnode, _objectSpread({}, args, {
+        Icon: polytheneMithrilIcon.Icon,
+        Ripple: polytheneMithrilRipple.Ripple
+      }));
+    },
+    createContent: function createContent(vnode, args) {
+      return polytheneCoreListTile.coreListTile.createContent(vnode, _objectSpread({}, args, {
+        Icon: polytheneMithrilIcon.Icon,
+        Ripple: polytheneMithrilRipple.Ripple
+      }));
+    }
+  }));
+  ListTile["displayName"] = "ListTile";
+
+  exports.ListTile = ListTile;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-mithril-list-tile.js.map

@@ -1,2 +1,75 @@
-!function(e,n){"object"==typeof exports&&"undefined"!=typeof module?n(exports):"function"==typeof define&&define.amd?define(["exports"],n):n((e=e||self).polythene={})}(this,function(e){"use strict";function n(){return(n=Object.assign||function(e){for(var n=1;n<arguments.length;n++){var t=arguments[n];for(var o in t)Object.prototype.hasOwnProperty.call(t,o)&&(e[o]=t[o])}return e}).apply(this,arguments)}var t={component:"pe-fab",content:"pe-fab__content",mini:"pe-fab--mini"},o=Object.freeze({createProps:function(e,o){var a=o.keys,i=o.renderer,r=o.Icon,c=e.attrs,s=c.content?c.content:c.icon?i(r,c.icon):c.children||e.children;return n({},c,{content:i("div",{className:t.content},s),parentClassName:[t.component,c.mini?t.mini:null,c.className||c[a.class]].join(" "),className:null,ripple:{center:!0,opacityDecayVelocity:.24},shadow:{increase:5},ink:!0,wash:!0,raised:!0,animateOnTap:void 0===c.animateOnTap||c.animateOnTap})},createContent:function(e){return e.children}});e.coreFAB=o,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (global = global || self, factory(global.polythene = {}));
+}(this, function (exports) { 'use strict';
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  var classes = {
+    component: "pe-fab",
+    // elements
+    content: "pe-fab__content",
+    // states
+    mini: "pe-fab--mini"
+  };
+
+  // Props to be passed to a Button, including 'content'
+
+  var createProps = function createProps(vnode, _ref) {
+    var k = _ref.keys,
+        h = _ref.renderer,
+        Icon = _ref.Icon;
+    var attrs = vnode.attrs;
+    var content = attrs.content ? attrs.content : attrs.icon ? h(Icon, attrs.icon) : attrs.children || vnode.children;
+    return _extends({}, attrs, {
+      content: h("div", {
+        className: classes.content
+      }, content),
+      parentClassName: [classes.component, attrs.mini ? classes.mini : null, attrs.className || attrs[k.class]].join(" "),
+      className: null,
+      // defaults
+      ripple: {
+        center: true,
+        opacityDecayVelocity: 0.24
+      },
+      shadow: {
+        increase: 5
+      },
+      ink: true,
+      wash: true,
+      raised: true,
+      animateOnTap: attrs.animateOnTap !== undefined ? attrs.animateOnTap : true
+    });
+  };
+  var createContent = function createContent(vnode) {
+    return vnode.children;
+  };
+
+  var fab = /*#__PURE__*/Object.freeze({
+    createProps: createProps,
+    createContent: createContent
+  });
+
+  exports.coreFAB = fab;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-core-fab.js.map

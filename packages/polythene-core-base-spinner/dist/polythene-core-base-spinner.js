@@ -1,2 +1,134 @@
-!function(e,n){"object"==typeof exports&&"undefined"!=typeof module?n(exports,require("polythene-core")):"function"==typeof define&&define.amd?define(["exports","polythene-core"],n):n((e=e||self).polythene={},e["polythene-core"])}(this,function(e,n){"use strict";function t(){return(t=Object.assign||function(e){for(var n=1;n<arguments.length;n++){var t=arguments[n];for(var r in t)Object.prototype.hasOwnProperty.call(t,r)&&(e[r]=t[r])}return e}).apply(this,arguments)}var r={component:"pe-spinner",animation:"pe-spinner__animation",placeholder:"pe-spinner__placeholder",animated:"pe-spinner--animated",fab:"pe-spinner--fab",large:"pe-spinner--large",medium:"pe-spinner--medium",permanent:"pe-spinner--permanent",raised:"pe-spinner--raised",regular:"pe-spinner--regular",singleColor:"pe-spinner--single-color",small:"pe-spinner--small",visible:"pe-spinner--visible"},i=function(e,n,t){return{state:e,attrs:n,isShow:t,domElements:{el:e.dom()},showClass:r.visible}},o=Object.freeze({getInitialState:function(e,n){var t=n(!1),r=n(!1);return{dom:n(null),visible:r,transitioning:t,redrawOnUpdate:n.merge([t])}},onMount:function(e){if(e.dom){var t=e.state,r=e.attrs;void 0!==r.z&&n.deprecation("Spinner",{option:"z",newOption:"shadowDepth"}),t.dom(e.dom),r.permanent||function(e,t){n.transitionComponent(i(e,t,!0))}(t,r)}},createProps:function(e,i){var o=i.keys,a=e.attrs;return t({},n.filterSupportedAttributes(a),{className:[r.component,a.instanceClass,n.classForSize(r,a.size),a.singleColor?r.singleColor:null,a.raised?r.raised:null,a.animated?r.animated:null,a.permanent?r.permanent:null,a.permanent?r.visible:null,a.className||a[o.class]].join(" ")},a.events)},createContent:function(e,t){var r=t.renderer,o=t.Shadow,a=e.state,s=e.attrs;a.hide&&setTimeout(function(){!function(e,t){n.transitionComponent(i(e,t,!1))}(a,s)},0);var p=void 0!==s.shadowDepth?s.shadowDepth:s.z;return[s.raised&&s.content?r(o,{key:"shadow",shadowDepth:p}):null,s.content]}});e.coreBaseSpinner=o,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-core']));
+}(this, function (exports, polytheneCore) { 'use strict';
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  var classes = {
+    component: "pe-spinner",
+    // elements
+    animation: "pe-spinner__animation",
+    placeholder: "pe-spinner__placeholder",
+    // states
+    animated: "pe-spinner--animated",
+    fab: "pe-spinner--fab",
+    large: "pe-spinner--large",
+    medium: "pe-spinner--medium",
+    permanent: "pe-spinner--permanent",
+    raised: "pe-spinner--raised",
+    regular: "pe-spinner--regular",
+    singleColor: "pe-spinner--single-color",
+    small: "pe-spinner--small",
+    visible: "pe-spinner--visible"
+  };
+
+  var transitionOptions = function transitionOptions(state, attrs, isShow) {
+    return {
+      state: state,
+      attrs: attrs,
+      isShow: isShow,
+      domElements: {
+        el: state.dom()
+      },
+      showClass: classes.visible
+    };
+  };
+
+  var showSpinner = function showSpinner(state, attrs) {
+    return polytheneCore.transitionComponent(transitionOptions(state, attrs, true));
+  };
+
+  var hideSpinner = function hideSpinner(state, attrs) {
+    return polytheneCore.transitionComponent(transitionOptions(state, attrs, false));
+  };
+
+  var getInitialState = function getInitialState(vnode, createStream) {
+    var transitioning = createStream(false);
+    var visible = createStream(false);
+    var dom = createStream(null);
+    return {
+      dom: dom,
+      visible: visible,
+      transitioning: transitioning,
+      redrawOnUpdate: createStream.merge([transitioning])
+    };
+  };
+  var onMount = function onMount(vnode) {
+    if (!vnode.dom) {
+      return;
+    }
+
+    var state = vnode.state;
+    var attrs = vnode.attrs;
+
+    if (attrs.z !== undefined) {
+      polytheneCore.deprecation("Spinner", {
+        option: "z",
+        newOption: "shadowDepth"
+      });
+    }
+
+    state.dom(vnode.dom);
+
+    if (!attrs.permanent) {
+      showSpinner(state, attrs);
+    }
+  };
+  var createProps = function createProps(vnode, _ref) {
+    var k = _ref.keys;
+    var attrs = vnode.attrs;
+    return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
+      className: [classes.component, attrs.instanceClass, polytheneCore.classForSize(classes, attrs.size), attrs.singleColor ? classes.singleColor : null, attrs.raised ? classes.raised : null, attrs.animated ? classes.animated : null, attrs.permanent ? classes.permanent : null, attrs.permanent ? classes.visible : null, attrs.className || attrs[k.class]].join(" ")
+    }, attrs.events);
+  };
+  var createContent = function createContent(vnode, _ref2) {
+    var h = _ref2.renderer,
+        Shadow = _ref2.Shadow;
+    var state = vnode.state;
+    var attrs = vnode.attrs;
+
+    if (state.hide) {
+      setTimeout(function () {
+        hideSpinner(state, attrs);
+      }, 0);
+    }
+
+    var shadowDepth = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z; // deprecated
+
+    return [attrs.raised && attrs.content ? h(Shadow, {
+      key: "shadow",
+      shadowDepth: shadowDepth
+    }) : null, attrs.content];
+  };
+
+  var spinner = /*#__PURE__*/Object.freeze({
+    getInitialState: getInitialState,
+    onMount: onMount,
+    createProps: createProps,
+    createContent: createContent
+  });
+
+  exports.coreBaseSpinner = spinner;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-core-base-spinner.js.map

@@ -1,2 +1,227 @@
-!function(e,n){"object"==typeof exports&&"undefined"!=typeof module?n(exports,require("polythene-core-css"),require("polythene-theme")):"function"==typeof define&&define.amd?define(["exports","polythene-core-css","polythene-theme"],n):n((e=e||self).polythene={},e["polythene-core-css"],e["polythene-theme"])}(this,function(e,n,i){"use strict";function r(e,n,i){return n in e?Object.defineProperty(e,n,{value:i,enumerable:!0,configurable:!0,writable:!0}):e[n]=i,e}function t(){return(t=Object.assign||function(e){for(var n=1;n<arguments.length;n++){var i=arguments[n];for(var r in i)Object.prototype.hasOwnProperty.call(i,r)&&(e[r]=i[r])}return e}).apply(this,arguments)}var a={general_styles:function(e){return[]}},s=function(e){return r({},"color_"+e+"_raised_background",function(i,r){return[n.sel(i,{".pe-spinner--raised":{backgroundColor:r["color_"+e+"_raised_background"]}})]})},o=t({},a,s("light")),l=t({},a,s("dark")),u=n.createColor({varFns:{lightTintFns:o,darkTintFns:l}}),p=function(e){return{width:e+"px",height:e+"px"}},_=function(e){var n=Math.round(.25*e),i=e+2*n;return{width:i+"px",height:i+"px",padding:n+"px"}},c={general_styles:function(e){return[n.sel(e,{transitionProperty:"all",".pe-spinner--raised":{position:"relative",borderRadius:"50%"}})]},animation_show_css:function(e,i){return[n.sel(e,{".pe-spinner--visible, &.pe-spinner--permanent":[i.animation_show_css]})]},animation_hide_css:function(e,n){return r({},e,n.animation_hide_css)},animation_delay:function(e,i){return[n.sel(e,{transitionDelay:i.animation_delay})]},animation_duration:function(e,i){return[n.sel(e,{transitionDuration:i.animation_duration})]},animation_timing_function:function(e,i){return[n.sel(e,{transitionTimingFunction:i.animation_timing_function})]},size_small:function(e,i){return[n.sel(e,{".pe-spinner--small":p(i.size_small),".pe-spinner--raised":{".pe-spinner--small":_(i.size_small)}})]},size_regular:function(e,i){return[n.sel(e,{".pe-spinner--regular":p(i.size_regular),".pe-spinner--raised":{".pe-spinner--regular":_(i.size_regular)}})]},size_medium:function(e,i){return[n.sel(e,{".pe-spinner--medium":p(i.size_medium),".pe-spinner--raised":{".pe-spinner--medium":_(i.size_medium)}})]},size_large:function(e,i){return[n.sel(e,{".pe-spinner--large":p(i.size_large),".pe-spinner--raised":{".pe-spinner--large":_(i.size_large)}})]},size_fab:function(e,i){return[n.sel(e,{".pe-spinner--fab":p(i.size_fab),".pe-spinner--raised":{".pe-spinner--fab":_(i.size_fab)}})]}},d=n.createLayout({varFns:c}),m={general_styles:!0,animation_delay:"0s",animation_duration:".220s",animation_hide_css:"opacity: 0;",animation_show_css:"opacity: 1;",animation_timing_function:"ease-in-out",size_fab:7*i.vars.grid_unit_component,size_large:6*i.vars.grid_unit_component,size_medium:5*i.vars.grid_unit_component,size_regular:4*i.vars.grid_unit_component,size_small:3*i.vars.grid_unit_component,color_light_raised_background:n.rgba(i.vars.color_light_background),color_dark_raised_background:n.rgba(i.vars.color_light_background)},f=[d,u],g=".".concat("pe-spinner"),y=n.styler.createAddStyle(g,f,m),h=n.styler.createGetStyle(g,f,m);n.styler.addStyle({selectors:[g],fns:f,vars:m}),e.addStyle=y,e.getStyle=h,e.color=u,e.layout=d,e.vars=m,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-core-css'], global['polythene-theme']));
+}(this, function (exports, polytheneCoreCss, polytheneTheme) { 'use strict';
+
+  var classes = {
+    component: "pe-spinner",
+    // elements
+    animation: "pe-spinner__animation",
+    placeholder: "pe-spinner__placeholder",
+    // states
+    animated: "pe-spinner--animated",
+    fab: "pe-spinner--fab",
+    large: "pe-spinner--large",
+    medium: "pe-spinner--medium",
+    permanent: "pe-spinner--permanent",
+    raised: "pe-spinner--raised",
+    regular: "pe-spinner--regular",
+    singleColor: "pe-spinner--single-color",
+    small: "pe-spinner--small",
+    visible: "pe-spinner--visible"
+  };
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  var generalFns = {
+    general_styles: function general_styles(selector) {
+      return [];
+    } // eslint-disable-line no-unused-vars
+
+  };
+
+  var tintFns = function tintFns(tint) {
+    return _defineProperty({}, "color_" + tint + "_raised_background", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-spinner--raised": {
+          backgroundColor: vars["color_" + tint + "_raised_background"]
+        }
+      })];
+    });
+  };
+
+  var lightTintFns = _extends({}, generalFns, tintFns("light"));
+
+  var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+  var color = polytheneCoreCss.createColor({
+    varFns: {
+      lightTintFns: lightTintFns,
+      darkTintFns: darkTintFns
+    }
+  });
+
+  var sizes = function sizes(size) {
+    return {
+      width: size + "px",
+      height: size + "px"
+    };
+  };
+
+  var raisedSize = function raisedSize(size) {
+    var padding = Math.round(size * 0.25); // only use rounded number to prevent sub-pixel alignment issues
+
+    var paddedSize = size + padding * 2;
+    return {
+      width: paddedSize + "px",
+      height: paddedSize + "px",
+      padding: padding + "px"
+    };
+  };
+
+  var varFns = {
+    general_styles: function general_styles(selector) {
+      return [polytheneCoreCss.sel(selector, {
+        transitionProperty: "all",
+        ".pe-spinner--raised": {
+          position: "relative",
+          borderRadius: "50%"
+        }
+      })];
+    },
+    animation_show_css: function animation_show_css(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-spinner--visible, &.pe-spinner--permanent": [vars.animation_show_css]
+      })];
+    },
+    animation_hide_css: function animation_hide_css(selector, vars) {
+      return _defineProperty({}, selector, vars.animation_hide_css);
+    },
+    animation_delay: function animation_delay(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        transitionDelay: vars.animation_delay
+      })];
+    },
+    animation_duration: function animation_duration(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        transitionDuration: vars.animation_duration
+      })];
+    },
+    animation_timing_function: function animation_timing_function(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        transitionTimingFunction: vars.animation_timing_function
+      })];
+    },
+    size_small: function size_small(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-spinner--small": sizes(vars.size_small),
+        ".pe-spinner--raised": {
+          ".pe-spinner--small": raisedSize(vars.size_small)
+        }
+      })];
+    },
+    size_regular: function size_regular(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-spinner--regular": sizes(vars.size_regular),
+        ".pe-spinner--raised": {
+          ".pe-spinner--regular": raisedSize(vars.size_regular)
+        }
+      })];
+    },
+    size_medium: function size_medium(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-spinner--medium": sizes(vars.size_medium),
+        ".pe-spinner--raised": {
+          ".pe-spinner--medium": raisedSize(vars.size_medium)
+        }
+      })];
+    },
+    size_large: function size_large(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-spinner--large": sizes(vars.size_large),
+        ".pe-spinner--raised": {
+          ".pe-spinner--large": raisedSize(vars.size_large)
+        }
+      })];
+    },
+    size_fab: function size_fab(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-spinner--fab": sizes(vars.size_fab),
+        ".pe-spinner--raised": {
+          ".pe-spinner--fab": raisedSize(vars.size_fab)
+        }
+      })];
+    }
+  };
+  var layout = polytheneCoreCss.createLayout({
+    varFns: varFns
+  });
+
+  // @ts-check
+  /**
+   * @type {BaseSpinnerVars} baseSpinnerVars
+   */
+
+  var baseSpinnerVars = {
+    /**
+     * Generate general styles, not defined by variables
+     */
+    general_styles: true,
+    animation_delay: "0s",
+    animation_duration: ".220s",
+    animation_hide_css: "opacity: 0;",
+    animation_show_css: "opacity: 1;",
+    animation_timing_function: "ease-in-out",
+    size_fab: 7 * polytheneTheme.vars.grid_unit_component,
+    size_large: 6 * polytheneTheme.vars.grid_unit_component,
+    size_medium: 5 * polytheneTheme.vars.grid_unit_component,
+    size_regular: 4 * polytheneTheme.vars.grid_unit_component,
+    size_small: 3 * polytheneTheme.vars.grid_unit_component,
+    color_light_raised_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_background),
+    color_dark_raised_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_background) // also use light background with dark tone
+
+  };
+
+  // @ts-check
+  var fns = [layout, color];
+  var selector = ".".concat(classes.component);
+  var addStyle = polytheneCoreCss.styler.createAddStyle(selector, fns, baseSpinnerVars);
+  var getStyle = polytheneCoreCss.styler.createGetStyle(selector, fns, baseSpinnerVars);
+  polytheneCoreCss.styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: baseSpinnerVars
+  });
+
+  exports.addStyle = addStyle;
+  exports.getStyle = getStyle;
+  exports.color = color;
+  exports.layout = layout;
+  exports.vars = baseSpinnerVars;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-css-base-spinner.js.map

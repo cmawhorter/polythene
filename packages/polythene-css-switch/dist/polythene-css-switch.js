@@ -1,2 +1,533 @@
-!function(o,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core-css"),require("polythene-css-selection-control"),require("polythene-theme"),require("polythene-css-icon-button")):"function"==typeof define&&define.amd?define(["exports","polythene-core-css","polythene-css-selection-control","polythene-theme","polythene-css-icon-button"],t):t((o=o||self).polythene={},o["polythene-core-css"],o["polythene-css-selection-control"],o["polythene-theme"],o["polythene-css-icon-button"])}(this,function(o,t,r,e,n){"use strict";function c(o,t,r){return t in o?Object.defineProperty(o,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):o[t]=r,o}function l(){return(l=Object.assign||function(o){for(var t=1;t<arguments.length;t++){var r=arguments[t];for(var e in r)Object.prototype.hasOwnProperty.call(r,e)&&(o[e]=r[e])}return o}).apply(this,arguments)}var _={general_styles:function(o){return[t.sel(o,{".pe-control--off":{" .pe-switch-control__knob":{backgroundColor:"currentcolor"}," .pe-icon":{color:"currentcolor"}},".pe-control--on":{" .pe-switch-control__knob":{backgroundColor:"currentcolor"}," .pe-icon":{color:"currentcolor"}}})]}},a=function(o){var r;return c(r={},"color_"+o+"_label",function(r,e){return[t.sel(r,{" .pe-control__label":{color:e["color_"+o+"_label"]}})]}),c(r,"color_"+o+"_track_off",function(r,e){return[t.sel(r,{".pe-control--off":{" .pe-switch-control__track":{backgroundColor:e["color_"+o+"_track_off"]}}})]}),c(r,"color_"+o+"_track_off_opacity",function(r,e){return[t.sel(r,{".pe-control--off":{" .pe-switch-control__track":{opacity:e["color_"+o+"_track_off_opacity"]}}})]}),c(r,"color_"+o+"_thumb_off",function(r,e){return[t.sel(r,{".pe-control--off":{" .pe-switch-control__thumb":{color:e["color_"+o+"_thumb_off"]}}})]}),c(r,"color_"+o+"_focus_off",function(r,e){return[t.sel(r,{".pe-control--off":{" .pe-button--focus":{" .pe-button__focus":{backgroundColor:e["color_"+o+"_focus_off"]}}}})]}),c(r,"color_"+o+"_focus_off_opacity",function(r,e){return[t.sel(r,{".pe-control--off":{" .pe-button--focus":{" .pe-button__focus":{opacity:e["color_"+o+"_focus_off_opacity"]}}}})]}),c(r,"color_"+o+"_icon_off",function(r,e){return[t.sel(r,{".pe-control--off":{" .pe-icon":{color:e["color_"+o+"_icon_off"]}}})]}),c(r,"color_"+o+"_off_label",function(r,e){return[t.sel(r,{".pe-control--off":{" .pe-control__label":{color:e["color_"+o+"_off_label"]}}})]}),c(r,"color_"+o+"_track_on",function(r,e){return[t.sel(r,{".pe-control--on":{" .pe-switch-control__track":{backgroundColor:e["color_"+o+"_track_on"]}}})]}),c(r,"color_"+o+"_track_on_opacity",function(r,e){return[t.sel(r,{".pe-control--on":{" .pe-switch-control__track":{opacity:e["color_"+o+"_track_on_opacity"]}}})]}),c(r,"color_"+o+"_thumb_on",function(r,e){return[t.sel(r,{".pe-control--on":{" .pe-switch-control__thumb":{color:e["color_"+o+"_thumb_on"]}}})]}),c(r,"color_"+o+"_focus_on",function(r,e){return[t.sel(r,{".pe-control--on":{" .pe-button--focus":{" .pe-button__focus":{backgroundColor:e["color_"+o+"_focus_on"]}}}})]}),c(r,"color_"+o+"_focus_on_opacity",function(r,e){return[t.sel(r,{".pe-control--on":{" .pe-button--focus":{" .pe-button__focus":{opacity:e["color_"+o+"_focus_on_opacity"]}}}})]}),c(r,"color_"+o+"_icon_on",function(r,e){return[t.sel(r,{".pe-control--on":{" .pe-icon":{color:e["color_"+o+"_icon_on"]}}})]}),c(r,"color_"+o+"_on_label",function(r,e){return[t.sel(r,{".pe-control--on":{" .pe-control__label":{color:e["color_"+o+"_on_label"]}}})]}),c(r,"color_"+o+"_disabled",function(r,e){return[t.sel(r,{".pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled":{" .pe-control__label":{color:e["color_"+o+"_disabled"]}}})]}),c(r,"color_"+o+"_track_disabled",function(r,e){return[t.sel(r,{".pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled":{" .pe-switch-control__track":{backgroundColor:e["color_"+o+"_track_disabled"]}}})]}),c(r,"color_"+o+"_track_disabled_opacity",function(r,e){return[t.sel(r,{".pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled":{" .pe-switch-control__track":{opacity:e["color_"+o+"_track_disabled_opacity"]}}})]}),c(r,"color_"+o+"_thumb_disabled",function(r,e){return[t.sel(r,{".pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled":{" .pe-switch-control__thumb, .pe-button__content":{color:e["color_"+o+"_thumb_disabled"]}}})]}),r},i=function(o){var r;return c(r={},"color_"+o+"_wash_on",function(r,e){return[t.sel(r,{".pe-control--on":{" .pe-button__wash":{backgroundColor:e["color_"+o+"_wash_on"]}}})]}),c(r,"color_"+o+"_wash_off",function(r,e){return[t.sel(r,{".pe-control--off":{" .pe-button__wash":{backgroundColor:e["color_"+o+"_wash_off"]}}})]}),r},s=l({},_,a("light")),u=l({},_,a("dark")),f=i("light"),p=i("dark"),d=t.createColor({varFns:{lightTintFns:s,darkTintFns:u,lightTintHoverFns:f,darkTintHoverFns:p}}),h=function(o,r){var e=arguments.length>2&&void 0!==arguments[2]?arguments[2]:o.animation_duration;return t.mixin.defaultTransition(r,e,"ease-out")},b=function(o,t){var r=t/e.vars.unit_icon_size,n=2*Math.floor(.5*o.thumb_size*r),c=2*Math.floor(.5*o.track_height*r),l=2*Math.floor(.5*o.track_length*r),_=2*Math.floor(.5*o.thumb_size*r),a=(o.label_height*r-c)/2,i=o.icon_button_padding,s=(t-_)/2,u=-(t+2*i)/2+n/2;return{factor:r,scaledThumbSize:_,scaledTrackHeight:c,scaledTrackWidth:l,size:t,thumbMargin:s,thumbOffsetMax:u+l-n,thumbOffsetMin:u,thumbOffsetY:u+s,thumbPadding:i,trackTop:a,trackVisualOffset:.3}},g=function(o,t){var r=t.scaledThumbSize,e=t.scaledTrackHeight,n=t.scaledTrackWidth,c=t.size,l=t.thumbMargin,_=t.thumbOffsetY,a=t.thumbPadding,i=t.trackTop;return{" .pe-control__form-label":{height:c+"px",minWidth:n+"px"}," .pe-switch-control__track":{height:e+"px",width:n-2*t.trackVisualOffset+"px",top:i+"px",borderRadius:e+"px"}," .pe-switch-control__thumb":{top:_+"px"}," .pe-switch-control__knob":{width:r+"px",height:r+"px",margin:l+"px"}," .pe-button__content":{padding:a+"px"}}},k=function(o,t,r){var e,n,l,_,a=t.factor,i=t.scaledTrackWidth,s=t.thumbOffsetMax,u=t.thumbOffsetMin,f=t.trackVisualOffset;return{" .pe-control__label":(e={},c(e,r?"paddingRight":"paddingLeft",o.padding*a+8+i+"px"),c(e,r?"paddingLeft":"paddingRight",0),e)," .pe-switch-control__track":(n={},c(n,r?"right":"left",f+"px"),c(n,r?"left":"right","auto"),n)," .pe-switch-control__thumb":(l={},c(l,r?"right":"left",u+"px"),c(l,r?"left":"right","auto"),l),".pe-control--on":{" .pe-switch-control__thumb":(_={},c(_,r?"right":"left",s+"px"),c(_,r?"left":"right","auto"),_)}}},m=function(o){return function(){var t;return{" .pe-switch-control__track":(t={},c(t,o?"right":"left",0),c(t,o?"left":"right","auto"),t)}}},y=m(!1),v=m(!0),w={general_styles:function(o){return[t.sel(o,[y(),{" .pe-switch-control__track":[{position:"absolute"}]," .pe-switch-control__thumb":{position:"absolute",zIndex:1,color:"inherit",":focus":{outline:0}}," .pe-switch-control__knob":{position:"relative",borderRadius:"50%"}," .pe-icon-button .pe-button__content":{transition:"none"," .pe-switch-control__knob .pe-icon":[t.mixin.fit(),{width:"100%",height:"100%"}]}}]),c({},"_:-ms-fullscreen, :root ".concat(o),{" input":{position:"absolute",zIndex:1,width:"100%",height:"100%",left:0,top:0,right:0,bottom:0,display:"block",opacity:0,cursor:"pointer"}," label":{cursor:"auto"}})]},animation_duration:function(o,r){return[t.sel(o,{" .pe-switch-control__track, .pe-switch-control__thumb, .pe-control__label, .pe-button__focus":h(r,"all")})]},createSize:function(o,r){var n={small:b(r,e.vars.unit_icon_size_small),regular:b(r,e.vars.unit_icon_size),medium:b(r,e.vars.unit_icon_size_medium),large:b(r,e.vars.unit_icon_size_large)};return[t.sel(o,{".pe-control--small":[g(0,n.small),k(r,n.small,!1)],".pe-control--regular":[g(0,n.regular),k(r,n.regular,!1)],".pe-control--medium":[g(0,n.medium),k(r,n.medium,!1)],".pe-control--large":[g(0,n.large),k(r,n.large,!1)]}),c({},"*[dir=rtl] ".concat(o,", .pe-rtl ").concat(o),[v(),{".pe-control--small":[k(r,n.small,!0)],".pe-control--regular":[k(r,n.regular,!0)],".pe-control--medium":[k(r,n.medium,!0)],".pe-control--large":[k(r,n.large,!0)]}])]}},x=t.createLayout({varFns:w,superLayout:r.layout,varMixin:function(o){return o.thumb_size||o.track_height||o.track_length||o.label_height||o.icon_button_padding?l({},o,{createSize:!0}):o}}),z={general_styles:!0,animation_duration:e.vars.animation_duration,hit_area_padding:(e.vars.grid_unit_icon_button-e.vars.unit_icon_size)/2,icon_button_padding:n.vars.padding,padding:e.vars.grid_unit_component,thumb_size:20,track_height:14,track_length:36,label_height:r.vars.label_height,color_light_thumb_on:t.rgba(e.vars.color_primary),color_light_thumb_off:"#f1f1f1",color_light_thumb_disabled:"#eee",color_light_wash_on:t.rgba(e.vars.color_primary,e.vars.blend_light_background_active),color_light_wash_off:n.vars.color_light_wash_background,color_light_track_on:t.rgba(e.vars.color_primary_faded),color_light_track_on_opacity:.55,color_light_track_off:t.rgba(e.vars.color_light_foreground,e.vars.blend_light_text_regular),color_light_track_off_opacity:.55,color_light_track_disabled:t.rgba(e.vars.color_light_foreground,e.vars.blend_light_background_disabled),color_light_track_disabled_opacity:1,color_dark_thumb_on:t.rgba(e.vars.color_primary),color_dark_thumb_off:"#bdbdbd",color_dark_thumb_disabled:"#555",color_dark_wash_on:t.rgba(e.vars.color_primary,e.vars.blend_dark_background_active),color_dark_wash_off:n.vars.color_dark_wash_background,color_dark_track_on:t.rgba(e.vars.color_primary_faded,e.vars.blend_dark_text_tertiary),color_dark_track_on_opacity:9,color_dark_track_off:"#717171",color_dark_track_off_opacity:.55,color_dark_track_disabled:"#717171",color_dark_track_disabled_opacity:.3},O=[x,d],T=".".concat("pe-switch-control"),M=t.styler.createAddStyle(T,O,z),C=t.styler.createGetStyle(T,O,z);t.styler.addStyle({selectors:[T],fns:O,vars:z}),o.addStyle=M,o.getStyle=C,o.color=d,o.layout=x,o.vars=z,Object.defineProperty(o,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-css-selection-control'), require('polythene-theme'), require('polythene-css-icon-button')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-css-selection-control', 'polythene-theme', 'polythene-css-icon-button'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-core-css'], global['polythene-css-selection-control'], global['polythene-theme'], global['polythene-css-icon-button']));
+}(this, function (exports, polytheneCoreCss, polytheneCssSelectionControl, polytheneTheme, polytheneCssIconButton) { 'use strict';
+
+  var classes = {
+    component: "pe-switch-control",
+    // elements
+    knob: "pe-switch-control__knob",
+    thumb: "pe-switch-control__thumb",
+    track: "pe-switch-control__track"
+  };
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  var generalFns = {
+    general_styles: function general_styles(selector) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--off": {
+          " .pe-switch-control__knob": {
+            backgroundColor: "currentcolor"
+          },
+          " .pe-icon": {
+            color: "currentcolor"
+          }
+        },
+        ".pe-control--on": {
+          " .pe-switch-control__knob": {
+            backgroundColor: "currentcolor"
+          },
+          " .pe-icon": {
+            color: "currentcolor"
+          }
+        }
+      })];
+    }
+  };
+
+  var tintFns = function tintFns(tint) {
+    var _ref;
+
+    return _ref = {}, _defineProperty(_ref, "color_" + tint + "_label", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-control__label": {
+          color: vars["color_" + tint + "_label"]
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_track_off", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--off": {
+          " .pe-switch-control__track": {
+            backgroundColor: vars["color_" + tint + "_track_off"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_track_off_opacity", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--off": {
+          " .pe-switch-control__track": {
+            opacity: vars["color_" + tint + "_track_off_opacity"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_thumb_off", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--off": {
+          " .pe-switch-control__thumb": {
+            color: vars["color_" + tint + "_thumb_off"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_focus_off", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--off": {
+          " .pe-button--focus": {
+            " .pe-button__focus": {
+              backgroundColor: vars["color_" + tint + "_focus_off"]
+            }
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_focus_off_opacity", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--off": {
+          " .pe-button--focus": {
+            " .pe-button__focus": {
+              opacity: vars["color_" + tint + "_focus_off_opacity"]
+            }
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_icon_off", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--off": {
+          " .pe-icon": {
+            color: vars["color_" + tint + "_icon_off"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_off_label", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--off": {
+          " .pe-control__label": {
+            color: vars["color_" + tint + "_off_label"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_track_on", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on": {
+          " .pe-switch-control__track": {
+            backgroundColor: vars["color_" + tint + "_track_on"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_track_on_opacity", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on": {
+          " .pe-switch-control__track": {
+            opacity: vars["color_" + tint + "_track_on_opacity"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_thumb_on", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on": {
+          " .pe-switch-control__thumb": {
+            color: vars["color_" + tint + "_thumb_on"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_focus_on", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on": {
+          " .pe-button--focus": {
+            " .pe-button__focus": {
+              backgroundColor: vars["color_" + tint + "_focus_on"]
+            }
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_focus_on_opacity", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on": {
+          " .pe-button--focus": {
+            " .pe-button__focus": {
+              opacity: vars["color_" + tint + "_focus_on_opacity"]
+            }
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_icon_on", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on": {
+          " .pe-icon": {
+            color: vars["color_" + tint + "_icon_on"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_on_label", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on": {
+          " .pe-control__label": {
+            color: vars["color_" + tint + "_on_label"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_disabled", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled": {
+          " .pe-control__label": {
+            color: vars["color_" + tint + "_disabled"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_track_disabled", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled": {
+          " .pe-switch-control__track": {
+            backgroundColor: vars["color_" + tint + "_track_disabled"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_track_disabled_opacity", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled": {
+          " .pe-switch-control__track": {
+            opacity: vars["color_" + tint + "_track_disabled_opacity"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_thumb_disabled", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled": {
+          " .pe-switch-control__thumb, .pe-button__content": {
+            color: vars["color_" + tint + "_thumb_disabled"]
+          }
+        }
+      })];
+    }), _ref;
+  };
+
+  var hoverTintFns = function hoverTintFns(tint) {
+    var _ref2;
+
+    return _ref2 = {}, _defineProperty(_ref2, "color_" + tint + "_wash_on", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on": {
+          " .pe-button__wash": {
+            backgroundColor: vars["color_" + tint + "_wash_on"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref2, "color_" + tint + "_wash_off", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--off": {
+          " .pe-button__wash": {
+            backgroundColor: vars["color_" + tint + "_wash_off"]
+          }
+        }
+      })];
+    }), _ref2;
+  };
+
+  var lightTintFns = _extends({}, generalFns, tintFns("light"));
+
+  var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+  var lightTintHoverFns = hoverTintFns("light");
+  var darkTintHoverFns = hoverTintFns("dark");
+  var color = polytheneCoreCss.createColor({
+    varFns: {
+      lightTintFns: lightTintFns,
+      darkTintFns: darkTintFns,
+      lightTintHoverFns: lightTintHoverFns,
+      darkTintHoverFns: darkTintHoverFns
+    }
+  });
+
+  var transition = function transition(vars, properties) {
+    var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : vars.animation_duration;
+    return polytheneCoreCss.mixin.defaultTransition(properties, duration, "ease-out");
+  };
+
+  var getSizeData = function getSizeData(vars, size) {
+    var factor = size / polytheneTheme.vars.unit_icon_size;
+    var thumbSize = Math.floor(0.5 * vars.thumb_size * factor) * 2; // round to even
+
+    var scaledTrackHeight = Math.floor(0.5 * vars.track_height * factor) * 2; // round to even
+
+    var scaledTrackWidth = Math.floor(0.5 * vars.track_length * factor) * 2;
+    var scaledThumbSize = Math.floor(0.5 * vars.thumb_size * factor) * 2;
+    var trackTop = (vars.label_height * factor - scaledTrackHeight) / 2;
+    var thumbPadding = vars.icon_button_padding;
+    var thumbMargin = (size - scaledThumbSize) / 2;
+    var thumbOuterSize = size + 2 * thumbPadding;
+    var thumbOffsetMin = -(thumbOuterSize / 2) + thumbSize / 2;
+    var thumbOffsetMax = thumbOffsetMin + scaledTrackWidth - thumbSize;
+    var thumbOffsetY = thumbOffsetMin + thumbMargin;
+    var trackVisualOffset = 0.3; // prevent sub pixel of track to shine through knob border
+
+    return {
+      factor: factor,
+      scaledThumbSize: scaledThumbSize,
+      scaledTrackHeight: scaledTrackHeight,
+      scaledTrackWidth: scaledTrackWidth,
+      size: size,
+      thumbMargin: thumbMargin,
+      thumbOffsetMax: thumbOffsetMax,
+      thumbOffsetMin: thumbOffsetMin,
+      thumbOffsetY: thumbOffsetY,
+      thumbPadding: thumbPadding,
+      trackTop: trackTop,
+      trackVisualOffset: trackVisualOffset
+    };
+  };
+
+  var customSize = function customSize(vars, _ref) {
+    var scaledThumbSize = _ref.scaledThumbSize,
+        scaledTrackHeight = _ref.scaledTrackHeight,
+        scaledTrackWidth = _ref.scaledTrackWidth,
+        size = _ref.size,
+        thumbMargin = _ref.thumbMargin,
+        thumbOffsetY = _ref.thumbOffsetY,
+        thumbPadding = _ref.thumbPadding,
+        trackTop = _ref.trackTop,
+        trackVisualOffset = _ref.trackVisualOffset;
+    return {
+      " .pe-control__form-label": {
+        height: size + "px",
+        minWidth: scaledTrackWidth + "px"
+      },
+      " .pe-switch-control__track": {
+        height: scaledTrackHeight + "px",
+        width: scaledTrackWidth - 2 * trackVisualOffset + "px",
+        top: trackTop + "px",
+        borderRadius: scaledTrackHeight + "px"
+      },
+      " .pe-switch-control__thumb": {
+        top: thumbOffsetY + "px"
+      },
+      " .pe-switch-control__knob": {
+        width: scaledThumbSize + "px",
+        height: scaledThumbSize + "px",
+        margin: thumbMargin + "px"
+      },
+      " .pe-button__content": {
+        padding: thumbPadding + "px"
+      }
+    };
+  };
+
+  var customSpacing = function customSpacing(vars, _ref2, isRTL) {
+    var _peControl__label, _peSwitchControl_, _peSwitchControl_2, _peSwitchControl_3;
+
+    var factor = _ref2.factor,
+        scaledTrackWidth = _ref2.scaledTrackWidth,
+        thumbOffsetMax = _ref2.thumbOffsetMax,
+        thumbOffsetMin = _ref2.thumbOffsetMin,
+        trackVisualOffset = _ref2.trackVisualOffset;
+    return {
+      " .pe-control__label": (_peControl__label = {}, _defineProperty(_peControl__label, isRTL ? "paddingRight" : "paddingLeft", vars.padding * factor + 8 + scaledTrackWidth + "px"), _defineProperty(_peControl__label, isRTL ? "paddingLeft" : "paddingRight", 0), _peControl__label),
+      " .pe-switch-control__track": (_peSwitchControl_ = {}, _defineProperty(_peSwitchControl_, isRTL ? "right" : "left", trackVisualOffset + "px"), _defineProperty(_peSwitchControl_, isRTL ? "left" : "right", "auto"), _peSwitchControl_),
+      " .pe-switch-control__thumb": (_peSwitchControl_2 = {}, _defineProperty(_peSwitchControl_2, isRTL ? "right" : "left", thumbOffsetMin + "px"), _defineProperty(_peSwitchControl_2, isRTL ? "left" : "right", "auto"), _peSwitchControl_2),
+      ".pe-control--on": {
+        " .pe-switch-control__thumb": (_peSwitchControl_3 = {}, _defineProperty(_peSwitchControl_3, isRTL ? "right" : "left", thumbOffsetMax + "px"), _defineProperty(_peSwitchControl_3, isRTL ? "left" : "right", "auto"), _peSwitchControl_3)
+      }
+    };
+  };
+
+  var alignSide = function alignSide(isRTL) {
+    return function () {
+      var _peSwitchControl_4;
+
+      return {
+        " .pe-switch-control__track": (_peSwitchControl_4 = {}, _defineProperty(_peSwitchControl_4, isRTL ? "right" : "left", 0), _defineProperty(_peSwitchControl_4, isRTL ? "left" : "right", "auto"), _peSwitchControl_4)
+      };
+    };
+  };
+
+  var alignLeft = alignSide(false);
+  var alignRight = alignSide(true);
+
+  var createSize = function createSize(selector, vars) {
+    var sizeData = {
+      small: getSizeData(vars, polytheneTheme.vars.unit_icon_size_small),
+      regular: getSizeData(vars, polytheneTheme.vars.unit_icon_size),
+      medium: getSizeData(vars, polytheneTheme.vars.unit_icon_size_medium),
+      large: getSizeData(vars, polytheneTheme.vars.unit_icon_size_large)
+    };
+    return [polytheneCoreCss.sel(selector, {
+      ".pe-control--small": [customSize(vars, sizeData.small), customSpacing(vars, sizeData.small, false)],
+      ".pe-control--regular": [customSize(vars, sizeData.regular), customSpacing(vars, sizeData.regular, false)],
+      ".pe-control--medium": [customSize(vars, sizeData.medium), customSpacing(vars, sizeData.medium, false)],
+      ".pe-control--large": [customSize(vars, sizeData.large), customSpacing(vars, sizeData.large, false)]
+    }), _defineProperty({}, "*[dir=rtl] ".concat(selector, ", .pe-rtl ").concat(selector), [alignRight(), {
+      ".pe-control--small": [customSpacing(vars, sizeData.small, true)],
+      ".pe-control--regular": [customSpacing(vars, sizeData.regular, true)],
+      ".pe-control--medium": [customSpacing(vars, sizeData.medium, true)],
+      ".pe-control--large": [customSpacing(vars, sizeData.large, true)]
+    }])];
+  };
+
+  var varFns = {
+    general_styles: function general_styles(selector) {
+      return [polytheneCoreCss.sel(selector, [alignLeft(), {
+        " .pe-switch-control__track": [{
+          position: "absolute"
+        }],
+        " .pe-switch-control__thumb": {
+          position: "absolute",
+          zIndex: 1,
+          // Prevents flickering of text label when toggling
+          color: "inherit",
+          ":focus": {
+            outline: 0
+          }
+        },
+        " .pe-switch-control__knob": {
+          position: "relative",
+          borderRadius: "50%"
+        },
+        " .pe-icon-button .pe-button__content": {
+          transition: "none",
+          " .pe-switch-control__knob .pe-icon": [polytheneCoreCss.mixin.fit(), {
+            width: "100%",
+            height: "100%"
+          }]
+        }
+      }]), _defineProperty({}, "_:-ms-fullscreen, :root ".concat(selector), {
+        " input": {
+          position: "absolute",
+          zIndex: 1,
+          width: "100%",
+          height: "100%",
+          left: 0,
+          top: 0,
+          right: 0,
+          bottom: 0,
+          display: "block",
+          opacity: 0,
+          cursor: "pointer"
+        },
+        " label": {
+          cursor: "auto"
+        }
+      })];
+    },
+    animation_duration: function animation_duration(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-switch-control__track, .pe-switch-control__thumb, .pe-control__label, .pe-button__focus": transition(vars, "all")
+      })];
+    },
+    createSize: createSize
+  };
+
+  var withCreateSizeVar = function withCreateSizeVar(vars) {
+    return vars.thumb_size || vars.track_height || vars.track_length || vars.label_height || vars.icon_button_padding ? _extends({}, vars, {
+      createSize: true
+    }) : vars;
+  };
+
+  var layout = polytheneCoreCss.createLayout({
+    varFns: varFns,
+    superLayout: polytheneCssSelectionControl.layout,
+    varMixin: withCreateSizeVar
+  });
+
+  // @ts-check
+  /**
+   * @type {SwitchVars} switchVars
+   */
+
+  var switchVars = {
+    /**
+     * Generate general styles, not defined by variables
+     */
+    general_styles: true,
+    animation_duration: polytheneTheme.vars.animation_duration,
+    hit_area_padding: (polytheneTheme.vars.grid_unit_icon_button - polytheneTheme.vars.unit_icon_size) / 2,
+    // 12
+    icon_button_padding: polytheneCssIconButton.vars.padding,
+    padding: polytheneTheme.vars.grid_unit_component,
+    thumb_size: 20,
+    track_height: 14,
+    track_length: 36,
+    label_height: polytheneCssSelectionControl.vars.label_height,
+    color_light_thumb_on: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary),
+    color_light_thumb_off: "#f1f1f1",
+    color_light_thumb_disabled: "#eee",
+    color_light_wash_on: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary, polytheneTheme.vars.blend_light_background_active),
+    color_light_wash_off: polytheneCssIconButton.vars.color_light_wash_background,
+    color_light_track_on: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary_faded),
+    color_light_track_on_opacity: .55,
+    color_light_track_off: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_regular),
+    color_light_track_off_opacity: .55,
+    color_light_track_disabled: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_disabled),
+    color_light_track_disabled_opacity: 1,
+    // icon color may be set in theme; default "currentcolor"
+    // color_light_icon_on:                   "currentcolor",
+    // color_light_icon_off:                  "currentcolor",
+    // color_light_focus_on and so on taken from selectionControlVars
+    color_dark_thumb_on: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary),
+    color_dark_thumb_off: "#bdbdbd",
+    color_dark_thumb_disabled: "#555",
+    color_dark_wash_on: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary, polytheneTheme.vars.blend_dark_background_active),
+    color_dark_wash_off: polytheneCssIconButton.vars.color_dark_wash_background,
+    color_dark_track_on: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary_faded, polytheneTheme.vars.blend_dark_text_tertiary),
+    // or "#5a7f7c"
+    color_dark_track_on_opacity: 9,
+    color_dark_track_off: "#717171",
+    color_dark_track_off_opacity: .55,
+    color_dark_track_disabled: "#717171",
+    color_dark_track_disabled_opacity: .3 // icon color may be set in theme; default "currentcolor"
+    // color_dark_icon_on:                    "currentcolor"
+    // color_dark_icon_off:                   "currentcolor"
+    // color_dark_focus_on and so on taken from selectionControlVars
+
+  };
+
+  // @ts-check
+  var fns = [layout, color];
+  var selector = ".".concat(classes.component);
+  var addStyle = polytheneCoreCss.styler.createAddStyle(selector, fns, switchVars);
+  var getStyle = polytheneCoreCss.styler.createGetStyle(selector, fns, switchVars);
+  polytheneCoreCss.styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: switchVars
+  });
+
+  exports.addStyle = addStyle;
+  exports.getStyle = getStyle;
+  exports.color = color;
+  exports.layout = layout;
+  exports.vars = switchVars;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-css-switch.js.map

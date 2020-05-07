@@ -1,2 +1,244 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core-css"),require("polythene-css-notification"),require("polythene-theme")):"function"==typeof define&&define.amd?define(["exports","polythene-core-css","polythene-css-notification","polythene-theme"],t):t((e=e||self).polythene={},e["polythene-core-css"],e["polythene-css-notification"],e["polythene-theme"])}(this,function(e,t,o,n){"use strict";function i(e,t,o){return t in e?Object.defineProperty(e,t,{value:o,enumerable:!0,configurable:!0,writable:!0}):e[t]=o,e}var r,a=function(e){for(var t=1;t<arguments.length;t++){var o=null!=arguments[t]?arguments[t]:{},n=Object.keys(o);"function"==typeof Object.getOwnPropertySymbols&&(n=n.concat(Object.getOwnPropertySymbols(o).filter(function(e){return Object.getOwnPropertyDescriptor(o,e).enumerable}))),n.forEach(function(t){i(e,t,o[t])})}return e}({},{component:"pe-notification",action:"pe-notification__action",content:"pe-notification__content",holder:"pe-notification__holder",placeholder:"pe-notification__placeholder",title:"pe-notification__title",hasContainer:"pe-notification--container",horizontal:"pe-notification--horizontal",multilineTitle:"pe-notification__title--multi-line",vertical:"pe-notification--vertical",visible:"pe-notification--visible"},{component:"pe-notification pe-snackbar",holder:"pe-snackbar__holder",placeholder:"pe-snackbar__placeholder",open:"pe-snackbar--open"}),c=t.createColor({superColor:o.color}),s={general_styles:function(e){return[t.sel(e,[t.flex.layoutCenterCenter,{position:"fixed",top:"auto",right:0,bottom:0,left:0,zIndex:n.vars.z_notification,pointerEvents:"none",justifyContent:"flex-start",width:"100%"}]),i({},".pe-notification--container ".concat(e),{position:"relative"})]}},l=t.createLayout({varFns:s}),d=(r="@media (min-width: ".concat(n.vars.breakpoint_for_tablet_portrait_up,"px)"),function(e,t){return i({},r,i({},e,t))}),p={general_styles:function(e){return[t.sel(e,{width:"100%",opacity:1," .pe-notification__content":{width:"100%",margin:"0 auto",borderBottomLeftRadius:0,borderBottomRightRadius:0}}),d(e,{".pe-notification--horizontal":{" .pe-notification__title":{paddingRight:"30px"}}})]},min_width:function(e,t){return[d(e,{minWidth:t.min_width+"px"})]},max_width:function(e,t){return[d(e,{maxWidth:t.max_width+"px"})]},border_radius:function(e,o){return[t.sel(e,{" .pe-notification__content":{borderTopLeftRadius:o.border_radius+"px",borderTopRightRadius:o.border_radius+"px",borderBottomLeftRadius:0,borderBottomRightRadius:0}})]}},u=t.createLayout({varFns:p,customVarFns:o.customLayoutFns}),f={general_styles:!0,animation_hide_css:"",animation_show_css:"",border_radius:0,max_width:568,min_height:0,min_width:288,color_light_background:t.rgba(n.vars.color_light_background),color_dark_background:t.rgba(n.vars.color_dark_background)},h=[u,c],_=".".concat(a.component.replace(/ /g,".")),y=[l],m=".".concat(a.holder.replace(/ /g,"."));t.styler.addStyle({selectors:[m],fns:y,vars:f}),t.styler.addStyle({selectors:[_],fns:h,vars:f}),e.addStyle=function(e,o){var n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{},i=n.mediaQuery,r=void 0===i?"":i,a=n.scope,c=void 0===a?"":a;e&&t.styler.addStyle({selectors:[e,_],fns:h,vars:f,customVars:o,mediaQuery:r,scope:c}),e&&t.styler.addStyle({selectors:[e,m],fns:y,vars:f,customVars:o,mediaQuery:r,scope:c})},e.getStyle=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"",o=arguments.length>1?arguments[1]:void 0,n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{},i=n.mediaQuery,r=void 0===i?"":i,a=n.scope,c=void 0===a?"":a;return t.styler.getStyle({selectors:[e,_],fns:h,vars:f,customVars:o,mediaQuery:r,scope:c}).concat(t.styler.getStyle({selectors:[m],fns:y,vars:f,customVars:o,mediaQuery:r,scope:c}))},e.color=c,e.layout=u,e.vars=f,e.holderLayout=l,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-css-notification'), require('polythene-theme')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-css-notification', 'polythene-theme'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-core-css'], global['polythene-css-notification'], global['polythene-theme']));
+}(this, function (exports, polytheneCoreCss, polytheneCssNotification, polytheneTheme) { 'use strict';
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _objectSpread(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+      var ownKeys = Object.keys(source);
+
+      if (typeof Object.getOwnPropertySymbols === 'function') {
+        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+        }));
+      }
+
+      ownKeys.forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    }
+
+    return target;
+  }
+
+  var notificationClasses = {
+    component: "pe-notification",
+    // elements
+    action: "pe-notification__action",
+    content: "pe-notification__content",
+    holder: "pe-notification__holder",
+    placeholder: "pe-notification__placeholder",
+    title: "pe-notification__title",
+    // states
+    hasContainer: "pe-notification--container",
+    horizontal: "pe-notification--horizontal",
+    multilineTitle: "pe-notification__title--multi-line",
+    vertical: "pe-notification--vertical",
+    visible: "pe-notification--visible"
+  };
+
+  var classes = _objectSpread({}, notificationClasses, {
+    component: "pe-notification pe-snackbar",
+    // elements
+    holder: "pe-snackbar__holder",
+    placeholder: "pe-snackbar__placeholder",
+    // states
+    open: "pe-snackbar--open"
+  });
+
+  // @ts-check
+  var color = polytheneCoreCss.createColor({
+    superColor: polytheneCssNotification.color
+  });
+
+  var varFns = {
+    general_styles: function general_styles(selector) {
+      return [polytheneCoreCss.sel(selector, [polytheneCoreCss.flex.layoutCenterCenter, {
+        position: "fixed",
+        top: "auto",
+        right: 0,
+        bottom: 0,
+        left: 0,
+        zIndex: polytheneTheme.vars.z_notification,
+        pointerEvents: "none",
+        justifyContent: "flex-start",
+        // For IE11
+        width: "100%"
+      }]), _defineProperty({}, ".pe-notification--container ".concat(selector), {
+        position: "relative"
+      })];
+    }
+  };
+  var holderLayout = polytheneCoreCss.createLayout({
+    varFns: varFns
+  });
+
+  var breakpoint = function breakpoint(breakpointSel) {
+    return function (selector, o) {
+      return _defineProperty({}, breakpointSel, _defineProperty({}, selector, o));
+    };
+  };
+
+  var breakpointTabletPortraitUp = breakpoint("@media (min-width: ".concat(polytheneTheme.vars.breakpoint_for_tablet_portrait_up, "px)"));
+  var varFns$1 = {
+    general_styles: function general_styles(selector) {
+      return [polytheneCoreCss.sel(selector, {
+        width: "100%",
+        opacity: 1,
+        " .pe-notification__content": {
+          width: "100%",
+          margin: "0 auto",
+          borderBottomLeftRadius: 0,
+          borderBottomRightRadius: 0
+        }
+      }), breakpointTabletPortraitUp(selector, {
+        ".pe-notification--horizontal": {
+          " .pe-notification__title": {
+            paddingRight: "30px"
+          }
+        }
+      })];
+    },
+    min_width: function min_width(selector, vars) {
+      return [breakpointTabletPortraitUp(selector, {
+        minWidth: vars.min_width + "px"
+      })];
+    },
+    max_width: function max_width(selector, vars) {
+      return [breakpointTabletPortraitUp(selector, {
+        maxWidth: vars.max_width + "px"
+      })];
+    },
+    border_radius: function border_radius(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-notification__content": {
+          borderTopLeftRadius: vars.border_radius + "px",
+          borderTopRightRadius: vars.border_radius + "px",
+          borderBottomLeftRadius: 0,
+          borderBottomRightRadius: 0
+        }
+      })];
+    }
+  };
+  var layout = polytheneCoreCss.createLayout({
+    varFns: varFns$1,
+    customVarFns: polytheneCssNotification.customLayoutFns
+  });
+
+  // @ts-check
+  /**
+   * @type {SnackbarVars} snackbarVars
+   */
+
+  var snackbarVars = {
+    /**
+     * Generate general styles, not defined by variables
+     */
+    general_styles: true,
+    animation_hide_css: "",
+    animation_show_css: "",
+    border_radius: 0,
+    max_width: 568,
+    min_height: 0,
+    min_width: 288,
+    color_light_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_background),
+    color_dark_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_background)
+  };
+
+  // @ts-check
+  var fns = [layout, color];
+  var selector = ".".concat(classes.component.replace(/ /g, "."));
+  var holderFns = [holderLayout];
+  var holderSelector = ".".concat(classes.holder.replace(/ /g, "."));
+
+  var addStyle = function addStyle(customSelector, customVars) {
+    var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+        _ref$mediaQuery = _ref.mediaQuery,
+        mediaQuery = _ref$mediaQuery === void 0 ? "" : _ref$mediaQuery,
+        _ref$scope = _ref.scope,
+        scope = _ref$scope === void 0 ? "" : _ref$scope;
+
+    customSelector && polytheneCoreCss.styler.addStyle({
+      selectors: [customSelector, selector],
+      fns: fns,
+      vars: snackbarVars,
+      customVars: customVars,
+      mediaQuery: mediaQuery,
+      scope: scope
+    });
+    customSelector && polytheneCoreCss.styler.addStyle({
+      selectors: [customSelector, holderSelector],
+      fns: holderFns,
+      vars: snackbarVars,
+      customVars: customVars,
+      mediaQuery: mediaQuery,
+      scope: scope
+    });
+  };
+
+  var getStyle = function getStyle() {
+    var customSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+    var customVars = arguments.length > 1 ? arguments[1] : undefined;
+
+    var _ref2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+        _ref2$mediaQuery = _ref2.mediaQuery,
+        mediaQuery = _ref2$mediaQuery === void 0 ? "" : _ref2$mediaQuery,
+        _ref2$scope = _ref2.scope,
+        scope = _ref2$scope === void 0 ? "" : _ref2$scope;
+
+    return polytheneCoreCss.styler.getStyle({
+      selectors: [customSelector, selector],
+      fns: fns,
+      vars: snackbarVars,
+      customVars: customVars,
+      mediaQuery: mediaQuery,
+      scope: scope
+    }).concat(polytheneCoreCss.styler.getStyle({
+      selectors: [holderSelector],
+      fns: holderFns,
+      vars: snackbarVars,
+      customVars: customVars,
+      mediaQuery: mediaQuery,
+      scope: scope
+    }));
+  };
+
+  polytheneCoreCss.styler.addStyle({
+    selectors: [holderSelector],
+    fns: holderFns,
+    vars: snackbarVars
+  });
+  polytheneCoreCss.styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: snackbarVars
+  });
+
+  exports.addStyle = addStyle;
+  exports.getStyle = getStyle;
+  exports.color = color;
+  exports.layout = layout;
+  exports.vars = snackbarVars;
+  exports.holderLayout = holderLayout;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-css-snackbar.js.map

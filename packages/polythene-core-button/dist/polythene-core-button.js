@@ -1,2 +1,377 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core")):"function"==typeof define&&define.amd?define(["exports","polythene-core"],t):t((e=e||self).polythene={},e["polythene-core"])}(this,function(e,t){"use strict";function n(e){return(n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function o(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function r(){return(r=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(e[o]=n[o])}return e}).apply(this,arguments)}var a,i={component:"pe-text-button",super:"pe-button",row:"pe-button-row",content:"pe-button__content",label:"pe-button__label",textLabel:"pe-button__text-label",wash:"pe-button__wash",dropdown:"pe-button__dropdown",border:"pe-button--border",contained:"pe-button--contained",disabled:"pe-button--disabled",dropdownClosed:"pe-button--dropdown-closed",dropdownOpen:"pe-button--dropdown-open",extraWide:"pe-button--extra-wide",hasDropdown:"pe-button--dropdown",highLabel:"pe-button--high-label",inactive:"pe-button--inactive",raised:"pe-button--raised",selected:"pe-button--selected",separatorAtStart:"pe-button--separator-start"},d=Object.freeze({getElement:function(e){return e.attrs.element||"a"},getInitialState:function(e,t){var n=t(null),o=t(!1),r=t(!1);return{dom:n,focus:o,inactive:r,mouseover:t(!1),redrawOnUpdate:t.merge([n,o,r])}},onMount:function(e){if(e.dom){var n=e.state,o=e.attrs;if(void 0!==o.borders&&t.deprecation("Button",{option:"borders",newOption:"border"}),n.dom(e.dom),t.isClient){var r=function(){return n.focus(!n.mouseover())},a=function(){return n.focus(!1)},i=function(){return n.mouseover(!1)},d=function(){return n.inactive(!0),setTimeout(function(){return n.inactive(!1)},1e3*o.inactivate)};e.dom.addEventListener("focus",r,!1),e.dom.addEventListener("blur",a,!1),e.dom.addEventListener("mouseover",function(){return n.mouseover(!0)},!1),e.dom.addEventListener("mouseout",i,!1),e.dom.addEventListener("click",d,!1),n.removeEventListeners=function(){return e.dom.removeEventListener("focus",r,!1),e.dom.removeEventListener("blur",a,!1),e.dom.removeEventListener("mouseover",a,!1),e.dom.removeEventListener("mouseout",i,!1),e.dom.removeEventListener("click",d,!1)}}}},onUnMount:function(e){return e.state.removeEventListeners&&e.state.removeEventListeners()},createProps:function(e,n){var a,d=n.keys,s=e.state,u=e.attrs,l=u.disabled,c=u.inactive||s.inactive(),p=u.events&&u.events[d.onclick],v=u.events&&u.events[d.onkeyup]||p;return r({},t.filterSupportedAttributes(u,{add:[d.formaction,"type"],remove:["style"]}),{className:[i.super,u.parentClassName||i.component,u.contained?i.contained:null,u.raised?i.contained:null,u.raised?i.raised:null,u.selected?i.selected:null,u.highLabel?i.highLabel:null,u.extraWide?i.extraWide:null,l?i.disabled:null,c?i.inactive:null,u.separatorAtStart?i.separatorAtStart:null,u.border||u.borders?i.border:null,u.dropdown?i.hasDropdown:null,u.dropdown?u.dropdown.open?i.dropdownOpen:i.dropdownClosed:null,"dark"===u.tone?"pe-dark-tone":null,"light"===u.tone?"pe-light-tone":null,u.className||u[d.class]].join(" ")},u.events,c?null:(o(a={},d.tabindex,l||c?-1:u[d.tabindex]||0),o(a,d.onclick,p),o(a,d.onkeyup,function(e){13===e.keyCode&&s.focus()&&(s.focus(!1),v&&v(e))}),a),u.url,l?{disabled:!0}:null)},createContent:function(e,a){var d,s=a.renderer,u=a.keys,l=a.Ripple,c=a.Icon,p=a.Shadow,v=e.state,f=e.attrs,b=void 0!==f.ink&&!1===f.ink,m=f.disabled,h=f.children||e.children,w=f.content?f.content:void 0!==f.label?"object"===n(f.label)?f.label:s("div",{className:i.label},s("div",{className:i.textLabel,style:f.textStyle},f.label)):h||null,y=m||void 0!==f.wash&&!f.wash;return s("div",(o(d={},u.class,i.content),o(d,"style",f.style),d),[s(p,{key:"shadow",shadowDepth:void 0!==f.shadowDepth?f.shadowDepth:0,animated:!0}),m||b||!l||"react"===s.displayName&&!v.dom()?null:s(l,r({},{key:"ripple",target:v.dom()},f.ripple)),y?null:s("div",{key:"wash",className:i.wash}),w,f.dropdown?s(c,{className:i.dropdown,key:"dropdown",svg:{content:s.trust(t.iconDropdownDown)}}):null])}}),s=function(){},u=[],l=function(e,t){"down"===e&&u.push(r({},t)),!1!==t.attrs.animateOnTap&&function(e,t){var n=t.state.shadowDepthBase,o=t.attrs.increase||1,r=t.state.shadowDepth(),a="down"===e&&n<5?Math.min(n+o,5):"up"===e?Math.max(r-o,n):r;a!==r&&t.state.shadowDepth(a)}(e,t)},c=Object.freeze({getInitialState:function(e,t){var n=e.attrs,o=void 0!==n.shadowDepth?n.shadowDepth:void 0!==n.z?n.z:1,r=t(o);return{shadowDepthBase:o,shadowDepth:r,tapEventsInited:t(!1),redrawOnUpdate:t.merge([r])}},onMount:function(e){if(e.dom){var n=e.state;void 0!==e.attrs.z&&t.deprecation("RaisedButton",{option:"z",newOption:"shadowDepth"}),n.tapEventsInited()||(function(e){t.isServer||(a=function(){return l("down",e)},s=function(){u.map(function(e){return l("up",e)}),u=[]},t.pointerStartMoveEvent.forEach(function(t){return e.dom.addEventListener(t,a)}),t.pointerEndMoveEvent.forEach(function(e){return document.addEventListener(e,s)}))}(e),n.tapEventsInited(!0))}},onUnMount:function(e){e.state.tapEventsInited()&&function(e){t.pointerStartMoveEvent.forEach(function(t){return e.dom.removeEventListener(t,a)}),t.pointerEndMoveEvent.forEach(function(e){return document.removeEventListener(e,s)})}(e)},createProps:function(e){var t=e.attrs,n=e.state,r=t.children||e.children||[];return function(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{},r=Object.keys(n);"function"==typeof Object.getOwnPropertySymbols&&(r=r.concat(Object.getOwnPropertySymbols(n).filter(function(e){return Object.getOwnPropertyDescriptor(n,e).enumerable}))),r.forEach(function(t){o(e,t,n[t])})}return e}({raised:!0,animateOnTap:!1,wash:void 0!==t.wash&&t.wash,children:r},t,{shadowDepth:t.disabled?0:n.shadowDepth()})},createContent:function(e){return e.children}});e.coreButton=d,e.coreRaisedButton=c,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-core']));
+}(this, function (exports, polytheneCore) { 'use strict';
+
+  function _typeof(obj) {
+    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+      _typeof = function (obj) {
+        return typeof obj;
+      };
+    } else {
+      _typeof = function (obj) {
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+      };
+    }
+
+    return _typeof(obj);
+  }
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  function _objectSpread(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+      var ownKeys = Object.keys(source);
+
+      if (typeof Object.getOwnPropertySymbols === 'function') {
+        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+        }));
+      }
+
+      ownKeys.forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    }
+
+    return target;
+  }
+
+  var classes = {
+    component: "pe-text-button",
+    super: "pe-button",
+    row: "pe-button-row",
+    // elements      
+    content: "pe-button__content",
+    label: "pe-button__label",
+    textLabel: "pe-button__text-label",
+    wash: "pe-button__wash",
+    dropdown: "pe-button__dropdown",
+    // states      
+    border: "pe-button--border",
+    contained: "pe-button--contained",
+    disabled: "pe-button--disabled",
+    dropdownClosed: "pe-button--dropdown-closed",
+    dropdownOpen: "pe-button--dropdown-open",
+    extraWide: "pe-button--extra-wide",
+    hasDropdown: "pe-button--dropdown",
+    highLabel: "pe-button--high-label",
+    inactive: "pe-button--inactive",
+    raised: "pe-button--raised",
+    selected: "pe-button--selected",
+    separatorAtStart: "pe-button--separator-start"
+  };
+
+  var getElement = function getElement(vnode) {
+    return vnode.attrs.element || "a";
+  };
+  var getInitialState = function getInitialState(vnode, createStream) {
+    var dom = createStream(null);
+    var focus = createStream(false);
+    var inactive = createStream(false);
+    var mouseover = createStream(false);
+    return {
+      dom: dom,
+      focus: focus,
+      inactive: inactive,
+      mouseover: mouseover,
+      redrawOnUpdate: createStream.merge([dom, focus, inactive])
+    };
+  };
+  var onMount = function onMount(vnode) {
+    if (!vnode.dom) {
+      return;
+    }
+
+    var state = vnode.state;
+    var attrs = vnode.attrs;
+
+    if (attrs.borders !== undefined) {
+      polytheneCore.deprecation("Button", {
+        option: "borders",
+        newOption: "border"
+      });
+    }
+
+    state.dom(vnode.dom);
+
+    if (polytheneCore.isClient) {
+      var handleInactivate = function handleInactivate() {
+        return state.inactive(true), setTimeout(function () {
+          return state.inactive(false);
+        }, attrs.inactivate * 1000);
+      };
+
+      var onFocus = function onFocus() {
+        return state.focus(!state.mouseover());
+      };
+
+      var onBlur = function onBlur() {
+        return state.focus(false);
+      };
+
+      var onMouseOver = function onMouseOver() {
+        return state.mouseover(true);
+      };
+
+      var onMouseOut = function onMouseOut() {
+        return state.mouseover(false);
+      };
+
+      var onClick = handleInactivate;
+      vnode.dom.addEventListener("focus", onFocus, false);
+      vnode.dom.addEventListener("blur", onBlur, false);
+      vnode.dom.addEventListener("mouseover", onMouseOver, false);
+      vnode.dom.addEventListener("mouseout", onMouseOut, false);
+      vnode.dom.addEventListener("click", onClick, false);
+
+      state.removeEventListeners = function () {
+        return vnode.dom.removeEventListener("focus", onFocus, false), vnode.dom.removeEventListener("blur", onBlur, false), vnode.dom.removeEventListener("mouseover", onBlur, false), vnode.dom.removeEventListener("mouseout", onMouseOut, false), vnode.dom.removeEventListener("click", onClick, false);
+      };
+    }
+  };
+  var onUnMount = function onUnMount(vnode) {
+    return vnode.state.removeEventListeners && vnode.state.removeEventListeners();
+  };
+  var createProps = function createProps(vnode, _ref) {
+    var _ref2;
+
+    var k = _ref.keys;
+    var state = vnode.state;
+    var attrs = vnode.attrs;
+    var disabled = attrs.disabled;
+    var inactive = attrs.inactive || state.inactive();
+    var onClickHandler = attrs.events && attrs.events[k.onclick];
+    var onKeyUpHandler = attrs.events && attrs.events[k.onkeyup] || onClickHandler;
+    return _extends({}, polytheneCore.filterSupportedAttributes(attrs, {
+      add: [k.formaction, "type"],
+      remove: ["style"]
+    }), // Set style on content, not on component
+    {
+      className: [classes.super, attrs.parentClassName || classes.component, attrs.contained ? classes.contained : null, attrs.raised ? classes.contained : null, attrs.raised ? classes.raised : null, attrs.selected ? classes.selected : null, attrs.highLabel ? classes.highLabel : null, attrs.extraWide ? classes.extraWide : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.separatorAtStart ? classes.separatorAtStart : null, attrs.border || attrs.borders ? classes.border : null, attrs.dropdown ? classes.hasDropdown : null, attrs.dropdown ? attrs.dropdown.open ? classes.dropdownOpen : classes.dropdownClosed : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    }, attrs.events, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, onClickHandler), _defineProperty(_ref2, k.onkeyup, function (e) {
+      if (e.keyCode === 13 && state.focus()) {
+        state.focus(false);
+
+        if (onKeyUpHandler) {
+          onKeyUpHandler(e);
+        }
+      }
+    }), _ref2), attrs.url, disabled ? {
+      disabled: true
+    } : null);
+  };
+  var createContent = function createContent(vnode, _ref3) {
+    var _h;
+
+    var h = _ref3.renderer,
+        k = _ref3.keys,
+        Ripple = _ref3.Ripple,
+        Icon = _ref3.Icon,
+        Shadow = _ref3.Shadow;
+    var state = vnode.state;
+    var attrs = vnode.attrs;
+    var noink = attrs.ink !== undefined && attrs.ink === false;
+    var disabled = attrs.disabled;
+    var children = attrs.children || vnode.children;
+    var label = attrs.content ? attrs.content : attrs.label !== undefined ? _typeof(attrs.label) === "object" ? attrs.label : h("div", {
+      className: classes.label
+    }, h("div", {
+      className: classes.textLabel,
+      style: attrs.textStyle
+    }, attrs.label)) : children ? children : null;
+    var noWash = disabled || attrs.wash !== undefined && !attrs.wash;
+    return h("div", (_h = {}, _defineProperty(_h, k.class, classes.content), _defineProperty(_h, "style", attrs.style), _h), [h(Shadow, {
+      key: "shadow",
+      shadowDepth: attrs.shadowDepth !== undefined ? attrs.shadowDepth : 0,
+      animated: true
+    }), // Ripple
+    disabled || noink || !Ripple || (h["displayName"] === "react" ? !state.dom() : false) // somehow Mithril does not update when the dom stream is updated
+    ? null : h(Ripple, _extends({}, {
+      key: "ripple",
+      target: state.dom()
+    }, attrs.ripple)), // hover
+    noWash ? null : h("div", {
+      key: "wash",
+      className: classes.wash
+    }), label, attrs.dropdown ? h(Icon, {
+      className: classes.dropdown,
+      key: "dropdown",
+      svg: {
+        content: h.trust(polytheneCore.iconDropdownDown)
+      }
+    }) : null]);
+  };
+
+  var button = /*#__PURE__*/Object.freeze({
+    getElement: getElement,
+    getInitialState: getInitialState,
+    onMount: onMount,
+    onUnMount: onUnMount,
+    createProps: createProps,
+    createContent: createContent
+  });
+
+  var MAX_SHADOW_DEPTH = 5;
+
+  var tapStart,
+      tapEndAll = function tapEndAll() {},
+      downButtons = [];
+
+  var animateZ = function animateZ(which, vnode) {
+    var shadowDepthBase = vnode.state.shadowDepthBase;
+    var increase = vnode.attrs.increase || 1;
+    var shadowDepth = vnode.state.shadowDepth();
+    var newShadowDepth = which === "down" && shadowDepthBase < MAX_SHADOW_DEPTH ? Math.min(shadowDepthBase + increase, MAX_SHADOW_DEPTH) : which === "up" ? Math.max(shadowDepth - increase, shadowDepthBase) : shadowDepth;
+
+    if (newShadowDepth !== shadowDepth) {
+      vnode.state.shadowDepth(newShadowDepth);
+    }
+  };
+
+  var tapHandler = function tapHandler(which, vnode) {
+    if (which === "down") {
+      downButtons.push(_extends({}, vnode));
+    }
+
+    var animateOnTap = vnode.attrs.animateOnTap !== false ? true : false;
+
+    if (animateOnTap) {
+      animateZ(which, vnode);
+    }
+  };
+
+  var initTapEvents = function initTapEvents(vnode) {
+    if (polytheneCore.isServer) return;
+
+    tapStart = function tapStart() {
+      return tapHandler("down", vnode);
+    };
+
+    tapEndAll = function tapEndAll() {
+      downButtons.map(function (buttonVnode) {
+        return tapHandler("up", buttonVnode);
+      });
+      downButtons = [];
+    };
+
+    polytheneCore.pointerStartMoveEvent.forEach(function (evt) {
+      return vnode.dom.addEventListener(evt, tapStart);
+    });
+    polytheneCore.pointerEndMoveEvent.forEach(function (evt) {
+      return document.addEventListener(evt, tapEndAll);
+    });
+  };
+
+  var clearTapEvents = function clearTapEvents(vnode) {
+    polytheneCore.pointerStartMoveEvent.forEach(function (evt) {
+      return vnode.dom.removeEventListener(evt, tapStart);
+    });
+    polytheneCore.pointerEndMoveEvent.forEach(function (evt) {
+      return document.removeEventListener(evt, tapEndAll);
+    });
+  };
+
+  var getInitialState$1 = function getInitialState(vnode, createStream) {
+    var attrs = vnode.attrs;
+    var shadowDepthBase = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z !== undefined // deprecated
+    ? attrs.z : 1;
+    var shadowDepth = createStream(shadowDepthBase);
+    var tapEventsInited = createStream(false);
+    return {
+      shadowDepthBase: shadowDepthBase,
+      shadowDepth: shadowDepth,
+      tapEventsInited: tapEventsInited,
+      redrawOnUpdate: createStream.merge([shadowDepth])
+    };
+  };
+  var onMount$1 = function onMount(vnode) {
+    if (!vnode.dom) {
+      return;
+    }
+
+    var state = vnode.state;
+    var attrs = vnode.attrs;
+
+    if (attrs.z !== undefined) {
+      polytheneCore.deprecation("RaisedButton", {
+        option: "z",
+        newOption: "shadowDepth"
+      });
+    }
+
+    if (!state.tapEventsInited()) {
+      initTapEvents(vnode);
+      state.tapEventsInited(true);
+    }
+  };
+  var onUnMount$1 = function onUnMount(vnode) {
+    if (vnode.state.tapEventsInited()) {
+      clearTapEvents(vnode);
+    }
+  };
+  var createProps$1 = function createProps(vnode) {
+    var attrs = vnode.attrs;
+    var state = vnode.state;
+    var children = attrs.children || vnode.children || [];
+    return _objectSpread({
+      raised: true,
+      animateOnTap: false,
+      wash: attrs.wash !== undefined ? attrs.wash : false,
+      children: children
+    }, attrs, {
+      shadowDepth: attrs.disabled ? 0 : state.shadowDepth()
+    });
+  };
+  var createContent$1 = function createContent(vnode) {
+    return vnode.children;
+  };
+
+  var raisedButton = /*#__PURE__*/Object.freeze({
+    getInitialState: getInitialState$1,
+    onMount: onMount$1,
+    onUnMount: onUnMount$1,
+    createProps: createProps$1,
+    createContent: createContent$1
+  });
+
+  exports.coreButton = button;
+  exports.coreRaisedButton = raisedButton;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-core-button.js.map

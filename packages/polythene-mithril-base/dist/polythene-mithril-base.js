@@ -1,2 +1,2047 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t((e=e||self).polythene={})}(this,function(e){"use strict";var t={autocomplete:"autocomplete",autofocus:"autofocus",class:"class",className:"class",enctype:"enctype",formaction:"formaction",frameborder:"frameborder",maxlength:"maxlength",minlength:"minlength",onblur:"onblur",onchange:"onchange",onclick:"onclick",onfocus:"onfocus",oninput:"oninput",onkeydown:"onkeydown",onkeyup:"onkeyup",onmousedown:"onmousedown",onmouseout:"onmouseout",onmouseover:"onmouseover",onmouseup:"onmouseup",onscroll:"onscroll",onsubmit:"onsubmit",ontouchend:"ontouchend",ontouchmove:"ontouchmove",ontouchstart:"ontouchstart",readonly:"readonly",tabindex:"tabindex"};function n(e){return(n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function r(){return(r=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e}).apply(this,arguments)}var o="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:{};function i(e,t){return e(t={exports:{}},t.exports),t.exports}var a=i(function(e){!function(){function t(e,t,n,r,o,i){return{tag:e,key:t,attrs:n,children:r,text:o,dom:i,domSize:void 0,state:void 0,_state:void 0,events:void 0,instance:void 0,skip:!1}}t.normalize=function(e){return Array.isArray(e)?t("[",void 0,void 0,t.normalizeChildren(e),void 0,void 0):null!=e&&"object"!==n(e)?t("#",void 0,void 0,!1===e?"":e,void 0,void 0):e},t.normalizeChildren=function(e){for(var n=0;n<e.length;n++)e[n]=t.normalize(e[n]);return e};var r=/(?:(^|#|\.)([^#\.\[\]]+))|(\[(.+?)(?:\s*=\s*("|'|)((?:\\["'\]]|.)*?)\5)?\])/g,i={},a={}.hasOwnProperty;function l(e){for(var t in e)if(a.call(e,t))return!1;return!0}function u(e){var o,u=arguments[1],s=2;if(null==e||"string"!=typeof e&&"function"!=typeof e&&"function"!=typeof e.view)throw Error("The selector must be either a string or a component.");if("string"==typeof e)var c=i[e]||function(e){for(var t,n="div",o=[],a={};t=r.exec(e);){var l=t[1],u=t[2];if(""===l&&""!==u)n=u;else if("#"===l)a.id=u;else if("."===l)o.push(u);else if("["===t[3][0]){var s=t[6];s&&(s=s.replace(/\\(["'])/g,"$1").replace(/\\\\/g,"\\")),"class"===t[4]?o.push(s):a[t[4]]=""===s?s:s||!0}}return o.length>0&&(a.className=o.join(" ")),i[e]={tag:n,attrs:a}}(e);if(null==u?u={}:("object"!==n(u)||null!=u.tag||Array.isArray(u))&&(u={},s=1),arguments.length===s+1)o=arguments[s],Array.isArray(o)||(o=[o]);else for(o=[];s<arguments.length;)o.push(arguments[s++]);var f=t.normalizeChildren(o);return"string"==typeof e?function(e,n,r){var o,i,u=!1,s=n.className||n.class;if(!l(e.attrs)&&!l(n)){var c={};for(var f in n)a.call(n,f)&&(c[f]=n[f]);n=c}for(var f in e.attrs)a.call(e.attrs,f)&&(n[f]=e.attrs[f]);for(var f in void 0!==s&&(void 0!==n.class&&(n.class=void 0,n.className=s),null!=e.attrs.className&&(n.className=e.attrs.className+" "+s)),n)if(a.call(n,f)&&"key"!==f){u=!0;break}return Array.isArray(r)&&1===r.length&&null!=r[0]&&"#"===r[0].tag?i=r[0].children:o=r,t(e.tag,n.key,u?n:void 0,o,i)}(c,u,f):t(e,u.key,u,f)}u.trust=function(e){return null==e&&(e=""),t("<",void 0,void 0,e,void 0,void 0)},u.fragment=function(e,n){return t("[",e.key,e,t.normalizeChildren(n),void 0,void 0)};var s=u;if((c=function(e){if(!(this instanceof c))throw new Error("Promise must be called with `new`");if("function"!=typeof e)throw new TypeError("executor must be a function");var t=this,r=[],o=[],i=s(r,!0),a=s(o,!1),l=t._instance={resolvers:r,rejectors:o},u="function"==typeof setImmediate?setImmediate:setTimeout;function s(e,i){return function s(c){var d;try{if(!i||null==c||"object"!==n(c)&&"function"!=typeof c||"function"!=typeof(d=c.then))u(function(){i||0!==e.length||console.error("Possible unhandled promise rejection:",c);for(var t=0;t<e.length;t++)e[t](c);r.length=0,o.length=0,l.state=i,l.retry=function(){s(c)}});else{if(c===t)throw new TypeError("Promise can't be resolved w/ itself");f(d.bind(c))}}catch(e){a(e)}}}function f(e){var t=0;function n(e){return function(n){t++>0||e(n)}}var r=n(a);try{e(n(i),r)}catch(e){r(e)}}f(e)}).prototype.then=function(e,t){var n,r,o=this._instance;function i(e,t,i,a){t.push(function(t){if("function"!=typeof e)i(t);else try{n(e(t))}catch(e){r&&r(e)}}),"function"==typeof o.retry&&a===o.state&&o.retry()}var a=new c(function(e,t){n=e,r=t});return i(e,o.resolvers,n,!0),i(t,o.rejectors,r,!1),a},c.prototype.catch=function(e){return this.then(null,e)},c.resolve=function(e){return e instanceof c?e:new c(function(t){t(e)})},c.reject=function(e){return new c(function(t,n){n(e)})},c.all=function(e){return new c(function(t,r){var o=e.length,i=0,a=[];if(0===e.length)t([]);else for(var l=0;l<e.length;l++)!function(l){function u(e){i++,a[l]=e,i===o&&t(a)}null==e[l]||"object"!==n(e[l])&&"function"!=typeof e[l]||"function"!=typeof e[l].then?u(e[l]):e[l].then(u,r)}(l)})},c.race=function(e){return new c(function(t,n){for(var r=0;r<e.length;r++)e[r].then(t,n)})},"undefined"!=typeof window){void 0===window.Promise&&(window.Promise=c);var c=window.Promise}else if(void 0!==o){void 0===o.Promise&&(o.Promise=c);c=o.Promise}var f=function(e){if("[object Object]"!==Object.prototype.toString.call(e))return"";var t=[];for(var n in e)r(n,e[n]);return t.join("&");function r(e,n){if(Array.isArray(n))for(var o=0;o<n.length;o++)r(e+"["+o+"]",n[o]);else if("[object Object]"===Object.prototype.toString.call(n))for(var o in n)r(e+"["+o+"]",n[o]);else t.push(encodeURIComponent(e)+(null!=n&&""!==n?"="+encodeURIComponent(n):""))}},d=new RegExp("^file://","i"),v=function(e,t){var n,r=0;function o(){var e=0;function t(){0==--e&&"function"==typeof n&&n()}return function n(r){var o=r.then;return r.then=function(){e++;var i=o.apply(r,arguments);return i.then(t,function(n){if(t(),0===e)throw n}),n(i)},r}}function i(e,t){if("string"==typeof e){var n=e;null==(e=t||{}).url&&(e.url=n)}return e}function a(e,t){if(null==t)return e;for(var n=e.match(/:[^\/]+/gi)||[],r=0;r<n.length;r++){var o=n[r].slice(1);null!=t[o]&&(e=e.replace(n[r],t[o]))}return e}function l(e,t){var n=f(t);if(""!==n){var r=e.indexOf("?")<0?"?":"&";e+=r+n}return e}function u(e){try{return""!==e?JSON.parse(e):null}catch(t){throw new Error(e)}}function s(e){return e.responseText}function c(e,t){if("function"==typeof e){if(!Array.isArray(t))return new e(t);for(var n=0;n<t.length;n++)t[n]=new e(t[n])}return t}return{request:function(n,r){var f=o();n=i(n,r);var v=new t(function(t,r){null==n.method&&(n.method="GET"),n.method=n.method.toUpperCase();var o="GET"!==n.method&&"TRACE"!==n.method&&("boolean"!=typeof n.useBody||n.useBody);"function"!=typeof n.serialize&&(n.serialize="undefined"!=typeof FormData&&n.data instanceof FormData?function(e){return e}:JSON.stringify),"function"!=typeof n.deserialize&&(n.deserialize=u),"function"!=typeof n.extract&&(n.extract=s),n.url=a(n.url,n.data),o?n.data=n.serialize(n.data):n.url=l(n.url,n.data);var i=new e.XMLHttpRequest,f=!1,v=i.abort;for(var p in i.abort=function(){f=!0,v.call(i)},i.open(n.method,n.url,"boolean"!=typeof n.async||n.async,"string"==typeof n.user?n.user:void 0,"string"==typeof n.password?n.password:void 0),n.serialize!==JSON.stringify||!o||n.headers&&n.headers.hasOwnProperty("Content-Type")||i.setRequestHeader("Content-Type","application/json; charset=utf-8"),n.deserialize!==u||n.headers&&n.headers.hasOwnProperty("Accept")||i.setRequestHeader("Accept","application/json, text/*"),n.withCredentials&&(i.withCredentials=n.withCredentials),n.headers)({}).hasOwnProperty.call(n.headers,p)&&i.setRequestHeader(p,n.headers[p]);"function"==typeof n.config&&(i=n.config(i,n)||i),i.onreadystatechange=function(){if(!f&&4===i.readyState)try{var e=n.extract!==s?n.extract(i,n):n.deserialize(n.extract(i,n));if(i.status>=200&&i.status<300||304===i.status||d.test(n.url))t(c(n.type,e));else{var o=new Error(i.responseText);for(var a in e)o[a]=e[a];r(o)}}catch(e){r(e)}},o&&null!=n.data?i.send(n.data):i.send()});return!0===n.background?v:f(v)},jsonp:function(n,u){var s=o();n=i(n,u);var f=new t(function(t,o){var i=n.callbackName||"_mithril_"+Math.round(1e16*Math.random())+"_"+r++,u=e.document.createElement("script");e[i]=function(r){u.parentNode.removeChild(u),t(c(n.type,r)),delete e[i]},u.onerror=function(){u.parentNode.removeChild(u),o(new Error("JSONP request failed")),delete e[i]},null==n.data&&(n.data={}),n.url=a(n.url,n.data),n.data[n.callbackKey||"callback"]=i,u.src=l(n.url,n.data),e.document.documentElement.appendChild(u)});return!0===n.background?f:s(f)},setCompletionCallback:function(e){n=e}}}(window,c),p=function(e){var r,o=e.document,i=o.createDocumentFragment(),a={svg:"http://www.w3.org/2000/svg",math:"http://www.w3.org/1998/Math/MathML"};function l(e){return e.attrs&&e.attrs.xmlns||a[e.tag]}function u(e,t,n,r,o,i,a){for(var l=n;l<r;l++){var u=t[l];null!=u&&s(e,u,o,a,i)}}function s(e,n,r,a,d){var v=n.tag;if("string"!=typeof v)return function(e,t,n,r,o){if(f(t,n),null!=t.instance){var a=s(e,t.instance,n,r,o);return t.dom=t.instance.dom,t.domSize=null!=t.dom?t.instance.domSize:0,g(e,a,o),a}return t.domSize=0,i}(e,n,r,a,d);switch(n.state={},null!=n.attrs&&C(n.attrs,n,r),v){case"#":return function(e,t,n){return t.dom=o.createTextNode(t.children),g(e,t.dom,n),t.dom}(e,n,d);case"<":return c(e,n,d);case"[":return function(e,t,n,r,i){var a=o.createDocumentFragment();if(null!=t.children){var l=t.children;u(a,l,0,l.length,n,null,r)}return t.dom=a.firstChild,t.domSize=a.childNodes.length,g(e,a,i),a}(e,n,r,a,d);default:return function(e,n,r,i,a){var s=n.tag,c=n.attrs,f=c&&c.is,d=(i=l(n)||i)?f?o.createElementNS(i,s,{is:f}):o.createElementNS(i,s):f?o.createElement(s,{is:f}):o.createElement(s);n.dom=d,null!=c&&function(e,t,n){for(var r in t)_(e,r,null,t[r],n)}(n,c,i);if(g(e,d,a),null!=n.attrs&&null!=n.attrs.contenteditable)y(n);else if(null!=n.text&&(""!==n.text?d.textContent=n.text:n.children=[t("#",void 0,void 0,n.text,void 0,void 0)]),null!=n.children){var v=n.children;u(d,v,0,v.length,r,null,i),function(e){var t=e.attrs;"select"===e.tag&&null!=t&&("value"in t&&_(e,"value",null,t.value,void 0),"selectedIndex"in t&&_(e,"selectedIndex",null,t.selectedIndex,void 0))}(n)}return d}(e,n,r,a,d)}}function c(e,t,n){var r={caption:"table",thead:"table",tbody:"table",tfoot:"table",tr:"tbody",th:"tr",td:"tr",colgroup:"table",col:"colgroup"}[(t.children.match(/^\s*?<(\w+)/im)||[])[1]]||"div",i=o.createElement(r);i.innerHTML=t.children,t.dom=i.firstChild,t.domSize=i.childNodes.length;for(var a,l=o.createDocumentFragment();a=i.firstChild;)l.appendChild(a);return g(e,l,n),l}function f(e,n){var r;if("function"==typeof e.tag.view){if(e.state=Object.create(e.tag),null!=(r=e.state.view).$$reentrantLock$$)return i;r.$$reentrantLock$$=!0}else{if(e.state=void 0,null!=(r=e.tag).$$reentrantLock$$)return i;r.$$reentrantLock$$=!0,e.state=null!=e.tag.prototype&&"function"==typeof e.tag.prototype.view?new e.tag(e):e.tag(e)}if(e._state=e.state,null!=e.attrs&&C(e.attrs,e,n),C(e._state,e,n),e.instance=t.normalize(e._state.view.call(e.state,e)),e.instance===e)throw Error("A view cannot return the vnode it received as argument");r.$$reentrantLock$$=null}function d(e,t,n,r,o,i,a){if(t!==n&&(null!=t||null!=n))if(null==t)u(e,n,0,n.length,o,i,a);else if(null==n)w(t,0,t.length,n);else{if(t.length===n.length){for(var l=!1,c=0;c<n.length;c++)if(null!=n[c]&&null!=t[c]){l=null==n[c].key&&null==t[c].key;break}if(l){for(c=0;c<t.length;c++)t[c]!==n[c]&&(null==t[c]&&null!=n[c]?s(e,n[c],o,a,m(t,c+1,i)):null==n[c]?w(t,c,c+1,n):v(e,t[c],n[c],o,m(t,c+1,i),r,a));return}}if(r=r||function(e,t){if(null!=e.pool&&Math.abs(e.pool.length-t.length)<=Math.abs(e.length-t.length)){var n=e[0]&&e[0].children&&e[0].children.length||0,r=e.pool[0]&&e.pool[0].children&&e.pool[0].children.length||0,o=t[0]&&t[0].children&&t[0].children.length||0;if(Math.abs(r-o)<=Math.abs(n-o))return!0}return!1}(t,n)){var f=t.pool;t=t.concat(t.pool)}for(var d,y=0,b=0,x=t.length-1,_=n.length-1;x>=y&&_>=b;){if((S=t[y])!==(C=n[b])||r)if(null==S)y++;else if(null==C)b++;else if(S.key===C.key){var k=null!=f&&y>=t.length-f.length||null==f&&r;b++,v(e,S,C,o,m(t,++y,i),k,a),r&&S.tag===C.tag&&g(e,h(S),i)}else{if((S=t[x])!==C||r)if(null==S)x--;else if(null==C)b++;else{if(S.key!==C.key)break;k=null!=f&&x>=t.length-f.length||null==f&&r;v(e,S,C,o,m(t,x+1,i),k,a),(r||b<_)&&g(e,h(S),m(t,y,i)),x--,b++}else x--,b++}else y++,b++}for(;x>=y&&_>=b;){var S,C;if((S=t[x])!==(C=n[_])||r)if(null==S)x--;else if(null==C)_--;else if(S.key===C.key){k=null!=f&&x>=t.length-f.length||null==f&&r;v(e,S,C,o,m(t,x+1,i),k,a),r&&S.tag===C.tag&&g(e,h(S),i),null!=S.dom&&(i=S.dom),x--,_--}else{if(d||(d=p(t,x)),null!=C){var E=d[C.key];if(null!=E){var z=t[E];k=null!=f&&E>=t.length-f.length||null==f&&r;v(e,z,C,o,m(t,x+1,i),r,a),g(e,h(z),i),t[E].skip=!0,null!=z.dom&&(i=z.dom)}else{i=s(e,C,o,a,i)}}_--}else x--,_--;if(_<b)break}u(e,n,b,_+1,o,i,a),w(t,y,x+1,n)}}function v(e,n,r,o,i,a,u){var p=n.tag;if(p===r.tag){if(r.state=n.state,r._state=n._state,r.events=n.events,!a&&function(e,t){var n,r;null!=e.attrs&&"function"==typeof e.attrs.onbeforeupdate&&(n=e.attrs.onbeforeupdate.call(e.state,e,t));"string"!=typeof e.tag&&"function"==typeof e._state.onbeforeupdate&&(r=e._state.onbeforeupdate.call(e.state,e,t));if(!(void 0===n&&void 0===r||n||r))return e.dom=t.dom,e.domSize=t.domSize,e.instance=t.instance,!0;return!1}(r,n))return;if("string"==typeof p)switch(null!=r.attrs&&(a?(r.state={},C(r.attrs,r,o)):E(r.attrs,r,o)),p){case"#":!function(e,t){e.children.toString()!==t.children.toString()&&(e.dom.nodeValue=t.children);t.dom=e.dom}(n,r);break;case"<":!function(e,t,n,r){t.children!==n.children?(h(t),c(e,n,r)):(n.dom=t.dom,n.domSize=t.domSize)}(e,n,r,i);break;case"[":!function(e,t,n,r,o,i,a){d(e,t.children,n.children,r,o,i,a);var l=0,u=n.children;if(n.dom=null,null!=u){for(var s=0;s<u.length;s++){var c=u[s];null!=c&&null!=c.dom&&(null==n.dom&&(n.dom=c.dom),l+=c.domSize||1)}1!==l&&(n.domSize=l)}}(e,n,r,a,o,i,u);break;default:!function(e,n,r,o,i){var a=n.dom=e.dom;i=l(n)||i,"textarea"===n.tag&&(null==n.attrs&&(n.attrs={}),null!=n.text&&(n.attrs.value=n.text,n.text=void 0));(function(e,t,n,r){if(null!=n)for(var o in n)_(e,o,t&&t[o],n[o],r);if(null!=t)for(var o in t)null!=n&&o in n||("className"===o&&(o="class"),"o"!==o[0]||"n"!==o[1]||k(o)?"key"!==o&&e.dom.removeAttribute(o):S(e,o,void 0))})(n,e.attrs,n.attrs,i),null!=n.attrs&&null!=n.attrs.contenteditable?y(n):null!=e.text&&null!=n.text&&""!==n.text?e.text.toString()!==n.text.toString()&&(e.dom.firstChild.nodeValue=n.text):(null!=e.text&&(e.children=[t("#",void 0,void 0,e.text,void 0,e.dom.firstChild)]),null!=n.text&&(n.children=[t("#",void 0,void 0,n.text,void 0,void 0)]),d(a,e.children,n.children,r,o,null,i))}(n,r,a,o,u)}else!function(e,n,r,o,i,a,l){if(a)f(r,o);else{if(r.instance=t.normalize(r._state.view.call(r.state,r)),r.instance===r)throw Error("A view cannot return the vnode it received as argument");null!=r.attrs&&E(r.attrs,r,o),E(r._state,r,o)}null!=r.instance?(null==n.instance?s(e,r.instance,o,l,i):v(e,n.instance,r.instance,o,i,a,l),r.dom=r.instance.dom,r.domSize=r.instance.domSize):null!=n.instance?(b(n.instance,null),r.dom=void 0,r.domSize=0):(r.dom=n.dom,r.domSize=n.domSize)}(e,n,r,o,i,a,u)}else b(n,null),s(e,r,o,u,i)}function p(e,t){var n={},r=0;for(r=0;r<t;r++){var o=e[r];if(null!=o){var i=o.key;null!=i&&(n[i]=r)}}return n}function h(e){var t=e.domSize;if(null!=t||null==e.dom){var n=o.createDocumentFragment();if(t>0){for(var r=e.dom;--t;)n.appendChild(r.nextSibling);n.insertBefore(r,n.firstChild)}return n}return e.dom}function m(e,t,n){for(;t<e.length;t++)if(null!=e[t]&&null!=e[t].dom)return e[t].dom;return n}function g(e,t,n){n&&n.parentNode?e.insertBefore(t,n):e.appendChild(t)}function y(e){var t=e.children;if(null!=t&&1===t.length&&"<"===t[0].tag){var n=t[0].children;e.dom.innerHTML!==n&&(e.dom.innerHTML=n)}else if(null!=e.text||null!=t&&0!==t.length)throw new Error("Child node of a contenteditable must be trusted")}function w(e,t,n,r){for(var o=t;o<n;o++){var i=e[o];null!=i&&(i.skip?i.skip=!1:b(i,r))}}function b(e,t){var n,r=1,o=0;e.attrs&&"function"==typeof e.attrs.onbeforeremove&&(null!=(n=e.attrs.onbeforeremove.call(e.state,e))&&"function"==typeof n.then&&(r++,n.then(i,i)));"string"!=typeof e.tag&&"function"==typeof e._state.onbeforeremove&&(null!=(n=e._state.onbeforeremove.call(e.state,e))&&"function"==typeof n.then&&(r++,n.then(i,i)));function i(){if(++o===r&&(function e(t){t.attrs&&"function"==typeof t.attrs.onremove&&t.attrs.onremove.call(t.state,t);if("string"!=typeof t.tag)"function"==typeof t._state.onremove&&t._state.onremove.call(t.state,t),null!=t.instance&&e(t.instance);else{var n=t.children;if(Array.isArray(n))for(var r=0;r<n.length;r++){var o=n[r];null!=o&&e(o)}}}(e),e.dom)){var n=e.domSize||1;if(n>1)for(var i=e.dom;--n;)x(i.nextSibling);x(e.dom),null==t||null!=e.domSize||null!=(a=e.attrs)&&(a.oncreate||a.onupdate||a.onbeforeremove||a.onremove)||"string"!=typeof e.tag||(t.pool?t.pool.push(e):t.pool=[e])}var a}i()}function x(e){var t=e.parentNode;null!=t&&t.removeChild(e)}function _(e,t,r,i,a){var l=e.dom;if("key"!==t&&"is"!==t&&(r!==i||function(e,t){return"value"===t||"checked"===t||"selectedIndex"===t||"selected"===t&&e.dom===o.activeElement}(e,t)||"object"===n(i))&&void 0!==i&&!k(t)){var u,s=t.indexOf(":");if(s>-1&&"xlink"===t.substr(0,s))l.setAttributeNS("http://www.w3.org/1999/xlink",t.slice(s+1),i);else if("o"===t[0]&&"n"===t[1]&&"function"==typeof i)S(e,t,i);else if("style"===t)!function(e,t,n){t===n&&(e.style.cssText="",t=null);if(null==n)e.style.cssText="";else if("string"==typeof n)e.style.cssText=n;else{for(var r in"string"==typeof t&&(e.style.cssText=""),n)e.style[r]=n[r];if(null!=t&&"string"!=typeof t)for(var r in t)r in n||(e.style[r]="")}}(l,r,i);else if(t in l&&("href"!==(u=t)&&"list"!==u&&"form"!==u&&"width"!==u&&"height"!==u)&&void 0===a&&!function(e){return e.attrs.is||e.tag.indexOf("-")>-1}(e)){if("value"===t){var c=""+i;if(("input"===e.tag||"textarea"===e.tag)&&e.dom.value===c&&e.dom===o.activeElement)return;if("select"===e.tag)if(null===i){if(-1===e.dom.selectedIndex&&e.dom===o.activeElement)return}else if(null!==r&&e.dom.value===c&&e.dom===o.activeElement)return;if("option"===e.tag&&null!=r&&e.dom.value===c)return}if("input"===e.tag&&"type"===t)return void l.setAttribute(t,i);l[t]=i}else"boolean"==typeof i?i?l.setAttribute(t,""):l.removeAttribute(t):l.setAttribute("className"===t?"class":t,i)}}function k(e){return"oninit"===e||"oncreate"===e||"onupdate"===e||"onremove"===e||"onbeforeremove"===e||"onbeforeupdate"===e}function S(e,t,n){var o=e.dom,i="function"!=typeof r?n:function(e){var t=n.call(o,e);return r.call(o,e),t};if(t in o)o[t]="function"==typeof n?i:null;else{var a=t.slice(2);if(void 0===e.events&&(e.events={}),e.events[t]===i)return;null!=e.events[t]&&o.removeEventListener(a,e.events[t],!1),"function"==typeof n&&(e.events[t]=i,o.addEventListener(a,e.events[t],!1))}}function C(e,t,n){"function"==typeof e.oninit&&e.oninit.call(t.state,t),"function"==typeof e.oncreate&&n.push(e.oncreate.bind(t.state,t))}function E(e,t,n){"function"==typeof e.onupdate&&n.push(e.onupdate.bind(t.state,t))}return{render:function(e,n){if(!e)throw new Error("Ensure the DOM element being passed to m.route/m.mount/m.render is not undefined.");var r=[],i=o.activeElement,a=e.namespaceURI;null==e.vnodes&&(e.textContent=""),Array.isArray(n)||(n=[n]),d(e,e.vnodes,t.normalizeChildren(n),!1,r,null,"http://www.w3.org/1999/xhtml"===a?void 0:a),e.vnodes=n,null!=i&&o.activeElement!==i&&i.focus();for(var l=0;l<r.length;l++)r[l]()},setEventCallback:function(e){return r=e}}};var h=function(e){var t=p(e);t.setEventCallback(function(e){!1===e.redraw?e.redraw=void 0:o()});var n=[];function r(e){var t=n.indexOf(e);t>-1&&n.splice(t,2)}function o(){for(var e=1;e<n.length;e+=2)n[e]()}return{subscribe:function(e,t){r(e),n.push(e,function(e){var t=0,n=null,r="function"==typeof requestAnimationFrame?requestAnimationFrame:setTimeout;return function(){var o=Date.now();0===t||o-t>=16?(t=o,e()):null===n&&(n=r(function(){n=null,e(),t=Date.now()},16-(o-t)))}}(t))},unsubscribe:r,redraw:o,render:t.render}}(window);v.setCompletionCallback(h.redraw);var m;s.mount=(m=h,function(e,n){if(null===n)return m.render(e,[]),void m.unsubscribe(e);if(null==n.view&&"function"!=typeof n)throw new Error("m.mount(element, component) expects a component, not a vnode");m.subscribe(e,function(){m.render(e,t(n))}),m.redraw()});var g=c,y=function(e){if(""===e||null==e)return{};"?"===e.charAt(0)&&(e=e.slice(1));for(var t=e.split("&"),n={},r={},o=0;o<t.length;o++){var i=t[o].split("="),a=decodeURIComponent(i[0]),l=2===i.length?decodeURIComponent(i[1]):"";"true"===l?l=!0:"false"===l&&(l=!1);var u=a.split(/\]\[?|\[/),s=n;a.indexOf("[")>-1&&u.pop();for(var c=0;c<u.length;c++){var f=u[c],d=u[c+1],v=""==d||!isNaN(parseInt(d,10)),p=c===u.length-1;if(""===f)null==r[a=u.slice(0,c).join()]&&(r[a]=0),f=r[a]++;null==s[f]&&(s[f]=p?l:v?[]:{}),s=s[f]}}return n},w=function(e){var t,n="function"==typeof e.history.pushState,r="function"==typeof setImmediate?setImmediate:setTimeout;function o(t){var n=e.location[t].replace(/(?:%[a-f89][a-f0-9])+/gim,decodeURIComponent);return"pathname"===t&&"/"!==n[0]&&(n="/"+n),n}function i(e,t,n){var r=e.indexOf("?"),o=e.indexOf("#"),i=r>-1?r:o>-1?o:e.length;if(r>-1){var a=o>-1?o:e.length,l=y(e.slice(r+1,a));for(var u in l)t[u]=l[u]}if(o>-1){var s=y(e.slice(o+1));for(var u in s)n[u]=s[u]}return e.slice(0,i)}var a={prefix:"#!",getPath:function(){switch(a.prefix.charAt(0)){case"#":return o("hash").slice(a.prefix.length);case"?":return o("search").slice(a.prefix.length)+o("hash");default:return o("pathname").slice(a.prefix.length)+o("search")+o("hash")}},setPath:function(t,r,o){var l={},u={};if(t=i(t,l,u),null!=r){for(var s in r)l[s]=r[s];t=t.replace(/:([^\/]+)/g,function(e,t){return delete l[t],r[t]})}var c=f(l);c&&(t+="?"+c);var d=f(u);if(d&&(t+="#"+d),n){var v=o?o.state:null,p=o?o.title:null;e.onpopstate(),o&&o.replace?e.history.replaceState(v,p,a.prefix+t):e.history.pushState(v,p,a.prefix+t)}else e.location.href=a.prefix+t}};return a.defineRoutes=function(o,l,u){function s(){var t=a.getPath(),n={},r=i(t,n,n),s=e.history.state;if(null!=s)for(var c in s)n[c]=s[c];for(var f in o){var d=new RegExp("^"+f.replace(/:[^\/]+?\.{3}/g,"(.*?)").replace(/:[^\/]+/g,"([^\\/]+)")+"/?$");if(d.test(r))return void r.replace(d,function(){for(var e=f.match(/:[^\/]+/g)||[],r=[].slice.call(arguments,1,-2),i=0;i<e.length;i++)n[e[i].replace(/:|\./g,"")]=decodeURIComponent(r[i]);l(o[f],n,t,f)})}u(t,n)}var c;n?e.onpopstate=(c=s,function(){null==t&&(t=r(function(){t=null,c()}))}):"#"===a.prefix.charAt(0)&&(e.onhashchange=s),s()},a};s.route=function(e,n){var r,o,i,a,l,u=w(e),s=function(e,s,c){if(null==e)throw new Error("Ensure the DOM element that was passed to `m.route` is not undefined");var f=function(){null!=r&&n.render(e,r(t(o,i.key,i)))},d=function(e){if(e===s)throw new Error("Could not resolve default route "+s);u.setPath(s,null,{replace:!0})};u.defineRoutes(c,function(e,t,n){var u=l=function(e,s){u===l&&(o=null==s||"function"!=typeof s.view&&"function"!=typeof s?"div":s,i=t,a=n,l=null,r=(e.render||function(e){return e}).bind(e),f())};e.view||"function"==typeof e?u({},e):e.onmatch?g.resolve(e.onmatch(t,n)).then(function(t){u(e,t)},d):u(e,"div")},d),n.subscribe(e,f)};return s.set=function(e,t,n){null!=l&&((n=n||{}).replace=!0),l=null,u.setPath(e,t,n)},s.get=function(){return a},s.prefix=function(e){u.prefix=e},s.link=function(e){e.dom.setAttribute("href",u.prefix+e.attrs.href),e.dom.onclick=function(e){if(!(e.ctrlKey||e.metaKey||e.shiftKey||2===e.which)){e.preventDefault(),e.redraw=!1;var t=this.getAttribute("href");0===t.indexOf(u.prefix)&&(t=t.slice(u.prefix.length)),s.set(t,void 0,void 0)}}},s.param=function(e){return void 0!==i&&void 0!==e?i[e]:i},s}(window,h),s.withAttr=function(e,t,n){return function(r){t.call(n||this,e in r.currentTarget?r.currentTarget[e]:r.currentTarget.getAttribute(e))}};var b=p(window);s.render=b.render,s.redraw=h.redraw,s.request=v.request,s.jsonp=v.jsonp,s.parseQueryString=y,s.buildQueryString=f,s.version="1.1.6",s.vnode=t,e.exports=s}()});a.displayName="mithril";var l=i(function(e){!function(){var t=0,n={};function r(){function e(){return arguments.length>0&&arguments[0]!==n&&o(e,arguments[0]),e._state.value}return function(e){e.constructor=r,e._state={id:t++,value:void 0,state:0,derive:void 0,recover:void 0,deps:{},parents:[],endStream:void 0,unregister:void 0},e.map=e["fantasy-land/map"]=s,e["fantasy-land/ap"]=c,e["fantasy-land/of"]=r,e.valueOf=f,e.toJSON=d,e.toString=f,Object.defineProperties(e,{end:{get:function(){if(!e._state.endStream){var t=r();t.map(function(n){return!0===n&&(u(e),t._state.unregister=function(){u(t)}),n}),e._state.endStream=t}return e._state.endStream}}})}(e),arguments.length>0&&arguments[0]!==n&&o(e,arguments[0]),e}function o(e,t){for(var n in i(e,t),e._state.deps)a(e._state.deps[n],!1);null!=e._state.unregister&&e._state.unregister(),function(e){for(var t in e._state.changed=!1,e._state.deps)e._state.deps[t]._state.changed=!1}(e)}function i(e,t){e._state.value=t,e._state.changed=!0,2!==e._state.state&&(e._state.state=1)}function a(e,t){var r=e._state.parents;if(r.length>0&&r.every(p)&&(t||r.some(h))){var o=e._state.derive();if(o===n)return!1;i(e,o)}}function l(e,t){if(!t.every(v))throw new Error("Ensure that each item passed to stream.combine/stream.merge is a stream");return function(e,t,n){var r=e._state;return r.derive=n,r.parents=t.filter(m),function e(t,n){for(var r=0;r<n.length;r++)n[r]._state.deps[t._state.id]=t,e(t,n[r]._state.parents)}(e,r.parents),a(e,!0),e}(r(),t,function(){return e.apply(this,t.concat([t.filter(h)]))})}function u(e){for(var t=0;t<e._state.parents.length;t++){delete e._state.parents[t]._state.deps[e._state.id]}for(var n in e._state.deps){var r=e._state.deps[n],o=r._state.parents.indexOf(e);o>-1&&r._state.parents.splice(o,1)}e._state.state=2,e._state.deps={}}function s(e){return l(function(t){return e(t())},[this])}function c(e){return l(function(e,t){return e()(t())},[e,this])}function f(){return this._state.value}function d(){return null!=this._state.value&&"function"==typeof this._state.value.toJSON?this._state.value.toJSON():this._state.value}function v(e){return e._state}function p(e){return 1===e._state.state}function h(e){return e._state.changed}function m(e){return 2!==e._state.state}r["fantasy-land/of"]=r,r.merge=function(e){return l(function(){return e.map(function(e){return e()})},e)},r.combine=l,r.scan=function(e,t,n){var r=l(function(n){return t=e(t,n._state.value)},[n]);return 0===r._state.state&&r(t),r},r.scanMerge=function(e,t){var n=e.map(function(e){var t=e[0];return 0===t._state.state&&t(void 0),t});return l(function(){var r=arguments[arguments.length-1];return n.forEach(function(n,o){r.indexOf(n)>-1&&(t=e[o][1](t,n._state.value))}),t},n)},r.HALT=n,e.exports=r}()});e.keys=t,e.renderer=a,e.ComponentCreator=function(e){var n=e.createContent,o=void 0===n?function(){return null}:n,i=e.createProps,u=void 0===i?function(){return{}}:i,s=e.component,c=void 0===s?null:s,f=e.getElement,d=void 0===f?function(){return"div"}:f,v=e.getInitialState,p=void 0===v?function(){return{}}:v,h=e.onMount,m=void 0===h?function(){return null}:h,g=e.onUnMount,y=void 0===g?function(){return null}:g,w=e.onUpdate,b=void 0===w?function(){return null}:w,x=e.view,_=void 0===x?null:x,k={mounted:!1},S=function(e){return a(c||d(e),u(e,{renderer:a,requiresKeys:!1,keys:t}),[e.attrs.before,o(e,{renderer:a,requiresKeys:!1,keys:t}),e.attrs.after])};return{view:_?function(e){return _(e,{render:S,renderer:a})}:function(e){return S(e)},oninit:function(e){var n=p(e,l,{keys:t});r(e.state,n),void 0!==n.redrawOnUpdate&&n.redrawOnUpdate.map(function(){return k&&setTimeout(a.redraw)})},oncreate:function(e){k.mounted=!0,m(e,{keys:t})},onremove:y,onupdate:b}},Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (global = global || self, factory(global.polythene = {}));
+}(this, function (exports) { 'use strict';
+
+  // @ts-check
+  var keys = {
+    autocomplete: "autocomplete",
+    autofocus: "autofocus",
+    class: "class",
+    className: "class",
+    enctype: "enctype",
+    formaction: "formaction",
+    frameborder: "frameborder",
+    maxlength: "maxlength",
+    minlength: "minlength",
+    onblur: "onblur",
+    onchange: "onchange",
+    onclick: "onclick",
+    onfocus: "onfocus",
+    oninput: "oninput",
+    onkeydown: "onkeydown",
+    onkeyup: "onkeyup",
+    onmousedown: "onmousedown",
+    onmouseout: "onmouseout",
+    onmouseover: "onmouseover",
+    onmouseup: "onmouseup",
+    onscroll: "onscroll",
+    onsubmit: "onsubmit",
+    ontouchend: "ontouchend",
+    ontouchmove: "ontouchmove",
+    ontouchstart: "ontouchstart",
+    readonly: "readonly",
+    tabindex: "tabindex"
+  };
+
+  function _typeof(obj) {
+    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+      _typeof = function (obj) {
+        return typeof obj;
+      };
+    } else {
+      _typeof = function (obj) {
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+      };
+    }
+
+    return _typeof(obj);
+  }
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+  function createCommonjsModule(fn, module) {
+  	return module = { exports: {} }, fn(module, module.exports), module.exports;
+  }
+
+  var mithril = createCommonjsModule(function (module) {
+
+    (function () {
+
+      function Vnode(tag, key, attrs0, children, text, dom) {
+        return {
+          tag: tag,
+          key: key,
+          attrs: attrs0,
+          children: children,
+          text: text,
+          dom: dom,
+          domSize: undefined,
+          state: undefined,
+          _state: undefined,
+          events: undefined,
+          instance: undefined,
+          skip: false
+        };
+      }
+
+      Vnode.normalize = function (node) {
+        if (Array.isArray(node)) return Vnode("[", undefined, undefined, Vnode.normalizeChildren(node), undefined, undefined);
+        if (node != null && _typeof(node) !== "object") return Vnode("#", undefined, undefined, node === false ? "" : node, undefined, undefined);
+        return node;
+      };
+
+      Vnode.normalizeChildren = function normalizeChildren(children) {
+        for (var i = 0; i < children.length; i++) {
+          children[i] = Vnode.normalize(children[i]);
+        }
+
+        return children;
+      };
+
+      var selectorParser = /(?:(^|#|\.)([^#\.\[\]]+))|(\[(.+?)(?:\s*=\s*("|'|)((?:\\["'\]]|.)*?)\5)?\])/g;
+      var selectorCache = {};
+      var hasOwn = {}.hasOwnProperty;
+
+      function isEmpty(object) {
+        for (var key in object) {
+          if (hasOwn.call(object, key)) return false;
+        }
+
+        return true;
+      }
+
+      function compileSelector(selector) {
+        var match,
+            tag = "div",
+            classes = [],
+            attrs = {};
+
+        while (match = selectorParser.exec(selector)) {
+          var type = match[1],
+              value = match[2];
+          if (type === "" && value !== "") tag = value;else if (type === "#") attrs.id = value;else if (type === ".") classes.push(value);else if (match[3][0] === "[") {
+            var attrValue = match[6];
+            if (attrValue) attrValue = attrValue.replace(/\\(["'])/g, "$1").replace(/\\\\/g, "\\");
+            if (match[4] === "class") classes.push(attrValue);else attrs[match[4]] = attrValue === "" ? attrValue : attrValue || true;
+          }
+        }
+
+        if (classes.length > 0) attrs.className = classes.join(" ");
+        return selectorCache[selector] = {
+          tag: tag,
+          attrs: attrs
+        };
+      }
+
+      function execSelector(state, attrs, children) {
+        var hasAttrs = false,
+            childList,
+            text;
+        var className = attrs.className || attrs.class;
+
+        if (!isEmpty(state.attrs) && !isEmpty(attrs)) {
+          var newAttrs = {};
+
+          for (var key in attrs) {
+            if (hasOwn.call(attrs, key)) {
+              newAttrs[key] = attrs[key];
+            }
+          }
+
+          attrs = newAttrs;
+        }
+
+        for (var key in state.attrs) {
+          if (hasOwn.call(state.attrs, key)) {
+            attrs[key] = state.attrs[key];
+          }
+        }
+
+        if (className !== undefined) {
+          if (attrs.class !== undefined) {
+            attrs.class = undefined;
+            attrs.className = className;
+          }
+
+          if (state.attrs.className != null) {
+            attrs.className = state.attrs.className + " " + className;
+          }
+        }
+
+        for (var key in attrs) {
+          if (hasOwn.call(attrs, key) && key !== "key") {
+            hasAttrs = true;
+            break;
+          }
+        }
+
+        if (Array.isArray(children) && children.length === 1 && children[0] != null && children[0].tag === "#") {
+          text = children[0].children;
+        } else {
+          childList = children;
+        }
+
+        return Vnode(state.tag, attrs.key, hasAttrs ? attrs : undefined, childList, text);
+      }
+
+      function hyperscript(selector) {
+        // Because sloppy mode sucks
+        var attrs = arguments[1],
+            start = 2,
+            children;
+
+        if (selector == null || typeof selector !== "string" && typeof selector !== "function" && typeof selector.view !== "function") {
+          throw Error("The selector must be either a string or a component.");
+        }
+
+        if (typeof selector === "string") {
+          var cached = selectorCache[selector] || compileSelector(selector);
+        }
+
+        if (attrs == null) {
+          attrs = {};
+        } else if (_typeof(attrs) !== "object" || attrs.tag != null || Array.isArray(attrs)) {
+          attrs = {};
+          start = 1;
+        }
+
+        if (arguments.length === start + 1) {
+          children = arguments[start];
+          if (!Array.isArray(children)) children = [children];
+        } else {
+          children = [];
+
+          while (start < arguments.length) {
+            children.push(arguments[start++]);
+          }
+        }
+
+        var normalized = Vnode.normalizeChildren(children);
+
+        if (typeof selector === "string") {
+          return execSelector(cached, attrs, normalized);
+        } else {
+          return Vnode(selector, attrs.key, attrs, normalized);
+        }
+      }
+
+      hyperscript.trust = function (html) {
+        if (html == null) html = "";
+        return Vnode("<", undefined, undefined, html, undefined, undefined);
+      };
+
+      hyperscript.fragment = function (attrs1, children) {
+        return Vnode("[", attrs1.key, attrs1, Vnode.normalizeChildren(children), undefined, undefined);
+      };
+
+      var m = hyperscript;
+      /** @constructor */
+
+      var _PromisePolyfill = function PromisePolyfill(executor) {
+        if (!(this instanceof _PromisePolyfill)) throw new Error("Promise must be called with `new`");
+        if (typeof executor !== "function") throw new TypeError("executor must be a function");
+        var self = this,
+            resolvers = [],
+            rejectors = [],
+            resolveCurrent = handler(resolvers, true),
+            rejectCurrent = handler(rejectors, false);
+        var instance = self._instance = {
+          resolvers: resolvers,
+          rejectors: rejectors
+        };
+        var callAsync = typeof setImmediate === "function" ? setImmediate : setTimeout;
+
+        function handler(list, shouldAbsorb) {
+          return function execute(value) {
+            var then;
+
+            try {
+              if (shouldAbsorb && value != null && (_typeof(value) === "object" || typeof value === "function") && typeof (then = value.then) === "function") {
+                if (value === self) throw new TypeError("Promise can't be resolved w/ itself");
+                executeOnce(then.bind(value));
+              } else {
+                callAsync(function () {
+                  if (!shouldAbsorb && list.length === 0) console.error("Possible unhandled promise rejection:", value);
+
+                  for (var i = 0; i < list.length; i++) {
+                    list[i](value);
+                  }
+
+                  resolvers.length = 0, rejectors.length = 0;
+                  instance.state = shouldAbsorb;
+
+                  instance.retry = function () {
+                    execute(value);
+                  };
+                });
+              }
+            } catch (e) {
+              rejectCurrent(e);
+            }
+          };
+        }
+
+        function executeOnce(then) {
+          var runs = 0;
+
+          function run(fn) {
+            return function (value) {
+              if (runs++ > 0) return;
+              fn(value);
+            };
+          }
+
+          var onerror = run(rejectCurrent);
+
+          try {
+            then(run(resolveCurrent), onerror);
+          } catch (e) {
+            onerror(e);
+          }
+        }
+
+        executeOnce(executor);
+      };
+
+      _PromisePolyfill.prototype.then = function (onFulfilled, onRejection) {
+        var self = this,
+            instance = self._instance;
+
+        function handle(callback, list, next, state) {
+          list.push(function (value) {
+            if (typeof callback !== "function") next(value);else try {
+              resolveNext(callback(value));
+            } catch (e) {
+              if (rejectNext) rejectNext(e);
+            }
+          });
+          if (typeof instance.retry === "function" && state === instance.state) instance.retry();
+        }
+
+        var resolveNext, rejectNext;
+        var promise = new _PromisePolyfill(function (resolve, reject) {
+          resolveNext = resolve, rejectNext = reject;
+        });
+        handle(onFulfilled, instance.resolvers, resolveNext, true), handle(onRejection, instance.rejectors, rejectNext, false);
+        return promise;
+      };
+
+      _PromisePolyfill.prototype.catch = function (onRejection) {
+        return this.then(null, onRejection);
+      };
+
+      _PromisePolyfill.resolve = function (value) {
+        if (value instanceof _PromisePolyfill) return value;
+        return new _PromisePolyfill(function (resolve) {
+          resolve(value);
+        });
+      };
+
+      _PromisePolyfill.reject = function (value) {
+        return new _PromisePolyfill(function (resolve, reject) {
+          reject(value);
+        });
+      };
+
+      _PromisePolyfill.all = function (list) {
+        return new _PromisePolyfill(function (resolve, reject) {
+          var total = list.length,
+              count = 0,
+              values = [];
+          if (list.length === 0) resolve([]);else for (var i = 0; i < list.length; i++) {
+            (function (i) {
+              function consume(value) {
+                count++;
+                values[i] = value;
+                if (count === total) resolve(values);
+              }
+
+              if (list[i] != null && (_typeof(list[i]) === "object" || typeof list[i] === "function") && typeof list[i].then === "function") {
+                list[i].then(consume, reject);
+              } else consume(list[i]);
+            })(i);
+          }
+        });
+      };
+
+      _PromisePolyfill.race = function (list) {
+        return new _PromisePolyfill(function (resolve, reject) {
+          for (var i = 0; i < list.length; i++) {
+            list[i].then(resolve, reject);
+          }
+        });
+      };
+
+      if (typeof window !== "undefined") {
+        if (typeof window.Promise === "undefined") window.Promise = _PromisePolyfill;
+        var _PromisePolyfill = window.Promise;
+      } else if (typeof commonjsGlobal !== "undefined") {
+        if (typeof commonjsGlobal.Promise === "undefined") commonjsGlobal.Promise = _PromisePolyfill;
+        var _PromisePolyfill = commonjsGlobal.Promise;
+      }
+
+      var buildQueryString = function buildQueryString(object) {
+        if (Object.prototype.toString.call(object) !== "[object Object]") return "";
+        var args = [];
+
+        for (var key0 in object) {
+          destructure(key0, object[key0]);
+        }
+
+        return args.join("&");
+
+        function destructure(key0, value) {
+          if (Array.isArray(value)) {
+            for (var i = 0; i < value.length; i++) {
+              destructure(key0 + "[" + i + "]", value[i]);
+            }
+          } else if (Object.prototype.toString.call(value) === "[object Object]") {
+            for (var i in value) {
+              destructure(key0 + "[" + i + "]", value[i]);
+            }
+          } else args.push(encodeURIComponent(key0) + (value != null && value !== "" ? "=" + encodeURIComponent(value) : ""));
+        }
+      };
+
+      var FILE_PROTOCOL_REGEX = new RegExp("^file://", "i");
+
+      var _8 = function _8($window, Promise) {
+        var callbackCount = 0;
+        var oncompletion;
+
+        function setCompletionCallback(callback) {
+          oncompletion = callback;
+        }
+
+        function finalizer() {
+          var count = 0;
+
+          function complete() {
+            if (--count === 0 && typeof oncompletion === "function") oncompletion();
+          }
+
+          return function finalize(promise0) {
+            var then0 = promise0.then;
+
+            promise0.then = function () {
+              count++;
+              var next = then0.apply(promise0, arguments);
+              next.then(complete, function (e) {
+                complete();
+                if (count === 0) throw e;
+              });
+              return finalize(next);
+            };
+
+            return promise0;
+          };
+        }
+
+        function normalize(args, extra) {
+          if (typeof args === "string") {
+            var url = args;
+            args = extra || {};
+            if (args.url == null) args.url = url;
+          }
+
+          return args;
+        }
+
+        function request(args, extra) {
+          var finalize = finalizer();
+          args = normalize(args, extra);
+          var promise0 = new Promise(function (resolve, reject) {
+            if (args.method == null) args.method = "GET";
+            args.method = args.method.toUpperCase();
+            var useBody = args.method === "GET" || args.method === "TRACE" ? false : typeof args.useBody === "boolean" ? args.useBody : true;
+            if (typeof args.serialize !== "function") args.serialize = typeof FormData !== "undefined" && args.data instanceof FormData ? function (value) {
+              return value;
+            } : JSON.stringify;
+            if (typeof args.deserialize !== "function") args.deserialize = deserialize;
+            if (typeof args.extract !== "function") args.extract = extract;
+            args.url = interpolate(args.url, args.data);
+            if (useBody) args.data = args.serialize(args.data);else args.url = assemble(args.url, args.data);
+            var xhr = new $window.XMLHttpRequest(),
+                aborted = false,
+                _abort = xhr.abort;
+
+            xhr.abort = function abort() {
+              aborted = true;
+
+              _abort.call(xhr);
+            };
+
+            xhr.open(args.method, args.url, typeof args.async === "boolean" ? args.async : true, typeof args.user === "string" ? args.user : undefined, typeof args.password === "string" ? args.password : undefined);
+
+            if (args.serialize === JSON.stringify && useBody && !(args.headers && args.headers.hasOwnProperty("Content-Type"))) {
+              xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+            }
+
+            if (args.deserialize === deserialize && !(args.headers && args.headers.hasOwnProperty("Accept"))) {
+              xhr.setRequestHeader("Accept", "application/json, text/*");
+            }
+
+            if (args.withCredentials) xhr.withCredentials = args.withCredentials;
+
+            for (var key in args.headers) {
+              if ({}.hasOwnProperty.call(args.headers, key)) {
+                xhr.setRequestHeader(key, args.headers[key]);
+              }
+            }
+
+            if (typeof args.config === "function") xhr = args.config(xhr, args) || xhr;
+
+            xhr.onreadystatechange = function () {
+              // Don't throw errors on xhr.abort().
+              if (aborted) return;
+
+              if (xhr.readyState === 4) {
+                try {
+                  var response = args.extract !== extract ? args.extract(xhr, args) : args.deserialize(args.extract(xhr, args));
+
+                  if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304 || FILE_PROTOCOL_REGEX.test(args.url)) {
+                    resolve(cast(args.type, response));
+                  } else {
+                    var error = new Error(xhr.responseText);
+
+                    for (var key in response) {
+                      error[key] = response[key];
+                    }
+
+                    reject(error);
+                  }
+                } catch (e) {
+                  reject(e);
+                }
+              }
+            };
+
+            if (useBody && args.data != null) xhr.send(args.data);else xhr.send();
+          });
+          return args.background === true ? promise0 : finalize(promise0);
+        }
+
+        function jsonp(args, extra) {
+          var finalize = finalizer();
+          args = normalize(args, extra);
+          var promise0 = new Promise(function (resolve, reject) {
+            var callbackName = args.callbackName || "_mithril_" + Math.round(Math.random() * 1e16) + "_" + callbackCount++;
+            var script = $window.document.createElement("script");
+
+            $window[callbackName] = function (data) {
+              script.parentNode.removeChild(script);
+              resolve(cast(args.type, data));
+              delete $window[callbackName];
+            };
+
+            script.onerror = function () {
+              script.parentNode.removeChild(script);
+              reject(new Error("JSONP request failed"));
+              delete $window[callbackName];
+            };
+
+            if (args.data == null) args.data = {};
+            args.url = interpolate(args.url, args.data);
+            args.data[args.callbackKey || "callback"] = callbackName;
+            script.src = assemble(args.url, args.data);
+            $window.document.documentElement.appendChild(script);
+          });
+          return args.background === true ? promise0 : finalize(promise0);
+        }
+
+        function interpolate(url, data) {
+          if (data == null) return url;
+          var tokens = url.match(/:[^\/]+/gi) || [];
+
+          for (var i = 0; i < tokens.length; i++) {
+            var key = tokens[i].slice(1);
+
+            if (data[key] != null) {
+              url = url.replace(tokens[i], data[key]);
+            }
+          }
+
+          return url;
+        }
+
+        function assemble(url, data) {
+          var querystring = buildQueryString(data);
+
+          if (querystring !== "") {
+            var prefix = url.indexOf("?") < 0 ? "?" : "&";
+            url += prefix + querystring;
+          }
+
+          return url;
+        }
+
+        function deserialize(data) {
+          try {
+            return data !== "" ? JSON.parse(data) : null;
+          } catch (e) {
+            throw new Error(data);
+          }
+        }
+
+        function extract(xhr) {
+          return xhr.responseText;
+        }
+
+        function cast(type0, data) {
+          if (typeof type0 === "function") {
+            if (Array.isArray(data)) {
+              for (var i = 0; i < data.length; i++) {
+                data[i] = new type0(data[i]);
+              }
+            } else return new type0(data);
+          }
+
+          return data;
+        }
+
+        return {
+          request: request,
+          jsonp: jsonp,
+          setCompletionCallback: setCompletionCallback
+        };
+      };
+
+      var requestService = _8(window, _PromisePolyfill);
+
+      var coreRenderer = function coreRenderer($window) {
+        var $doc = $window.document;
+        var $emptyFragment = $doc.createDocumentFragment();
+        var nameSpace = {
+          svg: "http://www.w3.org/2000/svg",
+          math: "http://www.w3.org/1998/Math/MathML"
+        };
+        var onevent;
+
+        function setEventCallback(callback) {
+          return onevent = callback;
+        }
+
+        function getNameSpace(vnode) {
+          return vnode.attrs && vnode.attrs.xmlns || nameSpace[vnode.tag];
+        } //create
+
+
+        function createNodes(parent, vnodes, start, end, hooks, nextSibling, ns) {
+          for (var i = start; i < end; i++) {
+            var vnode = vnodes[i];
+
+            if (vnode != null) {
+              createNode(parent, vnode, hooks, ns, nextSibling);
+            }
+          }
+        }
+
+        function createNode(parent, vnode, hooks, ns, nextSibling) {
+          var tag = vnode.tag;
+
+          if (typeof tag === "string") {
+            vnode.state = {};
+            if (vnode.attrs != null) initLifecycle(vnode.attrs, vnode, hooks);
+
+            switch (tag) {
+              case "#":
+                return createText(parent, vnode, nextSibling);
+
+              case "<":
+                return createHTML(parent, vnode, nextSibling);
+
+              case "[":
+                return createFragment(parent, vnode, hooks, ns, nextSibling);
+
+              default:
+                return createElement(parent, vnode, hooks, ns, nextSibling);
+            }
+          } else return createComponent(parent, vnode, hooks, ns, nextSibling);
+        }
+
+        function createText(parent, vnode, nextSibling) {
+          vnode.dom = $doc.createTextNode(vnode.children);
+          insertNode(parent, vnode.dom, nextSibling);
+          return vnode.dom;
+        }
+
+        function createHTML(parent, vnode, nextSibling) {
+          var match1 = vnode.children.match(/^\s*?<(\w+)/im) || [];
+          var parent1 = {
+            caption: "table",
+            thead: "table",
+            tbody: "table",
+            tfoot: "table",
+            tr: "tbody",
+            th: "tr",
+            td: "tr",
+            colgroup: "table",
+            col: "colgroup"
+          }[match1[1]] || "div";
+          var temp = $doc.createElement(parent1);
+          temp.innerHTML = vnode.children;
+          vnode.dom = temp.firstChild;
+          vnode.domSize = temp.childNodes.length;
+          var fragment = $doc.createDocumentFragment();
+          var child;
+
+          while (child = temp.firstChild) {
+            fragment.appendChild(child);
+          }
+
+          insertNode(parent, fragment, nextSibling);
+          return fragment;
+        }
+
+        function createFragment(parent, vnode, hooks, ns, nextSibling) {
+          var fragment = $doc.createDocumentFragment();
+
+          if (vnode.children != null) {
+            var children = vnode.children;
+            createNodes(fragment, children, 0, children.length, hooks, null, ns);
+          }
+
+          vnode.dom = fragment.firstChild;
+          vnode.domSize = fragment.childNodes.length;
+          insertNode(parent, fragment, nextSibling);
+          return fragment;
+        }
+
+        function createElement(parent, vnode, hooks, ns, nextSibling) {
+          var tag = vnode.tag;
+          var attrs2 = vnode.attrs;
+          var is = attrs2 && attrs2.is;
+          ns = getNameSpace(vnode) || ns;
+          var element = ns ? is ? $doc.createElementNS(ns, tag, {
+            is: is
+          }) : $doc.createElementNS(ns, tag) : is ? $doc.createElement(tag, {
+            is: is
+          }) : $doc.createElement(tag);
+          vnode.dom = element;
+
+          if (attrs2 != null) {
+            setAttrs(vnode, attrs2, ns);
+          }
+
+          insertNode(parent, element, nextSibling);
+
+          if (vnode.attrs != null && vnode.attrs.contenteditable != null) {
+            setContentEditable(vnode);
+          } else {
+            if (vnode.text != null) {
+              if (vnode.text !== "") element.textContent = vnode.text;else vnode.children = [Vnode("#", undefined, undefined, vnode.text, undefined, undefined)];
+            }
+
+            if (vnode.children != null) {
+              var children = vnode.children;
+              createNodes(element, children, 0, children.length, hooks, null, ns);
+              setLateAttrs(vnode);
+            }
+          }
+
+          return element;
+        }
+
+        function initComponent(vnode, hooks) {
+          var sentinel;
+
+          if (typeof vnode.tag.view === "function") {
+            vnode.state = Object.create(vnode.tag);
+            sentinel = vnode.state.view;
+            if (sentinel.$$reentrantLock$$ != null) return $emptyFragment;
+            sentinel.$$reentrantLock$$ = true;
+          } else {
+            vnode.state = void 0;
+            sentinel = vnode.tag;
+            if (sentinel.$$reentrantLock$$ != null) return $emptyFragment;
+            sentinel.$$reentrantLock$$ = true;
+            vnode.state = vnode.tag.prototype != null && typeof vnode.tag.prototype.view === "function" ? new vnode.tag(vnode) : vnode.tag(vnode);
+          }
+
+          vnode._state = vnode.state;
+          if (vnode.attrs != null) initLifecycle(vnode.attrs, vnode, hooks);
+          initLifecycle(vnode._state, vnode, hooks);
+          vnode.instance = Vnode.normalize(vnode._state.view.call(vnode.state, vnode));
+          if (vnode.instance === vnode) throw Error("A view cannot return the vnode it received as argument");
+          sentinel.$$reentrantLock$$ = null;
+        }
+
+        function createComponent(parent, vnode, hooks, ns, nextSibling) {
+          initComponent(vnode, hooks);
+
+          if (vnode.instance != null) {
+            var element = createNode(parent, vnode.instance, hooks, ns, nextSibling);
+            vnode.dom = vnode.instance.dom;
+            vnode.domSize = vnode.dom != null ? vnode.instance.domSize : 0;
+            insertNode(parent, element, nextSibling);
+            return element;
+          } else {
+            vnode.domSize = 0;
+            return $emptyFragment;
+          }
+        } //update
+
+
+        function updateNodes(parent, old, vnodes, recycling, hooks, nextSibling, ns) {
+          if (old === vnodes || old == null && vnodes == null) return;else if (old == null) createNodes(parent, vnodes, 0, vnodes.length, hooks, nextSibling, ns);else if (vnodes == null) removeNodes(old, 0, old.length, vnodes);else {
+            if (old.length === vnodes.length) {
+              var isUnkeyed = false;
+
+              for (var i = 0; i < vnodes.length; i++) {
+                if (vnodes[i] != null && old[i] != null) {
+                  isUnkeyed = vnodes[i].key == null && old[i].key == null;
+                  break;
+                }
+              }
+
+              if (isUnkeyed) {
+                for (var i = 0; i < old.length; i++) {
+                  if (old[i] === vnodes[i]) continue;else if (old[i] == null && vnodes[i] != null) createNode(parent, vnodes[i], hooks, ns, getNextSibling(old, i + 1, nextSibling));else if (vnodes[i] == null) removeNodes(old, i, i + 1, vnodes);else updateNode(parent, old[i], vnodes[i], hooks, getNextSibling(old, i + 1, nextSibling), recycling, ns);
+                }
+
+                return;
+              }
+            }
+
+            recycling = recycling || isRecyclable(old, vnodes);
+
+            if (recycling) {
+              var pool = old.pool;
+              old = old.concat(old.pool);
+            }
+
+            var oldStart = 0,
+                start = 0,
+                oldEnd = old.length - 1,
+                end = vnodes.length - 1,
+                map;
+
+            while (oldEnd >= oldStart && end >= start) {
+              var o = old[oldStart],
+                  v = vnodes[start];
+              if (o === v && !recycling) oldStart++, start++;else if (o == null) oldStart++;else if (v == null) start++;else if (o.key === v.key) {
+                var shouldRecycle = pool != null && oldStart >= old.length - pool.length || pool == null && recycling;
+                oldStart++, start++;
+                updateNode(parent, o, v, hooks, getNextSibling(old, oldStart, nextSibling), shouldRecycle, ns);
+                if (recycling && o.tag === v.tag) insertNode(parent, toFragment(o), nextSibling);
+              } else {
+                var o = old[oldEnd];
+                if (o === v && !recycling) oldEnd--, start++;else if (o == null) oldEnd--;else if (v == null) start++;else if (o.key === v.key) {
+                  var shouldRecycle = pool != null && oldEnd >= old.length - pool.length || pool == null && recycling;
+                  updateNode(parent, o, v, hooks, getNextSibling(old, oldEnd + 1, nextSibling), shouldRecycle, ns);
+                  if (recycling || start < end) insertNode(parent, toFragment(o), getNextSibling(old, oldStart, nextSibling));
+                  oldEnd--, start++;
+                } else break;
+              }
+            }
+
+            while (oldEnd >= oldStart && end >= start) {
+              var o = old[oldEnd],
+                  v = vnodes[end];
+              if (o === v && !recycling) oldEnd--, end--;else if (o == null) oldEnd--;else if (v == null) end--;else if (o.key === v.key) {
+                var shouldRecycle = pool != null && oldEnd >= old.length - pool.length || pool == null && recycling;
+                updateNode(parent, o, v, hooks, getNextSibling(old, oldEnd + 1, nextSibling), shouldRecycle, ns);
+                if (recycling && o.tag === v.tag) insertNode(parent, toFragment(o), nextSibling);
+                if (o.dom != null) nextSibling = o.dom;
+                oldEnd--, end--;
+              } else {
+                if (!map) map = getKeyMap(old, oldEnd);
+
+                if (v != null) {
+                  var oldIndex = map[v.key];
+
+                  if (oldIndex != null) {
+                    var movable = old[oldIndex];
+                    var shouldRecycle = pool != null && oldIndex >= old.length - pool.length || pool == null && recycling;
+                    updateNode(parent, movable, v, hooks, getNextSibling(old, oldEnd + 1, nextSibling), recycling, ns);
+                    insertNode(parent, toFragment(movable), nextSibling);
+                    old[oldIndex].skip = true;
+                    if (movable.dom != null) nextSibling = movable.dom;
+                  } else {
+                    var dom = createNode(parent, v, hooks, ns, nextSibling);
+                    nextSibling = dom;
+                  }
+                }
+
+                end--;
+              }
+              if (end < start) break;
+            }
+
+            createNodes(parent, vnodes, start, end + 1, hooks, nextSibling, ns);
+            removeNodes(old, oldStart, oldEnd + 1, vnodes);
+          }
+        }
+
+        function updateNode(parent, old, vnode, hooks, nextSibling, recycling, ns) {
+          var oldTag = old.tag,
+              tag = vnode.tag;
+
+          if (oldTag === tag) {
+            vnode.state = old.state;
+            vnode._state = old._state;
+            vnode.events = old.events;
+            if (!recycling && shouldNotUpdate(vnode, old)) return;
+
+            if (typeof oldTag === "string") {
+              if (vnode.attrs != null) {
+                if (recycling) {
+                  vnode.state = {};
+                  initLifecycle(vnode.attrs, vnode, hooks);
+                } else updateLifecycle(vnode.attrs, vnode, hooks);
+              }
+
+              switch (oldTag) {
+                case "#":
+                  updateText(old, vnode);
+                  break;
+
+                case "<":
+                  updateHTML(parent, old, vnode, nextSibling);
+                  break;
+
+                case "[":
+                  updateFragment(parent, old, vnode, recycling, hooks, nextSibling, ns);
+                  break;
+
+                default:
+                  updateElement(old, vnode, recycling, hooks, ns);
+              }
+            } else updateComponent(parent, old, vnode, hooks, nextSibling, recycling, ns);
+          } else {
+            removeNode(old, null);
+            createNode(parent, vnode, hooks, ns, nextSibling);
+          }
+        }
+
+        function updateText(old, vnode) {
+          if (old.children.toString() !== vnode.children.toString()) {
+            old.dom.nodeValue = vnode.children;
+          }
+
+          vnode.dom = old.dom;
+        }
+
+        function updateHTML(parent, old, vnode, nextSibling) {
+          if (old.children !== vnode.children) {
+            toFragment(old);
+            createHTML(parent, vnode, nextSibling);
+          } else vnode.dom = old.dom, vnode.domSize = old.domSize;
+        }
+
+        function updateFragment(parent, old, vnode, recycling, hooks, nextSibling, ns) {
+          updateNodes(parent, old.children, vnode.children, recycling, hooks, nextSibling, ns);
+          var domSize = 0,
+              children = vnode.children;
+          vnode.dom = null;
+
+          if (children != null) {
+            for (var i = 0; i < children.length; i++) {
+              var child = children[i];
+
+              if (child != null && child.dom != null) {
+                if (vnode.dom == null) vnode.dom = child.dom;
+                domSize += child.domSize || 1;
+              }
+            }
+
+            if (domSize !== 1) vnode.domSize = domSize;
+          }
+        }
+
+        function updateElement(old, vnode, recycling, hooks, ns) {
+          var element = vnode.dom = old.dom;
+          ns = getNameSpace(vnode) || ns;
+
+          if (vnode.tag === "textarea") {
+            if (vnode.attrs == null) vnode.attrs = {};
+
+            if (vnode.text != null) {
+              vnode.attrs.value = vnode.text; //FIXME handle0 multiple children
+
+              vnode.text = undefined;
+            }
+          }
+
+          updateAttrs(vnode, old.attrs, vnode.attrs, ns);
+
+          if (vnode.attrs != null && vnode.attrs.contenteditable != null) {
+            setContentEditable(vnode);
+          } else if (old.text != null && vnode.text != null && vnode.text !== "") {
+            if (old.text.toString() !== vnode.text.toString()) old.dom.firstChild.nodeValue = vnode.text;
+          } else {
+            if (old.text != null) old.children = [Vnode("#", undefined, undefined, old.text, undefined, old.dom.firstChild)];
+            if (vnode.text != null) vnode.children = [Vnode("#", undefined, undefined, vnode.text, undefined, undefined)];
+            updateNodes(element, old.children, vnode.children, recycling, hooks, null, ns);
+          }
+        }
+
+        function updateComponent(parent, old, vnode, hooks, nextSibling, recycling, ns) {
+          if (recycling) {
+            initComponent(vnode, hooks);
+          } else {
+            vnode.instance = Vnode.normalize(vnode._state.view.call(vnode.state, vnode));
+            if (vnode.instance === vnode) throw Error("A view cannot return the vnode it received as argument");
+            if (vnode.attrs != null) updateLifecycle(vnode.attrs, vnode, hooks);
+            updateLifecycle(vnode._state, vnode, hooks);
+          }
+
+          if (vnode.instance != null) {
+            if (old.instance == null) createNode(parent, vnode.instance, hooks, ns, nextSibling);else updateNode(parent, old.instance, vnode.instance, hooks, nextSibling, recycling, ns);
+            vnode.dom = vnode.instance.dom;
+            vnode.domSize = vnode.instance.domSize;
+          } else if (old.instance != null) {
+            removeNode(old.instance, null);
+            vnode.dom = undefined;
+            vnode.domSize = 0;
+          } else {
+            vnode.dom = old.dom;
+            vnode.domSize = old.domSize;
+          }
+        }
+
+        function isRecyclable(old, vnodes) {
+          if (old.pool != null && Math.abs(old.pool.length - vnodes.length) <= Math.abs(old.length - vnodes.length)) {
+            var oldChildrenLength = old[0] && old[0].children && old[0].children.length || 0;
+            var poolChildrenLength = old.pool[0] && old.pool[0].children && old.pool[0].children.length || 0;
+            var vnodesChildrenLength = vnodes[0] && vnodes[0].children && vnodes[0].children.length || 0;
+
+            if (Math.abs(poolChildrenLength - vnodesChildrenLength) <= Math.abs(oldChildrenLength - vnodesChildrenLength)) {
+              return true;
+            }
+          }
+
+          return false;
+        }
+
+        function getKeyMap(vnodes, end) {
+          var map = {},
+              i = 0;
+
+          for (var i = 0; i < end; i++) {
+            var vnode = vnodes[i];
+
+            if (vnode != null) {
+              var key2 = vnode.key;
+              if (key2 != null) map[key2] = i;
+            }
+          }
+
+          return map;
+        }
+
+        function toFragment(vnode) {
+          var count0 = vnode.domSize;
+
+          if (count0 != null || vnode.dom == null) {
+            var fragment = $doc.createDocumentFragment();
+
+            if (count0 > 0) {
+              var dom = vnode.dom;
+
+              while (--count0) {
+                fragment.appendChild(dom.nextSibling);
+              }
+
+              fragment.insertBefore(dom, fragment.firstChild);
+            }
+
+            return fragment;
+          } else return vnode.dom;
+        }
+
+        function getNextSibling(vnodes, i, nextSibling) {
+          for (; i < vnodes.length; i++) {
+            if (vnodes[i] != null && vnodes[i].dom != null) return vnodes[i].dom;
+          }
+
+          return nextSibling;
+        }
+
+        function insertNode(parent, dom, nextSibling) {
+          if (nextSibling && nextSibling.parentNode) parent.insertBefore(dom, nextSibling);else parent.appendChild(dom);
+        }
+
+        function setContentEditable(vnode) {
+          var children = vnode.children;
+
+          if (children != null && children.length === 1 && children[0].tag === "<") {
+            var content = children[0].children;
+            if (vnode.dom.innerHTML !== content) vnode.dom.innerHTML = content;
+          } else if (vnode.text != null || children != null && children.length !== 0) throw new Error("Child node of a contenteditable must be trusted");
+        } //remove
+
+
+        function removeNodes(vnodes, start, end, context) {
+          for (var i = start; i < end; i++) {
+            var vnode = vnodes[i];
+
+            if (vnode != null) {
+              if (vnode.skip) vnode.skip = false;else removeNode(vnode, context);
+            }
+          }
+        }
+
+        function removeNode(vnode, context) {
+          var expected = 1,
+              called = 0;
+
+          if (vnode.attrs && typeof vnode.attrs.onbeforeremove === "function") {
+            var result = vnode.attrs.onbeforeremove.call(vnode.state, vnode);
+
+            if (result != null && typeof result.then === "function") {
+              expected++;
+              result.then(continuation, continuation);
+            }
+          }
+
+          if (typeof vnode.tag !== "string" && typeof vnode._state.onbeforeremove === "function") {
+            var result = vnode._state.onbeforeremove.call(vnode.state, vnode);
+
+            if (result != null && typeof result.then === "function") {
+              expected++;
+              result.then(continuation, continuation);
+            }
+          }
+
+          continuation();
+
+          function continuation() {
+            if (++called === expected) {
+              onremove(vnode);
+
+              if (vnode.dom) {
+                var count0 = vnode.domSize || 1;
+
+                if (count0 > 1) {
+                  var dom = vnode.dom;
+
+                  while (--count0) {
+                    removeNodeFromDOM(dom.nextSibling);
+                  }
+                }
+
+                removeNodeFromDOM(vnode.dom);
+
+                if (context != null && vnode.domSize == null && !hasIntegrationMethods(vnode.attrs) && typeof vnode.tag === "string") {
+                  //TODO test custom elements
+                  if (!context.pool) context.pool = [vnode];else context.pool.push(vnode);
+                }
+              }
+            }
+          }
+        }
+
+        function removeNodeFromDOM(node) {
+          var parent = node.parentNode;
+          if (parent != null) parent.removeChild(node);
+        }
+
+        function onremove(vnode) {
+          if (vnode.attrs && typeof vnode.attrs.onremove === "function") vnode.attrs.onremove.call(vnode.state, vnode);
+
+          if (typeof vnode.tag !== "string") {
+            if (typeof vnode._state.onremove === "function") vnode._state.onremove.call(vnode.state, vnode);
+            if (vnode.instance != null) onremove(vnode.instance);
+          } else {
+            var children = vnode.children;
+
+            if (Array.isArray(children)) {
+              for (var i = 0; i < children.length; i++) {
+                var child = children[i];
+                if (child != null) onremove(child);
+              }
+            }
+          }
+        } //attrs2
+
+
+        function setAttrs(vnode, attrs2, ns) {
+          for (var key2 in attrs2) {
+            setAttr(vnode, key2, null, attrs2[key2], ns);
+          }
+        }
+
+        function setAttr(vnode, key2, old, value, ns) {
+          var element = vnode.dom;
+          if (key2 === "key" || key2 === "is" || old === value && !isFormAttribute(vnode, key2) && _typeof(value) !== "object" || typeof value === "undefined" || isLifecycleMethod(key2)) return;
+          var nsLastIndex = key2.indexOf(":");
+
+          if (nsLastIndex > -1 && key2.substr(0, nsLastIndex) === "xlink") {
+            element.setAttributeNS("http://www.w3.org/1999/xlink", key2.slice(nsLastIndex + 1), value);
+          } else if (key2[0] === "o" && key2[1] === "n" && typeof value === "function") updateEvent(vnode, key2, value);else if (key2 === "style") updateStyle(element, old, value);else if (key2 in element && !isAttribute(key2) && ns === undefined && !isCustomElement(vnode)) {
+            if (key2 === "value") {
+              var normalized0 = "" + value; // eslint-disable-line no-implicit-coercion
+              //setting input[value] to same value by typing on focused element moves cursor to end in Chrome
+
+              if ((vnode.tag === "input" || vnode.tag === "textarea") && vnode.dom.value === normalized0 && vnode.dom === $doc.activeElement) return; //setting select[value] to same value while having select open blinks select dropdown in Chrome
+
+              if (vnode.tag === "select") {
+                if (value === null) {
+                  if (vnode.dom.selectedIndex === -1 && vnode.dom === $doc.activeElement) return;
+                } else {
+                  if (old !== null && vnode.dom.value === normalized0 && vnode.dom === $doc.activeElement) return;
+                }
+              } //setting option[value] to same value while having select open blinks select dropdown in Chrome
+
+
+              if (vnode.tag === "option" && old != null && vnode.dom.value === normalized0) return;
+            } // If you assign an input type1 that is not supported by IE 11 with an assignment expression, an error0 will occur.
+
+
+            if (vnode.tag === "input" && key2 === "type") {
+              element.setAttribute(key2, value);
+              return;
+            }
+
+            element[key2] = value;
+          } else {
+            if (typeof value === "boolean") {
+              if (value) element.setAttribute(key2, "");else element.removeAttribute(key2);
+            } else element.setAttribute(key2 === "className" ? "class" : key2, value);
+          }
+        }
+
+        function setLateAttrs(vnode) {
+          var attrs2 = vnode.attrs;
+
+          if (vnode.tag === "select" && attrs2 != null) {
+            if ("value" in attrs2) setAttr(vnode, "value", null, attrs2.value, undefined);
+            if ("selectedIndex" in attrs2) setAttr(vnode, "selectedIndex", null, attrs2.selectedIndex, undefined);
+          }
+        }
+
+        function updateAttrs(vnode, old, attrs2, ns) {
+          if (attrs2 != null) {
+            for (var key2 in attrs2) {
+              setAttr(vnode, key2, old && old[key2], attrs2[key2], ns);
+            }
+          }
+
+          if (old != null) {
+            for (var key2 in old) {
+              if (attrs2 == null || !(key2 in attrs2)) {
+                if (key2 === "className") key2 = "class";
+                if (key2[0] === "o" && key2[1] === "n" && !isLifecycleMethod(key2)) updateEvent(vnode, key2, undefined);else if (key2 !== "key") vnode.dom.removeAttribute(key2);
+              }
+            }
+          }
+        }
+
+        function isFormAttribute(vnode, attr) {
+          return attr === "value" || attr === "checked" || attr === "selectedIndex" || attr === "selected" && vnode.dom === $doc.activeElement;
+        }
+
+        function isLifecycleMethod(attr) {
+          return attr === "oninit" || attr === "oncreate" || attr === "onupdate" || attr === "onremove" || attr === "onbeforeremove" || attr === "onbeforeupdate";
+        }
+
+        function isAttribute(attr) {
+          return attr === "href" || attr === "list" || attr === "form" || attr === "width" || attr === "height"; // || attr === "type"
+        }
+
+        function isCustomElement(vnode) {
+          return vnode.attrs.is || vnode.tag.indexOf("-") > -1;
+        }
+
+        function hasIntegrationMethods(source) {
+          return source != null && (source.oncreate || source.onupdate || source.onbeforeremove || source.onremove);
+        } //style
+
+
+        function updateStyle(element, old, style) {
+          if (old === style) element.style.cssText = "", old = null;
+          if (style == null) element.style.cssText = "";else if (typeof style === "string") element.style.cssText = style;else {
+            if (typeof old === "string") element.style.cssText = "";
+
+            for (var key2 in style) {
+              element.style[key2] = style[key2];
+            }
+
+            if (old != null && typeof old !== "string") {
+              for (var key2 in old) {
+                if (!(key2 in style)) element.style[key2] = "";
+              }
+            }
+          }
+        } //event
+
+
+        function updateEvent(vnode, key2, value) {
+          var element = vnode.dom;
+          var callback = typeof onevent !== "function" ? value : function (e) {
+            var result = value.call(element, e);
+            onevent.call(element, e);
+            return result;
+          };
+          if (key2 in element) element[key2] = typeof value === "function" ? callback : null;else {
+            var eventName = key2.slice(2);
+            if (vnode.events === undefined) vnode.events = {};
+            if (vnode.events[key2] === callback) return;
+            if (vnode.events[key2] != null) element.removeEventListener(eventName, vnode.events[key2], false);
+
+            if (typeof value === "function") {
+              vnode.events[key2] = callback;
+              element.addEventListener(eventName, vnode.events[key2], false);
+            }
+          }
+        } //lifecycle
+
+
+        function initLifecycle(source, vnode, hooks) {
+          if (typeof source.oninit === "function") source.oninit.call(vnode.state, vnode);
+          if (typeof source.oncreate === "function") hooks.push(source.oncreate.bind(vnode.state, vnode));
+        }
+
+        function updateLifecycle(source, vnode, hooks) {
+          if (typeof source.onupdate === "function") hooks.push(source.onupdate.bind(vnode.state, vnode));
+        }
+
+        function shouldNotUpdate(vnode, old) {
+          var forceVnodeUpdate, forceComponentUpdate;
+          if (vnode.attrs != null && typeof vnode.attrs.onbeforeupdate === "function") forceVnodeUpdate = vnode.attrs.onbeforeupdate.call(vnode.state, vnode, old);
+          if (typeof vnode.tag !== "string" && typeof vnode._state.onbeforeupdate === "function") forceComponentUpdate = vnode._state.onbeforeupdate.call(vnode.state, vnode, old);
+
+          if (!(forceVnodeUpdate === undefined && forceComponentUpdate === undefined) && !forceVnodeUpdate && !forceComponentUpdate) {
+            vnode.dom = old.dom;
+            vnode.domSize = old.domSize;
+            vnode.instance = old.instance;
+            return true;
+          }
+
+          return false;
+        }
+
+        function render(dom, vnodes) {
+          if (!dom) throw new Error("Ensure the DOM element being passed to m.route/m.mount/m.render is not undefined.");
+          var hooks = [];
+          var active = $doc.activeElement;
+          var namespace = dom.namespaceURI; // First time0 rendering into a node clears it out
+
+          if (dom.vnodes == null) dom.textContent = "";
+          if (!Array.isArray(vnodes)) vnodes = [vnodes];
+          updateNodes(dom, dom.vnodes, Vnode.normalizeChildren(vnodes), false, hooks, null, namespace === "http://www.w3.org/1999/xhtml" ? undefined : namespace);
+          dom.vnodes = vnodes; // document.activeElement can return null in IE https://developer.mozilla.org/en-US/docs/Web/API/Document/activeElement
+
+          if (active != null && $doc.activeElement !== active) active.focus();
+
+          for (var i = 0; i < hooks.length; i++) {
+            hooks[i]();
+          }
+        }
+
+        return {
+          render: render,
+          setEventCallback: setEventCallback
+        };
+      };
+
+      function throttle(callback) {
+        //60fps translates to 16.6ms, round it down since setTimeout requires int
+        var time = 16;
+        var last = 0,
+            pending = null;
+        var timeout = typeof requestAnimationFrame === "function" ? requestAnimationFrame : setTimeout;
+        return function () {
+          var now = Date.now();
+
+          if (last === 0 || now - last >= time) {
+            last = now;
+            callback();
+          } else if (pending === null) {
+            pending = timeout(function () {
+              pending = null;
+              callback();
+              last = Date.now();
+            }, time - (now - last));
+          }
+        };
+      }
+
+      var _11 = function _11($window) {
+        var renderService = coreRenderer($window);
+        renderService.setEventCallback(function (e) {
+          if (e.redraw === false) e.redraw = undefined;else redraw();
+        });
+        var callbacks = [];
+
+        function subscribe(key1, callback) {
+          unsubscribe(key1);
+          callbacks.push(key1, throttle(callback));
+        }
+
+        function unsubscribe(key1) {
+          var index = callbacks.indexOf(key1);
+          if (index > -1) callbacks.splice(index, 2);
+        }
+
+        function redraw() {
+          for (var i = 1; i < callbacks.length; i += 2) {
+            callbacks[i]();
+          }
+        }
+
+        return {
+          subscribe: subscribe,
+          unsubscribe: unsubscribe,
+          redraw: redraw,
+          render: renderService.render
+        };
+      };
+
+      var redrawService = _11(window);
+
+      requestService.setCompletionCallback(redrawService.redraw);
+
+      var _16 = function _16(redrawService0) {
+        return function (root, component) {
+          if (component === null) {
+            redrawService0.render(root, []);
+            redrawService0.unsubscribe(root);
+            return;
+          }
+
+          if (component.view == null && typeof component !== "function") throw new Error("m.mount(element, component) expects a component, not a vnode");
+
+          var run0 = function run0() {
+            redrawService0.render(root, Vnode(component));
+          };
+
+          redrawService0.subscribe(root, run0);
+          redrawService0.redraw();
+        };
+      };
+
+      m.mount = _16(redrawService);
+      var Promise = _PromisePolyfill;
+
+      var parseQueryString = function parseQueryString(string) {
+        if (string === "" || string == null) return {};
+        if (string.charAt(0) === "?") string = string.slice(1);
+        var entries = string.split("&"),
+            data0 = {},
+            counters = {};
+
+        for (var i = 0; i < entries.length; i++) {
+          var entry = entries[i].split("=");
+          var key5 = decodeURIComponent(entry[0]);
+          var value = entry.length === 2 ? decodeURIComponent(entry[1]) : "";
+          if (value === "true") value = true;else if (value === "false") value = false;
+          var levels = key5.split(/\]\[?|\[/);
+          var cursor = data0;
+          if (key5.indexOf("[") > -1) levels.pop();
+
+          for (var j = 0; j < levels.length; j++) {
+            var level = levels[j],
+                nextLevel = levels[j + 1];
+            var isNumber = nextLevel == "" || !isNaN(parseInt(nextLevel, 10));
+            var isValue = j === levels.length - 1;
+
+            if (level === "") {
+              var key5 = levels.slice(0, j).join();
+              if (counters[key5] == null) counters[key5] = 0;
+              level = counters[key5]++;
+            }
+
+            if (cursor[level] == null) {
+              cursor[level] = isValue ? value : isNumber ? [] : {};
+            }
+
+            cursor = cursor[level];
+          }
+        }
+
+        return data0;
+      };
+
+      var coreRouter = function coreRouter($window) {
+        var supportsPushState = typeof $window.history.pushState === "function";
+        var callAsync0 = typeof setImmediate === "function" ? setImmediate : setTimeout;
+
+        function normalize1(fragment0) {
+          var data = $window.location[fragment0].replace(/(?:%[a-f89][a-f0-9])+/gim, decodeURIComponent);
+          if (fragment0 === "pathname" && data[0] !== "/") data = "/" + data;
+          return data;
+        }
+
+        var asyncId;
+
+        function debounceAsync(callback0) {
+          return function () {
+            if (asyncId != null) return;
+            asyncId = callAsync0(function () {
+              asyncId = null;
+              callback0();
+            });
+          };
+        }
+
+        function parsePath(path, queryData, hashData) {
+          var queryIndex = path.indexOf("?");
+          var hashIndex = path.indexOf("#");
+          var pathEnd = queryIndex > -1 ? queryIndex : hashIndex > -1 ? hashIndex : path.length;
+
+          if (queryIndex > -1) {
+            var queryEnd = hashIndex > -1 ? hashIndex : path.length;
+            var queryParams = parseQueryString(path.slice(queryIndex + 1, queryEnd));
+
+            for (var key4 in queryParams) {
+              queryData[key4] = queryParams[key4];
+            }
+          }
+
+          if (hashIndex > -1) {
+            var hashParams = parseQueryString(path.slice(hashIndex + 1));
+
+            for (var key4 in hashParams) {
+              hashData[key4] = hashParams[key4];
+            }
+          }
+
+          return path.slice(0, pathEnd);
+        }
+
+        var router = {
+          prefix: "#!"
+        };
+
+        router.getPath = function () {
+          var type2 = router.prefix.charAt(0);
+
+          switch (type2) {
+            case "#":
+              return normalize1("hash").slice(router.prefix.length);
+
+            case "?":
+              return normalize1("search").slice(router.prefix.length) + normalize1("hash");
+
+            default:
+              return normalize1("pathname").slice(router.prefix.length) + normalize1("search") + normalize1("hash");
+          }
+        };
+
+        router.setPath = function (path, data, options) {
+          var queryData = {},
+              hashData = {};
+          path = parsePath(path, queryData, hashData);
+
+          if (data != null) {
+            for (var key4 in data) {
+              queryData[key4] = data[key4];
+            }
+
+            path = path.replace(/:([^\/]+)/g, function (match2, token) {
+              delete queryData[token];
+              return data[token];
+            });
+          }
+
+          var query = buildQueryString(queryData);
+          if (query) path += "?" + query;
+          var hash = buildQueryString(hashData);
+          if (hash) path += "#" + hash;
+
+          if (supportsPushState) {
+            var state = options ? options.state : null;
+            var title = options ? options.title : null;
+            $window.onpopstate();
+            if (options && options.replace) $window.history.replaceState(state, title, router.prefix + path);else $window.history.pushState(state, title, router.prefix + path);
+          } else $window.location.href = router.prefix + path;
+        };
+
+        router.defineRoutes = function (routes, resolve, reject) {
+          function resolveRoute() {
+            var path = router.getPath();
+            var params = {};
+            var pathname = parsePath(path, params, params);
+            var state = $window.history.state;
+
+            if (state != null) {
+              for (var k in state) {
+                params[k] = state[k];
+              }
+            }
+
+            for (var route0 in routes) {
+              var matcher = new RegExp("^" + route0.replace(/:[^\/]+?\.{3}/g, "(.*?)").replace(/:[^\/]+/g, "([^\\/]+)") + "\/?$");
+
+              if (matcher.test(pathname)) {
+                pathname.replace(matcher, function () {
+                  var keys = route0.match(/:[^\/]+/g) || [];
+                  var values = [].slice.call(arguments, 1, -2);
+
+                  for (var i = 0; i < keys.length; i++) {
+                    params[keys[i].replace(/:|\./g, "")] = decodeURIComponent(values[i]);
+                  }
+
+                  resolve(routes[route0], params, path, route0);
+                });
+                return;
+              }
+            }
+
+            reject(path, params);
+          }
+
+          if (supportsPushState) $window.onpopstate = debounceAsync(resolveRoute);else if (router.prefix.charAt(0) === "#") $window.onhashchange = resolveRoute;
+          resolveRoute();
+        };
+
+        return router;
+      };
+
+      var _20 = function _20($window, redrawService0) {
+        var routeService = coreRouter($window);
+
+        var identity = function identity(v) {
+          return v;
+        };
+
+        var render1, component, attrs3, currentPath, _lastUpdate;
+
+        var route = function route(root, defaultRoute, routes) {
+          if (root == null) throw new Error("Ensure the DOM element that was passed to `m.route` is not undefined");
+
+          var run1 = function run1() {
+            if (render1 != null) redrawService0.render(root, render1(Vnode(component, attrs3.key, attrs3)));
+          };
+
+          var bail = function bail(path) {
+            if (path !== defaultRoute) routeService.setPath(defaultRoute, null, {
+              replace: true
+            });else throw new Error("Could not resolve default route " + defaultRoute);
+          };
+
+          routeService.defineRoutes(routes, function (payload, params, path) {
+            var update = _lastUpdate = function lastUpdate(routeResolver, comp) {
+              if (update !== _lastUpdate) return;
+              component = comp != null && (typeof comp.view === "function" || typeof comp === "function") ? comp : "div";
+              attrs3 = params, currentPath = path, _lastUpdate = null;
+              render1 = (routeResolver.render || identity).bind(routeResolver);
+              run1();
+            };
+
+            if (payload.view || typeof payload === "function") update({}, payload);else {
+              if (payload.onmatch) {
+                Promise.resolve(payload.onmatch(params, path)).then(function (resolved) {
+                  update(payload, resolved);
+                }, bail);
+              } else update(payload, "div");
+            }
+          }, bail);
+          redrawService0.subscribe(root, run1);
+        };
+
+        route.set = function (path, data, options) {
+          if (_lastUpdate != null) {
+            options = options || {};
+            options.replace = true;
+          }
+
+          _lastUpdate = null;
+          routeService.setPath(path, data, options);
+        };
+
+        route.get = function () {
+          return currentPath;
+        };
+
+        route.prefix = function (prefix0) {
+          routeService.prefix = prefix0;
+        };
+
+        route.link = function (vnode1) {
+          vnode1.dom.setAttribute("href", routeService.prefix + vnode1.attrs.href);
+
+          vnode1.dom.onclick = function (e) {
+            if (e.ctrlKey || e.metaKey || e.shiftKey || e.which === 2) return;
+            e.preventDefault();
+            e.redraw = false;
+            var href = this.getAttribute("href");
+            if (href.indexOf(routeService.prefix) === 0) href = href.slice(routeService.prefix.length);
+            route.set(href, undefined, undefined);
+          };
+        };
+
+        route.param = function (key3) {
+          if (typeof attrs3 !== "undefined" && typeof key3 !== "undefined") return attrs3[key3];
+          return attrs3;
+        };
+
+        return route;
+      };
+
+      m.route = _20(window, redrawService);
+
+      m.withAttr = function (attrName, callback1, context) {
+        return function (e) {
+          callback1.call(context || this, attrName in e.currentTarget ? e.currentTarget[attrName] : e.currentTarget.getAttribute(attrName));
+        };
+      };
+
+      var _28 = coreRenderer(window);
+
+      m.render = _28.render;
+      m.redraw = redrawService.redraw;
+      m.request = requestService.request;
+      m.jsonp = requestService.jsonp;
+      m.parseQueryString = parseQueryString;
+      m.buildQueryString = buildQueryString;
+      m.version = "1.1.6";
+      m.vnode = Vnode;
+      module["exports"] = m;
+    })();
+  });
+
+  var renderer = mithril;
+  renderer["displayName"] = "mithril";
+
+  var stream = createCommonjsModule(function (module) {
+
+    (function () {
+      /* eslint-enable */
+
+      var guid = 0,
+          HALT = {};
+
+      function createStream() {
+        function stream() {
+          if (arguments.length > 0 && arguments[0] !== HALT) updateStream(stream, arguments[0]);
+          return stream._state.value;
+        }
+
+        initStream(stream);
+        if (arguments.length > 0 && arguments[0] !== HALT) updateStream(stream, arguments[0]);
+        return stream;
+      }
+
+      function initStream(stream) {
+        stream.constructor = createStream;
+        stream._state = {
+          id: guid++,
+          value: undefined,
+          state: 0,
+          derive: undefined,
+          recover: undefined,
+          deps: {},
+          parents: [],
+          endStream: undefined,
+          unregister: undefined
+        };
+        stream.map = stream["fantasy-land/map"] = map, stream["fantasy-land/ap"] = ap, stream["fantasy-land/of"] = createStream;
+        stream.valueOf = valueOf, stream.toJSON = toJSON, stream.toString = valueOf;
+        Object.defineProperties(stream, {
+          end: {
+            get: function get() {
+              if (!stream._state.endStream) {
+                var endStream = createStream();
+                endStream.map(function (value) {
+                  if (value === true) {
+                    unregisterStream(stream);
+
+                    endStream._state.unregister = function () {
+                      unregisterStream(endStream);
+                    };
+                  }
+
+                  return value;
+                });
+                stream._state.endStream = endStream;
+              }
+
+              return stream._state.endStream;
+            }
+          }
+        });
+      }
+
+      function updateStream(stream, value) {
+        updateState(stream, value);
+
+        for (var id in stream._state.deps) {
+          updateDependency(stream._state.deps[id], false);
+        }
+
+        if (stream._state.unregister != null) stream._state.unregister();
+        finalize(stream);
+      }
+
+      function updateState(stream, value) {
+        stream._state.value = value;
+        stream._state.changed = true;
+        if (stream._state.state !== 2) stream._state.state = 1;
+      }
+
+      function updateDependency(stream, mustSync) {
+        var state = stream._state,
+            parents = state.parents;
+
+        if (parents.length > 0 && parents.every(active) && (mustSync || parents.some(changed))) {
+          var value = stream._state.derive();
+
+          if (value === HALT) return false;
+          updateState(stream, value);
+        }
+      }
+
+      function finalize(stream) {
+        stream._state.changed = false;
+
+        for (var id in stream._state.deps) {
+          stream._state.deps[id]._state.changed = false;
+        }
+      }
+
+      function combine(fn, streams) {
+        if (!streams.every(valid)) throw new Error("Ensure that each item passed to stream.combine/stream.merge is a stream");
+        return initDependency(createStream(), streams, function () {
+          return fn.apply(this, streams.concat([streams.filter(changed)]));
+        });
+      }
+
+      function initDependency(dep, streams, derive) {
+        var state = dep._state;
+        state.derive = derive;
+        state.parents = streams.filter(notEnded);
+        registerDependency(dep, state.parents);
+        updateDependency(dep, true);
+        return dep;
+      }
+
+      function registerDependency(stream, parents) {
+        for (var i = 0; i < parents.length; i++) {
+          parents[i]._state.deps[stream._state.id] = stream;
+          registerDependency(stream, parents[i]._state.parents);
+        }
+      }
+
+      function unregisterStream(stream) {
+        for (var i = 0; i < stream._state.parents.length; i++) {
+          var parent = stream._state.parents[i];
+          delete parent._state.deps[stream._state.id];
+        }
+
+        for (var id in stream._state.deps) {
+          var dependent = stream._state.deps[id];
+
+          var index = dependent._state.parents.indexOf(stream);
+
+          if (index > -1) dependent._state.parents.splice(index, 1);
+        }
+
+        stream._state.state = 2; //ended
+
+        stream._state.deps = {};
+      }
+
+      function map(fn) {
+        return combine(function (stream) {
+          return fn(stream());
+        }, [this]);
+      }
+
+      function ap(stream) {
+        return combine(function (s1, s2) {
+          return s1()(s2());
+        }, [stream, this]);
+      }
+
+      function valueOf() {
+        return this._state.value;
+      }
+
+      function toJSON() {
+        return this._state.value != null && typeof this._state.value.toJSON === "function" ? this._state.value.toJSON() : this._state.value;
+      }
+
+      function valid(stream) {
+        return stream._state;
+      }
+
+      function active(stream) {
+        return stream._state.state === 1;
+      }
+
+      function changed(stream) {
+        return stream._state.changed;
+      }
+
+      function notEnded(stream) {
+        return stream._state.state !== 2;
+      }
+
+      function merge(streams) {
+        return combine(function () {
+          return streams.map(function (s) {
+            return s();
+          });
+        }, streams);
+      }
+
+      function scan(reducer, seed, stream) {
+        var newStream = combine(function (s) {
+          return seed = reducer(seed, s._state.value);
+        }, [stream]);
+        if (newStream._state.state === 0) newStream(seed);
+        return newStream;
+      }
+
+      function scanMerge(tuples, seed) {
+        var streams = tuples.map(function (tuple) {
+          var stream = tuple[0];
+          if (stream._state.state === 0) stream(undefined);
+          return stream;
+        });
+        var newStream = combine(function () {
+          var changed = arguments[arguments.length - 1];
+          streams.forEach(function (stream, idx) {
+            if (changed.indexOf(stream) > -1) {
+              seed = tuples[idx][1](seed, stream._state.value);
+            }
+          });
+          return seed;
+        }, streams);
+        return newStream;
+      }
+
+      createStream["fantasy-land/of"] = createStream;
+      createStream.merge = merge;
+      createStream.combine = combine;
+      createStream.scan = scan;
+      createStream.scanMerge = scanMerge;
+      createStream.HALT = HALT;
+      module["exports"] = createStream;
+    })();
+  });
+
+  var stream$1 = stream;
+
+  var requiresKeys = false;
+  /**
+   * @param {ComponentCreatorOptions} params
+   */
+
+  var ComponentCreator = function ComponentCreator(_ref) {
+    var _ref$createContent = _ref.createContent,
+        createContent = _ref$createContent === void 0 ? function () {
+      return null;
+    } : _ref$createContent,
+        _ref$createProps = _ref.createProps,
+        createProps = _ref$createProps === void 0 ? function () {
+      return {};
+    } : _ref$createProps,
+        _ref$component = _ref.component,
+        component = _ref$component === void 0 ? null : _ref$component,
+        _ref$getElement = _ref.getElement,
+        getElement = _ref$getElement === void 0 ? function () {
+      return "div";
+    } : _ref$getElement,
+        _ref$getInitialState = _ref.getInitialState,
+        getInitialState = _ref$getInitialState === void 0 ? function () {
+      return {};
+    } : _ref$getInitialState,
+        _ref$onMount = _ref.onMount,
+        onMount = _ref$onMount === void 0 ? function () {
+      return null;
+    } : _ref$onMount,
+        _ref$onUnMount = _ref.onUnMount,
+        onUnMount = _ref$onUnMount === void 0 ? function () {
+      return null;
+    } : _ref$onUnMount,
+        _ref$onUpdate = _ref.onUpdate,
+        onUpdate = _ref$onUpdate === void 0 ? function () {
+      return null;
+    } : _ref$onUpdate,
+        _ref$view = _ref.view,
+        view = _ref$view === void 0 ? null : _ref$view;
+    var localState = {
+      mounted: false
+    };
+    /**
+     * @param {Vnode} vnode 
+     */
+
+    var oninit = function oninit(vnode) {
+      /**
+       * @type {{ redrawOnUpdate?: Array<function>, _?: any }} initialState
+       */
+      var initialState = getInitialState(vnode, stream$1, {
+        keys: keys
+      });
+
+      _extends(vnode.state, initialState);
+
+      initialState.redrawOnUpdate !== undefined ? initialState.redrawOnUpdate.map(function () {
+        return localState && setTimeout(renderer.redraw);
+      }) : undefined;
+    };
+    /**
+     * @param {Vnode} vnode 
+     */
+
+
+    var oncreate = function oncreate(vnode) {
+      localState.mounted = true;
+      onMount(vnode, {
+        keys: keys
+      });
+    };
+    /**
+     * @param {Vnode} vnode 
+     */
+
+
+    var render = function render(vnode) {
+      return renderer(component || getElement(vnode), createProps(vnode, {
+        renderer: renderer,
+        requiresKeys: requiresKeys,
+        keys: keys
+      }), [vnode.attrs.before, createContent(vnode, {
+        renderer: renderer,
+        requiresKeys: requiresKeys,
+        keys: keys
+      }), vnode.attrs.after]);
+    };
+
+    return {
+      view: view ?
+      /**
+       * @param {Vnode} vnode
+       */
+      function (vnode) {
+        return view(vnode, {
+          render: render,
+          renderer: renderer
+        });
+      } :
+      /**
+       * @param {Vnode} vnode
+       */
+      function (vnode) {
+        return render(vnode);
+      },
+      oninit: oninit,
+      oncreate: oncreate,
+      onremove: onUnMount,
+      onupdate: onUpdate
+    };
+  };
+
+  exports.keys = keys;
+  exports.renderer = renderer;
+  exports.ComponentCreator = ComponentCreator;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-mithril-base.js.map

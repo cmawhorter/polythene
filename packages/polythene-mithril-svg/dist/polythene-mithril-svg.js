@@ -1,2 +1,16 @@
-!function(e,o){"object"==typeof exports&&"undefined"!=typeof module?o(exports,require("polythene-mithril-base"),require("polythene-core-svg")):"function"==typeof define&&define.amd?define(["exports","polythene-mithril-base","polythene-core-svg"],o):o((e=e||self).polythene={},e["polythene-mithril-base"],e["polythene-core-svg"])}(this,function(e,o,t){"use strict";var n=o.ComponentCreator(t.coreSVG);n.displayName="SVG",e.SVG=n,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-mithril-base'), require('polythene-core-svg')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-mithril-base', 'polythene-core-svg'], factory) :
+	(global = global || self, factory(global.polythene = {}, global['polythene-mithril-base'], global['polythene-core-svg']));
+}(this, function (exports, polytheneMithrilBase, polytheneCoreSvg) { 'use strict';
+
+	// @ts-check
+	var SVG = polytheneMithrilBase.ComponentCreator(polytheneCoreSvg.coreSVG);
+	SVG["displayName"] = "SVG";
+
+	exports.SVG = SVG;
+
+	Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-mithril-svg.js.map

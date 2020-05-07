@@ -1,2 +1,60 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-react-base"),require("polythene-core-icon"),require("polythene-react-svg")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core-icon","polythene-react-svg"],t):t((e=e||self).polythene={},e["polythene-react-base"],e["polythene-core-icon"],e["polythene-react-svg"])}(this,function(e,t,n,o){"use strict";function r(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function c(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{},o=Object.keys(n);"function"==typeof Object.getOwnPropertySymbols&&(o=o.concat(Object.getOwnPropertySymbols(n).filter(function(e){return Object.getOwnPropertyDescriptor(n,e).enumerable}))),o.forEach(function(t){r(e,t,n[t])})}return e}var i=t.ComponentCreator(c({},n.coreIcon,{createProps:function(e,t){return n.coreIcon.createProps(e,c({},t,{SVG:o.SVG}))},createContent:function(e,t){return n.coreIcon.createContent(e,c({},t,{SVG:o.SVG}))}}));i.displayName="Icon",e.Icon=i,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core-icon'), require('polythene-react-svg')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core-icon', 'polythene-react-svg'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-react-base'], global['polythene-core-icon'], global['polythene-react-svg']));
+}(this, function (exports, polytheneReactBase, polytheneCoreIcon, polytheneReactSvg) { 'use strict';
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _objectSpread(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+      var ownKeys = Object.keys(source);
+
+      if (typeof Object.getOwnPropertySymbols === 'function') {
+        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+        }));
+      }
+
+      ownKeys.forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    }
+
+    return target;
+  }
+
+  var Icon = polytheneReactBase.ComponentCreator(_objectSpread({}, polytheneCoreIcon.coreIcon, {
+    createProps: function createProps(vnode, args) {
+      return polytheneCoreIcon.coreIcon.createProps(vnode, _objectSpread({}, args, {
+        SVG: polytheneReactSvg.SVG
+      }));
+    },
+    createContent: function createContent(vnode, args) {
+      return polytheneCoreIcon.coreIcon.createContent(vnode, _objectSpread({}, args, {
+        SVG: polytheneReactSvg.SVG
+      }));
+    }
+  }));
+  Icon["displayName"] = "Icon";
+
+  exports.Icon = Icon;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-react-icon.js.map

@@ -1,2 +1,234 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core"),require("polythene-theme")):"function"==typeof define&&define.amd?define(["exports","polythene-core","polythene-theme"],t):t((e=e||self).polythene={},e["polythene-core"],e["polythene-theme"])}(this,function(e,t,n){"use strict";function i(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}var a=t.getAnimationEndEvent(),o=function(e){var i=e.e,o=e.id,r=e.el,c=e.attrs,s=e.classes;return new Promise(function(e){var l=document.createElement("div");l.setAttribute("class",s.mask),r.appendChild(l);var u=document.createElement("div");u.setAttribute("class",s.waves),l.appendChild(u);var p=r.getBoundingClientRect(),d=t.isTouch&&i.touches?i.touches[0].pageX:i.clientX,m=t.isTouch&&i.touches?i.touches[0].pageY:i.clientY,f=r.offsetWidth,v=r.offsetHeight,h=Math.sqrt(f*f+v*v),y=c.center?p.left+p.width/2:d,g=c.center?p.top+p.height/2:m,b=y-p.left-h/2,w=g-p.top-h/2,E=void 0!==c.startOpacity?c.startOpacity:.2,O=void 0!==c.opacityDecayVelocity?c.opacityDecayVelocity:.35,_=c.endOpacity||0,k=c.startScale||.1,j=c.endScale||2,C=c.duration?c.duration:1/O*.2,S=window.getComputedStyle(r).color,A=u.style;A.width=A.height=h+"px",A.top=w+"px",A.left=b+"px",A["animation-duration"]=A["-webkit-animation-duration"]=A["-moz-animation-duration"]=A["-o-animation-duration"]=C+"s",A.backgroundColor=S,A.opacity=E,A.animationName=o,A.animationTimingFunction=c.animationTimingFunction||n.vars.animation_curve_default;var x="@keyframes ".concat(o," {\n      0% {\n        transform:scale(").concat(k,");\n        opacity: ").concat(E,"\n      }\n      100% {\n        transform:scale(").concat(j,");\n        opacity: ").concat(_,";\n      }\n    }");!function(e,n){if(!t.isServer){var i=window.document,a=i.createElement("style");a.setAttribute("id",e),a.appendChild(i.createTextNode(n)),i.head.appendChild(a)}}(o,x);u.addEventListener(a,function n(i){!function(e){if(!t.isServer){var n=document.getElementById(e);n&&n.parentNode&&n.parentNode.removeChild(n)}}(o),u.removeEventListener(a,n,!1),c.persistent?(A.opacity=_,A.transform="scale("+j+")"):(u.classList.remove(s.wavesAnimating),l.removeChild(u),r.removeChild(l)),e(i)},!1),u.classList.add(s.wavesAnimating)})},r={component:"pe-ripple",mask:"pe-ripple__mask",waves:"pe-ripple__waves",unconstrained:"pe-ripple--unconstrained",wavesAnimating:"pe-ripple__waves--animating"},c=function(e){return e.animating=Object.keys(e.animations).length>0},s=Object.freeze({getElement:function(e){return e.attrs.element||"div"},getInitialState:function(){return{animations:{},animating:!1,cleanUp:void 0}},createProps:function(e,n){var a=n.keys,o=e.attrs;return function(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{},a=Object.keys(n);"function"==typeof Object.getOwnPropertySymbols&&(a=a.concat(Object.getOwnPropertySymbols(n).filter(function(e){return Object.getOwnPropertyDescriptor(n,e).enumerable}))),a.forEach(function(t){i(e,t,n[t])})}return e}({},t.filterSupportedAttributes(o),{className:[r.component,o.unconstrained?r.unconstrained:null,"dark"===o.tone?"pe-dark-tone":null,"light"===o.tone?"pe-light-tone":null,o.className||o[a.class]].join(" ")})},onMount:function(e){if(e.dom&&!t.isServer){var n=e.state,i=e.attrs,a=function(t){if(!(i.disabled||!i.multi&&n.animating)){i.start&&i.start(t);var a="ripple_animation_".concat((new Date).getTime());n.animations[a]=o({e:t,id:a,el:e.dom,attrs:i,classes:r}).then(function(e){i.end&&i.end(e),delete n.animations[a],c(n)}),c(n)}},s=i.target?i.target:e.dom&&e.dom.parentElement;s&&t.pointerEndEvent.forEach(function(e){return s.addEventListener(e,a,!1)}),n.cleanUp=function(){s&&t.pointerEndEvent.forEach(function(e){return s.removeEventListener(e,a,!1)})}}},onUnMount:function(e){var t=e.state;return t.cleanUp&&t.cleanUp()}});e.coreRipple=s,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-theme')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-theme'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-core'], global['polythene-theme']));
+}(this, function (exports, polytheneCore, polytheneTheme) { 'use strict';
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _objectSpread(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+      var ownKeys = Object.keys(source);
+
+      if (typeof Object.getOwnPropertySymbols === 'function') {
+        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+        }));
+      }
+
+      ownKeys.forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    }
+
+    return target;
+  }
+
+  var ANIMATION_END_EVENT = polytheneCore.getAnimationEndEvent();
+  var DEFAULT_START_OPACITY = 0.2;
+  var DEFAULT_END_OPACITY = 0.0;
+  var DEFAULT_START_SCALE = 0.1;
+  var DEFAULT_END_SCALE = 2.0;
+  var OPACITY_DECAY_VELOCITY = 0.35;
+
+  var addStyleToHead = function addStyleToHead(id, stylesheet) {
+    if (polytheneCore.isServer) return;
+    var documentRef = window.document;
+    var styleEl = documentRef.createElement("style");
+    styleEl.setAttribute("id", id);
+    styleEl.appendChild(documentRef.createTextNode(stylesheet));
+    documentRef.head.appendChild(styleEl);
+  };
+
+  var removeStyleFromHead = function removeStyleFromHead(id) {
+    if (polytheneCore.isServer) return;
+    var el = document.getElementById(id);
+
+    if (el && el.parentNode) {
+      el.parentNode.removeChild(el);
+    }
+  };
+
+  var animation = (function (_ref) {
+    var e = _ref.e,
+        id = _ref.id,
+        el = _ref.el,
+        attrs = _ref.attrs,
+        classes = _ref.classes;
+    return new Promise(function (resolve) {
+      var container = document.createElement("div");
+      container.setAttribute("class", classes.mask);
+      el.appendChild(container);
+      var waves = document.createElement("div");
+      waves.setAttribute("class", classes.waves);
+      container.appendChild(waves);
+      var rect = el.getBoundingClientRect();
+      var x = polytheneCore.isTouch && e.touches ? e.touches[0].pageX : e.clientX;
+      var y = polytheneCore.isTouch && e.touches ? e.touches[0].pageY : e.clientY;
+      var w = el.offsetWidth;
+      var h = el.offsetHeight;
+      var waveRadius = Math.sqrt(w * w + h * h);
+      var mx = attrs.center ? rect.left + rect.width / 2 : x;
+      var my = attrs.center ? rect.top + rect.height / 2 : y;
+      var rx = mx - rect.left - waveRadius / 2;
+      var ry = my - rect.top - waveRadius / 2;
+      var startOpacity = attrs.startOpacity !== undefined ? attrs.startOpacity : DEFAULT_START_OPACITY;
+      var opacityDecayVelocity = attrs.opacityDecayVelocity !== undefined ? attrs.opacityDecayVelocity : OPACITY_DECAY_VELOCITY;
+      var endOpacity = attrs.endOpacity || DEFAULT_END_OPACITY;
+      var startScale = attrs.startScale || DEFAULT_START_SCALE;
+      var endScale = attrs.endScale || DEFAULT_END_SCALE;
+      var duration = attrs.duration ? attrs.duration : 1 / opacityDecayVelocity * 0.2;
+      var color = window.getComputedStyle(el).color;
+      var style = waves.style;
+      style.width = style.height = waveRadius + "px";
+      style.top = ry + "px";
+      style.left = rx + "px";
+      style["animation-duration"] = style["-webkit-animation-duration"] = style["-moz-animation-duration"] = style["-o-animation-duration"] = duration + "s";
+      style.backgroundColor = color;
+      style.opacity = startOpacity;
+      style.animationName = id;
+      style.animationTimingFunction = attrs.animationTimingFunction || polytheneTheme.vars.animation_curve_default;
+      var rippleStyleSheet = "@keyframes ".concat(id, " {\n      0% {\n        transform:scale(").concat(startScale, ");\n        opacity: ").concat(startOpacity, "\n      }\n      100% {\n        transform:scale(").concat(endScale, ");\n        opacity: ").concat(endOpacity, ";\n      }\n    }");
+      addStyleToHead(id, rippleStyleSheet);
+
+      var animationDone = function animationDone(evt) {
+        removeStyleFromHead(id);
+        waves.removeEventListener(ANIMATION_END_EVENT, animationDone, false);
+
+        if (attrs.persistent) {
+          style.opacity = endOpacity;
+          style.transform = "scale(" + endScale + ")";
+        } else {
+          waves.classList.remove(classes.wavesAnimating);
+          container.removeChild(waves);
+          el.removeChild(container);
+        }
+
+        resolve(evt);
+      };
+
+      waves.addEventListener(ANIMATION_END_EVENT, animationDone, false);
+      waves.classList.add(classes.wavesAnimating);
+    });
+  });
+
+  var classes = {
+    component: "pe-ripple",
+    // elements
+    mask: "pe-ripple__mask",
+    waves: "pe-ripple__waves",
+    // states
+    unconstrained: "pe-ripple--unconstrained",
+    wavesAnimating: "pe-ripple__waves--animating"
+  };
+
+  var getElement = function getElement(vnode) {
+    return vnode.attrs.element || "div";
+  };
+  var getInitialState = function getInitialState() {
+    return {
+      animations: {},
+      animating: false,
+      cleanUp: undefined
+    };
+  };
+  var createProps = function createProps(vnode, _ref) {
+    var k = _ref.keys;
+    var attrs = vnode.attrs;
+    return _objectSpread({}, polytheneCore.filterSupportedAttributes(attrs), {
+      className: [classes.component, attrs.unconstrained ? classes.unconstrained : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    });
+  };
+
+  var updateAnimationState = function updateAnimationState(state) {
+    return state.animating = Object.keys(state.animations).length > 0;
+  };
+
+  var onMount = function onMount(vnode) {
+    if (!vnode.dom) {
+      return;
+    }
+
+    if (polytheneCore.isServer) {
+      return;
+    }
+
+    var state = vnode.state;
+    var attrs = vnode.attrs;
+
+    var tap = function tap(e) {
+      if (attrs.disabled || !attrs.multi && state.animating) {
+        return;
+      }
+
+      if (attrs.start) {
+        attrs.start(e);
+      }
+
+      var id = "ripple_animation_".concat(new Date().getTime());
+      state.animations[id] = animation({
+        e: e,
+        id: id,
+        el: vnode.dom,
+        attrs: attrs,
+        classes: classes
+      }).then(function (evt) {
+        if (attrs.end) {
+          attrs.end(evt);
+        }
+
+        delete state.animations[id];
+        updateAnimationState(state);
+      });
+      updateAnimationState(state);
+    };
+
+    var triggerEl = attrs.target ? attrs.target : vnode.dom && vnode.dom.parentElement;
+
+    if (triggerEl) {
+      polytheneCore.pointerEndEvent.forEach(function (evt) {
+        return triggerEl.addEventListener(evt, tap, false);
+      });
+    }
+
+    state.cleanUp = function () {
+      if (triggerEl) {
+        polytheneCore.pointerEndEvent.forEach(function (evt) {
+          return triggerEl.removeEventListener(evt, tap, false);
+        });
+      }
+    };
+  };
+  var onUnMount = function onUnMount(_ref2) {
+    var state = _ref2.state;
+    return state.cleanUp && state.cleanUp();
+  };
+
+  var ripple = /*#__PURE__*/Object.freeze({
+    getElement: getElement,
+    getInitialState: getInitialState,
+    createProps: createProps,
+    onMount: onMount,
+    onUnMount: onUnMount
+  });
+
+  exports.coreRipple = ripple;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-core-ripple.js.map

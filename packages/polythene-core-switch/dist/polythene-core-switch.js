@@ -1,2 +1,114 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core")):"function"==typeof define&&define.amd?define(["exports","polythene-core"],t):t((e=e||self).polythene={},e["polythene-core"])}(this,function(e,t){"use strict";function n(){return(n=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(e[o]=n[o])}return e}).apply(this,arguments)}var o="pe-switch-control",i="pe-switch-control__knob",r="pe-switch-control__thumb",c="pe-switch-control__track",a=Object.freeze({createProps:function(e){var t=e.attrs;return n({},t,{selectable:t.selectable||function(){return!0},instanceClass:o,type:"checkbox"})}}),s=Object.freeze({getElement:function(e){return e.attrs.element||"div"},onMount:function(e){var n=e.attrs;void 0!==n.zOn&&t.deprecation("Switch",{option:"zOn",newOption:"shadowDepthOn"}),void 0!==n.zOff&&t.deprecation("Switch",{option:"zOff",newOption:"shadowDepthOff"})},createContent:function(e,t){var o=t.renderer,a=t.Shadow,s=t.IconButton,d=e.attrs,f=void 0!==d.shadowDepthOff?d.shadowDepthOff:void 0!==d.zOff?d.zOff:1,l=void 0!==d.shadowDepthOn?d.shadowDepthOn:void 0!==d.zOn?d.zOn:2,p=d.checked?l:f,h=void 0===d.raised||d.raised;return[o("div",{className:c,key:"track"}),o(s,n({},{className:r,key:"button",content:o("div",{className:i},[d.icon?d.icon:null,h?o(a,{shadowDepth:p,animated:!0}):null]),style:d.style,disabled:d.disabled,events:d.events,ink:d.ink||!1,inactive:d.inactive},d.iconButton))]}});e.coreSwitch=a,e.coreViewControl=s,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-core']));
+}(this, function (exports, polytheneCore) { 'use strict';
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  var classes = {
+    component: "pe-switch-control",
+    // elements
+    knob: "pe-switch-control__knob",
+    thumb: "pe-switch-control__thumb",
+    track: "pe-switch-control__track"
+  };
+
+  // Props to be passed to a selection control
+
+  var createProps = function createProps(vnode) {
+    var attrs = vnode.attrs;
+    return _extends({}, attrs, {
+      selectable: attrs.selectable || function () {
+        return true;
+      },
+      // default: always selectable, regardless of the checked state
+      instanceClass: classes.component,
+      type: "checkbox"
+    });
+  };
+
+  var _switch = /*#__PURE__*/Object.freeze({
+    createProps: createProps
+  });
+
+  var getElement = function getElement(vnode) {
+    return vnode.attrs.element || "div";
+  };
+  var onMount = function onMount(_ref) {
+    var attrs = _ref.attrs;
+
+    if (attrs.zOn !== undefined) {
+      polytheneCore.deprecation("Switch", {
+        option: "zOn",
+        newOption: "shadowDepthOn"
+      });
+    }
+
+    if (attrs.zOff !== undefined) {
+      polytheneCore.deprecation("Switch", {
+        option: "zOff",
+        newOption: "shadowDepthOff"
+      });
+    }
+  };
+  var createContent = function createContent(vnode, _ref2) {
+    var h = _ref2.renderer,
+        Shadow = _ref2.Shadow,
+        IconButton = _ref2.IconButton;
+    var attrs = vnode.attrs;
+    var shadowDepthOff = attrs.shadowDepthOff !== undefined ? attrs.shadowDepthOff : attrs.zOff !== undefined ? attrs.zOff // deprecated
+    : 1;
+    var shadowDepthOn = attrs.shadowDepthOn !== undefined ? attrs.shadowDepthOn : attrs.zOn !== undefined ? attrs.zOn // deprecated
+    : 2;
+    var shadowDepth = attrs.checked ? shadowDepthOn : shadowDepthOff;
+    var raised = attrs.raised !== undefined ? attrs.raised : true;
+    return [h("div", {
+      className: classes.track,
+      key: "track"
+    }), h(IconButton, _extends({}, {
+      className: classes.thumb,
+      key: "button",
+      content: h("div", {
+        className: classes.knob
+      }, [attrs.icon ? attrs.icon : null, raised ? h(Shadow, {
+        shadowDepth: shadowDepth,
+        animated: true
+      }) : null]),
+      style: attrs.style,
+      disabled: attrs.disabled,
+      events: attrs.events,
+      ink: attrs.ink || false,
+      inactive: attrs.inactive
+    }, attrs.iconButton))];
+  };
+
+  var viewControl = /*#__PURE__*/Object.freeze({
+    getElement: getElement,
+    onMount: onMount,
+    createContent: createContent
+  });
+
+  exports.coreSwitch = _switch;
+  exports.coreViewControl = viewControl;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-core-switch.js.map

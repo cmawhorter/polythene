@@ -1,2 +1,45 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-react-button"),require("polythene-core"),require("polythene-react-base")):"function"==typeof define&&define.amd?define(["exports","polythene-react-button","polythene-core","polythene-react-base"],t):t((e=e||self).polythene={},e["polythene-react-button"],e["polythene-core"],e["polythene-react-base"])}(this,function(e,t,n,o){"use strict";function r(){return(r=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(e[o]=n[o])}return e}).apply(this,arguments)}var i=o.ComponentCreator({onMount:function(){n.deprecation("RaisedButton",{newComponent:"Button",newOption:"raised: true"})},view:function(e){return o.renderer(t.Button,r({},{raised:!0},e.attrs),e.children)}});i.displayName="RaisedButton",e.RaisedButton=i,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-button'), require('polythene-core'), require('polythene-react-base')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-button', 'polythene-core', 'polythene-react-base'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-react-button'], global['polythene-core'], global['polythene-react-base']));
+}(this, function (exports, polytheneReactButton, polytheneCore, polytheneReactBase) { 'use strict';
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  var RaisedButton = polytheneReactBase.ComponentCreator({
+    onMount: function onMount() {
+      polytheneCore.deprecation("RaisedButton", {
+        newComponent: "Button",
+        newOption: "raised: true"
+      });
+    },
+    view: function view(vnode) {
+      return polytheneReactBase.renderer(polytheneReactButton.Button, _extends({}, {
+        raised: true
+      }, vnode.attrs), vnode.children);
+    }
+  });
+  RaisedButton["displayName"] = "RaisedButton";
+
+  exports.RaisedButton = RaisedButton;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-react-raised-button.js.map

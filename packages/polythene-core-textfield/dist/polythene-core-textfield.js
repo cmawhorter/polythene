@@ -1,2 +1,424 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core")):"function"==typeof define&&define.amd?define(["exports","polythene-core"],t):t((e=e||self).polythene={},e["polythene-core"])}(this,function(e,t){"use strict";function l(e,t,l){return t in e?Object.defineProperty(e,t,{value:l,enumerable:!0,configurable:!0,writable:!0}):e[t]=l,e}function n(){return(n=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var l=arguments[t];for(var n in l)Object.prototype.hasOwnProperty.call(l,n)&&(e[n]=l[n])}return e}).apply(this,arguments)}function i(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{},i=Object.keys(n);"function"==typeof Object.getOwnPropertySymbols&&(i=i.concat(Object.getOwnPropertySymbols(n).filter(function(e){return Object.getOwnPropertyDescriptor(n,e).enumerable}))),i.forEach(function(t){l(e,t,n[t])})}return e}var a={component:"pe-textfield",counter:"pe-textfield__counter",error:"pe-textfield__error",errorPlaceholder:"pe-textfield__error-placeholder",focusHelp:"pe-textfield__help-focus",help:"pe-textfield__help",input:"pe-textfield__input",inputArea:"pe-textfield__input-area",label:"pe-textfield__label",optionalIndicator:"pe-textfield__optional-indicator",requiredIndicator:"pe-textfield__required-indicator",hasCounter:"pe-textfield--counter",hasFloatingLabel:"pe-textfield--floating-label",hasFullWidth:"pe-textfield--full-width",hideClear:"pe-textfield--hide-clear",hideSpinner:"pe-textfield--hide-spinner",hideValidation:"pe-textfield--hide-validation",isDense:"pe-textfield--dense",isRequired:"pe-textfield--required",stateDirty:"pe-textfield--dirty",stateDisabled:"pe-textfield--disabled",stateFocused:"pe-textfield--focused",stateInvalid:"pe-textfield--invalid",stateReadonly:"pe-textfield--readonly"},r={invalid:!1,message:void 0},u=function(e,t){var l=r;return e.isTouched()&&e.isInvalid()&&0===e.inputEl().value.length&&t.validateResetOnClear&&(e.isTouched(!1),e.isInvalid(!1),e.error(void 0)),!l.invalid&&t.counter&&(l=function(e,t){return{invalid:e.inputEl().value.length>t.counter,message:t.error}}(e,t)),!l.invalid&&e.inputEl()&&e.inputEl().checkValidity&&(l=function(e,t){return{invalid:!e.inputEl().checkValidity(),message:t.error}}(e,t)),!l.invalid&&t.validate&&(l=function(e,t){if(!e.inputEl())return r;var l=t.validate(e.inputEl().value);return{invalid:l&&!l.valid,message:l&&l.error}}(e,t)),l},o=function(e){var t=e.state,l=e.attrs,n=void 0!==l.valid?{invalid:!l.valid,message:l.error}:t.isTouched()||l.validateAtStart?u(t,l):r,i=t.isInvalid();t.error(n.message),n.invalid!==i&&t.isInvalid(n.invalid),n.invalid||t.error(void 0)},d=function(e){var t=e.state,l=e.attrs;if(l.onChange){var i=u(t,l);l.onChange({focus:t.hasFocus(),dirty:t.isDirty(),el:t.inputEl(),invalid:i.invalid,error:i.error,value:t.inputEl().value,setInputState:function(l){var i=void 0!==l.value&&l.value!==t.inputEl().value,a=void 0!==l.focus&&l.focus!==t.hasFocus();(i||a)&&t.setInputState(n({},l,{vnode:e}))}})}},s=function(e,t){return e.ignoreEvents&&-1!==e.ignoreEvents.indexOf(t)},p=Object.freeze({getElement:function(e){return e.attrs.element||"div"},getInitialState:function(e,t,l){var n=l.keys,i=e.attrs,a=void 0!==i.defaultValue&&null!==i.defaultValue?i.defaultValue.toString():void 0!==i.value&&null!==i.value?i.value.toString():"",r=t(null),u=t(null),o=t({}),d=t(i.error),s=t(!1),p=t(!1),c=t(""!==a),v=t(!1);return{defaultValue:a,didSetFocusTime:0,el:r,error:d,hasFocus:s,inputEl:u,isDirty:c,isInvalid:v,isTouched:p,previousValue:t(void 0),setInputState:o,showErrorPlaceholder:!!(void 0!==i.valid||i.validate||i.min||i.max||i[n.minlength]||i[n.maxlength]||i.required||i.pattern),redrawOnUpdate:t.merge([u,v,c])}},onMount:function(e){if(e.dom){var t=e.dom,l=e.state,n=e.attrs;l.el(t);var i=n.multiLine?"textarea":"input",a=t.querySelector(i);e.state.inputEl(a),l.inputEl().value=l.defaultValue,l.setInputState.map(function(e){var t=e.vnode,i=e.type,a=e.focus,r=e.value;t&&(void 0!==r&&(l.inputEl().value=r),void 0!==a&&(l.hasFocus(a),a?l.inputEl().focus():l.inputEl().blur()),"input"===i&&(n.validateOnInput||n.counter)&&l.isTouched(l.inputEl().value!==l.defaultValue),"input"!==i&&l.isTouched(l.inputEl().value!==l.defaultValue),"onblur"===i&&l.isTouched(!0),l.isDirty(""!==l.inputEl().value),o(t),d(t),l.previousValue(l.inputEl().value))}),d(e)}},onUpdate:function(e){var t=e.state,l=e.attrs;o(e);var n=t.inputEl(),i=void 0!==l.value&&null!==l.value?l.value:n?n.value:t.previousValue(),a=null==i?"":i.toString();n&&t.previousValue()!==a&&(n.value=a,t.previousValue(a),t.setInputState({vnode:e,type:"input"}))},createProps:function(e,l){var i=l.keys,r=e.state,u=e.attrs,o=r.isInvalid();return n({},t.filterSupportedAttributes(u),{className:[a.component,o?a.stateInvalid:"",r.hasFocus()?a.stateFocused:"",r.isDirty()?a.stateDirty:"",u.floatingLabel?a.hasFloatingLabel:"",u.disabled?a.stateDisabled:"",u.readonly?a.stateReadonly:"",u.dense?a.isDense:"",u.required?a.isRequired:"",u.fullWidth?a.hasFullWidth:"",u.counter?a.hasCounter:"",!1!==u.hideSpinner&&void 0!==u.hideSpinner?a.hideSpinner:"",!1!==u.hideClear&&void 0!==u.hideClear?a.hideClear:"",u.hideValidation?a.hideValidation:"","dark"===u.tone?"pe-dark-tone":null,"light"===u.tone?"pe-light-tone":null,u.className||u[i.class]].join(" ")})},createContent:function(e,t){var r=t.renderer,u=t.keys,o=e.state,p=i({},e.attrs,e.attrs.domAttributes),c=o.inputEl(),v=p.error||o.error(),f=o.isInvalid(),h=p.multiLine?"textarea":"input",y=p.multiLine?null:p.type&&"submit"!==p.type&&"search"!==p.type?p.type:"text",m=f&&void 0!==v,b=p.disabled||p[u.readonly],x=p.required&&""!==p.requiredIndicator?r("span",{key:"required",className:a.requiredIndicator},p.requiredIndicator||"*"):null,g=!p.required&&p.optionalIndicator?r("span",{key:"optional",className:a.optionalIndicator},p.optionalIndicator):null,E=p.label?[p.label,x,g]:null;return[r("div",{className:a.inputArea,key:"input-area"},[E?r("label",{key:"label",className:a.label},E):null,r(h,n({},{key:"input",className:a.input,disabled:p.disabled},y?{type:y}:null,p.name?{name:p.name}:null,s(p,u.onclick)?null:l({},u.onclick,function(){b||(o.setInputState({vnode:e,focus:!0}),d(e))}),s(p,u.onfocus)?null:l({},u.onfocus,function(){b||(o.setInputState({vnode:e,focus:!0}),o.el()&&o.el().classList.add(a.stateFocused),d(e))}),s(p,u.onblur)?null:l({},u.onblur,function(){o.setInputState({vnode:e,type:"onblur",focus:!1}),o.el().classList.remove(a.stateFocused)}),s(p,u.oninput)?null:l({},u.oninput,function(){o.setInputState({vnode:e,type:"input"})}),s(p,u.onkeydown)?null:l({},u.onkeydown,function(t){"Enter"===t.key?o.isTouched(!0):"Escape"!==t.key&&"Esc"!==t.key||o.setInputState({vnode:e,focus:!1})}),p.events?p.events:null,void 0!==p.required&&p.required?{required:!0}:null,void 0!==p[u.readonly]&&p[u.readonly]?l({},u.readonly,!0):null,void 0!==p.pattern?{pattern:p.pattern}:null,void 0!==p[u.maxlength]?l({},u.maxlength,p[u.maxlength]):null,void 0!==p[u.minlength]?l({},u.minlength,p[u.minlength]):null,void 0!==p.max?{max:p.max}:null,void 0!==p.min?{min:p.min}:null,void 0!==p[u.autofocus]?l({},u.autofocus,p[u.autofocus]):null,void 0!==p[u.tabindex]?l({},u.tabindex,p[u.tabindex]):null,void 0!==p.rows?{rows:p.rows}:null,void 0!==p.placeholder?{placeholder:p.placeholder}:null,void 0!==p.domAttributes?i({},p.domAttributes):null))]),p.counter?r("div",{key:"counter",className:a.counter},(c&&c.value.length||0)+" / "+p.counter):null,p.help&&!m?r("div",{key:"help",className:[a.help,p.focusHelp?a.focusHelp:null].join(" ")},p.help):null,m?r("div",{key:"error",className:a.error},v):o.showErrorPlaceholder&&!p.help?r("div",{key:"error-placeholder",className:a.errorPlaceholder}):null]}});e.coreTextField=p,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-core']));
+}(this, function (exports, polytheneCore) { 'use strict';
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  function _objectSpread(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+      var ownKeys = Object.keys(source);
+
+      if (typeof Object.getOwnPropertySymbols === 'function') {
+        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+        }));
+      }
+
+      ownKeys.forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    }
+
+    return target;
+  }
+
+  var classes = {
+    component: "pe-textfield",
+    // elements
+    counter: "pe-textfield__counter",
+    error: "pe-textfield__error",
+    errorPlaceholder: "pe-textfield__error-placeholder",
+    focusHelp: "pe-textfield__help-focus",
+    help: "pe-textfield__help",
+    input: "pe-textfield__input",
+    inputArea: "pe-textfield__input-area",
+    label: "pe-textfield__label",
+    optionalIndicator: "pe-textfield__optional-indicator",
+    requiredIndicator: "pe-textfield__required-indicator",
+    // states
+    hasCounter: "pe-textfield--counter",
+    hasFloatingLabel: "pe-textfield--floating-label",
+    hasFullWidth: "pe-textfield--full-width",
+    hideClear: "pe-textfield--hide-clear",
+    hideSpinner: "pe-textfield--hide-spinner",
+    hideValidation: "pe-textfield--hide-validation",
+    isDense: "pe-textfield--dense",
+    isRequired: "pe-textfield--required",
+    stateDirty: "pe-textfield--dirty",
+    stateDisabled: "pe-textfield--disabled",
+    stateFocused: "pe-textfield--focused",
+    stateInvalid: "pe-textfield--invalid",
+    stateReadonly: "pe-textfield--readonly"
+  };
+
+  var getElement = function getElement(vnode) {
+    return vnode.attrs.element || "div";
+  };
+  var DEFAULT_VALID_STATE = {
+    invalid: false,
+    message: undefined
+  };
+
+  var validateCustom = function validateCustom(state, attrs) {
+    var el = state.inputEl();
+
+    if (!el) {
+      return DEFAULT_VALID_STATE;
+    }
+
+    var validState = attrs.validate(state.inputEl().value);
+    return {
+      invalid: validState && !validState.valid,
+      message: validState && validState.error
+    };
+  };
+
+  var validateCounter = function validateCounter(state, attrs) {
+    return {
+      invalid: state.inputEl().value.length > attrs.counter,
+      message: attrs.error
+    };
+  };
+
+  var validateHTML = function validateHTML(state, attrs) {
+    return {
+      invalid: !state.inputEl().checkValidity(),
+      message: attrs.error
+    };
+  };
+
+  var getValidStatus = function getValidStatus(state, attrs) {
+    var status = DEFAULT_VALID_STATE; // attrs.validateResetOnClear: reset validation when field is cleared
+
+    if (state.isTouched() && state.isInvalid() && state.inputEl().value.length === 0 && attrs.validateResetOnClear) {
+      state.isTouched(false);
+      state.isInvalid(false);
+      state.error(undefined);
+    }
+
+    if (!status.invalid && attrs.counter) {
+      status = validateCounter(state, attrs);
+    }
+
+    if (!status.invalid && state.inputEl() && state.inputEl().checkValidity) {
+      status = validateHTML(state, attrs);
+    }
+
+    if (!status.invalid && attrs.validate) {
+      status = validateCustom(state, attrs);
+    }
+
+    return status;
+  };
+
+  var checkValidity = function checkValidity(vnode) {
+    var state = vnode.state;
+    var attrs = vnode.attrs; // default
+
+    var status = attrs.valid !== undefined ? {
+      invalid: !attrs.valid,
+      message: attrs.error
+    } : !state.isTouched() && !attrs.validateAtStart ? DEFAULT_VALID_STATE : getValidStatus(state, attrs);
+    var previousInvalid = state.isInvalid();
+    state.error(status.message);
+
+    if (status.invalid !== previousInvalid) {
+      state.isInvalid(status.invalid);
+    }
+
+    if (!status.invalid) {
+      state.error(undefined);
+    }
+  };
+
+  var notifyState = function notifyState(vnode) {
+    var state = vnode.state;
+    var attrs = vnode.attrs;
+
+    if (attrs.onChange) {
+      var status = getValidStatus(state, attrs);
+      attrs.onChange({
+        focus: state.hasFocus(),
+        dirty: state.isDirty(),
+        el: state.inputEl(),
+        invalid: status.invalid,
+        error: status.error,
+        value: state.inputEl().value,
+        setInputState: function setInputState(newState) {
+          var hasNewValue = newState.value !== undefined && newState.value !== state.inputEl().value;
+          var hasNewFocus = newState.focus !== undefined && newState.focus !== state.hasFocus();
+
+          if (hasNewValue || hasNewFocus) {
+            state.setInputState(_extends({}, newState, {
+              vnode: vnode
+            }));
+          }
+        }
+      });
+    }
+  };
+
+  var ignoreEvent = function ignoreEvent(attrs, name) {
+    return attrs.ignoreEvents && attrs.ignoreEvents.indexOf(name) !== -1;
+  };
+
+  var getInitialState = function getInitialState(vnode, createStream, _ref) {
+    var k = _ref.keys;
+    var attrs = vnode.attrs;
+    var defaultValue = attrs.defaultValue !== undefined && attrs.defaultValue !== null ? attrs.defaultValue.toString() : attrs.value !== undefined && attrs.value !== null ? attrs.value.toString() : "";
+    var el = createStream(null);
+    var inputEl = createStream(null);
+    var setInputState = createStream({});
+    var error = createStream(attrs.error);
+    var hasFocus = createStream(false);
+    var isTouched = createStream(false); // true when any change is made
+
+    var isDirty = createStream(defaultValue !== ""); // true for any input
+
+    var isInvalid = createStream(false);
+    var previousValue = createStream(undefined);
+    var didSetFocusTime = 0;
+    var showErrorPlaceholder = !!(attrs.valid !== undefined || attrs.validate || attrs.min || attrs.max || attrs[k.minlength] || attrs[k.maxlength] || attrs.required || attrs.pattern);
+    return {
+      defaultValue: defaultValue,
+      didSetFocusTime: didSetFocusTime,
+      el: el,
+      error: error,
+      hasFocus: hasFocus,
+      inputEl: inputEl,
+      isDirty: isDirty,
+      isInvalid: isInvalid,
+      isTouched: isTouched,
+      previousValue: previousValue,
+      setInputState: setInputState,
+      showErrorPlaceholder: showErrorPlaceholder,
+      redrawOnUpdate: createStream.merge([inputEl, isInvalid, isDirty])
+    };
+  };
+  var onMount = function onMount(vnode) {
+    if (!vnode.dom) {
+      return;
+    }
+
+    var dom = vnode.dom;
+    var state = vnode.state;
+    var attrs = vnode.attrs;
+    state.el(dom);
+    var inputType = attrs.multiLine ? "textarea" : "input";
+    var inputEl = dom.querySelector(inputType);
+    vnode.state.inputEl(inputEl);
+    state.inputEl().value = state.defaultValue;
+    state.setInputState.map(function (_ref2) {
+      var vnode = _ref2.vnode,
+          type = _ref2.type,
+          focus = _ref2.focus,
+          value = _ref2.value;
+
+      if (vnode) {
+        value !== undefined ? state.inputEl().value = value : null;
+        focus !== undefined && (state.hasFocus(focus), focus ? state.inputEl().focus() : state.inputEl().blur());
+        type === "input" && (attrs.validateOnInput || attrs.counter) && state.isTouched(state.inputEl().value !== state.defaultValue);
+        type !== "input" && state.isTouched(state.inputEl().value !== state.defaultValue);
+        type === "onblur" && state.isTouched(true);
+        state.isDirty(state.inputEl().value !== "");
+        checkValidity(vnode);
+        notifyState(vnode);
+        state.previousValue(state.inputEl().value);
+      }
+    });
+    notifyState(vnode);
+  };
+  var onUpdate = function onUpdate(vnode) {
+    var state = vnode.state;
+    var attrs = vnode.attrs;
+    checkValidity(vnode);
+    var inputEl = state.inputEl();
+    var value = attrs.value !== undefined && attrs.value !== null ? attrs.value : inputEl ? inputEl.value : state.previousValue();
+    var valueStr = value === undefined || value === null ? "" : value.toString();
+
+    if (inputEl && state.previousValue() !== valueStr) {
+      inputEl.value = valueStr;
+      state.previousValue(valueStr);
+      state.setInputState({
+        vnode: vnode,
+        type: "input"
+      });
+    }
+  };
+  var createProps = function createProps(vnode, _ref3) {
+    var k = _ref3.keys;
+    var state = vnode.state;
+    var attrs = vnode.attrs;
+    var isInvalid = state.isInvalid();
+    return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
+      className: [classes.component, isInvalid ? classes.stateInvalid : "", state.hasFocus() ? classes.stateFocused : "", state.isDirty() ? classes.stateDirty : "", attrs.floatingLabel ? classes.hasFloatingLabel : "", attrs.disabled ? classes.stateDisabled : "", attrs.readonly ? classes.stateReadonly : "", attrs.dense ? classes.isDense : "", attrs.required ? classes.isRequired : "", attrs.fullWidth ? classes.hasFullWidth : "", attrs.counter ? classes.hasCounter : "", attrs.hideSpinner !== false && attrs.hideSpinner !== undefined ? classes.hideSpinner : "", attrs.hideClear !== false && attrs.hideClear !== undefined ? classes.hideClear : "", attrs.hideValidation ? classes.hideValidation : "", attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    });
+  };
+  var createContent = function createContent(vnode, _ref4) {
+    var h = _ref4.renderer,
+        k = _ref4.keys;
+    var state = vnode.state;
+
+    var attrs = _objectSpread({}, vnode.attrs, vnode.attrs.domAttributes);
+
+    var inputEl = state.inputEl();
+    var error = attrs.error || state.error();
+    var isInvalid = state.isInvalid();
+    var inputType = attrs.multiLine ? "textarea" : "input";
+    var type = attrs.multiLine ? null : !attrs.type || attrs.type === "submit" || attrs.type === "search" ? "text" : attrs.type;
+    var showError = isInvalid && error !== undefined;
+    var inactive = attrs.disabled || attrs[k.readonly];
+    var requiredIndicator = attrs.required && attrs.requiredIndicator !== "" ? h("span", {
+      key: "required",
+      className: classes.requiredIndicator
+    }, attrs.requiredIndicator || "*") : null;
+    var optionalIndicator = !attrs.required && attrs.optionalIndicator ? h("span", {
+      key: "optional",
+      className: classes.optionalIndicator
+    }, attrs.optionalIndicator) : null;
+    var label = attrs.label ? [attrs.label, requiredIndicator, optionalIndicator] : null;
+    return [h("div", {
+      className: classes.inputArea,
+      key: "input-area"
+    }, [label ? h("label", {
+      key: "label",
+      className: classes.label
+    }, label) : null, h(inputType, _extends({}, {
+      key: "input",
+      className: classes.input,
+      disabled: attrs.disabled
+    }, type ? {
+      type: type
+    } : null, attrs.name ? {
+      name: attrs.name
+    } : null, !ignoreEvent(attrs, k.onclick) ? _defineProperty({}, k.onclick, function () {
+      if (inactive) {
+        return;
+      } // in case the browser does not give the field focus,
+      // for instance when the user tapped to the current field off screen
+
+
+      state.setInputState({
+        vnode: vnode,
+        focus: true
+      });
+      notifyState(vnode);
+    }) : null, !ignoreEvent(attrs, k.onfocus) ? _defineProperty({}, k.onfocus, function () {
+      if (inactive) {
+        return;
+      }
+
+      state.setInputState({
+        vnode: vnode,
+        focus: true
+      }); // set CSS class manually in case field gets focus but is off screen
+      // and no redraw is triggered
+      // at the next redraw state.hasFocus() will be read and the focus class be set
+      // in the props.class statement
+
+      if (state.el()) {
+        state.el().classList.add(classes.stateFocused);
+      }
+
+      notifyState(vnode);
+    }) : null, !ignoreEvent(attrs, k.onblur) ? _defineProperty({}, k.onblur, function () {
+      state.setInputState({
+        vnode: vnode,
+        type: "onblur",
+        focus: false
+      }); // same principle as onfocus
+
+      state.el().classList.remove(classes.stateFocused);
+    }) : null, !ignoreEvent(attrs, k.oninput) ? _defineProperty({}, k.oninput, function () {
+      // default input event
+      // may be overwritten by attrs.events
+      state.setInputState({
+        vnode: vnode,
+        type: "input"
+      });
+    }) : null, !ignoreEvent(attrs, k.onkeydown) ? _defineProperty({}, k.onkeydown, function (e) {
+      if (e.key === "Enter") {
+        state.isTouched(true);
+      } else if (e.key === "Escape" || e.key === "Esc") {
+        state.setInputState({
+          vnode: vnode,
+          focus: false
+        });
+      }
+    }) : null, attrs.events ? attrs.events : null, // NOTE: may overwrite oninput
+    attrs.required !== undefined && !!attrs.required ? {
+      required: true
+    } : null, attrs[k.readonly] !== undefined && !!attrs[k.readonly] ? _defineProperty({}, k.readonly, true) : null, attrs.pattern !== undefined ? {
+      pattern: attrs.pattern
+    } : null, attrs[k.maxlength] !== undefined ? _defineProperty({}, k.maxlength, attrs[k.maxlength]) : null, attrs[k.minlength] !== undefined ? _defineProperty({}, k.minlength, attrs[k.minlength]) : null, attrs.max !== undefined ? {
+      max: attrs.max
+    } : null, attrs.min !== undefined ? {
+      min: attrs.min
+    } : null, attrs[k.autofocus] !== undefined ? _defineProperty({}, k.autofocus, attrs[k.autofocus]) : null, attrs[k.tabindex] !== undefined ? _defineProperty({}, k.tabindex, attrs[k.tabindex]) : null, attrs.rows !== undefined ? {
+      rows: attrs.rows
+    } : null, attrs.placeholder !== undefined ? {
+      placeholder: attrs.placeholder
+    } : null, attrs.domAttributes !== undefined ? _objectSpread({}, attrs.domAttributes) : null))]), attrs.counter ? h("div", {
+      key: "counter",
+      className: classes.counter
+    }, (inputEl && inputEl.value.length || 0) + " / " + attrs.counter) : null, attrs.help && !showError ? h("div", {
+      key: "help",
+      className: [classes.help, attrs.focusHelp ? classes.focusHelp : null].join(" ")
+    }, attrs.help) : null, showError ? h("div", {
+      key: "error",
+      className: classes.error
+    }, error) : state.showErrorPlaceholder && !attrs.help ? h("div", {
+      key: "error-placeholder",
+      className: classes.errorPlaceholder
+    }) : null];
+  };
+
+  var textfield = /*#__PURE__*/Object.freeze({
+    getElement: getElement,
+    getInitialState: getInitialState,
+    onMount: onMount,
+    onUpdate: onUpdate,
+    createProps: createProps,
+    createContent: createContent
+  });
+
+  exports.coreTextField = textfield;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-core-textfield.js.map

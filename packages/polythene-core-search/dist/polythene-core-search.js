@@ -1,2 +1,89 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core")):"function"==typeof define&&define.amd?define(["exports","polythene-core"],t):t((e=e||self).polythene={},e["polythene-core"])}(this,function(e,t){"use strict";function n(){return(n=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e}).apply(this,arguments)}var r={component:"pe-search",content:"pe-search__content",searchFullWidth:"pe-search--full-width",searchInset:"pe-search--inset"},o=Object.freeze({getElement:function(e){return e.attrs.element||"div"},getInitialState:function(e,t){return{searchState:t({})}},createProps:function(e,o){var c=o.keys,a=e.attrs;return n({},t.filterSupportedAttributes(a),{className:[r.component,a.fullWidth?r.searchFullWidth:r.searchInset,"dark"===a.tone?"pe-dark-tone":null,"light"===a.tone?"pe-light-tone":null,a.className||a[c.class]].join(" ")},a.events)},createContent:function(e,t){var o=t.renderer,c=t.TextField,a=e.state,s=e.attrs,i=function(e){return e.focus&&e.dirty?"focus_dirty":e.focus?"focus":e.dirty?"dirty":"none"}(a.searchState()),u=(s.buttons||{})[i]||{},l=s.textfield||{};return o("div",{className:r.content},[u.before,o(c,n({},l,{key:"input",onChange:function(e){a.searchState(e),l.onChange&&l.onChange(e)}})),u.after])}});e.coreSearch=o,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-core']));
+}(this, function (exports, polytheneCore) { 'use strict';
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  var classes = {
+    component: "pe-search",
+    // elements
+    content: "pe-search__content",
+    // states
+    searchFullWidth: "pe-search--full-width",
+    searchInset: "pe-search--inset"
+  };
+
+  var getElement = function getElement(vnode) {
+    return vnode.attrs.element || "div";
+  };
+
+  var getNameOfState = function getNameOfState(state) {
+    return state.focus && state.dirty ? "focus_dirty" : state.focus ? "focus" : state.dirty ? "dirty" : "none";
+  };
+
+  var getInitialState = function getInitialState(vnode, createStream) {
+    var searchState = createStream({});
+    return {
+      searchState: searchState
+    };
+  };
+  var createProps = function createProps(vnode, _ref) {
+    var k = _ref.keys;
+    var attrs = vnode.attrs;
+    return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
+      className: [classes.component, attrs.fullWidth ? classes.searchFullWidth : classes.searchInset, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    }, attrs.events);
+  };
+  var createContent = function createContent(vnode, _ref2) {
+    var h = _ref2.renderer,
+        TextField = _ref2.TextField;
+    var state = vnode.state;
+    var attrs = vnode.attrs;
+    var searchState = getNameOfState(state.searchState());
+    var buttons = (attrs.buttons || {})[searchState] || {};
+    var textfieldAttrs = attrs.textfield || {};
+    return h("div", {
+      className: classes.content
+    }, [buttons.before, h(TextField, _extends({}, textfieldAttrs, {
+      key: "input",
+      onChange: function onChange(newState) {
+        state.searchState(newState);
+
+        if (textfieldAttrs.onChange) {
+          textfieldAttrs.onChange(newState);
+        }
+      }
+    })), buttons.after]);
+  };
+
+  var search = /*#__PURE__*/Object.freeze({
+    getElement: getElement,
+    getInitialState: getInitialState,
+    createProps: createProps,
+    createContent: createContent
+  });
+
+  exports.coreSearch = search;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-core-search.js.map

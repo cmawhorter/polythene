@@ -1,2 +1,68 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t((e=e||self).polythene={})}(this,function(e){"use strict";function t(){return(t=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(e[o]=n[o])}return e}).apply(this,arguments)}var n="pe-button pe-icon-button",o="pe-icon-button__content",r="pe-icon-button__label",c="pe-icon-button--compact",a=Object.freeze({createProps:function(e,a){var i=a.renderer,l=a.Icon,p=e.attrs,s=p.content?p.content:p.icon?i(l,p.icon):p.children||e.children;return t({},{content:i("div",{className:o},s),after:p.label&&i("div",{className:r},p.label),parentClassName:[p.parentClassName||n,p.compact?c:null].join(" "),wash:!1,animateOnTap:!1},p)},createContent:function(e){return e.children}});e.coreIconButton=a,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (global = global || self, factory(global.polythene = {}));
+}(this, function (exports) { 'use strict';
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  var classes = {
+    component: "pe-button pe-icon-button",
+    // elements
+    content: "pe-icon-button__content",
+    label: "pe-icon-button__label",
+    // states
+    compact: "pe-icon-button--compact"
+  };
+
+  // Props to be passed to a button, including 'content'
+
+  var createProps = function createProps(vnode, _ref) {
+    var h = _ref.renderer,
+        Icon = _ref.Icon;
+    var attrs = vnode.attrs;
+    var content = attrs.content ? attrs.content : attrs.icon ? h(Icon, attrs.icon) : attrs.children || vnode.children;
+    return _extends({}, {
+      content: h("div", {
+        className: classes.content
+      }, content),
+      after: attrs.label && h("div", {
+        className: classes.label
+      }, attrs.label),
+      parentClassName: [attrs.parentClassName || classes.component, attrs.compact ? classes.compact : null].join(" "),
+      // defaults
+      wash: false,
+      animateOnTap: false
+    }, attrs);
+  };
+  var createContent = function createContent(vnode) {
+    return vnode.children;
+  };
+
+  var iconButton = /*#__PURE__*/Object.freeze({
+    createProps: createProps,
+    createContent: createContent
+  });
+
+  exports.coreIconButton = iconButton;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-core-icon-button.js.map

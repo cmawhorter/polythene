@@ -1,2 +1,68 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core")):"function"==typeof define&&define.amd?define(["exports","polythene-core"],t):t((e=e||self).polythene={},e["polythene-core"])}(this,function(e,t){"use strict";function n(){return(n=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(e[o]=n[o])}return e}).apply(this,arguments)}var o={component:"pe-svg"},r=Object.freeze({getElement:function(e){return e.attrs.element||"div"},onMount:function(e){if(e.dom){var t=e.dom.querySelector("svg");t&&t.setAttribute("focusable","false")}},createProps:function(e,r){var c=r.keys,i=e.attrs;return n({},t.filterSupportedAttributes(i),{className:[o.component,"dark"===i.tone?"pe-dark-tone":null,"light"===i.tone?"pe-light-tone":null,i.className||i[c.class]].join(" ")})},createContent:function(e){var t=e.attrs;return t.content?t.content:t.children||e.children||t}});e.coreSVG=r,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-core']));
+}(this, function (exports, polytheneCore) { 'use strict';
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  var classes = {
+    component: "pe-svg"
+  };
+
+  var getElement = function getElement(vnode) {
+    return vnode.attrs.element || "div";
+  };
+  var onMount = function onMount(vnode) {
+    if (!vnode.dom) {
+      return;
+    } // Prevent that SVG gets keyboard focus
+
+
+    var elem = vnode.dom.querySelector("svg");
+
+    if (elem) {
+      elem.setAttribute("focusable", "false");
+    }
+  };
+  var createProps = function createProps(vnode, _ref) {
+    var k = _ref.keys;
+    var attrs = vnode.attrs;
+    return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
+      className: [classes.component, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    });
+  };
+  var createContent = function createContent(vnode) {
+    var attrs = vnode.attrs;
+    return attrs.content ? attrs.content : attrs.children || vnode.children || attrs;
+  };
+
+  var svg = /*#__PURE__*/Object.freeze({
+    getElement: getElement,
+    onMount: onMount,
+    createProps: createProps,
+    createContent: createContent
+  });
+
+  exports.coreSVG = svg;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-core-svg.js.map

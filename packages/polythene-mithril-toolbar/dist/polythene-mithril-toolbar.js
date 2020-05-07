@@ -1,2 +1,80 @@
-!function(e,o){"object"==typeof exports&&"undefined"!=typeof module?o(exports,require("polythene-mithril-base"),require("polythene-core-toolbar"),require("polythene-mithril-shadow")):"function"==typeof define&&define.amd?define(["exports","polythene-mithril-base","polythene-core-toolbar","polythene-mithril-shadow"],o):o((e=e||self).polythene={},e["polythene-mithril-base"],e["polythene-core-toolbar"],e["polythene-mithril-shadow"])}(this,function(e,o,t,r){"use strict";function n(e,o,t){return o in e?Object.defineProperty(e,o,{value:t,enumerable:!0,configurable:!0,writable:!0}):e[o]=t,e}function l(){return(l=Object.assign||function(e){for(var o=1;o<arguments.length;o++){var t=arguments[o];for(var r in t)Object.prototype.hasOwnProperty.call(t,r)&&(e[r]=t[r])}return e}).apply(this,arguments)}var i=o.ComponentCreator(function(e){for(var o=1;o<arguments.length;o++){var t=null!=arguments[o]?arguments[o]:{},r=Object.keys(t);"function"==typeof Object.getOwnPropertySymbols&&(r=r.concat(Object.getOwnPropertySymbols(t).filter(function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),r.forEach(function(o){n(e,o,t[o])})}return e}({},t.coreToolbar,{createContent:function(e,o){return t.coreToolbar.createContent(e,l(o,{Shadow:r.Shadow}))}}));i.displayName="Toolbar";var a=o.ComponentCreator(t.coreToolbarTitle);a.displayName="ToolbarTitle",e.Toolbar=i,e.ToolbarTitle=a,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-mithril-base'), require('polythene-core-toolbar'), require('polythene-mithril-shadow')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-mithril-base', 'polythene-core-toolbar', 'polythene-mithril-shadow'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-mithril-base'], global['polythene-core-toolbar'], global['polythene-mithril-shadow']));
+}(this, function (exports, polytheneMithrilBase, polytheneCoreToolbar, polytheneMithrilShadow) { 'use strict';
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  function _objectSpread(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+      var ownKeys = Object.keys(source);
+
+      if (typeof Object.getOwnPropertySymbols === 'function') {
+        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+        }));
+      }
+
+      ownKeys.forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    }
+
+    return target;
+  }
+
+  var Toolbar = polytheneMithrilBase.ComponentCreator(_objectSpread({}, polytheneCoreToolbar.coreToolbar, {
+    createContent: function createContent(vnode, args) {
+      return polytheneCoreToolbar.coreToolbar.createContent(vnode, _extends(args, {
+        Shadow: polytheneMithrilShadow.Shadow
+      }));
+    }
+  }));
+  Toolbar["displayName"] = "Toolbar";
+
+  // @ts-check
+  var ToolbarTitle = polytheneMithrilBase.ComponentCreator(polytheneCoreToolbar.coreToolbarTitle);
+  ToolbarTitle["displayName"] = "ToolbarTitle";
+
+  // @ts-check
+
+  exports.Toolbar = Toolbar;
+  exports.ToolbarTitle = ToolbarTitle;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-mithril-toolbar.js.map

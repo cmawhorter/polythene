@@ -1,2 +1,86 @@
-!function(e,r){"object"==typeof exports&&"undefined"!=typeof module?r(exports):"function"==typeof define&&define.amd?define(["exports"],r):r((e=e||self).polythene={})}(this,function(e){"use strict";function r(){return(r=Object.assign||function(e){for(var r=1;r<arguments.length;r++){var i=arguments[r];for(var n in i)Object.prototype.hasOwnProperty.call(i,n)&&(e[n]=i[n])}return e}).apply(this,arguments)}var i={component:"pe-md-spinner",animation:"pe-md-spinner__animation",circle:"pe-md-spinner__circle",circleClipper:"pe-md-spinner__circle-clipper",circleClipperLeft:"pe-md-spinner__circle-clipper-left",circleClipperRight:"pe-md-spinner__circle-clipper-right",gapPatch:"pe-md-spinner__gap-patch",layer:"pe-md-spinner__layer",layerN:"pe-md-spinner__layer-"},n=Object.freeze({createProps:function(e,n){var c=n.renderer,t=e.state,p=e.attrs;return t.content=t.content||c("div",{key:"content",className:i.animation},[1,2,3,4].map(function(e){return function(e,r){return r("div",{key:e,className:[i.layer,i.layerN+e].join(" ")},[r("div",{key:"clipper-left",className:[i.circleClipper,i.circleClipperLeft].join(" ")},r("div",{key:"circle",className:i.circle})),r("div",{key:"gap-patch",className:i.gapPatch},r("div",{className:i.circle})),r("div",{key:"clipper-right",className:[i.circleClipper,i.circleClipperRight].join(" ")},r("div",{className:i.circle}))])}(e,c)})),r({},p,{className:[i.component,p.className].join(" "),content:t.content})}});e.coreMaterialDesignSpinner=n,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (global = global || self, factory(global.polythene = {}));
+}(this, function (exports) { 'use strict';
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  var classes = {
+    component: "pe-md-spinner",
+    // elements
+    animation: "pe-md-spinner__animation",
+    circle: "pe-md-spinner__circle",
+    circleClipper: "pe-md-spinner__circle-clipper",
+    circleClipperLeft: "pe-md-spinner__circle-clipper-left",
+    circleClipperRight: "pe-md-spinner__circle-clipper-right",
+    gapPatch: "pe-md-spinner__gap-patch",
+    layer: "pe-md-spinner__layer",
+    layerN: "pe-md-spinner__layer-"
+  };
+
+  var layer = function layer(num, h) {
+    return h("div", {
+      key: num,
+      className: [classes.layer, classes.layerN + num].join(" ")
+    }, [h("div", {
+      key: "clipper-left",
+      className: [classes.circleClipper, classes.circleClipperLeft].join(" ")
+    }, h("div", {
+      key: "circle",
+      className: classes.circle
+    })), h("div", {
+      key: "gap-patch",
+      className: classes.gapPatch
+    }, h("div", {
+      className: classes.circle
+    })), h("div", {
+      key: "clipper-right",
+      className: [classes.circleClipper, classes.circleClipperRight].join(" ")
+    }, h("div", {
+      className: classes.circle
+    }))]);
+  };
+
+  var createProps = function createProps(vnode, _ref) {
+    var h = _ref.renderer;
+    var state = vnode.state;
+    var attrs = vnode.attrs;
+    state.content = state.content || h("div", {
+      key: "content",
+      className: classes.animation
+    }, [1, 2, 3, 4].map(function (num) {
+      return layer(num, h);
+    }));
+    return _extends({}, attrs, {
+      className: [classes.component, attrs.className].join(" "),
+      content: state.content
+    });
+  };
+
+  var spinner = /*#__PURE__*/Object.freeze({
+    createProps: createProps
+  });
+
+  exports.coreMaterialDesignSpinner = spinner;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-core-material-design-spinner.js.map

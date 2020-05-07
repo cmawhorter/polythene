@@ -1,2 +1,61 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-react-base"),require("polythene-core-icon-button"),require("polythene-react-icon"),require("polythene-react-button")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core-icon-button","polythene-react-icon","polythene-react-button"],t):t((e=e||self).polythene={},e["polythene-react-base"],e["polythene-core-icon-button"],e["polythene-react-icon"],e["polythene-react-button"])}(this,function(e,t,n,o,r){"use strict";function c(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function u(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{},o=Object.keys(n);"function"==typeof Object.getOwnPropertySymbols&&(o=o.concat(Object.getOwnPropertySymbols(n).filter(function(e){return Object.getOwnPropertyDescriptor(n,e).enumerable}))),o.forEach(function(t){c(e,t,n[t])})}return e}var i=t.ComponentCreator(u({},n.coreIconButton,{createProps:function(e,t){return n.coreIconButton.createProps(e,u({},t,{Icon:o.Icon}))},createContent:function(e,t){return n.coreIconButton.createContent(e,u({},t,{Icon:o.Icon}))},component:r.Button}));i.displayName="IconButton",e.IconButton=i,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core-icon-button'), require('polythene-react-icon'), require('polythene-react-button')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core-icon-button', 'polythene-react-icon', 'polythene-react-button'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-react-base'], global['polythene-core-icon-button'], global['polythene-react-icon'], global['polythene-react-button']));
+}(this, function (exports, polytheneReactBase, polytheneCoreIconButton, polytheneReactIcon, polytheneReactButton) { 'use strict';
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _objectSpread(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+      var ownKeys = Object.keys(source);
+
+      if (typeof Object.getOwnPropertySymbols === 'function') {
+        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+        }));
+      }
+
+      ownKeys.forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    }
+
+    return target;
+  }
+
+  var IconButton = polytheneReactBase.ComponentCreator(_objectSpread({}, polytheneCoreIconButton.coreIconButton, {
+    createProps: function createProps(vnode, args) {
+      return polytheneCoreIconButton.coreIconButton.createProps(vnode, _objectSpread({}, args, {
+        Icon: polytheneReactIcon.Icon
+      }));
+    },
+    createContent: function createContent(vnode, args) {
+      return polytheneCoreIconButton.coreIconButton.createContent(vnode, _objectSpread({}, args, {
+        Icon: polytheneReactIcon.Icon
+      }));
+    },
+    component: polytheneReactButton.Button
+  }));
+  IconButton["displayName"] = "IconButton";
+
+  exports.IconButton = IconButton;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-react-icon-button.js.map

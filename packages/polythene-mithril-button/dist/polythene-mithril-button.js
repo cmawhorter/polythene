@@ -1,2 +1,90 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-mithril-base"),require("polythene-core-button"),require("polythene-mithril-ripple"),require("polythene-mithril-icon"),require("polythene-mithril-shadow")):"function"==typeof define&&define.amd?define(["exports","polythene-mithril-base","polythene-core-button","polythene-mithril-ripple","polythene-mithril-icon","polythene-mithril-shadow"],t):t((e=e||self).polythene={},e["polythene-mithril-base"],e["polythene-core-button"],e["polythene-mithril-ripple"],e["polythene-mithril-icon"],e["polythene-mithril-shadow"])}(this,function(e,t,o,n,r,i){"use strict";function l(e,t,o){return t in e?Object.defineProperty(e,t,{value:o,enumerable:!0,configurable:!0,writable:!0}):e[t]=o,e}function p(e){for(var t=1;t<arguments.length;t++){var o=null!=arguments[t]?arguments[t]:{},n=Object.keys(o);"function"==typeof Object.getOwnPropertySymbols&&(n=n.concat(Object.getOwnPropertySymbols(o).filter(function(e){return Object.getOwnPropertyDescriptor(o,e).enumerable}))),n.forEach(function(t){l(e,t,o[t])})}return e}var a=t.ComponentCreator(p({},o.coreButton,{createProps:function(e,t){return o.coreButton.createProps(e,p({},t,{Ripple:n.Ripple,Icon:r.Icon,Shadow:i.Shadow}))},createContent:function(e,t){return o.coreButton.createContent(e,p({},t,{Ripple:n.Ripple,Icon:r.Icon,Shadow:i.Shadow}))}}));a.displayName="TextButton";var c=t.ComponentCreator(p({},o.coreRaisedButton,{createProps:function(e,t){return o.coreRaisedButton.createProps(e,p({},t,{Shadow:i.Shadow}))},createContent:function(e,t){return o.coreRaisedButton.createContent(e,p({},t,{Shadow:i.Shadow}))},component:a}));c.displayName="RaisedButton";var u=t.ComponentCreator({view:function(e){return t.renderer(e.attrs.raised?c:a,e.attrs,e.children)}});u.displayName="Button",e.Button=u,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-mithril-base'), require('polythene-core-button'), require('polythene-mithril-ripple'), require('polythene-mithril-icon'), require('polythene-mithril-shadow')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-mithril-base', 'polythene-core-button', 'polythene-mithril-ripple', 'polythene-mithril-icon', 'polythene-mithril-shadow'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-mithril-base'], global['polythene-core-button'], global['polythene-mithril-ripple'], global['polythene-mithril-icon'], global['polythene-mithril-shadow']));
+}(this, function (exports, polytheneMithrilBase, polytheneCoreButton, polytheneMithrilRipple, polytheneMithrilIcon, polytheneMithrilShadow) { 'use strict';
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _objectSpread(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+      var ownKeys = Object.keys(source);
+
+      if (typeof Object.getOwnPropertySymbols === 'function') {
+        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+        }));
+      }
+
+      ownKeys.forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    }
+
+    return target;
+  }
+
+  var TextButton = polytheneMithrilBase.ComponentCreator(_objectSpread({}, polytheneCoreButton.coreButton, {
+    createProps: function createProps(vnode, args) {
+      return polytheneCoreButton.coreButton.createProps(vnode, _objectSpread({}, args, {
+        Ripple: polytheneMithrilRipple.Ripple,
+        Icon: polytheneMithrilIcon.Icon,
+        Shadow: polytheneMithrilShadow.Shadow
+      }));
+    },
+    createContent: function createContent(vnode, args) {
+      return polytheneCoreButton.coreButton.createContent(vnode, _objectSpread({}, args, {
+        Ripple: polytheneMithrilRipple.Ripple,
+        Icon: polytheneMithrilIcon.Icon,
+        Shadow: polytheneMithrilShadow.Shadow
+      }));
+    }
+  }));
+  TextButton["displayName"] = "TextButton";
+
+  var RaisedButton = polytheneMithrilBase.ComponentCreator(_objectSpread({}, polytheneCoreButton.coreRaisedButton, {
+    createProps: function createProps(vnode, args) {
+      return polytheneCoreButton.coreRaisedButton.createProps(vnode, _objectSpread({}, args, {
+        Shadow: polytheneMithrilShadow.Shadow
+      }));
+    },
+    createContent: function createContent(vnode, args) {
+      return polytheneCoreButton.coreRaisedButton.createContent(vnode, _objectSpread({}, args, {
+        Shadow: polytheneMithrilShadow.Shadow
+      }));
+    },
+    component: TextButton
+  }));
+  RaisedButton["displayName"] = "RaisedButton";
+
+  // @ts-check
+  var Button = polytheneMithrilBase.ComponentCreator({
+    /**
+     * @param {Vnode} vnode
+     */
+    view: function view(vnode) {
+      return polytheneMithrilBase.renderer(vnode.attrs.raised ? RaisedButton : TextButton, vnode.attrs, vnode.children);
+    }
+  });
+  Button["displayName"] = "Button";
+
+  exports.Button = Button;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-mithril-button.js.map

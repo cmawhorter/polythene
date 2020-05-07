@@ -1,2 +1,448 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core")):"function"==typeof define&&define.amd?define(["exports","polythene-core"],t):t((e=e||self).polythene={},e["polythene-core"])}(this,function(e,t){"use strict";function n(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function i(){return(i=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var i in n)Object.prototype.hasOwnProperty.call(n,i)&&(e[i]=n[i])}return e}).apply(this,arguments)}var r,a={component:"pe-slider",control:"pe-slider__control",label:"pe-slider__label",pin:"pe-slider__pin",thumb:"pe-slider__thumb",tick:"pe-slider__tick",ticks:"pe-slider__ticks",track:"pe-slider__track",trackBar:"pe-slider__track-bar",trackBarValue:"pe-slider__track-bar-value",trackPart:"pe-slider__track-part",trackPartRest:"pe-slider__track-rest",trackPartValue:"pe-slider__track-value",hasFocus:"pe-slider--focus",hasPin:"pe-slider--pin",hasTicks:"pe-slider--ticks",hasTrack:"pe-slider--track",isActive:"pe-slider--active",isAtMin:"pe-slider--min",isDisabled:"pe-slider--disabled",tickValue:"pe-slider__tick--value"},c=function(e){r&&r.blur(),r=void 0,e.hasFocus(!1)},o=function(e,n){return t.isTouch&&e.touches?n?e.touches[0].pageY:e.touches[0].pageX:n?e.pageY:e.pageX},l=function(e){if(e.controlEl&&e.pinEl){var t=e.fraction()*e.rangeWidth;e.pinEl.style.left=t+"px"}},s=function(e,t){e.setValue(t,!0),l(e)},u=function(e,t,n,i){for(var r=[],c=i/n,o=0;o<t+1;)r.push(e("div",{className:o<=c?[a.tick,a.tickValue].join(" "):a.tick,key:"tick-".concat(o)})),o++;return r},d=function(e){if(e.controlEl&&t.isClient){e.controlWidth=parseFloat(t.getStyle({element:e.controlEl,prop:"width"})),e.rangeWidth=e.trackEl.getBoundingClientRect().width-e.controlWidth;var n=window.getComputedStyle(e.trackEl);e.rangeOffset=parseFloat(n.marginLeft)}},f=function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:0;e.clickOffset=e.trackEl.getBoundingClientRect().left-(e.rangeOffset-e.controlWidth/2)+t},v=function(e,t){var n=o(t)-e.clickOffset,i=e.min+(n-e.rangeOffset)/e.rangeWidth*(e.max-e.min);s(e,i)},p=function(e,n,i){if(!e.isDragging()){i.preventDefault(),e.isDragging(!0),e.isActive(!0),c(e);var r=function(t){e.isDragging()&&v(e,t)},a=function n(){e.isDragging()&&(c(e),t.isClient&&(t.pointerMoveEvent.forEach(function(e){return window.removeEventListener(e,r)}),t.pointerEndMoveEvent.forEach(function(e){return window.removeEventListener(e,n)})),e.isDragging(!1),e.isActive(!1))};t.isClient&&(t.pointerMoveEvent.forEach(function(e){return window.addEventListener(e,r)}),t.pointerEndMoveEvent.forEach(function(e){return window.addEventListener(e,a)})),d(e),n.pin&&l(e)}},k=function(e,t,n){n.preventDefault(),e.isDragging()||(d(e),function(e){f(e,0)}(e),v(e,n),p(e,t,n))},h=function(e,v){var h,g=v.h,m=v.k,y=v.hasTicks,E=v.interactiveTrack,b=e.state,_=e.attrs,w=b.fraction(),x=b.max-b.min,P=Math.min(100,parseInt(x/b.stepSize,10)),V=function(e){return k(b,_,e)},T=function(e){d(b),function(e,t){var n=e.controlEl.getBoundingClientRect().left,i=o(t)-n-e.controlWidth/2;f(e,i)}(b,e),p(b,_,e)},D=w+" 1 0%",S=1-w,N=S+" 1 0%";return g("div",i({},{className:a.track},E&&!_.disabled&&t.pointerStartMoveEvent.reduce(function(e,t){return e[m["on".concat(t)]]=V,e},{})),[g("div",{className:a.trackPart+" "+a.trackPartValue,key:"trackPartValue",style:{flex:D,msFlex:D,WebkitFlex:D}},g("div",{className:a.trackBar},g("div",{className:a.trackBarValue}))),g("div",i({},{className:a.control,key:"control"},_.disabled?{disabled:!0}:(h={},n(h,m.tabindex,_[m.tabindex]||0),n(h,m.onfocus,function(){return function(e,t){c(e),r=t,e.hasFocus(!0)}(b,b.controlEl)}),n(h,m.onblur,function(){return c(b)}),n(h,m.onkeydown,function(e){"Tab"!==e.key&&e.preventDefault(),"Escape"===e.key||"Esc"===e.key?b.controlEl.blur(e):"ArrowLeft"===e.key||"ArrowDown"===e.key||"Left"===e.key||"Down"===e.key?b.decrement(b,e.shiftKey):"ArrowRight"===e.key||"ArrowUp"===e.key||"Right"===e.key||"Up"===e.key?b.increment(b,e.shiftKey):"Home"===e.key?s(b,b.min):"End"===e.key?s(b,b.max):"PageDown"===e.key?b.decrement(b,!0):"PageUp"===e.key&&b.increment(b,!0),d(b),l(b)}),h),!_.disabled&&t.pointerStartMoveEvent.reduce(function(e,t){return e[m["on".concat(t)]]=T,e},{}),_.events?_.events:null,y?{step:P}:null),_.icon?g("div",{className:a.thumb,key:"icon"},_.icon):null),g("div",{className:a.trackPart+" "+a.trackPartRest,key:"trackPartRest",style:{flex:N,msFlex:N,WebkitFlex:N,maxWidth:100*S+"%"}},g("div",{className:a.trackBar},g("div",{className:a.trackBarValue}))),y&&!_.disabled?g("div",{className:a.ticks,key:"ticks"},u(g,P,b.stepSize,b.value())):null,y&&_.pin&&!_.disabled?g("div",{className:a.pin,key:"pin",value:b.value()}):null])},g=Object.freeze({getInitialState:function(e,t){var n=e.attrs,i=void 0!==n.min?n.min:0,r=void 0!==n.max?n.max:100,a=r-i,c=void 0!==n.stepSize?n.stepSize:1,o=void 0!==n.defaultValue?n.defaultValue:void 0!==n.value?n.value:0,l=t(void 0),u=t(!1),d=t(!1),f=t(!1),v=t(i),p=t(0),k=1/c,h=function(e){var t=arguments.length>1&&void 0!==arguments[1]&&arguments[1];e<i&&(e=i),e>r&&(e=r),p(c?Math.round(e*k)/k:e),v((p()-i)/a),t&&n.onChange&&n.onChange({value:p()}),l(e)};return h(o),{min:i,max:r,stepSize:c,fraction:v,trackEl:null,controlEl:null,pinEl:null,setValue:h,increment:function(e,t){return s(e,p()+(t?10:1)*(c||1))},decrement:function(e,t){return s(e,p()-(t?10:1)*(c||1))},isDragging:f,isActive:u,value:p,previousValue:l,hasFocus:d,controlWidth:0,rangeWidth:0,rangeOffset:0,clickOffset:0,redrawOnUpdate:t.merge([u,p])}},onMount:function(e){if(e.dom){var t=e.dom,n=e.state,i=e.attrs;n.trackEl=t.querySelector(".".concat(a.track)),n.controlEl=t.querySelector(".".concat(a.control)),n.pinEl=t.querySelector(".".concat(a.pin)),d(n),i.pin&&setTimeout(function(){s(n,n.value())},0)}},createProps:function(e,n){var r=n.keys,c=e.state,o=e.attrs;void 0!==o.value&&c.previousValue()!==o.value&&(c.previousValue(o.value),setTimeout(function(){return c.setValue(c.previousValue())},0));var l=void 0!==o.ticks&&!1!==o.ticks,s=void 0===o.interactiveTrack||o.interactiveTrack;return i({},t.filterSupportedAttributes(o),{className:[a.component,o.disabled?a.isDisabled:null,o.pin?a.hasPin:null,s?a.hasTrack:null,c.isActive()?a.isActive:null,c.hasFocus()?a.hasFocus:null,0===c.fraction()?a.isAtMin:null,l?a.hasTicks:null,"dark"===o.tone?"pe-dark-tone":null,"light"===o.tone?"pe-light-tone":null,o.className||o[r.class]].join(" ")})},createContent:function(e,t){var n=t.renderer,i=t.keys,r=e.attrs,a=void 0!==r.ticks&&!1!==r.ticks,c=void 0===r.interactiveTrack||r.interactiveTrack;return h(e,{h:n,k:i,hasTicks:a,interactiveTrack:c})}});e.coreSlider=g,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-core']));
+}(this, function (exports, polytheneCore) { 'use strict';
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  var classes = {
+    component: "pe-slider",
+    // elements
+    control: "pe-slider__control",
+    label: "pe-slider__label",
+    pin: "pe-slider__pin",
+    thumb: "pe-slider__thumb",
+    tick: "pe-slider__tick",
+    ticks: "pe-slider__ticks",
+    track: "pe-slider__track",
+    trackBar: "pe-slider__track-bar",
+    trackBarValue: "pe-slider__track-bar-value",
+    trackPart: "pe-slider__track-part",
+    trackPartRest: "pe-slider__track-rest",
+    trackPartValue: "pe-slider__track-value",
+    // states
+    hasFocus: "pe-slider--focus",
+    hasPin: "pe-slider--pin",
+    hasTicks: "pe-slider--ticks",
+    hasTrack: "pe-slider--track",
+    isActive: "pe-slider--active",
+    isAtMin: "pe-slider--min",
+    isDisabled: "pe-slider--disabled",
+    tickValue: "pe-slider__tick--value"
+  };
+
+  var MAX_TICKS = 100;
+  var focusElement;
+
+  var deFocus = function deFocus(state) {
+    if (focusElement) {
+      focusElement.blur();
+    }
+
+    focusElement = undefined;
+    state.hasFocus(false);
+  };
+
+  var focus = function focus(state, el) {
+    deFocus(state);
+    focusElement = el;
+    state.hasFocus(true);
+  };
+
+  var positionFromEvent = function positionFromEvent(e, isVertical) {
+    return (// isVertical not yet implemented
+      polytheneCore.isTouch && e.touches ? isVertical ? e.touches[0].pageY : e.touches[0].pageX : isVertical ? e.pageY : e.pageX
+    );
+  };
+
+  var updatePinPosition = function updatePinPosition(state) {
+    if (state.controlEl && state.pinEl) {
+      var left = state.fraction() * state.rangeWidth;
+      state.pinEl.style.left = left + "px";
+    }
+  };
+
+  var updateValue = function updateValue(state, value) {
+    state.setValue(value, true);
+    updatePinPosition(state);
+  };
+
+  var generateTickMarks = function generateTickMarks(h, stepCount, stepSize, value) {
+    var items = [];
+    var stepWithValue = value / stepSize;
+    var s = 0;
+
+    while (s < stepCount + 1) {
+      items.push(h("div", {
+        className: s <= stepWithValue ? [classes.tick, classes.tickValue].join(" ") : classes.tick,
+        key: "tick-".concat(s)
+      }));
+      s++;
+    }
+
+    return items;
+  };
+
+  var readRangeData = function readRangeData(state) {
+    if (state.controlEl && polytheneCore.isClient) {
+      // range is from the far left to the far right minus the thumb width (max x is at the left side of the thumb)
+      state.controlWidth = parseFloat(polytheneCore.getStyle({
+        element: state.controlEl,
+        prop: "width"
+      }));
+      state.rangeWidth = state.trackEl.getBoundingClientRect().width - state.controlWidth;
+      var styles = window.getComputedStyle(state.trackEl);
+      state.rangeOffset = parseFloat(styles.marginLeft);
+    }
+  };
+
+  var calculateClickOffset = function calculateClickOffset(state) {
+    var controlOffset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    state.clickOffset = state.trackEl.getBoundingClientRect().left - (state.rangeOffset - state.controlWidth / 2) + controlOffset;
+  };
+
+  var initControlEvent = function initControlEvent(state, e) {
+    var controlPos = state.controlEl.getBoundingClientRect().left;
+    var eventPos = positionFromEvent(e);
+    var controlOffset = eventPos - controlPos - state.controlWidth / 2;
+    calculateClickOffset(state, controlOffset);
+  };
+
+  var initTrackEvent = function initTrackEvent(state) {
+    return calculateClickOffset(state, 0);
+  };
+
+  var handlePosEvent = function handlePosEvent(state, e) {
+    var pos = positionFromEvent(e) - state.clickOffset;
+    var value = state.min + (pos - state.rangeOffset) / state.rangeWidth * (state.max - state.min);
+    updateValue(state, value);
+  };
+
+  var startDrag = function startDrag(state, attrs, e) {
+    if (state.isDragging()) return;
+    e.preventDefault();
+    state.isDragging(true);
+    state.isActive(true);
+    deFocus(state);
+
+    var drag = function drag(e) {
+      if (!state.isDragging()) return;
+      handlePosEvent(state, e);
+    };
+
+    var endDrag = function endDrag() {
+      if (!state.isDragging()) return;
+      deFocus(state);
+
+      if (polytheneCore.isClient) {
+        polytheneCore.pointerMoveEvent.forEach(function (evt) {
+          return window.removeEventListener(evt, drag);
+        });
+        polytheneCore.pointerEndMoveEvent.forEach(function (evt) {
+          return window.removeEventListener(evt, endDrag);
+        });
+      }
+
+      state.isDragging(false);
+      state.isActive(false);
+    };
+
+    if (polytheneCore.isClient) {
+      polytheneCore.pointerMoveEvent.forEach(function (evt) {
+        return window.addEventListener(evt, drag);
+      });
+      polytheneCore.pointerEndMoveEvent.forEach(function (evt) {
+        return window.addEventListener(evt, endDrag);
+      });
+    }
+
+    readRangeData(state);
+
+    if (attrs.pin) {
+      updatePinPosition(state);
+    }
+  };
+
+  var startTrack = function startTrack(state, attrs, e) {
+    e.preventDefault();
+
+    if (state.isDragging()) {
+      return;
+    }
+
+    readRangeData(state);
+    initTrackEvent(state);
+    handlePosEvent(state, e);
+    startDrag(state, attrs, e);
+  };
+
+  var createSlider = function createSlider(vnode, _ref) {
+    var _ref2;
+
+    var h = _ref.h,
+        k = _ref.k,
+        hasTicks = _ref.hasTicks,
+        interactiveTrack = _ref.interactiveTrack;
+    var state = vnode.state;
+    var attrs = vnode.attrs;
+    var fraction = state.fraction();
+    var range = state.max - state.min;
+    var stepCount = Math.min(MAX_TICKS, parseInt(range / state.stepSize, 10));
+
+    var onStartTrack = function onStartTrack(e) {
+      return startTrack(state, attrs, e);
+    };
+
+    var onInitDrag = function onInitDrag(e) {
+      readRangeData(state);
+      initControlEvent(state, e);
+      startDrag(state, attrs, e);
+    };
+
+    var flexValueCss = fraction + " 1 0%";
+    var flexRestValue = 1 - fraction;
+    var flexRestCss = flexRestValue + " 1 0%";
+    return h("div", _extends({}, {
+      className: classes.track
+    }, interactiveTrack && !attrs.disabled && polytheneCore.pointerStartMoveEvent.reduce(function (acc, evt) {
+      return acc[k["on".concat(evt)]] = onStartTrack, acc;
+    }, {})), [h("div", {
+      className: classes.trackPart + " " + classes.trackPartValue,
+      key: "trackPartValue",
+      style: {
+        flex: flexValueCss,
+        msFlex: flexValueCss,
+        WebkitFlex: flexValueCss
+      }
+    }, h("div", {
+      className: classes.trackBar
+    }, h("div", {
+      className: classes.trackBarValue
+    }))), h("div", _extends({}, {
+      className: classes.control,
+      key: "control"
+    }, attrs.disabled ? {
+      disabled: true
+    } : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onfocus, function () {
+      return focus(state, state.controlEl);
+    }), _defineProperty(_ref2, k.onblur, function () {
+      return deFocus(state);
+    }), _defineProperty(_ref2, k.onkeydown, function (e) {
+      if (e.key !== "Tab") {
+        e.preventDefault();
+      }
+
+      if (e.key === "Escape" || e.key === "Esc") {
+        state.controlEl.blur(e);
+      } else if (e.key === "ArrowLeft" || e.key === "ArrowDown" || e.key === "Left" || e.key === "Down") {
+        state.decrement(state, e.shiftKey);
+      } else if (e.key === "ArrowRight" || e.key === "ArrowUp" || e.key === "Right" || e.key === "Up") {
+        state.increment(state, e.shiftKey);
+      } else if (e.key === "Home") {
+        updateValue(state, state.min);
+      } else if (e.key === "End") {
+        updateValue(state, state.max);
+      } else if (e.key === "PageDown") {
+        state.decrement(state, true);
+      } else if (e.key === "PageUp") {
+        state.increment(state, true);
+      }
+
+      readRangeData(state);
+      updatePinPosition(state);
+    }), _ref2), !attrs.disabled && polytheneCore.pointerStartMoveEvent.reduce(function (acc, evt) {
+      return acc[k["on".concat(evt)]] = onInitDrag, acc;
+    }, {}), attrs.events ? attrs.events : null, hasTicks ? {
+      step: stepCount
+    } : null), attrs.icon ? h("div", {
+      className: classes.thumb,
+      key: "icon"
+    }, attrs.icon) : null), h("div", {
+      className: classes.trackPart + " " + classes.trackPartRest,
+      key: "trackPartRest",
+      style: {
+        flex: flexRestCss,
+        msFlex: flexRestCss,
+        WebkitFlex: flexRestCss,
+        maxWidth: flexRestValue * 100 + "%" // for IE Edge
+
+      }
+    }, h("div", {
+      className: classes.trackBar
+    }, h("div", {
+      className: classes.trackBarValue
+    }))), hasTicks && !attrs.disabled ? h("div", {
+      className: classes.ticks,
+      key: "ticks"
+    }, generateTickMarks(h, stepCount, state.stepSize, state.value())) : null, hasTicks && attrs.pin && !attrs.disabled ? h("div", {
+      className: classes.pin,
+      key: "pin",
+      value: state.value()
+    }) : null]);
+  };
+
+  var getInitialState = function getInitialState(vnode, createStream) {
+    var attrs = vnode.attrs;
+    var min = attrs.min !== undefined ? attrs.min : 0;
+    var max = attrs.max !== undefined ? attrs.max : 100;
+    var range = max - min;
+    var stepSize = attrs.stepSize !== undefined ? attrs.stepSize : 1;
+    var defaultValue = attrs.defaultValue !== undefined ? attrs.defaultValue : attrs.value !== undefined ? attrs.value : 0;
+    var previousValue = createStream(undefined);
+    var isActive = createStream(false);
+    var hasFocus = createStream(false);
+    var isDragging = createStream(false);
+    var fraction = createStream(min);
+    var value = createStream(0);
+    var normalizeFactor = 1 / stepSize;
+
+    var setValue = function setValue(v) {
+      var shouldNotify = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      if (v < min) v = min;
+      if (v > max) v = max;
+      value(stepSize ? Math.round(v * normalizeFactor) / normalizeFactor : v);
+      fraction((value() - min) / range);
+
+      if (shouldNotify && attrs.onChange) {
+        attrs.onChange({
+          value: value()
+        });
+      }
+
+      previousValue(v);
+    };
+
+    var increment = function increment(state, useLargeStep) {
+      return updateValue(state, value() + (useLargeStep ? 10 : 1) * (stepSize || 1));
+    };
+
+    var decrement = function decrement(state, useLargeStep) {
+      return updateValue(state, value() - (useLargeStep ? 10 : 1) * (stepSize || 1));
+    };
+
+    setValue(defaultValue);
+    return {
+      min: min,
+      max: max,
+      stepSize: stepSize,
+      fraction: fraction,
+      // DOM elements
+      trackEl: null,
+      controlEl: null,
+      pinEl: null,
+      // functions
+      setValue: setValue,
+      increment: increment,
+      decrement: decrement,
+      // streams
+      isDragging: isDragging,
+      isActive: isActive,
+      value: value,
+      previousValue: previousValue,
+      hasFocus: hasFocus,
+      // coordinates
+      controlWidth: 0,
+      rangeWidth: 0,
+      rangeOffset: 0,
+      clickOffset: 0,
+      redrawOnUpdate: createStream.merge([isActive, value])
+    };
+  };
+  var onMount = function onMount(vnode) {
+    if (!vnode.dom) {
+      return;
+    }
+
+    var dom = vnode.dom;
+    var state = vnode.state;
+    var attrs = vnode.attrs;
+    state.trackEl = dom.querySelector(".".concat(classes.track));
+    state.controlEl = dom.querySelector(".".concat(classes.control));
+    state.pinEl = dom.querySelector(".".concat(classes.pin));
+    readRangeData(state);
+
+    if (attrs.pin) {
+      setTimeout(function () {
+        updateValue(state, state.value());
+      }, 0);
+    }
+  };
+  var createProps = function createProps(vnode, _ref3) {
+    var k = _ref3.keys;
+    var state = vnode.state;
+    var attrs = vnode.attrs;
+
+    if (attrs.value !== undefined) {
+      if (state.previousValue() !== attrs.value) {
+        state.previousValue(attrs.value);
+        setTimeout(function () {
+          return state.setValue(state.previousValue());
+        }, 0); // perform in next tick to play nice with React
+      }
+    }
+
+    var hasTicks = attrs.ticks !== undefined && attrs.ticks !== false;
+    var interactiveTrack = attrs.interactiveTrack !== undefined ? attrs.interactiveTrack : true;
+    return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
+      className: [classes.component, attrs.disabled ? classes.isDisabled : null, attrs.pin ? classes.hasPin : null, interactiveTrack ? classes.hasTrack : null, state.isActive() ? classes.isActive : null, state.hasFocus() ? classes.hasFocus : null, state.fraction() === 0 ? classes.isAtMin : null, hasTicks ? classes.hasTicks : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    });
+  };
+  var createContent = function createContent(vnode, _ref4) {
+    var h = _ref4.renderer,
+        k = _ref4.keys;
+    var attrs = vnode.attrs;
+    var hasTicks = attrs.ticks !== undefined && attrs.ticks !== false;
+    var interactiveTrack = attrs.interactiveTrack !== undefined ? attrs.interactiveTrack : true;
+    return createSlider(vnode, {
+      h: h,
+      k: k,
+      hasTicks: hasTicks,
+      interactiveTrack: interactiveTrack
+    });
+  };
+
+  var slider = /*#__PURE__*/Object.freeze({
+    getInitialState: getInitialState,
+    onMount: onMount,
+    createProps: createProps,
+    createContent: createContent
+  });
+
+  exports.coreSlider = slider;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-core-slider.js.map

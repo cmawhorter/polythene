@@ -1,2 +1,175 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core")):"function"==typeof define&&define.amd?define(["exports","polythene-core"],t):t((e=e||self).polythene={},e["polythene-core"])}(this,function(e,t){"use strict";function l(e,t,l){return t in e?Object.defineProperty(e,t,{value:l,enumerable:!0,configurable:!0,writable:!0}):e[t]=l,e}function n(){return(n=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var l=arguments[t];for(var n in l)Object.prototype.hasOwnProperty.call(l,n)&&(e[n]=l[n])}return e}).apply(this,arguments)}var i={component:"pe-list-tile",content:"pe-list-tile__content",highSubtitle:"pe-list-tile__high-subtitle",primary:"pe-list-tile__primary",secondary:"pe-list-tile__secondary",subtitle:"pe-list-tile__subtitle",title:"pe-list-tile__title",contentFront:"pe-list-tile__content-front",compact:"pe-list-tile--compact",compactFront:"pe-list-tile--compact-front",disabled:"pe-list-tile--disabled",hasFront:"pe-list-tile--front",hasHighSubtitle:"pe-list-tile--high-subtitle",hasSubtitle:"pe-list-tile--subtitle",header:"pe-list-tile--header",hoverable:"pe-list-tile--hoverable",insetH:"pe-list-tile--inset-h",insetV:"pe-list-tile--inset-v",selectable:"pe-list-tile--selectable",selected:"pe-list-tile--selected",rounded:"pe-list-tile--rounded",highlight:"pe-list-tile--highlight",sticky:"pe-list-tile--sticky",navigation:"pe-list-tile--navigation"},s=function(e,s,r,o,a){var u=o.keyboardControl?null:o.url,c=o.element?o.element:u?"a":"div",d=[i.content,i.contentFront,o.compactFront?i.compactFront:null].join(" "),p=o.front?e("div",n({},r?{key:"front"}:null,{className:d}),o.front):o.indent?e("div",n({},r?{key:"front"}:null,{className:d})):null,b=!o.header&&o.url,h=n({},t.filterSupportedAttributes(o),o.events,r?{key:"primary"}:null,{className:i.primary,style:null},b&&l({},s.tabindex,o[s.tabindex]||0),u),y=o.content?o.content:[p,e("div",{className:i.content,style:o.style},[o.title&&!o.content?e("div",n({},r?{key:"title"}:null,{className:i.title}),o.title):null,o.subtitle?e("div",n({},r?{key:"subtitle"}:null,{className:i.subtitle}),o.subtitle):null,o.highSubtitle?e("div",n({},r?{key:"highSubtitle"}:null,{className:i.subtitle+" "+i.highSubtitle}),o.highSubtitle):null,o.subContent?e("div",n({},r?{key:"subContent"}:null,{className:i.subContent}),o.subContent):null,a])];return e(c,h,y)},r=function(e,s,r,o){var a=arguments.length>4&&void 0!==arguments[4]?arguments[4]:{},u=a.keyboardControl?null:a.url,c=a.element?a.element:u?"a":"div",d=a.url;return e(c,n({},u,{className:i.secondary},a.events,r?{key:"secondary"}:null,t.filterSupportedAttributes(a),d&&l({},s.tabindex,a[s.tabindex]||0)),e("div",{className:i.content},[a.icon?e(o,a.icon):null,a.content?a.content:null]))},o=Object.freeze({getElement:function(){return"div"},createProps:function(e,s){var r=s.keys,o=e.attrs,a=!(o.header||o.url||o.secondary&&o.secondary.url),u=o.subtitle?i.hasSubtitle:o.highSubtitle?i.hasHighSubtitle:o.front||o.indent?i.hasFront:null;return n({},t.filterSupportedAttributes(o,{remove:["tabindex","tabIndex"]}),{className:[i.component,o.selected?i.selected:null,o.disabled?i.disabled:null,o.sticky?i.sticky:null,o.compact?i.compact:null,o.hoverable?i.hoverable:null,o.selectable?i.selectable:null,o.highlight?i.highlight:null,o.rounded?i.rounded:null,o.header?i.header:null,o.inset||o.insetH?i.insetH:null,o.inset||o.insetV?i.insetV:null,o.navigation?i.navigation:null,"dark"===o.tone?"pe-dark-tone":null,"light"===o.tone?"pe-light-tone":null,u,o.className||o[r.class]].join(" ")},a&&l({},r.tabindex,o[r.tabindex]||0))},createContent:function(e,t){var l=t.renderer,i=t.requiresKeys,o=t.keys,a=t.Ripple,u=t.Icon,c=e.attrs,d=n({},i?{key:"primary"}:null,c);return delete d.id,delete d[o.class],[c.ink&&!c.disabled?l(a,n({},c.ripple,i?{key:"ripple"}:null)):null,s(l,o,i,d,c.children||e.children),c.secondary?r(l,o,i,u,c.secondary):null]}});e.coreListTile=o,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-core']));
+}(this, function (exports, polytheneCore) { 'use strict';
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  var classes = {
+    component: "pe-list-tile",
+    // elements
+    content: "pe-list-tile__content",
+    highSubtitle: "pe-list-tile__high-subtitle",
+    primary: "pe-list-tile__primary",
+    secondary: "pe-list-tile__secondary",
+    subtitle: "pe-list-tile__subtitle",
+    title: "pe-list-tile__title",
+    contentFront: "pe-list-tile__content-front",
+    // states  
+    compact: "pe-list-tile--compact",
+    compactFront: "pe-list-tile--compact-front",
+    disabled: "pe-list-tile--disabled",
+    hasFront: "pe-list-tile--front",
+    hasHighSubtitle: "pe-list-tile--high-subtitle",
+    hasSubtitle: "pe-list-tile--subtitle",
+    header: "pe-list-tile--header",
+    hoverable: "pe-list-tile--hoverable",
+    insetH: "pe-list-tile--inset-h",
+    insetV: "pe-list-tile--inset-v",
+    selectable: "pe-list-tile--selectable",
+    selected: "pe-list-tile--selected",
+    rounded: "pe-list-tile--rounded",
+    highlight: "pe-list-tile--highlight",
+    sticky: "pe-list-tile--sticky",
+    navigation: "pe-list-tile--navigation"
+  };
+
+  var getElement = function getElement() {
+    return "div";
+  }; // because primary or secondary content can be an "a", the container is always defined as "div", and option `element` is passed to primary content
+
+  var primaryContent = function primaryContent(h, k, requiresKeys, attrs, children) {
+    var url = attrs.keyboardControl ? null : attrs.url;
+    var element = attrs.element ? attrs.element : url ? "a" : "div";
+    var contentFrontClass = [classes.content, classes.contentFront, attrs.compactFront ? classes.compactFront : null].join(" ");
+    var frontComp = attrs.front ? h("div", _extends({}, requiresKeys ? {
+      key: "front"
+    } : null, {
+      className: contentFrontClass
+    }), attrs.front) : attrs.indent ? h("div", _extends({}, requiresKeys ? {
+      key: "front"
+    } : null, {
+      className: contentFrontClass
+    })) : null;
+    var hasTabIndex = !attrs.header && attrs.url;
+
+    var props = _extends({}, polytheneCore.filterSupportedAttributes(attrs), attrs.events, requiresKeys ? {
+      key: "primary"
+    } : null, {
+      className: classes.primary,
+      style: null
+    }, hasTabIndex && _defineProperty({}, k.tabindex, attrs[k.tabindex] || 0), url);
+
+    var content = attrs.content ? attrs.content : [frontComp, h("div", {
+      className: classes.content,
+      style: attrs.style
+    }, [attrs.title && !attrs.content ? h("div", _extends({}, requiresKeys ? {
+      key: "title"
+    } : null, {
+      className: classes.title
+    }), attrs.title) : null, attrs.subtitle ? h("div", _extends({}, requiresKeys ? {
+      key: "subtitle"
+    } : null, {
+      className: classes.subtitle
+    }), attrs.subtitle) : null, attrs.highSubtitle ? h("div", _extends({}, requiresKeys ? {
+      key: "highSubtitle"
+    } : null, {
+      className: classes.subtitle + " " + classes.highSubtitle
+    }), attrs.highSubtitle) : null, attrs.subContent ? h("div", _extends({}, requiresKeys ? {
+      key: "subContent"
+    } : null, {
+      className: classes.subContent
+    }), attrs.subContent) : null, children])];
+    return h(element, props, content);
+  };
+
+  var secondaryContent = function secondaryContent(h, k, requiresKeys, Icon) {
+    var attrs = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
+    var url = attrs.keyboardControl ? null : attrs.url;
+    var element = attrs.element ? attrs.element : url ? "a" : "div";
+    var hasTabIndex = attrs.url;
+    return h(element, _extends({}, url, {
+      className: classes.secondary
+    }, attrs.events, requiresKeys ? {
+      key: "secondary"
+    } : null, polytheneCore.filterSupportedAttributes(attrs), hasTabIndex && _defineProperty({}, k.tabindex, attrs[k.tabindex] || 0)), h("div", {
+      className: classes.content
+    }, [attrs.icon ? h(Icon, attrs.icon) : null, attrs.content ? attrs.content : null]));
+  };
+
+  var createProps = function createProps(vnode, _ref3) {
+    var k = _ref3.keys;
+    var attrs = vnode.attrs;
+    var hasTabIndex = !attrs.header && !attrs.url && !(attrs.secondary && attrs.secondary.url);
+    var heightClass = attrs.subtitle ? classes.hasSubtitle : attrs.highSubtitle ? classes.hasHighSubtitle : attrs.front || attrs.indent ? classes.hasFront : null;
+    return _extends({}, polytheneCore.filterSupportedAttributes(attrs, {
+      remove: ["tabindex", "tabIndex"]
+    }), // tabindex is set elsewhere
+    {
+      className: [classes.component, attrs.selected ? classes.selected : null, attrs.disabled ? classes.disabled : null, attrs.sticky ? classes.sticky : null, attrs.compact ? classes.compact : null, attrs.hoverable ? classes.hoverable : null, attrs.selectable ? classes.selectable : null, attrs.highlight ? classes.highlight : null, attrs.rounded ? classes.rounded : null, attrs.header ? classes.header : null, attrs.inset || attrs.insetH ? classes.insetH : null, attrs.inset || attrs.insetV ? classes.insetV : null, attrs.navigation ? classes.navigation : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, heightClass, attrs.className || attrs[k.class]].join(" ")
+    }, hasTabIndex && _defineProperty({}, k.tabindex, attrs[k.tabindex] || 0) // events and url are attached to primary content to not interfere with controls
+    );
+  };
+  var createContent = function createContent(vnode, _ref5) {
+    var h = _ref5.renderer,
+        requiresKeys = _ref5.requiresKeys,
+        k = _ref5.keys,
+        Ripple = _ref5.Ripple,
+        Icon = _ref5.Icon;
+    var attrs = vnode.attrs;
+
+    var primaryAttrs = _extends({}, requiresKeys ? {
+      key: "primary"
+    } : null, attrs);
+
+    delete primaryAttrs.id;
+    delete primaryAttrs[k.class];
+    return [attrs.ink && !attrs.disabled ? h(Ripple, _extends({}, attrs.ripple, requiresKeys ? {
+      key: "ripple"
+    } : null)) : null, primaryContent(h, k, requiresKeys, primaryAttrs, attrs.children || vnode.children), attrs.secondary ? secondaryContent(h, k, requiresKeys, Icon, attrs.secondary) : null];
+  };
+
+  var listTile = /*#__PURE__*/Object.freeze({
+    getElement: getElement,
+    createProps: createProps,
+    createContent: createContent
+  });
+
+  exports.coreListTile = listTile;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-core-list-tile.js.map

@@ -1,2 +1,539 @@
-!function(e,r){"object"==typeof exports&&"undefined"!=typeof module?r(exports,require("polythene-css-base-spinner"),require("polythene-core-css"),require("polythene-theme")):"function"==typeof define&&define.amd?define(["exports","polythene-css-base-spinner","polythene-core-css","polythene-theme"],r):r((e=e||self).polythene={},e["polythene-css-base-spinner"],e["polythene-core-css"],e["polythene-theme"])}(this,function(e,r,n,t){"use strict";function i(e,r,n){return r in e?Object.defineProperty(e,r,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[r]=n,e}function o(){return(o=Object.assign||function(e){for(var r=1;r<arguments.length;r++){var n=arguments[r];for(var t in n)Object.prototype.hasOwnProperty.call(n,t)&&(e[t]=n[t])}return e}).apply(this,arguments)}var a={general_styles:function(e){return[n.sel(e,{" .pe-md-spinner__layer":{borderColor:"currentcolor"}})]}},l=function(e){var r;return i(r={},"color_"+e+"_single",function(r,t){return[n.sel(r,{color:t["color_"+e+"_single"]})]}),i(r,"color_"+e+"_1",function(r,t){return[n.sel(r,{":not(.pe-spinner--single-color)":{" .pe-md-spinner__layer-1":{borderColor:t["color_"+e+"_1"]}}})]}),i(r,"color_"+e+"_2",function(r,t){return[n.sel(r,{":not(.pe-spinner--single-color)":{" .pe-md-spinner__layer-2":{borderColor:t["color_"+e+"_2"]}}})]}),i(r,"color_"+e+"_3",function(r,t){return[n.sel(r,{":not(.pe-spinner--single-color)":{" .pe-md-spinner__layer-3":{borderColor:t["color_"+e+"_3"]}}})]}),i(r,"color_"+e+"_4",function(r,t){return[n.sel(r,{":not(.pe-spinner--single-color)":{" .pe-md-spinner__layer-4":{borderColor:t["color_"+e+"_4"]}}})]}),r},p=o({},a,l("light")),s=o({},a,l("dark")),d=n.createColor({varFns:{lightTintFns:p,darkTintFns:s},superColor:r.color}),c="cubic-bezier(0.4, 0.0, 0.2, 1) infinite both",_=function(e){return{" from":{transform:"rotate("+130*e+"deg)"}," 50%":{transform:"rotate("+-5*e+"deg)"}," to":{transform:"rotate("+130*e+"deg)"}}},m={general_styles:function(e,r){return[n.sel(e,{"@keyframes mdSpinnerRotate":{" to":{transform:"rotate(360deg)"}},"@keyframes mdSpinnerRightSpin":_(-1),"@keyframes mdSpinnerLeftSpin":_(1),"@keyframes mdSpinnerFadeOut":{" from":{opacity:.99}," to":{opacity:0}},"@keyframes mdSpinnerLayer1FadeInOut":{" from":{opacity:.99}," 25%":{opacity:.99}," 26%":{opacity:0}," 89%":{opacity:0}," 90%":{opacity:.99}," 100%":{opacity:.99}},"@keyframes mdSpinnerLayer2FadeInOut":{" from":{opacity:0}," 15%":{opacity:0}," 25%":{opacity:.99}," 50%":{opacity:.99}," 51%":{opacity:0}},"@keyframes mdSpinnerLayer3FadeInOut":{" from":{opacity:0}," 40%":{opacity:0}," 50%":{opacity:.99}," 75%":{opacity:.99}," 76%":{opacity:0}},"@keyframes mdSpinnerLayer4FadeInOut":{" from":{opacity:0}," 65%":{opacity:0}," 75%":{opacity:.99}," 90%":{opacity:.99}," 100%":{opacity:0}}," .pe-md-spinner__animation":{position:"relative",width:"100%",height:"100%",direction:"ltr"}," .pe-md-spinner__gap-patch":{position:"absolute",boxSizing:"border-box",top:0,left:"45%",width:"10%",height:"100%",overflow:"hidden",borderColor:"inherit"}," .pe-md-spinner__gap-patch .pe-md-spinner__circle":{width:"1000%",left:"-450%"}," .pe-md-spinner__circle-clipper":{display:"inline-block",fontSize:0,lineHeight:0,position:"relative",width:"50%",height:"100%",overflow:"hidden",borderColor:"inherit"}," .pe-md-spinner__circle-clipper .pe-md-spinner__circle":{width:"200%"}," .pe-md-spinner__circle":[n.mixin.fit(),{animation:"none",boxSizing:"border-box",height:"100%",borderStyle:"solid",borderColor:"inherit",borderRadius:"50%",borderBottomColor:"transparent !important"}]," .pe-md-spinner__circle-clipper-left .pe-md-spinner__circle":{transform:"rotate(129deg)",borderRightColor:"transparent !important"}," .pe-md-spinner__circle-clipper-right .pe-md-spinner__circle":{transform:"rotate(-129deg)",left:"-100%",borderLeftColor:"transparent !important"}," .pe-md-spinner__layer":[[1,2,3,4].map(function(e){return function(e,r){return i({},".pe-md-spinner__layer-"+r,{animation:"mdSpinnerFillUnfillRotate "+4*e.arc_time+"s "+c+",  mdSpinnerLayer"+r+"FadeInOut "+4*e.arc_time+"s "+c})}(r,e)}),{position:"absolute",width:"100%",height:"100%",whiteSpace:"nowrap"}]})]},rotation_duration:function(e,r){return[n.sel(e,{" .pe-md-spinner__animation":{animation:"mdSpinnerRotate "+r.rotation_duration+"s linear infinite"}})]},border_width_small:function(e,r){return[n.sel(e,{".pe-spinner--small":{" .pe-md-spinner__circle":{borderWidth:r.border_width_small+"px"}}})]},border_width_regular:function(e,r){return[n.sel(e,{".pe-spinner--regular":{" .pe-md-spinner__circle":{borderWidth:r.border_width_regular+"px"}}})]},border_width_medium:function(e,r){return[n.sel(e,{".pe-spinner--medium":{" .pe-md-spinner__circle":{borderWidth:r.border_width_medium+"px"}}})]},border_width_large:function(e,r){return[n.sel(e,{".pe-spinner--large":{" .pe-md-spinner__circle":{borderWidth:r.border_width_large+"px"}}})]},border_width_fab:function(e,r){return[n.sel(e,{".pe-spinner--fab":{" .pe-md-spinner__circle":{borderWidth:r.border_width_fab+"px"}}})]},arc_size:function(e,r){return[n.sel(e,{"@keyframes mdSpinnerFillUnfillRotate":(t=r.arc_size,{" 12.5%":{transform:"rotate("+.5*t+"deg)"}," 25%":{transform:"rotate("+1*t+"deg)"}," 37.5%":{transform:"rotate("+1.5*t+"deg)"}," 50%":{transform:"rotate("+2*t+"deg)"}," 62.5%":{transform:"rotate("+2.5*t+"deg)"}," 75%":{transform:"rotate("+3*t+"deg)"}," 87.5%":{transform:"rotate("+3.5*t+"deg)"}," to":{transform:"rotate("+4*t+"deg)"}})})];var t},arc_time:function(e,r){return[n.sel(e,{" .pe-md-spinner__circle-clipper-left .pe-md-spinner__circle":{animation:"mdSpinnerLeftSpin "+r.arc_time+"s "+c}," .pe-md-spinner__circle-clipper-right .pe-md-spinner__circle":{animation:"mdSpinnerRightSpin "+r.arc_time+"s "+c}," .pe-md-spinner__layer":{animation:"mdSpinnerFillUnfillRotate "+4*r.arc_time+"s "+c}})]}},f=n.createLayout({varFns:m,superLayout:r.layout}),u={general_styles:!0,arc_size:270,arc_start_degrees:216,arc_time:1.333,border_width_fab:r.vars.size_fab/r.vars.size_regular*3,border_width_large:r.vars.size_large/r.vars.size_regular*3,border_width_medium:r.vars.size_medium/r.vars.size_regular*3,border_width_regular:3,border_width_small:r.vars.size_small/r.vars.size_regular*3,rotation_duration:479.88/306,color_light_single:n.rgba(t.vars.color_primary),color_light_1:"#42a5f5",color_light_2:"#f44336",color_light_3:"#fdd835",color_light_4:"#4caf50",color_dark_single:n.rgba(t.vars.color_primary),color_dark_1:"#42a5f5",color_dark_2:"#f44336",color_dark_3:"#fdd835",color_dark_4:"#4caf50"},y=[f,d],h=".".concat("pe-md-spinner"),g=n.styler.createAddStyle(h,y,u),b=n.styler.createGetStyle(h,y,u);n.styler.addStyle({selectors:[h],fns:y,vars:u}),e.addStyle=g,e.getStyle=b,e.color=d,e.layout=f,e.vars=u,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-css-base-spinner'), require('polythene-core-css'), require('polythene-theme')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-css-base-spinner', 'polythene-core-css', 'polythene-theme'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-css-base-spinner'], global['polythene-core-css'], global['polythene-theme']));
+}(this, function (exports, polytheneCssBaseSpinner, polytheneCoreCss, polytheneTheme) { 'use strict';
+
+  var classes = {
+    component: "pe-md-spinner",
+    // elements
+    animation: "pe-md-spinner__animation",
+    circle: "pe-md-spinner__circle",
+    circleClipper: "pe-md-spinner__circle-clipper",
+    circleClipperLeft: "pe-md-spinner__circle-clipper-left",
+    circleClipperRight: "pe-md-spinner__circle-clipper-right",
+    gapPatch: "pe-md-spinner__gap-patch",
+    layer: "pe-md-spinner__layer",
+    layerN: "pe-md-spinner__layer-"
+  };
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  /*
+  Styling derived from https://github.com/PolymerElements/paper-spinner
+
+  @license
+  Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+  This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+  The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+  The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+  Code distributed by Google as part of the polymer project is also
+  subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+  */
+
+  var generalFns = {
+    general_styles: function general_styles(selector) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-md-spinner__layer": {
+          borderColor: "currentcolor"
+        }
+      })];
+    }
+  };
+
+  var tintFns = function tintFns(tint) {
+    var _ref;
+
+    return _ref = {}, _defineProperty(_ref, "color_" + tint + "_single", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        color: vars["color_" + tint + "_single"]
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_1", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ":not(.pe-spinner--single-color)": {
+          " .pe-md-spinner__layer-1": {
+            borderColor: vars["color_" + tint + "_1"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_2", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ":not(.pe-spinner--single-color)": {
+          " .pe-md-spinner__layer-2": {
+            borderColor: vars["color_" + tint + "_2"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_3", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ":not(.pe-spinner--single-color)": {
+          " .pe-md-spinner__layer-3": {
+            borderColor: vars["color_" + tint + "_3"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_4", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ":not(.pe-spinner--single-color)": {
+          " .pe-md-spinner__layer-4": {
+            borderColor: vars["color_" + tint + "_4"]
+          }
+        }
+      })];
+    }), _ref;
+  };
+
+  var lightTintFns = _extends({}, generalFns, tintFns("light"));
+
+  var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+  var color = polytheneCoreCss.createColor({
+    varFns: {
+      lightTintFns: lightTintFns,
+      darkTintFns: darkTintFns
+    },
+    superColor: polytheneCssBaseSpinner.color
+  });
+
+  var OPACITY_MIN = 0;
+  var OPACITY_MAX = .99;
+  var CURVE_INFINITE = "cubic-bezier(0.4, 0.0, 0.2, 1) infinite both";
+
+  var kfRotate = function kfRotate() {
+    return {
+      " to": {
+        transform: "rotate(360deg)"
+      }
+    };
+  };
+
+  var kfLeftSpin = function kfLeftSpin() {
+    return kfSpin(1);
+  };
+
+  var kfRightSpin = function kfRightSpin() {
+    return kfSpin(-1);
+  };
+
+  var kfSpin = function kfSpin(direction) {
+    return {
+      " from": {
+        "transform": "rotate(" + direction * 130 + "deg)"
+      },
+      " 50%": {
+        "transform": "rotate(" + direction * -5 + "deg)"
+      },
+      " to": {
+        "transform": "rotate(" + direction * 130 + "deg)"
+      }
+    };
+  };
+
+  var kfFadeOut = function kfFadeOut() {
+    return {
+      " from": {
+        opacity: OPACITY_MAX
+      },
+      " to": {
+        opacity: OPACITY_MIN
+      }
+    };
+  };
+
+  var kfFillUnfillRotate = function kfFillUnfillRotate(arcSize) {
+    return {
+      " 12.5%": {
+        transform: "rotate(" + 0.5 * arcSize + "deg)"
+      },
+      " 25%": {
+        transform: "rotate(" + 1.0 * arcSize + "deg)"
+      },
+      " 37.5%": {
+        transform: "rotate(" + 1.5 * arcSize + "deg)"
+      },
+      " 50%": {
+        transform: "rotate(" + 2.0 * arcSize + "deg)"
+      },
+      " 62.5%": {
+        transform: "rotate(" + 2.5 * arcSize + "deg)"
+      },
+      " 75%": {
+        transform: "rotate(" + 3.0 * arcSize + "deg)"
+      },
+      " 87.5%": {
+        transform: "rotate(" + 3.5 * arcSize + "deg)"
+      },
+      " to": {
+        transform: "rotate(" + 4.0 * arcSize + "deg)"
+      }
+    };
+  };
+  /**
+   * HACK: Even though the intention is to have the current .pe-md-spinner__layer at
+   * `opacity: 1`, we set it to `opacity: 0.99` instead since this forces Chrome
+   * to do proper subpixel rendering for the elements being animated. This is
+   * especially visible in Chrome 39 on Ubuntu 14.04. See:
+   *
+   * - https://github.com/Polymer/paper-spinner/issues/9
+   * - https://code.google.com/p/chromium/issues/detail?id=436255
+   */
+
+
+  var kfLayer1FadeInOut = function kfLayer1FadeInOut() {
+    return {
+      " from": {
+        opacity: OPACITY_MAX
+      },
+      " 25%": {
+        opacity: OPACITY_MAX
+      },
+      " 26%": {
+        opacity: OPACITY_MIN
+      },
+      " 89%": {
+        opacity: OPACITY_MIN
+      },
+      " 90%": {
+        opacity: OPACITY_MAX
+      },
+      " 100%": {
+        opacity: OPACITY_MAX
+      }
+    };
+  };
+
+  var kfLayer2FadeInOut = function kfLayer2FadeInOut() {
+    return {
+      " from": {
+        opacity: OPACITY_MIN
+      },
+      " 15%": {
+        opacity: OPACITY_MIN
+      },
+      " 25%": {
+        opacity: OPACITY_MAX
+      },
+      " 50%": {
+        opacity: OPACITY_MAX
+      },
+      " 51%": {
+        opacity: OPACITY_MIN
+      }
+    };
+  };
+
+  var kfLayer3FadeInOut = function kfLayer3FadeInOut() {
+    return {
+      " from": {
+        opacity: OPACITY_MIN
+      },
+      " 40%": {
+        opacity: OPACITY_MIN
+      },
+      " 50%": {
+        opacity: OPACITY_MAX
+      },
+      " 75%": {
+        opacity: OPACITY_MAX
+      },
+      " 76%": {
+        opacity: OPACITY_MIN
+      }
+    };
+  };
+
+  var kfLayer4FadeInOut = function kfLayer4FadeInOut() {
+    return {
+      " from": {
+        opacity: OPACITY_MIN
+      },
+      " 65%": {
+        opacity: OPACITY_MIN
+      },
+      " 75%": {
+        opacity: OPACITY_MAX
+      },
+      " 90%": {
+        opacity: OPACITY_MAX
+      },
+      " 100%": {
+        opacity: OPACITY_MIN
+      }
+    };
+  };
+
+  var layerAnimation = function layerAnimation(vars, num) {
+    return _defineProperty({}, ".pe-md-spinner__layer-" + num, {
+      animation: "mdSpinnerFillUnfillRotate " + 4 * vars.arc_time + "s " + CURVE_INFINITE + ",  mdSpinnerLayer" + num + "FadeInOut " + 4 * vars.arc_time + "s " + CURVE_INFINITE
+    });
+  };
+
+  var varFns = {
+    general_styles: function general_styles(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        "@keyframes mdSpinnerRotate": kfRotate(),
+        "@keyframes mdSpinnerRightSpin": kfRightSpin(),
+        "@keyframes mdSpinnerLeftSpin": kfLeftSpin(),
+        "@keyframes mdSpinnerFadeOut": kfFadeOut(),
+        "@keyframes mdSpinnerLayer1FadeInOut": kfLayer1FadeInOut(),
+        "@keyframes mdSpinnerLayer2FadeInOut": kfLayer2FadeInOut(),
+        "@keyframes mdSpinnerLayer3FadeInOut": kfLayer3FadeInOut(),
+        "@keyframes mdSpinnerLayer4FadeInOut": kfLayer4FadeInOut(),
+        " .pe-md-spinner__animation": {
+          position: "relative",
+          width: "100%",
+          height: "100%",
+
+          /* The spinner does not have any contents that would have to be
+          * flipped if the direction changes. Always use ltr so that the
+          * style works out correctly in both cases. */
+          direction: "ltr"
+        },
+
+        /**
+        * Patch the gap that appear between the two adjacent div.pe-md-spinner__circle-clipper while the
+        * spinner is rotating (appears on Chrome 38, Safari 7.1, and IE 11).
+        *
+        * Update: the gap no longer appears on Chrome when .pe-md-spinner__layer"s opacity is 0.99,
+        * but still does on Safari and IE.
+        */
+        " .pe-md-spinner__gap-patch": {
+          position: "absolute",
+          boxSizing: "border-box",
+          top: 0,
+          left: "45%",
+          width: "10%",
+          height: "100%",
+          overflow: "hidden",
+          borderColor: "inherit"
+        },
+        " .pe-md-spinner__gap-patch .pe-md-spinner__circle": {
+          width: "1000%",
+          left: "-450%"
+        },
+        " .pe-md-spinner__circle-clipper": {
+          display: "inline-block",
+          fontSize: 0,
+          lineHeight: 0,
+          position: "relative",
+          width: "50%",
+          height: "100%",
+          overflow: "hidden",
+          borderColor: "inherit"
+        },
+        " .pe-md-spinner__circle-clipper .pe-md-spinner__circle": {
+          width: "200%"
+        },
+        " .pe-md-spinner__circle": [polytheneCoreCss.mixin.fit(), {
+          animation: "none",
+          boxSizing: "border-box",
+          height: "100%",
+          borderStyle: "solid",
+          borderColor: "inherit",
+          borderRadius: "50%",
+          borderBottomColor: "transparent !important"
+        }],
+        " .pe-md-spinner__circle-clipper-left .pe-md-spinner__circle": {
+          transform: "rotate(129deg)",
+          borderRightColor: "transparent !important"
+        },
+        " .pe-md-spinner__circle-clipper-right .pe-md-spinner__circle": {
+          transform: "rotate(-129deg)",
+          left: "-100%",
+          borderLeftColor: "transparent !important"
+        },
+
+        /**
+        * IMPORTANT NOTE ABOUT CSS ANIMATION PROPERTIES (keanulee):
+        *
+        * iOS Safari (tested on iOS 8.1) does not handle animation-delay very well - it doesn"t
+        * guarantee that the animation will start _exactly_ after that value. So we avoid using
+        * animation-delay and instead set custom keyframes for each color (as redundant as it
+        * seems).
+        *
+        * We write out each animation in full (instead of separating animation-name,
+        * animation-duration, etc.) because under the polyfill, Safari does not recognize those
+        * specific properties properly, treats them as -webkit-animation, and overrides the
+        * other animation rules. See https://github.com/Polymer/platform/issues/53.
+        */
+        " .pe-md-spinner__layer": [[1, 2, 3, 4].map(function (num) {
+          return layerAnimation(vars, num);
+        }), {
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+          whiteSpace: "nowrap"
+        }]
+      })];
+    },
+    rotation_duration: function rotation_duration(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-md-spinner__animation": {
+          animation: "mdSpinnerRotate " + vars.rotation_duration + "s linear infinite"
+        }
+      })];
+    },
+    border_width_small: function border_width_small(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-spinner--small": {
+          " .pe-md-spinner__circle": {
+            borderWidth: vars.border_width_small + "px"
+          }
+        }
+      })];
+    },
+    border_width_regular: function border_width_regular(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-spinner--regular": {
+          " .pe-md-spinner__circle": {
+            borderWidth: vars.border_width_regular + "px"
+          }
+        }
+      })];
+    },
+    border_width_medium: function border_width_medium(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-spinner--medium": {
+          " .pe-md-spinner__circle": {
+            borderWidth: vars.border_width_medium + "px"
+          }
+        }
+      })];
+    },
+    border_width_large: function border_width_large(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-spinner--large": {
+          " .pe-md-spinner__circle": {
+            borderWidth: vars.border_width_large + "px"
+          }
+        }
+      })];
+    },
+    border_width_fab: function border_width_fab(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-spinner--fab": {
+          " .pe-md-spinner__circle": {
+            borderWidth: vars.border_width_fab + "px"
+          }
+        }
+      })];
+    },
+    arc_size: function arc_size(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        "@keyframes mdSpinnerFillUnfillRotate": kfFillUnfillRotate(vars.arc_size)
+      })];
+    },
+    arc_time: function arc_time(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-md-spinner__circle-clipper-left .pe-md-spinner__circle": {
+          animation: "mdSpinnerLeftSpin " + vars.arc_time + "s " + CURVE_INFINITE
+        },
+        " .pe-md-spinner__circle-clipper-right .pe-md-spinner__circle": {
+          animation: "mdSpinnerRightSpin " + vars.arc_time + "s " + CURVE_INFINITE
+        },
+        " .pe-md-spinner__layer": {
+          animation: "mdSpinnerFillUnfillRotate " + 4 * vars.arc_time + "s " + CURVE_INFINITE
+        }
+      })];
+    }
+  };
+  var layout = polytheneCoreCss.createLayout({
+    varFns: varFns,
+    superLayout: polytheneCssBaseSpinner.layout
+  });
+
+  // @ts-check
+  var arc_size = 270; // degrees - amount of circle the arc takes up
+
+  var arc_time = 1.333; // s - time it takes to expand and contract arc
+
+  var arc_start_degrees = 360 / 5 * 3; // degrees - how much the start location of the arc should rotate each time, 216 gives us a 5 pointed star shape (it"s 360/5 * 3). For a 7 pointed star, we might do 360/7 * 3 = 154.286.
+
+  var rotation_duration = 360 * arc_time / (arc_start_degrees + (360 - arc_size)); // 1.568s
+
+  var blue400 = "#42a5f5";
+  var red500 = "#f44336";
+  var yellow600 = "#fdd835";
+  var green500 = "#4caf50";
+  /**
+   * @type {MaterialDesignSpinnerVars} materialDesignSpinnerVars
+   */
+
+  var materialDesignSpinnerVars = {
+    /**
+     * Generate general styles, not defined by variables
+     */
+    general_styles: true,
+    arc_size: arc_size,
+    arc_start_degrees: arc_start_degrees,
+    arc_time: arc_time,
+    border_width_fab: polytheneCssBaseSpinner.vars.size_fab / polytheneCssBaseSpinner.vars.size_regular * 3,
+    border_width_large: polytheneCssBaseSpinner.vars.size_large / polytheneCssBaseSpinner.vars.size_regular * 3,
+    border_width_medium: polytheneCssBaseSpinner.vars.size_medium / polytheneCssBaseSpinner.vars.size_regular * 3,
+    border_width_regular: 3,
+    border_width_small: polytheneCssBaseSpinner.vars.size_small / polytheneCssBaseSpinner.vars.size_regular * 3,
+    rotation_duration: rotation_duration,
+    color_light_single: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary),
+    color_light_1: blue400,
+    color_light_2: red500,
+    color_light_3: yellow600,
+    color_light_4: green500,
+    color_dark_single: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary),
+    color_dark_1: blue400,
+    color_dark_2: red500,
+    color_dark_3: yellow600,
+    color_dark_4: green500
+  };
+
+  // @ts-check
+  var fns = [layout, color];
+  var selector = ".".concat(classes.component);
+  var addStyle = polytheneCoreCss.styler.createAddStyle(selector, fns, materialDesignSpinnerVars);
+  var getStyle = polytheneCoreCss.styler.createGetStyle(selector, fns, materialDesignSpinnerVars);
+  polytheneCoreCss.styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: materialDesignSpinnerVars
+  });
+
+  exports.addStyle = addStyle;
+  exports.getStyle = getStyle;
+  exports.color = color;
+  exports.layout = layout;
+  exports.vars = materialDesignSpinnerVars;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-css-material-design-spinner.js.map

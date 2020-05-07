@@ -1,2 +1,61 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core-css")):"function"==typeof define&&define.amd?define(["exports","polythene-core-css"],t):t((e=e||self).polythene={},e["polythene-core-css"])}(this,function(e,t){"use strict";var s={general_styles:function(e){return[t.sel(e,{display:"flex"})]}},o=t.createLayout({varFns:s}),r={general_styles:!0},l=[o],n=".".concat("pe-button-group"),y=t.styler.createAddStyle(n,l,r),c=t.styler.createGetStyle(n,l,r);t.styler.addStyle({selectors:[n],fns:l,vars:r}),e.addStyle=y,e.getStyle=c,e.layout=o,e.vars=r,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-core-css']));
+}(this, function (exports, polytheneCoreCss) { 'use strict';
+
+  var classes = {
+    component: "pe-button-group"
+  };
+
+  // @ts-check
+  var varFns = {
+    /**
+     * @param {string} selector
+     */
+    general_styles: function general_styles(selector) {
+      return [polytheneCoreCss.sel(selector, {
+        display: "flex"
+      })];
+    }
+  };
+  var layout = polytheneCoreCss.createLayout({
+    varFns: varFns
+  });
+
+  // @ts-check
+
+  /**
+   * @typedef {import("../index").ButtonGroupVars} ButtonGroupVars
+   */
+
+  /**
+   * @type {ButtonGroupVars} buttonGroupVars
+   */
+  var buttonGroupVars = {
+    /**
+     * Generate general styles, not defined by variables
+     */
+    general_styles: true
+  };
+
+  // @ts-check
+  var fns = [layout];
+  var selector = ".".concat(classes.component);
+  var addStyle = polytheneCoreCss.styler.createAddStyle(selector, fns, buttonGroupVars);
+  var getStyle = polytheneCoreCss.styler.createGetStyle(selector, fns, buttonGroupVars);
+  polytheneCoreCss.styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: buttonGroupVars
+  });
+
+  exports.addStyle = addStyle;
+  exports.getStyle = getStyle;
+  exports.layout = layout;
+  exports.vars = buttonGroupVars;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-css-button-group.js.map

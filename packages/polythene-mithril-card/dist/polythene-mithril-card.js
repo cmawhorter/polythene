@@ -1,2 +1,72 @@
-!function(e,r){"object"==typeof exports&&"undefined"!=typeof module?r(exports,require("polythene-mithril-base"),require("polythene-core-card"),require("polythene-mithril-icon"),require("polythene-mithril-list-tile"),require("polythene-mithril-shadow")):"function"==typeof define&&define.amd?define(["exports","polythene-mithril-base","polythene-core-card","polythene-mithril-icon","polythene-mithril-list-tile","polythene-mithril-shadow"],r):r((e=e||self).polythene={},e["polythene-mithril-base"],e["polythene-core-card"],e["polythene-mithril-icon"],e["polythene-mithril-list-tile"],e["polythene-mithril-shadow"])}(this,function(e,r,t,o,i,n){"use strict";function a(e,r,t){return r in e?Object.defineProperty(e,r,{value:t,enumerable:!0,configurable:!0,writable:!0}):e[r]=t,e}function l(e){for(var r=1;r<arguments.length;r++){var t=null!=arguments[r]?arguments[r]:{},o=Object.keys(t);"function"==typeof Object.getOwnPropertySymbols&&(o=o.concat(Object.getOwnPropertySymbols(t).filter(function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),o.forEach(function(r){a(e,r,t[r])})}return e}var c=r.ComponentCreator(t.coreCardActions);c.displayName="CardActions";var d=r.ComponentCreator(t.coreCardMedia);d.displayName="CardMedia";var p=r.ComponentCreator(t.coreCardPrimary);p.displayName="CardPrimary";var h=r.ComponentCreator(l({},t.coreCard,{createContent:function(e,r){return t.coreCard.createContent(e,l({},r,{CardActions:c,CardMedia:d,CardPrimary:p,Icon:o.Icon,ListTile:i.ListTile,Shadow:n.Shadow}))}}));h.displayName="Card",e.Card=h,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-mithril-base'), require('polythene-core-card'), require('polythene-mithril-icon'), require('polythene-mithril-list-tile'), require('polythene-mithril-shadow')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-mithril-base', 'polythene-core-card', 'polythene-mithril-icon', 'polythene-mithril-list-tile', 'polythene-mithril-shadow'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-mithril-base'], global['polythene-core-card'], global['polythene-mithril-icon'], global['polythene-mithril-list-tile'], global['polythene-mithril-shadow']));
+}(this, function (exports, polytheneMithrilBase, polytheneCoreCard, polytheneMithrilIcon, polytheneMithrilListTile, polytheneMithrilShadow) { 'use strict';
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _objectSpread(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+      var ownKeys = Object.keys(source);
+
+      if (typeof Object.getOwnPropertySymbols === 'function') {
+        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+        }));
+      }
+
+      ownKeys.forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    }
+
+    return target;
+  }
+
+  // @ts-check
+  var CardActions = polytheneMithrilBase.ComponentCreator(polytheneCoreCard.coreCardActions);
+  CardActions["displayName"] = "CardActions";
+
+  // @ts-check
+  var CardMedia = polytheneMithrilBase.ComponentCreator(polytheneCoreCard.coreCardMedia);
+  CardMedia["displayName"] = "CardMedia";
+
+  // @ts-check
+  var CardPrimary = polytheneMithrilBase.ComponentCreator(polytheneCoreCard.coreCardPrimary);
+  CardPrimary["displayName"] = "CardPrimary";
+
+  var Card = polytheneMithrilBase.ComponentCreator(_objectSpread({}, polytheneCoreCard.coreCard, {
+    createContent: function createContent(vnode, args) {
+      return polytheneCoreCard.coreCard.createContent(vnode, _objectSpread({}, args, {
+        CardActions: CardActions,
+        CardMedia: CardMedia,
+        CardPrimary: CardPrimary,
+        Icon: polytheneMithrilIcon.Icon,
+        ListTile: polytheneMithrilListTile.ListTile,
+        Shadow: polytheneMithrilShadow.Shadow
+      }));
+    }
+  }));
+  Card["displayName"] = "Card";
+
+  exports.Card = Card;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-mithril-card.js.map

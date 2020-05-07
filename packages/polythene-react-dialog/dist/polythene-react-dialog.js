@@ -1,2 +1,146 @@
-!function(e,o){"object"==typeof exports&&"undefined"!=typeof module?o(exports,require("polythene-react-base"),require("polythene-core"),require("polythene-core-dialog"),require("polythene-react-dialog-pane"),require("polythene-react-shadow")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core","polythene-core-dialog","polythene-react-dialog-pane","polythene-react-shadow"],o):o((e=e||self).polythene={},e["polythene-react-base"],e["polythene-core"],e["polythene-core-dialog"],e["polythene-react-dialog-pane"],e["polythene-react-shadow"])}(this,function(e,o,t,n,r,a){"use strict";function l(e,o,t){return o in e?Object.defineProperty(e,o,{value:t,enumerable:!0,configurable:!0,writable:!0}):e[o]=t,e}function c(e){for(var o=1;o<arguments.length;o++){var t=null!=arguments[o]?arguments[o]:{},n=Object.keys(t);"function"==typeof Object.getOwnPropertySymbols&&(n=n.concat(Object.getOwnPropertySymbols(t).filter(function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),n.forEach(function(o){l(e,o,t[o])})}return e}var i="pe-dialog__placeholder",p="pe-dialog__holder",d="pe-dialog--open",u=o.ComponentCreator(c({},n.coreDialog,{createContent:function(e,o){return n.coreDialog.createContent(e,c({},o,{Shadow:a.Shadow,Pane:r.DialogPane,createPane:n.coreDialog.createPane}))}}));u.displayName="DialogInstance";var h={name:"dialog",htmlShowClass:d,defaultId:"default_dialog",holderSelector:"div.".concat(p),instance:u,placeholder:"span.".concat(i)},y=t.Multi({options:h,renderer:o.renderer}),f=o.ComponentCreator(y);Object.getOwnPropertyNames(y).forEach(function(e){return f[e]=y[e]}),f.displayName="Dialog",e.DialogInstance=u,e.Dialog=f,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core'), require('polythene-core-dialog'), require('polythene-react-dialog-pane'), require('polythene-react-shadow')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core', 'polythene-core-dialog', 'polythene-react-dialog-pane', 'polythene-react-shadow'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-react-base'], global['polythene-core'], global['polythene-core-dialog'], global['polythene-react-dialog-pane'], global['polythene-react-shadow']));
+}(this, function (exports, polytheneReactBase, polytheneCore, polytheneCoreDialog, polytheneReactDialogPane, polytheneReactShadow) { 'use strict';
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _objectSpread(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+      var ownKeys = Object.keys(source);
+
+      if (typeof Object.getOwnPropertySymbols === 'function') {
+        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+        }));
+      }
+
+      ownKeys.forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    }
+
+    return target;
+  }
+
+  var listTileClasses = {
+    component: "pe-list-tile",
+    // elements
+    content: "pe-list-tile__content",
+    highSubtitle: "pe-list-tile__high-subtitle",
+    primary: "pe-list-tile__primary",
+    secondary: "pe-list-tile__secondary",
+    subtitle: "pe-list-tile__subtitle",
+    title: "pe-list-tile__title",
+    contentFront: "pe-list-tile__content-front",
+    // states  
+    compact: "pe-list-tile--compact",
+    compactFront: "pe-list-tile--compact-front",
+    disabled: "pe-list-tile--disabled",
+    hasFront: "pe-list-tile--front",
+    hasHighSubtitle: "pe-list-tile--high-subtitle",
+    hasSubtitle: "pe-list-tile--subtitle",
+    header: "pe-list-tile--header",
+    hoverable: "pe-list-tile--hoverable",
+    insetH: "pe-list-tile--inset-h",
+    insetV: "pe-list-tile--inset-v",
+    selectable: "pe-list-tile--selectable",
+    selected: "pe-list-tile--selected",
+    rounded: "pe-list-tile--rounded",
+    highlight: "pe-list-tile--highlight",
+    sticky: "pe-list-tile--sticky",
+    navigation: "pe-list-tile--navigation"
+  };
+
+  var menuClasses = {
+    component: "pe-menu",
+    // elements
+    panel: "pe-menu__panel",
+    content: "pe-menu__content",
+    placeholder: "pe-menu__placeholder",
+    backdrop: "pe-menu__backdrop",
+    // states
+    floating: "pe-menu--floating",
+    origin: "pe-menu--origin",
+    permanent: "pe-menu--permanent",
+    showBackdrop: "pe-menu--backdrop",
+    visible: "pe-menu--visible",
+    width_auto: "pe-menu--width-auto",
+    width_n: "pe-menu--width-",
+    isTopMenu: "pe-menu--top-menu",
+    // lookup
+    listTile: listTileClasses.component,
+    selectedListTile: listTileClasses.selected
+  };
+
+  var classes = {
+    component: "pe-dialog",
+    // elements
+    placeholder: "pe-dialog__placeholder",
+    holder: "pe-dialog__holder",
+    content: "pe-dialog__content",
+    backdrop: "pe-dialog__backdrop",
+    touch: "pe-dialog__touch",
+    // states
+    fullScreen: "pe-dialog--full-screen",
+    modal: "pe-dialog--modal",
+    open: "pe-dialog--open",
+    // class set to html element
+    visible: "pe-dialog--visible",
+    // class set to dialog element
+    showBackdrop: "pe-dialog--backdrop",
+    transition: "pe-dialog--transition",
+    // lookup
+    menuContent: menuClasses.content
+  };
+
+  var DialogInstance = polytheneReactBase.ComponentCreator(_objectSpread({}, polytheneCoreDialog.coreDialog, {
+    createContent: function createContent(vnode, args) {
+      return polytheneCoreDialog.coreDialog.createContent(vnode, _objectSpread({}, args, {
+        Shadow: polytheneReactShadow.Shadow,
+        Pane: polytheneReactDialogPane.DialogPane,
+        createPane: polytheneCoreDialog.coreDialog.createPane
+      }));
+    }
+  }));
+  DialogInstance["displayName"] = "DialogInstance";
+  var options = {
+    name: "dialog",
+    htmlShowClass: classes.open,
+    defaultId: "default_dialog",
+    holderSelector: "div.".concat(classes.holder),
+    instance: DialogInstance,
+    placeholder: "span.".concat(classes.placeholder)
+  };
+  var Multiple = polytheneCore.Multi({
+    options: options,
+    renderer: polytheneReactBase.renderer
+  });
+  var Dialog = polytheneReactBase.ComponentCreator(Multiple);
+  Object.getOwnPropertyNames(Multiple).forEach(function (p) {
+    return Dialog[p] = Multiple[p];
+  });
+  Dialog["displayName"] = "Dialog";
+
+  exports.DialogInstance = DialogInstance;
+  exports.Dialog = Dialog;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-react-dialog.js.map

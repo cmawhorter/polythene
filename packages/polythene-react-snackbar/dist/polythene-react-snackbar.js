@@ -1,2 +1,96 @@
-!function(e,n){"object"==typeof exports&&"undefined"!=typeof module?n(exports,require("polythene-react-base"),require("polythene-core"),require("polythene-core-snackbar")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core","polythene-core-snackbar"],n):n((e=e||self).polythene={},e["polythene-react-base"],e["polythene-core"],e["polythene-core-snackbar"])}(this,function(e,n,t,o){"use strict";function r(e,n,t){return n in e?Object.defineProperty(e,n,{value:t,enumerable:!0,configurable:!0,writable:!0}):e[n]=t,e}var a=function(e){for(var n=1;n<arguments.length;n++){var t=null!=arguments[n]?arguments[n]:{},o=Object.keys(t);"function"==typeof Object.getOwnPropertySymbols&&(o=o.concat(Object.getOwnPropertySymbols(t).filter(function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),o.forEach(function(n){r(e,n,t[n])})}return e}({},{component:"pe-notification",action:"pe-notification__action",content:"pe-notification__content",holder:"pe-notification__holder",placeholder:"pe-notification__placeholder",title:"pe-notification__title",hasContainer:"pe-notification--container",horizontal:"pe-notification--horizontal",multilineTitle:"pe-notification__title--multi-line",vertical:"pe-notification--vertical",visible:"pe-notification--visible"},{component:"pe-notification pe-snackbar",holder:"pe-snackbar__holder",placeholder:"pe-snackbar__placeholder",open:"pe-snackbar--open"}),i=n.ComponentCreator(o.coreSnackbar);i.displayName="SnackbarInstance";var c={name:"snackbar",className:a.component,htmlShowClass:a.open,defaultId:"default_snackbar",holderSelector:".".concat(a.holder),instance:i,placeholder:"span.".concat(a.placeholder),queue:!0,transitions:o.transitions},l=t.Multi({options:c,renderer:n.renderer}),p=n.ComponentCreator(l);Object.getOwnPropertyNames(l).forEach(function(e){return p[e]=l[e]}),p.displayName="Snackbar",e.SnackbarInstance=i,e.Snackbar=p,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core'), require('polythene-core-snackbar')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core', 'polythene-core-snackbar'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-react-base'], global['polythene-core'], global['polythene-core-snackbar']));
+}(this, function (exports, polytheneReactBase, polytheneCore, polytheneCoreSnackbar) { 'use strict';
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _objectSpread(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+      var ownKeys = Object.keys(source);
+
+      if (typeof Object.getOwnPropertySymbols === 'function') {
+        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+        }));
+      }
+
+      ownKeys.forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    }
+
+    return target;
+  }
+
+  var notificationClasses = {
+    component: "pe-notification",
+    // elements
+    action: "pe-notification__action",
+    content: "pe-notification__content",
+    holder: "pe-notification__holder",
+    placeholder: "pe-notification__placeholder",
+    title: "pe-notification__title",
+    // states
+    hasContainer: "pe-notification--container",
+    horizontal: "pe-notification--horizontal",
+    multilineTitle: "pe-notification__title--multi-line",
+    vertical: "pe-notification--vertical",
+    visible: "pe-notification--visible"
+  };
+
+  var classes = _objectSpread({}, notificationClasses, {
+    component: "pe-notification pe-snackbar",
+    // elements
+    holder: "pe-snackbar__holder",
+    placeholder: "pe-snackbar__placeholder",
+    // states
+    open: "pe-snackbar--open"
+  });
+
+  // @ts-check
+  var SnackbarInstance = polytheneReactBase.ComponentCreator(polytheneCoreSnackbar.coreSnackbar);
+  SnackbarInstance["displayName"] = "SnackbarInstance";
+  var options = {
+    name: "snackbar",
+    className: classes.component,
+    htmlShowClass: classes.open,
+    defaultId: "default_snackbar",
+    holderSelector: ".".concat(classes.holder),
+    instance: SnackbarInstance,
+    placeholder: "span.".concat(classes.placeholder),
+    queue: true,
+    transitions: polytheneCoreSnackbar.transitions
+  };
+  var Multiple = polytheneCore.Multi({
+    options: options,
+    renderer: polytheneReactBase.renderer
+  });
+  var Snackbar = polytheneReactBase.ComponentCreator(Multiple);
+  Object.getOwnPropertyNames(Multiple).forEach(function (p) {
+    return Snackbar[p] = Multiple[p];
+  });
+  Snackbar["displayName"] = "Snackbar";
+
+  exports.SnackbarInstance = SnackbarInstance;
+  exports.Snackbar = Snackbar;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-react-snackbar.js.map

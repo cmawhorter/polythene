@@ -48,6 +48,6 @@ export default {
       exclude: "node_modules/**",
       configFile: "../../babel.config.js"
     }),
-    terser()
+    // terser()
   ]
 };

@@ -1,2 +1,88 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-react-base"),require("polythene-core-radio-button"),require("polythene-core-selection-control"),require("polythene-react-icon"),require("polythene-react-icon-button")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core-radio-button","polythene-core-selection-control","polythene-react-icon","polythene-react-icon-button"],t):t((e=e||self).polythene={},e["polythene-react-base"],e["polythene-core-radio-button"],e["polythene-core-selection-control"],e["polythene-react-icon"],e["polythene-react-icon-button"])}(this,function(e,t,o,n,r,c){"use strict";function i(e,t,o){return t in e?Object.defineProperty(e,t,{value:o,enumerable:!0,configurable:!0,writable:!0}):e[t]=o,e}function l(){return(l=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var n in o)Object.prototype.hasOwnProperty.call(o,n)&&(e[n]=o[n])}return e}).apply(this,arguments)}function a(e){for(var t=1;t<arguments.length;t++){var o=null!=arguments[t]?arguments[t]:{},n=Object.keys(o);"function"==typeof Object.getOwnPropertySymbols&&(n=n.concat(Object.getOwnPropertySymbols(o).filter(function(e){return Object.getOwnPropertyDescriptor(o,e).enumerable}))),n.forEach(function(t){i(e,t,o[t])})}return e}var u=t.ComponentCreator(a({},n.coreViewControl,{createContent:function(e,t){return n.coreViewControl.createContent(e,a({},t,{Icon:r.Icon,IconButton:c.IconButton}))}}));u.displayName="ViewControl";var p=t.ComponentCreator(a({},n.coreSelectionControl,{createContent:function(e,t){return n.coreSelectionControl.createContent(e,l(t,{ViewControl:u}))}}));p.displayName="SelectionControl";var y=t.ComponentCreator(a({},o.coreRadioButton,{component:p}));y.displayName="RadioButton",e.RadioButton=y,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core-radio-button'), require('polythene-core-selection-control'), require('polythene-react-icon'), require('polythene-react-icon-button')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core-radio-button', 'polythene-core-selection-control', 'polythene-react-icon', 'polythene-react-icon-button'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-react-base'], global['polythene-core-radio-button'], global['polythene-core-selection-control'], global['polythene-react-icon'], global['polythene-react-icon-button']));
+}(this, function (exports, polytheneReactBase, polytheneCoreRadioButton, polytheneCoreSelectionControl, polytheneReactIcon, polytheneReactIconButton) { 'use strict';
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  function _objectSpread(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+      var ownKeys = Object.keys(source);
+
+      if (typeof Object.getOwnPropertySymbols === 'function') {
+        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+        }));
+      }
+
+      ownKeys.forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    }
+
+    return target;
+  }
+
+  var ViewControl = polytheneReactBase.ComponentCreator(_objectSpread({}, polytheneCoreSelectionControl.coreViewControl, {
+    createContent: function createContent(vnode, args) {
+      return polytheneCoreSelectionControl.coreViewControl.createContent(vnode, _objectSpread({}, args, {
+        Icon: polytheneReactIcon.Icon,
+        IconButton: polytheneReactIconButton.IconButton
+      }));
+    }
+  }));
+  ViewControl["displayName"] = "ViewControl";
+
+  var SelectionControl = polytheneReactBase.ComponentCreator(_objectSpread({}, polytheneCoreSelectionControl.coreSelectionControl, {
+    createContent: function createContent(vnode, args) {
+      return polytheneCoreSelectionControl.coreSelectionControl.createContent(vnode, _extends(args, {
+        ViewControl: ViewControl
+      }));
+    }
+  }));
+  SelectionControl["displayName"] = "SelectionControl";
+
+  var RadioButton = polytheneReactBase.ComponentCreator(_objectSpread({}, polytheneCoreRadioButton.coreRadioButton, {
+    component: SelectionControl
+  }));
+  RadioButton["displayName"] = "RadioButton";
+
+  exports.RadioButton = RadioButton;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-react-radio-button.js.map

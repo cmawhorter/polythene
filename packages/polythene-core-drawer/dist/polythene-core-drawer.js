@@ -1,2 +1,73 @@
-!function(e,n){"object"==typeof exports&&"undefined"!=typeof module?n(exports):"function"==typeof define&&define.amd?define(["exports"],n):n((e=e||self).polythene={})}(this,function(e){"use strict";function n(){return(n=Object.assign||function(e){for(var n=1;n<arguments.length;n++){var r=arguments[n];for(var t in r)Object.prototype.hasOwnProperty.call(r,t)&&(e[t]=r[t])}return e}).apply(this,arguments)}var r={component:"pe-dialog pe-drawer",cover:"pe-drawer--cover",push:"pe-drawer--push",mini:"pe-drawer--mini",permanent:"pe-drawer--permanent",border:"pe-drawer--border",floating:"pe-drawer--floating",fixed:"pe-drawer--fixed",anchorEnd:"pe-drawer--anchor-end"},t=function(e){return e.attrs.element||"div"},o=function(e){var t=e.attrs,o=!(t.push||t.permanent||t.mini);return n({},t,{fullBleed:!0,className:null,parentClassName:[t.className,r.component,o?r.cover:null,t.push?r.push:null,t.permanent?r.permanent:null,t.border?r.border:null,t.mini?r.mini:null,t.floating?r.floating:null,t.fixed?r.fixed:null,"end"===t.anchor?r.anchorEnd:null].join(" "),inactive:t.permanent&&!t.mini,shadowDepth:void 0!==t.shadowDepth?t.shadowDepth:0,z:void 0!==t.z?t.z:void 0})},a=function(e){return e.children},i=Object.freeze({getElement:t,createProps:o,createContent:a});e.coreDrawer=i,e.getElement=t,e.createProps=o,e.createContent=a,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (global = global || self, factory(global.polythene = {}));
+}(this, function (exports) { 'use strict';
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  var classes = {
+    component: "pe-dialog pe-drawer",
+    // states
+    cover: "pe-drawer--cover",
+    push: "pe-drawer--push",
+    mini: "pe-drawer--mini",
+    permanent: "pe-drawer--permanent",
+    border: "pe-drawer--border",
+    floating: "pe-drawer--floating",
+    fixed: "pe-drawer--fixed",
+    anchorEnd: "pe-drawer--anchor-end"
+  };
+
+  var getElement = function getElement(vnode) {
+    return vnode.attrs.element || "div";
+  }; // Props to be passed to Dialog
+
+  var createProps = function createProps(vnode) {
+    var attrs = vnode.attrs;
+    var isCover = !(attrs.push || attrs.permanent || attrs.mini);
+    return _extends({}, attrs, {
+      fullBleed: true,
+      className: null,
+      parentClassName: [attrs.className, classes.component, isCover ? classes.cover : null, attrs.push ? classes.push : null, attrs.permanent ? classes.permanent : null, attrs.border ? classes.border : null, attrs.mini ? classes.mini : null, attrs.floating ? classes.floating : null, attrs.fixed ? classes.fixed : null, attrs.anchor === "end" ? classes.anchorEnd : null].join(" "),
+      inactive: attrs.permanent && !attrs.mini,
+      shadowDepth: attrs.shadowDepth !== undefined ? attrs.shadowDepth : 0,
+      // deprecated:
+      z: attrs.z !== undefined ? attrs.z : undefined
+    });
+  };
+  var createContent = function createContent(vnode) {
+    return vnode.children;
+  };
+
+  var drawer = /*#__PURE__*/Object.freeze({
+    getElement: getElement,
+    createProps: createProps,
+    createContent: createContent
+  });
+
+  exports.coreDrawer = drawer;
+  exports.getElement = getElement;
+  exports.createProps = createProps;
+  exports.createContent = createContent;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-core-drawer.js.map

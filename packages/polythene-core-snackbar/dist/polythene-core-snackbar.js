@@ -1,2 +1,63 @@
-!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports,require("polythene-core-notification")):"function"==typeof define&&define.amd?define(["exports","polythene-core-notification"],e):e((t=t||self).polythene={},t["polythene-core-notification"])}(this,function(t,e){"use strict";var n={show:function(t){var e=t.containerEl,n=t.el,o=t.duration,i=t.delay;return{el:e,duration:o||.4,delay:i||0,before:function(){n.style.display="block";var t=n.getBoundingClientRect().height;e.style.transform="translate3d(0, ".concat(t,"px, 0)")},transition:function(){return e.style.transform="translate3d(0, 0px, 0)"}}},hide:function(t){var e=t.containerEl,n=t.el,o=t.duration,i=t.delay;return{el:e,duration:o||.4,delay:i||0,transition:function(){var t=n.getBoundingClientRect().height;e.style.transform="translate3d(0, ".concat(t,"px, 0)")},after:function(){n.style.display="none",e.style.transitionDuration="0ms",e.style.transform="translate3d(0, 0px, 0)"}}}};t.coreSnackbar=e.coreNotification,t.transitions=n,Object.defineProperty(t,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-notification')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-notification'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-core-notification']));
+}(this, function (exports, polytheneCoreNotification) { 'use strict';
+
+  var DEFAULT_DURATION = 0.4;
+
+  var show = function show(_ref) {
+    var containerEl = _ref.containerEl,
+        el = _ref.el,
+        duration = _ref.duration,
+        delay = _ref.delay;
+    return {
+      el: containerEl,
+      duration: duration || DEFAULT_DURATION,
+      delay: delay || 0,
+      before: function before() {
+        el.style.display = "block";
+        var height = el.getBoundingClientRect().height;
+        containerEl.style.transform = "translate3d(0, ".concat(height, "px, 0)");
+      },
+      transition: function transition() {
+        return containerEl.style.transform = "translate3d(0, 0px, 0)";
+      }
+    };
+  };
+
+  var hide = function hide(_ref2) {
+    var containerEl = _ref2.containerEl,
+        el = _ref2.el,
+        duration = _ref2.duration,
+        delay = _ref2.delay;
+    return {
+      el: containerEl,
+      duration: duration || DEFAULT_DURATION,
+      delay: delay || 0,
+      transition: function transition() {
+        var height = el.getBoundingClientRect().height;
+        containerEl.style.transform = "translate3d(0, ".concat(height, "px, 0)");
+      },
+      // reset to original position to counter the removal of the snackbar instance
+      after: function after() {
+        // prevent a "bounce back"
+        el.style.display = "none";
+        containerEl.style.transitionDuration = "0ms";
+        containerEl.style.transform = "translate3d(0, 0px, 0)";
+      }
+    };
+  };
+
+  var transitions = {
+    show: show,
+    hide: hide
+  };
+
+  exports.coreSnackbar = polytheneCoreNotification.coreNotification;
+  exports.transitions = transitions;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-core-snackbar.js.map

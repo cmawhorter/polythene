@@ -1,2 +1,192 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core"),require("polythene-utilities")):"function"==typeof define&&define.amd?define(["exports","polythene-core","polythene-utilities"],t):t((e=e||self).polythene={},e["polythene-core"],e["polythene-utilities"])}(this,function(e,t,n){"use strict";function r(){return(r=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e}).apply(this,arguments)}var i={component:"pe-md-progress-spinner",animation:"pe-md-progress-spinner__animation",circle:"pe-md-progress-spinner__circle",circleRight:"pe-md-progress-spinner__circle-right",circleLeft:"pe-md-progress-spinner__circle-left"},a=function(e,t,n,r){var i=e.style;i.transform=i["-webkit-transform"]=i["-moz-transform"]=i["-ms-transform"]=i["-o-transform"]="rotate("+function(e,t){return e+(t-e)*(arguments.length>2&&void 0!==arguments[2]?arguments[2]:0)}(t,n,r)+"deg)"},o=function(e,t,n){var r=e.querySelector("."+i.animation).style;r.clip=n<.5?"rect(0px, "+t+"px, "+t+"px, "+t/2+"px)":"rect(auto, auto, auto, auto)";var o=e.querySelector("."+i.circleLeft),c=e.querySelector("."+i.circleRight);o.style.clip=c.style.clip="rect(0px, "+t/2+"px, "+t+"px, 0px)",a(c,0,180,Math.min(1,2*n)),a(o,0,360,n)},c=function(e){var r=e.state,a=e.attrs,c=e.size;if(r.dom&&!r.animating()&&void 0!==a.percentage){var s=t.unpackAttrs(a.percentage),p=r.percentage(),l=a.animated?n.easing.easeInOutQuad:function(e){return e};if(a.animated&&p!==s){var u=r.dom,m=void 0!==a.updateDuration?1e3*a.updateDuration:t.styleDurationToMs(t.getStyle({element:u.querySelector(".".concat(i.animation)),prop:"animation-duration"})),d=null;r.animating(!0),window.requestAnimationFrame(function e(t){d||(d=t);var n=t-d;o(u,c,l(p+1/m*n*(s-p))),d&&n<m?window.requestAnimationFrame(e):(d=null,r.percentage(s),r.animating(!1))})}else o(r.dom,c,l(s)),r.percentage(s)}},s=function(e){return Math.round(e?parseFloat(t.getStyle({element:e,prop:"height"}))-2*parseFloat(t.getStyle({element:e,prop:"padding"})):0)},p=Object.freeze({getInitialState:function(e,t){var n=t(0),r=t(!1);return{animating:r,dom:void 0,percentage:n,redrawOnUpdate:t.merge([r])}},onMount:function(e){if(e.dom){var t=e.state,n=e.attrs;t.dom=e.dom;var r=s(t.dom);c({state:t,attrs:n,size:r})}},createProps:function(e,t){var n=t.renderer,a=e.state,o=e.attrs,p=s(a.dom);c({state:a,attrs:o,size:p});var l=n("div",{key:"content",className:i.animation,style:{width:p+"px",height:p+"px"}},[n("div",{key:"left",className:[i.circle,i.circleLeft].join(" ")}),n("div",{key:"right",className:[i.circle,i.circleRight].join(" ")})]);return r({},o,{className:[i.component,o.className].join(" "),content:l})}});e.coreMaterialDesignProgressSpinner=p,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-utilities')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-utilities'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-core'], global['polythene-utilities']));
+}(this, function (exports, polytheneCore, polytheneUtilities) { 'use strict';
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  var classes = {
+    component: "pe-md-progress-spinner",
+    // elements
+    animation: "pe-md-progress-spinner__animation",
+    circle: "pe-md-progress-spinner__circle",
+    circleRight: "pe-md-progress-spinner__circle-right",
+    circleLeft: "pe-md-progress-spinner__circle-left"
+  };
+
+  var percentageValue = function percentageValue(min, max) {
+    var percentage = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+    return min + (max - min) * percentage;
+  };
+
+  var rotateCircle = function rotateCircle(el, min, max, percentage) {
+    var style = el.style;
+    style["transform"] = style["-webkit-transform"] = style["-moz-transform"] = style["-ms-transform"] = style["-o-transform"] = "rotate(" + percentageValue(min, max, percentage) + "deg)";
+  };
+
+  var animate = function animate(stateEl, size, percentage) {
+    var animationEl = stateEl.querySelector("." + classes.animation);
+    var animationElStyle = animationEl.style;
+
+    if (percentage < 0.5) {
+      animationElStyle.clip = "rect(0px, " + size + "px, " + size + "px, " + size / 2 + "px)";
+    } else {
+      animationElStyle.clip = "rect(auto, auto, auto, auto)";
+    }
+
+    var leftCircle = stateEl.querySelector("." + classes.circleLeft);
+    var rightCircle = stateEl.querySelector("." + classes.circleRight);
+    leftCircle.style.clip = rightCircle.style.clip = "rect(0px, " + size / 2 + "px, " + size + "px, " + "0px)";
+    rotateCircle(rightCircle, 0, 180, Math.min(1, percentage * 2));
+    rotateCircle(leftCircle, 0, 360, percentage);
+  };
+
+  var updateWithPercentage = function updateWithPercentage(_ref) {
+    var state = _ref.state,
+        attrs = _ref.attrs,
+        size = _ref.size;
+
+    if (!state.dom) {
+      return;
+    }
+
+    if (state.animating()) {
+      return;
+    }
+
+    if (attrs.percentage === undefined) {
+      return;
+    }
+
+    var percentage = polytheneCore.unpackAttrs(attrs.percentage);
+    var previousPercentage = state.percentage();
+    var easingFn = attrs.animated ? polytheneUtilities.easing.easeInOutQuad : function (v) {
+      return v;
+    };
+
+    if (attrs.animated && previousPercentage !== percentage) {
+      var el = state.dom;
+      var animationDuration = attrs.updateDuration !== undefined ? attrs.updateDuration * 1000 : polytheneCore.styleDurationToMs(polytheneCore.getStyle({
+        element: el.querySelector(".".concat(classes.animation)),
+        prop: "animation-duration"
+      }));
+      var start = null;
+
+      var step = function step(timestamp) {
+        if (!start) start = timestamp;
+        var progress = timestamp - start;
+        var stepPercentage = 1.0 / animationDuration * progress;
+        var newPercentage = previousPercentage + stepPercentage * (percentage - previousPercentage);
+        animate(el, size, easingFn(newPercentage));
+
+        if (start && progress < animationDuration) {
+          window.requestAnimationFrame(step);
+        } else {
+          start = null;
+          state.percentage(percentage);
+          state.animating(false);
+        }
+      };
+
+      state.animating(true);
+      window.requestAnimationFrame(step);
+    } else {
+      animate(state.dom, size, easingFn(percentage));
+      state.percentage(percentage);
+    }
+  };
+
+  var getSize = function getSize(element) {
+    return Math.round(element ? parseFloat(polytheneCore.getStyle({
+      element: element,
+      prop: "height"
+    })) - 2 * parseFloat(polytheneCore.getStyle({
+      element: element,
+      prop: "padding"
+    })) : 0);
+  };
+
+  var getInitialState = function getInitialState(vnode, createStream) {
+    var percentage = createStream(0);
+    var animating = createStream(false);
+    return {
+      animating: animating,
+      dom: undefined,
+      percentage: percentage,
+      redrawOnUpdate: createStream.merge([animating])
+    };
+  };
+  var onMount = function onMount(vnode) {
+    if (!vnode.dom) {
+      return;
+    }
+
+    var state = vnode.state;
+    var attrs = vnode.attrs;
+    state.dom = vnode.dom;
+    var size = getSize(state.dom);
+    updateWithPercentage({
+      state: state,
+      attrs: attrs,
+      size: size
+    });
+  };
+  var createProps = function createProps(vnode, _ref2) {
+    var h = _ref2.renderer;
+    var state = vnode.state;
+    var attrs = vnode.attrs;
+    var size = getSize(state.dom);
+    updateWithPercentage({
+      state: state,
+      attrs: attrs,
+      size: size
+    });
+    var content = h("div", {
+      key: "content",
+      className: classes.animation,
+      style: {
+        width: size + "px",
+        height: size + "px"
+      }
+    }, [h("div", {
+      key: "left",
+      className: [classes.circle, classes.circleLeft].join(" ")
+    }), h("div", {
+      key: "right",
+      className: [classes.circle, classes.circleRight].join(" ")
+    })]);
+    return _extends({}, attrs, {
+      className: [classes.component, attrs.className].join(" "),
+      content: content
+    });
+  };
+
+  var spinner = /*#__PURE__*/Object.freeze({
+    getInitialState: getInitialState,
+    onMount: onMount,
+    createProps: createProps
+  });
+
+  exports.coreMaterialDesignProgressSpinner = spinner;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-core-material-design-progress-spinner.js.map

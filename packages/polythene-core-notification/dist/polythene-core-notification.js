@@ -1,2 +1,244 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core"),require("polythene-utilities")):"function"==typeof define&&define.amd?define(["exports","polythene-core","polythene-utilities"],t):t((e=e||self).polythene={},e["polythene-core"],e["polythene-utilities"])}(this,function(e,t,n){"use strict";function i(){return(i=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var i in n)Object.prototype.hasOwnProperty.call(n,i)&&(e[i]=n[i])}return e}).apply(this,arguments)}var o={component:"pe-notification",action:"pe-notification__action",content:"pe-notification__content",holder:"pe-notification__holder",placeholder:"pe-notification__placeholder",title:"pe-notification__title",hasContainer:"pe-notification--container",horizontal:"pe-notification--horizontal",multilineTitle:"pe-notification__title--multi-line",vertical:"pe-notification--vertical",visible:"pe-notification--visible"},r=function(e){e.timer&&e.timer.stop()},l=function(e,t,n){return{state:e,attrs:t,isShow:n,beforeTransition:function(){return r(e)},afterTransition:n?function(){var n=t.timeout;if(0===n);else{var i=void 0!==n?n:3;e.timer.start(function(){c(e,t)},i)}}:null,domElements:{el:e.el,containerEl:e.containerEl},showClass:o.visible}},a=function(e,n){return t.transitionComponent(l(e,n,!0))},c=function(e,n){return t.transitionComponent(l(e,n,!1))},s=Object.freeze({getElement:function(e){return e.attrs.element||"div"},getInitialState:function(e,t){var i=t(!1),o=t(!1),r=t(!1),l=t(!1);return{cleanUp:void 0,containerEl:void 0,dismissEl:void 0,el:void 0,timer:new n.Timer,paused:o,transitioning:i,visible:l,mounted:r,redrawOnUpdate:t.merge([l])}},onMount:function(e){if(e.dom){var n=e.dom,i=e.state,r=e.attrs;i.el=n;var l=i.el.querySelector(".".concat(o.title));l&&function(e){t.isServer||e.getBoundingClientRect().height>parseInt(window.getComputedStyle(e).lineHeight,10)+parseInt(window.getComputedStyle(e).paddingTop,10)+parseInt(window.getComputedStyle(e).paddingBottom,10)&&e.classList.add(o.multilineTitle)}(l),!i.containerEl&&t.isClient&&(i.containerEl=document.querySelector(r.containerSelector||r.holderSelector)),!i.containerEl&&t.isClient&&console.error("No container element found"),r.containerSelector&&i.containerEl&&i.containerEl.classList.add(o.hasContainer),r.show&&!i.visible()&&a(i,r),i.mounted(!0)}},onUnMount:function(e){return e.state.mounted(!1)},createProps:function(e,n){var r,l,a,c=n.keys,s=e.attrs;return i({},t.filterSupportedAttributes(s,{remove:["style"]}),(r={className:[o.component,s.fromMultipleClassName,"light"===s.tone?null:"pe-dark-tone",s.containerSelector?o.hasContainer:null,"vertical"===s.layout?o.vertical:o.horizontal,"dark"===s.tone?"pe-dark-tone":null,"light"===s.tone?"pe-light-tone":null,s.className||s[c.class]].join(" ")},l=c.onclick,a=function(e){return e.preventDefault()},l in r?Object.defineProperty(r,l,{value:a,enumerable:!0,configurable:!0,writable:!0}):r[l]=a,r))},createContent:function(e,t){var n=t.renderer,i=e.state,r=e.attrs;return i.mounted()&&!i.transitioning()&&(r.hide&&i.visible()?c(i,r):r.show&&!i.visible()&&a(i,r)),r.pause&&!i.paused()?function(e){e.paused(!0),e.timer&&e.timer.pause()}(i):r.unpause&&i.paused()&&function(e){e.paused(!1),e.timer&&e.timer.resume()}(i),n("div",{className:o.content,style:r.style},r.content||[r.title?n("div",{className:o.title},r.title):null,r.action?n("div",{className:o.action},r.action):null])}});e.coreNotification=s,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-utilities')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-utilities'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-core'], global['polythene-utilities']));
+}(this, function (exports, polytheneCore, polytheneUtilities) { 'use strict';
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  var classes = {
+    component: "pe-notification",
+    // elements
+    action: "pe-notification__action",
+    content: "pe-notification__content",
+    holder: "pe-notification__holder",
+    placeholder: "pe-notification__placeholder",
+    title: "pe-notification__title",
+    // states
+    hasContainer: "pe-notification--container",
+    horizontal: "pe-notification--horizontal",
+    multilineTitle: "pe-notification__title--multi-line",
+    vertical: "pe-notification--vertical",
+    visible: "pe-notification--visible"
+  };
+
+  var DEFAULT_TIME_OUT = 3;
+  var getElement = function getElement(vnode) {
+    return vnode.attrs.element || "div";
+  };
+
+  var pause = function pause(state) {
+    state.paused(true);
+
+    if (state.timer) {
+      state.timer.pause();
+    }
+  };
+
+  var unpause = function unpause(state) {
+    state.paused(false);
+
+    if (state.timer) {
+      state.timer.resume();
+    }
+  };
+
+  var stopTimer = function stopTimer(state) {
+    if (state.timer) {
+      state.timer.stop();
+    }
+  };
+
+  var transitionOptions = function transitionOptions(state, attrs, isShow) {
+    return {
+      state: state,
+      attrs: attrs,
+      isShow: isShow,
+      beforeTransition: isShow ? function () {
+        return stopTimer(state);
+      } : function () {
+        return stopTimer(state);
+      },
+      afterTransition: isShow ? function () {
+        // set timer to hide in a few seconds
+        var timeout = attrs.timeout;
+
+        if (timeout === 0) ; else {
+          var timeoutSeconds = timeout !== undefined ? timeout : DEFAULT_TIME_OUT;
+          state.timer.start(function () {
+            hideNotification(state, attrs);
+          }, timeoutSeconds);
+        }
+      } : null,
+      domElements: {
+        el: state.el,
+        containerEl: state.containerEl
+      },
+      showClass: classes.visible
+    };
+  };
+
+  var showNotification = function showNotification(state, attrs) {
+    return polytheneCore.transitionComponent(transitionOptions(state, attrs, true));
+  };
+
+  var hideNotification = function hideNotification(state, attrs) {
+    return polytheneCore.transitionComponent(transitionOptions(state, attrs, false));
+  };
+
+  var setTitleStyles = function setTitleStyles(titleEl) {
+    if (polytheneCore.isServer) return;
+    var height = titleEl.getBoundingClientRect().height;
+    var lineHeight = parseInt(window.getComputedStyle(titleEl).lineHeight, 10);
+    var paddingTop = parseInt(window.getComputedStyle(titleEl).paddingTop, 10);
+    var paddingBottom = parseInt(window.getComputedStyle(titleEl).paddingBottom, 10);
+
+    if (height > lineHeight + paddingTop + paddingBottom) {
+      titleEl.classList.add(classes.multilineTitle);
+    }
+  };
+
+  var getInitialState = function getInitialState(vnode, createStream) {
+    var transitioning = createStream(false);
+    var paused = createStream(false);
+    var mounted = createStream(false);
+    var visible = createStream(false);
+    return {
+      cleanUp: undefined,
+      containerEl: undefined,
+      dismissEl: undefined,
+      el: undefined,
+      timer: new polytheneUtilities.Timer(),
+      paused: paused,
+      transitioning: transitioning,
+      visible: visible,
+      mounted: mounted,
+      redrawOnUpdate: createStream.merge([visible])
+    };
+  };
+  var onMount = function onMount(vnode) {
+    if (!vnode.dom) {
+      return;
+    }
+
+    var dom = vnode.dom;
+    var state = vnode.state;
+    var attrs = vnode.attrs;
+    state.el = dom;
+    var titleEl = state.el.querySelector(".".concat(classes.title));
+
+    if (titleEl) {
+      setTitleStyles(titleEl);
+    }
+
+    if (!state.containerEl && polytheneCore.isClient) {
+      // attrs.holderSelector is passed as option to Multiple
+      state.containerEl = document.querySelector(attrs.containerSelector || attrs.holderSelector);
+    }
+
+    if (!state.containerEl && polytheneCore.isClient) {
+      console.error("No container element found"); // eslint-disable-line no-console
+    }
+
+    if (attrs.containerSelector && state.containerEl) {
+      state.containerEl.classList.add(classes.hasContainer);
+    }
+
+    if (attrs.show && !state.visible()) {
+      showNotification(state, attrs);
+    }
+
+    state.mounted(true);
+  };
+  var onUnMount = function onUnMount(vnode) {
+    return vnode.state.mounted(false);
+  };
+  var createProps = function createProps(vnode, _ref) {
+    var k = _ref.keys;
+    var attrs = vnode.attrs;
+    return _extends({}, polytheneCore.filterSupportedAttributes(attrs, {
+      remove: ["style"]
+    }), // style set in content, and set by show/hide transition
+    _defineProperty({
+      className: [classes.component, attrs.fromMultipleClassName, // classes.visible is set in showNotification though transition
+      attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
+      attrs.containerSelector ? classes.hasContainer : null, attrs.layout === "vertical" ? classes.vertical : classes.horizontal, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    }, k.onclick, function (e) {
+      return e.preventDefault();
+    }));
+  };
+  var createContent = function createContent(vnode, _ref2) {
+    var h = _ref2.renderer;
+    var state = vnode.state;
+    var attrs = vnode.attrs;
+
+    if (state.mounted() && !state.transitioning()) {
+      if (attrs.hide && state.visible()) {
+        hideNotification(state, attrs);
+      } else if (attrs.show && !state.visible()) {
+        showNotification(state, attrs);
+      }
+    }
+
+    if (attrs.pause && !state.paused()) {
+      pause(state, attrs);
+    } else if (attrs.unpause && state.paused()) {
+      unpause(state, attrs);
+    }
+
+    return h("div", {
+      className: classes.content,
+      style: attrs.style
+    }, attrs.content || [attrs.title ? h("div", {
+      className: classes.title
+    }, attrs.title) : null, attrs.action ? h("div", {
+      className: classes.action
+    }, attrs.action) : null]);
+  };
+
+  var notification = /*#__PURE__*/Object.freeze({
+    getElement: getElement,
+    getInitialState: getInitialState,
+    onMount: onMount,
+    onUnMount: onUnMount,
+    createProps: createProps,
+    createContent: createContent
+  });
+
+  exports.coreNotification = notification;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-core-notification.js.map

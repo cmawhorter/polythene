@@ -1,2 +1,87 @@
-!function(e,r){"object"==typeof exports&&"undefined"!=typeof module?r(exports,require("polythene-react-base"),require("polythene-core"),require("polythene-core-material-design-progress-spinner"),require("polythene-react-base-spinner")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core","polythene-core-material-design-progress-spinner","polythene-react-base-spinner"],r):r((e=e||self).polythene={},e["polythene-react-base"],e["polythene-core"],e["polythene-core-material-design-progress-spinner"],e["polythene-react-base-spinner"])}(this,function(e,r,n,t,o){"use strict";function i(e,r,n){return r in e?Object.defineProperty(e,r,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[r]=n,e}function s(e){for(var r=1;r<arguments.length;r++){var n=null!=arguments[r]?arguments[r]:{},t=Object.keys(n);"function"==typeof Object.getOwnPropertySymbols&&(t=t.concat(Object.getOwnPropertySymbols(n).filter(function(e){return Object.getOwnPropertyDescriptor(n,e).enumerable}))),t.forEach(function(r){i(e,r,n[r])})}return e}var p="pe-spinner__placeholder",a=r.ComponentCreator(s({},t.coreMaterialDesignProgressSpinner,{component:o.BaseSpinner})),c=r.ComponentCreator(n.coreConditional);c.displayName="MaterialDesignProgressSpinnerToggle";var l=function(e){return r.renderer(c,s({},e,{placeholderClassName:p,instance:a}))};l.classes={component:"pe-md-progress-spinner",animation:"pe-md-progress-spinner__animation",circle:"pe-md-progress-spinner__circle",circleRight:"pe-md-progress-spinner__circle-right",circleLeft:"pe-md-progress-spinner__circle-left"},l.displayName="MaterialDesignProgressSpinner",e.MaterialDesignProgressSpinner=l,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core'), require('polythene-core-material-design-progress-spinner'), require('polythene-react-base-spinner')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core', 'polythene-core-material-design-progress-spinner', 'polythene-react-base-spinner'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-react-base'], global['polythene-core'], global['polythene-core-material-design-progress-spinner'], global['polythene-react-base-spinner']));
+}(this, function (exports, polytheneReactBase, polytheneCore, polytheneCoreMaterialDesignProgressSpinner, polytheneReactBaseSpinner) { 'use strict';
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _objectSpread(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+      var ownKeys = Object.keys(source);
+
+      if (typeof Object.getOwnPropertySymbols === 'function') {
+        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+        }));
+      }
+
+      ownKeys.forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    }
+
+    return target;
+  }
+
+  var classes = {
+    component: "pe-md-progress-spinner",
+    // elements
+    animation: "pe-md-progress-spinner__animation",
+    circle: "pe-md-progress-spinner__circle",
+    circleRight: "pe-md-progress-spinner__circle-right",
+    circleLeft: "pe-md-progress-spinner__circle-left"
+  };
+
+  var baseSpinnerClasses = {
+    component: "pe-spinner",
+    // elements
+    animation: "pe-spinner__animation",
+    placeholder: "pe-spinner__placeholder",
+    // states
+    animated: "pe-spinner--animated",
+    fab: "pe-spinner--fab",
+    large: "pe-spinner--large",
+    medium: "pe-spinner--medium",
+    permanent: "pe-spinner--permanent",
+    raised: "pe-spinner--raised",
+    regular: "pe-spinner--regular",
+    singleColor: "pe-spinner--single-color",
+    small: "pe-spinner--small",
+    visible: "pe-spinner--visible"
+  };
+
+  var SpinnerInstance = polytheneReactBase.ComponentCreator(_objectSpread({}, polytheneCoreMaterialDesignProgressSpinner.coreMaterialDesignProgressSpinner, {
+    component: polytheneReactBaseSpinner.BaseSpinner
+  }));
+  var SpinnerToggle = polytheneReactBase.ComponentCreator(polytheneCore.coreConditional);
+  SpinnerToggle["displayName"] = "MaterialDesignProgressSpinnerToggle";
+  var MaterialDesignProgressSpinner = function MaterialDesignProgressSpinner(props) {
+    return polytheneReactBase.renderer(SpinnerToggle, _objectSpread({}, props, {
+      placeholderClassName: baseSpinnerClasses.placeholder,
+      instance: SpinnerInstance
+    }));
+  };
+  MaterialDesignProgressSpinner["classes"] = classes;
+  MaterialDesignProgressSpinner["displayName"] = "MaterialDesignProgressSpinner";
+
+  exports.MaterialDesignProgressSpinner = MaterialDesignProgressSpinner;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-react-material-design-progress-spinner.js.map

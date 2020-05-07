@@ -1,2 +1,272 @@
-!function(e,n){"object"==typeof exports&&"undefined"!=typeof module?n(exports,require("polythene-core")):"function"==typeof define&&define.amd?define(["exports","polythene-core"],n):n((e=e||self).polythene={},e["polythene-core"])}(this,function(e,n){"use strict";function t(){return(t=Object.assign||function(e){for(var n=1;n<arguments.length;n++){var t=arguments[n];for(var i in t)Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i])}return e}).apply(this,arguments)}var i={linear:function(e){return e},easeInQuad:function(e){return e*e},easeOutQuad:function(e){return e*(2-e)},easeInOutQuad:function(e){return e<.5?2*e*e:(4-2*e)*e-1},easeInCubic:function(e){return e*e*e},easeOutCubic:function(e){return--e*e*e+1},easeInOutCubic:function(e){return e<.5?4*e*e*e:(e-1)*(2*e-2)*(2*e-2)+1},easeInQuart:function(e){return e*e*e*e},easeOutQuart:function(e){return 1- --e*e*e*e},easeInOutQuart:function(e){return e<.5?8*e*e*e*e:1-8*--e*e*e*e},easeInQuint:function(e){return e*e*e*e*e},easeOutQuint:function(e){return 1+--e*e*e*e*e},easeInOutQuint:function(e){return e<.5?16*e*e*e*e*e:1+16*--e*e*e*e*e}},o=n.isServer?function(){}:window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||function(e){return window.setTimeout(e,1e3/60)};e.addWebFont=function(e,i){if(!n.isServer){if(!window.WebFontConfig){var o=function(t){var o=t.name,r=t.familyName,u=t.fvd;return n.emit("webfontloader",{name:o,familyName:r,fvd:u,vendor:e,config:i})};window.WebFontConfig={loading:function(){return o({name:"loading"})},active:function(){return o({name:"active"})},inactive:function(){return o({name:"inactive"})},fontloading:function(e,n){return o({name:"fontloading",familyName:e,fvd:n})},fontactive:function(e,n){return o({name:"fontactive",familyName:e,fvd:n})},fontinactive:function(e,n){return o({name:"fontinactive",familyName:e,fvd:n})}},function(){var e=document.createElement("script");e.src=("https:"===document.location.protocol?"https":"http")+"://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js",e.type="text/javascript",e.async=!0;var n=document.getElementsByTagName("script")[0];n&&n.parentNode&&n.parentNode.insertBefore(e,n)}()}var r=window.WebFontConfig[e]||{};i&&t(r,i),window.WebFontConfig[e]=r}},e.easing=i,e.scrollTo=function(e){if(!n.isServer){var t=e.element,r="horizontal"===e.direction?"scrollLeft":"scrollTop",u=e.to,a=1e3*e.duration,f=e.easing||i.easeInOutCubic,c=t[r],s=u-c,m=(new Date).getTime(),d=!0;return new Promise(function(e){o(function n(){if(d){o(n);var i=((new Date).getTime()-m)/a,l=c+s*f(i);t[r]=l,i>=1&&(t[r]=u,d=!1,e())}})})}},e.Timer=function(){var e,t,i,o,r=function(){n.isClient&&window.clearTimeout(e)},u=function(){n.isClient&&(r(),t=(new Date).getTime(),e=window.setTimeout(o,i))};return{start:function(e,n){return o=e,i=1e3*n,u()},pause:function(){return r(),i-=(new Date).getTime()-t},resume:function(){return u()},stop:r}},Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-core']));
+}(this, function (exports, polytheneCore) { 'use strict';
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  var addWebFont = function addWebFont(vendor, config) {
+    if (polytheneCore.isServer) return;
+
+    if (!window["WebFontConfig"]) {
+      /**
+       * @param {object} params
+       * @param {string} [params.name]
+       * @param {string} [params.familyName]
+       * @param {any} [params.fvd]
+       */
+      var emitEvent = function emitEvent(_ref) {
+        var name = _ref.name,
+            familyName = _ref.familyName,
+            fvd = _ref.fvd;
+        return polytheneCore.emit("webfontloader", {
+          name: name,
+          familyName: familyName,
+          fvd: fvd,
+          vendor: vendor,
+          config: config
+        });
+      };
+
+      window["WebFontConfig"] = {
+        loading: function loading() {
+          return emitEvent({
+            name: "loading"
+          });
+        },
+        active: function active() {
+          return emitEvent({
+            name: "active"
+          });
+        },
+        inactive: function inactive() {
+          return emitEvent({
+            name: "inactive"
+          });
+        },
+        fontloading: function fontloading(familyName, fvd) {
+          return emitEvent({
+            name: "fontloading",
+            familyName: familyName,
+            fvd: fvd
+          });
+        },
+        fontactive: function fontactive(familyName, fvd) {
+          return emitEvent({
+            name: "fontactive",
+            familyName: familyName,
+            fvd: fvd
+          });
+        },
+        fontinactive: function fontinactive(familyName, fvd) {
+          return emitEvent({
+            name: "fontinactive",
+            familyName: familyName,
+            fvd: fvd
+          });
+        }
+      };
+
+      (function () {
+        var wf = document.createElement("script");
+        wf.src = (document.location.protocol === "https:" ? "https" : "http") + "://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
+        wf.type = "text/javascript";
+        wf.async = true;
+        var s = document.getElementsByTagName("script")[0];
+
+        if (s && s.parentNode) {
+          s.parentNode.insertBefore(wf, s);
+        }
+      })();
+    }
+
+    var vendorCfg = window["WebFontConfig"][vendor] || {};
+
+    if (config) {
+      _extends(vendorCfg, config);
+    }
+
+    window["WebFontConfig"][vendor] = vendorCfg;
+  };
+
+  /*
+  https://gist.github.com/gre/1650294
+  Easing Functions - inspired from http://gizma.com/easing/
+  Only considering the t value for the range [0, 1] => [0, 1]
+  */
+  var easing = {
+    // no easing, no acceleration
+    linear: function linear(t) {
+      return t;
+    },
+    // accelerating from zero velocity
+    easeInQuad: function easeInQuad(t) {
+      return t * t;
+    },
+    // decelerating to zero velocity
+    easeOutQuad: function easeOutQuad(t) {
+      return t * (2 - t);
+    },
+    // acceleration until halfway, then deceleration
+    easeInOutQuad: function easeInOutQuad(t) {
+      return t < .5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    },
+    // accelerating from zero velocity
+    easeInCubic: function easeInCubic(t) {
+      return t * t * t;
+    },
+    // decelerating to zero velocity
+    easeOutCubic: function easeOutCubic(t) {
+      return --t * t * t + 1;
+    },
+    // acceleration until halfway, then deceleration
+    easeInOutCubic: function easeInOutCubic(t) {
+      return t < .5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+    },
+    // accelerating from zero velocity
+    easeInQuart: function easeInQuart(t) {
+      return t * t * t * t;
+    },
+    // decelerating to zero velocity
+    easeOutQuart: function easeOutQuart(t) {
+      return 1 - --t * t * t * t;
+    },
+    // acceleration until halfway, then deceleration
+    easeInOutQuart: function easeInOutQuart(t) {
+      return t < .5 ? 8 * t * t * t * t : 1 - 8 * --t * t * t * t;
+    },
+    // accelerating from zero velocity
+    easeInQuint: function easeInQuint(t) {
+      return t * t * t * t * t;
+    },
+    // decelerating to zero velocity
+    easeOutQuint: function easeOutQuint(t) {
+      return 1 + --t * t * t * t * t;
+    },
+    // acceleration until halfway, then deceleration
+    easeInOutQuint: function easeInOutQuint(t) {
+      return t < .5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t;
+    }
+  };
+
+  /*
+   Animated scroll to a position.
+   Derived from https://github.com/madebysource/animated-scrollto
+   Adapted to Mithril and rewritten to es6.
+  */
+  var scrollTo = function scrollTo(opts) {
+    if (polytheneCore.isServer) {
+      return;
+    }
+
+    var element = opts.element;
+    var which = opts.direction === "horizontal" ? "scrollLeft" : "scrollTop";
+    var to = opts.to;
+    var duration = opts.duration * 1000;
+    var easingFn = opts.easing || easing.easeInOutCubic;
+    var start = element[which];
+    var change = to - start;
+    var animationStart = new Date().getTime();
+    var animating = true;
+    return new Promise(function (resolve) {
+      var animateScroll = function animateScroll() {
+        if (!animating) {
+          return;
+        }
+
+        requestAnimFrame(animateScroll);
+        var now = new Date().getTime();
+        var percentage = (now - animationStart) / duration;
+        var val = start + change * easingFn(percentage);
+        element[which] = val;
+
+        if (percentage >= 1) {
+          element[which] = to;
+          animating = false;
+          resolve();
+        }
+      };
+
+      requestAnimFrame(animateScroll);
+    });
+  };
+  var requestAnimFrame = polytheneCore.isServer ? function () {} : function () {
+    return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window["mozRequestAnimationFrame"] || function (callback) {
+      return window.setTimeout(callback, 1000 / 60);
+    };
+  }();
+
+  // @ts-check
+  var Timer = function Timer() {
+    /** @type {number} */
+    var timerId;
+    /** @type {number} */
+
+    var startTime;
+    /** @type {number} */
+
+    var remaining;
+    /** @type {() => any} */
+
+    var cb;
+
+    var stop = function stop() {
+      if (polytheneCore.isClient) {
+        window.clearTimeout(timerId);
+      }
+    };
+
+    var pause = function pause() {
+      return stop(), remaining -= new Date().getTime() - startTime;
+    };
+
+    var startTimer = function startTimer() {
+      if (polytheneCore.isClient) {
+        stop();
+        startTime = new Date().getTime();
+        timerId = window.setTimeout(cb, remaining);
+      }
+    };
+
+    var start = function start(callback, duration) {
+      return cb = callback, remaining = duration * 1000, startTimer();
+    };
+
+    var resume = function resume() {
+      return startTimer();
+    };
+
+    return {
+      start: start,
+      pause: pause,
+      resume: resume,
+      stop: stop
+    };
+  };
+
+  exports.addWebFont = addWebFont;
+  exports.easing = easing;
+  exports.scrollTo = scrollTo;
+  exports.Timer = Timer;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-utilities.js.map

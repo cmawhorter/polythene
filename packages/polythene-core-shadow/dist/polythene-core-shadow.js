@@ -1,2 +1,83 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core")):"function"==typeof define&&define.amd?define(["exports","polythene-core"],t):t((e=e||self).polythene={},e["polythene-core"])}(this,function(e,t){"use strict";function o(){return(o=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var n in o)Object.prototype.hasOwnProperty.call(o,n)&&(e[n]=o[n])}return e}).apply(this,arguments)}var n={component:"pe-shadow",bottomShadow:"pe-shadow__bottom",topShadow:"pe-shadow__top",animated:"pe-shadow--animated",depth_n:"pe-shadow--depth-"},a=Object.freeze({getElement:function(e){return e.attrs.element||"div"},onMount:function(e){void 0!==e.attrs.z&&t.deprecation("Shadow",{option:"z",newOption:"shadowDepth"})},createProps:function(e,a){var r=a.keys,d=e.attrs;return o({},t.filterSupportedAttributes(d),{className:[n.component,d.animated&&n.animated,d.className||d[r.class]].join(" ")})},createContent:function(e,t){var o=t.renderer,a=e.attrs,r=a.content?a.content:a.children||e.children,d=void 0!==a.shadowDepth?a.shadowDepth:a.z,i=void 0!==d?"".concat(n.depth_n).concat(Math.min(5,d)):null;return[r,o("div",{key:"bottom",className:[n.bottomShadow,i].join(" ")}),o("div",{key:"top",className:[n.topShadow,i].join(" ")})]}});e.coreShadow=a,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-core']));
+}(this, function (exports, polytheneCore) { 'use strict';
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  var classes = {
+    component: "pe-shadow",
+    // elements
+    bottomShadow: "pe-shadow__bottom",
+    topShadow: "pe-shadow__top",
+    // states
+    animated: "pe-shadow--animated",
+    depth_n: "pe-shadow--depth-"
+  };
+
+  var getElement = function getElement(vnode) {
+    return vnode.attrs.element || "div";
+  };
+  var onMount = function onMount(_ref) {
+    var attrs = _ref.attrs;
+
+    if (attrs.z !== undefined) {
+      polytheneCore.deprecation("Shadow", {
+        option: "z",
+        newOption: "shadowDepth"
+      });
+    }
+  };
+  var createProps = function createProps(vnode, _ref2) {
+    var k = _ref2.keys;
+    var attrs = vnode.attrs;
+    return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
+      className: [classes.component, attrs.animated && classes.animated, attrs.className || attrs[k.class]].join(" ")
+    });
+  };
+  var createContent = function createContent(vnode, _ref3) {
+    var h = _ref3.renderer;
+    var attrs = vnode.attrs;
+    var content = attrs.content ? attrs.content : attrs.children || vnode.children;
+    var shadowDepth = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z; // deprecated
+
+    var depthClass = shadowDepth !== undefined ? "".concat(classes.depth_n).concat(Math.min(5, shadowDepth)) : null;
+    return [content, h("div", {
+      key: "bottom",
+      className: [classes.bottomShadow, depthClass].join(" ")
+    }), h("div", {
+      key: "top",
+      className: [classes.topShadow, depthClass].join(" ")
+    })];
+  };
+
+  var shadow = /*#__PURE__*/Object.freeze({
+    getElement: getElement,
+    onMount: onMount,
+    createProps: createProps,
+    createContent: createContent
+  });
+
+  exports.coreShadow = shadow;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-core-shadow.js.map

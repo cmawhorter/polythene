@@ -1,2 +1,216 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core")):"function"==typeof define&&define.amd?define(["exports","polythene-core"],t):t((e=e||self).polythene={},e["polythene-core"])}(this,function(e,t){"use strict";function o(){return(o=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var n in o)Object.prototype.hasOwnProperty.call(o,n)&&(e[n]=o[n])}return e}).apply(this,arguments)}var n={component:"pe-dialog-pane",actions:"pe-dialog-pane__actions",body:"pe-dialog-pane__body",content:"pe-dialog-pane__content",footer:"pe-dialog-pane__footer",header:"pe-dialog-pane__header",title:"pe-dialog-pane__title",withHeader:"pe-dialog-pane--header",withFooter:"pe-dialog-pane--footer",headerWithTitle:"pe-dialog-pane__header--title",footerWithButtons:"pe-dialog-pane__footer--buttons",footerHigh:"pe-dialog-pane__footer--high",borderBottom:"pe-dialog-pane--border-bottom",borderTop:"pe-dialog-pane--border-top",fullBleed:"pe-dialog-pane--body-full-bleed"},r={component:"pe-text-button",super:"pe-button",row:"pe-button-row",content:"pe-button__content",label:"pe-button__label",textLabel:"pe-button__text-label",wash:"pe-button__wash",dropdown:"pe-button__dropdown",border:"pe-button--border",contained:"pe-button--contained",disabled:"pe-button--disabled",dropdownClosed:"pe-button--dropdown-closed",dropdownOpen:"pe-button--dropdown-open",extraWide:"pe-button--extra-wide",hasDropdown:"pe-button--dropdown",highLabel:"pe-button--high-label",inactive:"pe-button--inactive",raised:"pe-button--raised",selected:"pe-button--selected",separatorAtStart:"pe-button--separator-start"},l=function(e){var t=e.state,o=t.scrollEl();o&&(t.topOverflow(o.scrollTop>0),t.bottomOverflow(o.scrollHeight-(o.scrollTop+o.getBoundingClientRect().height)>0))},a=Object.freeze({getElement:function(e){return e.attrs.element||"form"},getInitialState:function(e,t){var o=t(!1),n=t(null),r=t(null),l=t(!1),a=t(null),i=t(!1);return{cleanUp:void 0,bottomOverflow:o,el:t(null),footerEl:n,headerEl:r,isScrolling:l,scrollEl:a,scrollWatchId:void 0,topOverflow:i,redrawOnUpdate:t.merge([i,o,l])}},onMount:function(e){if(e.dom){var o=e.dom,r=e.state;r.el(o),r.scrollEl(o.querySelector(".".concat(n.body))),r.footerEl(o.querySelector(".".concat(n.footer))),r.headerEl(o.querySelector(".".concat(n.header))),r.isScrolling.map(function(){return l(e)});var a=function(){l(e)};r.cleanUp=function(){return t.unsubscribe("resize",a)},t.subscribe("resize",a),a()}},onUnMount:function(e){return e.state.cleanUp()},createProps:function(e,r){var l=r.keys,a=e.state,i=t.unpackAttrs(e.attrs),d=void 0!==i.header||void 0!==i.title,p=void 0!==i.footer||void 0!==i.footerButtons,s=i.borders||"overflow",u="always"===s||d&&"overflow"===s&&a.topOverflow(),c="always"===s||p&&"overflow"===s&&a.bottomOverflow();return o({},t.filterSupportedAttributes(i,{remove:["style"]}),{className:[n.component,i.fullBleed?n.fullBleed:null,u?n.borderTop:null,c?n.borderBottom:null,d?n.withHeader:null,p?n.withFooter:null,"dark"===i.tone?"pe-dark-tone":null,"light"===i.tone?"pe-light-tone":null,i.className||i[l.class]].join(" ")},i.formOptions)},createContent:function(e,o){var l,a,i,d=o.renderer,p=o.keys,s=e.state,u=t.unpackAttrs(e.attrs);return d("div",{className:[n.content,u.menu?n.menuContent:null].join(" "),style:u.style},[u.header?u.header:u.title?d("div",{className:[n.header,n.headerWithTitle].join(" "),key:"title"},d("div",{className:n.title},u.title)):null,d("div",(l={className:n.body,key:"body"},a=p.onscroll,i=function(){s.isScrolling(!0),clearTimeout(s.scrollWatchId),s.scrollWatchId=setTimeout(function(){s.isScrolling(!1)},150)},a in l?Object.defineProperty(l,a,{value:i,enumerable:!0,configurable:!0,writable:!0}):l[a]=i,l),u.content||u.body||u.menu),u.footer?d("div",{className:n.footer,key:"footer"},u.footer):u.footerButtons?d("div",{className:[n.footer,n.footerWithButtons,r.row].join(" "),key:"footer"},d("div",{className:n.actions},u.footerButtons)):null])}});e.coreDialogPane=a,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-core']));
+}(this, function (exports, polytheneCore) { 'use strict';
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  var classes = {
+    component: "pe-dialog-pane",
+    // elements
+    actions: "pe-dialog-pane__actions",
+    body: "pe-dialog-pane__body",
+    content: "pe-dialog-pane__content",
+    footer: "pe-dialog-pane__footer",
+    header: "pe-dialog-pane__header",
+    title: "pe-dialog-pane__title",
+    // states
+    withHeader: "pe-dialog-pane--header",
+    withFooter: "pe-dialog-pane--footer",
+    headerWithTitle: "pe-dialog-pane__header--title",
+    footerWithButtons: "pe-dialog-pane__footer--buttons",
+    footerHigh: "pe-dialog-pane__footer--high",
+    borderBottom: "pe-dialog-pane--border-bottom",
+    borderTop: "pe-dialog-pane--border-top",
+    fullBleed: "pe-dialog-pane--body-full-bleed"
+  };
+
+  var buttonClasses = {
+    component: "pe-text-button",
+    super: "pe-button",
+    row: "pe-button-row",
+    // elements      
+    content: "pe-button__content",
+    label: "pe-button__label",
+    textLabel: "pe-button__text-label",
+    wash: "pe-button__wash",
+    dropdown: "pe-button__dropdown",
+    // states      
+    border: "pe-button--border",
+    contained: "pe-button--contained",
+    disabled: "pe-button--disabled",
+    dropdownClosed: "pe-button--dropdown-closed",
+    dropdownOpen: "pe-button--dropdown-open",
+    extraWide: "pe-button--extra-wide",
+    hasDropdown: "pe-button--dropdown",
+    highLabel: "pe-button--high-label",
+    inactive: "pe-button--inactive",
+    raised: "pe-button--raised",
+    selected: "pe-button--selected",
+    separatorAtStart: "pe-button--separator-start"
+  };
+
+  var getElement = function getElement(vnode) {
+    return vnode.attrs.element || "form";
+  };
+  var SCROLL_WATCH_END_TIMER = 150;
+
+  var updateScrollOverflowState = function updateScrollOverflowState(vnode) {
+    var state = vnode.state;
+    var scroller = state.scrollEl();
+
+    if (!scroller) {
+      return;
+    }
+
+    state.topOverflow(scroller.scrollTop > 0);
+    state.bottomOverflow(scroller.scrollHeight - (scroller.scrollTop + scroller.getBoundingClientRect().height) > 0);
+  };
+
+  var getInitialState = function getInitialState(vnode, createStream) {
+    var bottomOverflow = createStream(false);
+    var footerEl = createStream(null);
+    var headerEl = createStream(null);
+    var isScrolling = createStream(false);
+    var scrollEl = createStream(null);
+    var topOverflow = createStream(false);
+    var el = createStream(null);
+    return {
+      cleanUp: undefined,
+      bottomOverflow: bottomOverflow,
+      el: el,
+      footerEl: footerEl,
+      headerEl: headerEl,
+      isScrolling: isScrolling,
+      scrollEl: scrollEl,
+      scrollWatchId: undefined,
+      topOverflow: topOverflow,
+      redrawOnUpdate: createStream.merge([topOverflow, bottomOverflow, isScrolling])
+    };
+  };
+  var onMount = function onMount(vnode) {
+    if (!vnode.dom) {
+      return;
+    }
+
+    var dom = vnode.dom;
+    var state = vnode.state;
+    state.el(dom);
+    state.scrollEl(dom.querySelector(".".concat(classes.body)));
+    state.footerEl(dom.querySelector(".".concat(classes.footer)));
+    state.headerEl(dom.querySelector(".".concat(classes.header)));
+    state.isScrolling.map(function () {
+      return updateScrollOverflowState(vnode);
+    });
+
+    var update = function update() {
+      updateScrollOverflowState(vnode);
+    };
+
+    state.cleanUp = function () {
+      return polytheneCore.unsubscribe("resize", update);
+    }; // resize: update scroll state ("overflow" borders)
+
+
+    polytheneCore.subscribe("resize", update);
+    update();
+  };
+  var onUnMount = function onUnMount(vnode) {
+    return vnode.state.cleanUp();
+  };
+  var createProps = function createProps(vnode, _ref) {
+    var k = _ref.keys;
+    var state = vnode.state;
+    var attrs = polytheneCore.unpackAttrs(vnode.attrs);
+    var withHeader = attrs.header !== undefined || attrs.title !== undefined;
+    var withFooter = attrs.footer !== undefined || attrs.footerButtons !== undefined;
+    var borders = attrs.borders || "overflow";
+    var showTopBorder = borders === "always" || withHeader && borders === "overflow" && state.topOverflow();
+    var showBottomBorder = borders === "always" || withFooter && borders === "overflow" && state.bottomOverflow();
+    return _extends({}, polytheneCore.filterSupportedAttributes(attrs, {
+      remove: ["style"]
+    }), // style set in content, and set by show/hide transition
+    {
+      className: [classes.component, attrs.fullBleed ? classes.fullBleed : null, showTopBorder ? classes.borderTop : null, showBottomBorder ? classes.borderBottom : null, withHeader ? classes.withHeader : null, withFooter ? classes.withFooter : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    }, attrs.formOptions);
+  };
+  var createContent = function createContent(vnode, _ref2) {
+    var h = _ref2.renderer,
+        k = _ref2.keys;
+    var state = vnode.state;
+    var attrs = polytheneCore.unpackAttrs(vnode.attrs);
+    return h("div", {
+      className: [classes.content, attrs.menu ? classes.menuContent : null].join(" "),
+      style: attrs.style
+    }, [attrs.header ? attrs.header : attrs.title ? h("div", {
+      className: [classes.header, classes.headerWithTitle].join(" "),
+      key: "title"
+    }, h("div", {
+      className: classes.title
+    }, attrs.title)) : null, h("div", _defineProperty({
+      className: classes.body,
+      key: "body"
+    }, k.onscroll, function () {
+      state.isScrolling(true);
+      clearTimeout(state.scrollWatchId);
+      state.scrollWatchId = setTimeout(function () {
+        state.isScrolling(false);
+      }, SCROLL_WATCH_END_TIMER);
+    }), attrs.content || attrs.body || attrs.menu), attrs.footer ? h("div", {
+      className: classes.footer,
+      key: "footer"
+    }, attrs.footer) : attrs.footerButtons ? h("div", {
+      className: [classes.footer, classes.footerWithButtons, buttonClasses.row].join(" "),
+      key: "footer"
+    }, h("div", {
+      className: classes.actions
+    }, attrs.footerButtons)) : null]);
+  };
+
+  var dialogPane = /*#__PURE__*/Object.freeze({
+    getElement: getElement,
+    getInitialState: getInitialState,
+    onMount: onMount,
+    onUnMount: onUnMount,
+    createProps: createProps,
+    createContent: createContent
+  });
+
+  exports.coreDialogPane = dialogPane;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-core-dialog-pane.js.map

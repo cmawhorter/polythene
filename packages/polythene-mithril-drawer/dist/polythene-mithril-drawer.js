@@ -1,2 +1,79 @@
-!function(e,r){"object"==typeof exports&&"undefined"!=typeof module?r(exports,require("polythene-mithril-base"),require("polythene-core"),require("polythene-core-drawer"),require("polythene-mithril-dialog")):"function"==typeof define&&define.amd?define(["exports","polythene-mithril-base","polythene-core","polythene-core-drawer","polythene-mithril-dialog"],r):r((e=e||self).polythene={},e["polythene-mithril-base"],e["polythene-core"],e["polythene-core-drawer"],e["polythene-mithril-dialog"])}(this,function(e,r,n,t,o){"use strict";function a(e,r,n){return r in e?Object.defineProperty(e,r,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[r]=n,e}function i(e){for(var r=1;r<arguments.length;r++){var n=null!=arguments[r]?arguments[r]:{},t=Object.keys(n);"function"==typeof Object.getOwnPropertySymbols&&(t=t.concat(Object.getOwnPropertySymbols(n).filter(function(e){return Object.getOwnPropertyDescriptor(n,e).enumerable}))),t.forEach(function(r){a(e,r,n[r])})}return e}var l={component:"pe-dialog pe-drawer",cover:"pe-drawer--cover",push:"pe-drawer--push",mini:"pe-drawer--mini",permanent:"pe-drawer--permanent",border:"pe-drawer--border",floating:"pe-drawer--floating",fixed:"pe-drawer--fixed",anchorEnd:"pe-drawer--anchor-end"},p=r.ComponentCreator(i({},t.coreDrawer,{component:o.DialogInstance})),c=r.ComponentCreator(n.coreConditional);c.displayName="DrawerToggle";var d={view:function(e){return r.renderer(c,i({},e.attrs,{placeholderClassName:l.placeholder,instance:p,permanent:e.attrs.permanent||e.attrs.mini}))},displayName:"Drawer"};e.Drawer=d,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-mithril-base'), require('polythene-core'), require('polythene-core-drawer'), require('polythene-mithril-dialog')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-mithril-base', 'polythene-core', 'polythene-core-drawer', 'polythene-mithril-dialog'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-mithril-base'], global['polythene-core'], global['polythene-core-drawer'], global['polythene-mithril-dialog']));
+}(this, function (exports, polytheneMithrilBase, polytheneCore, polytheneCoreDrawer, polytheneMithrilDialog) { 'use strict';
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _objectSpread(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+      var ownKeys = Object.keys(source);
+
+      if (typeof Object.getOwnPropertySymbols === 'function') {
+        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+        }));
+      }
+
+      ownKeys.forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    }
+
+    return target;
+  }
+
+  var classes = {
+    component: "pe-dialog pe-drawer",
+    // states
+    cover: "pe-drawer--cover",
+    push: "pe-drawer--push",
+    mini: "pe-drawer--mini",
+    permanent: "pe-drawer--permanent",
+    border: "pe-drawer--border",
+    floating: "pe-drawer--floating",
+    fixed: "pe-drawer--fixed",
+    anchorEnd: "pe-drawer--anchor-end"
+  };
+
+  var DrawerInstance = polytheneMithrilBase.ComponentCreator(_objectSpread({}, polytheneCoreDrawer.coreDrawer, {
+    component: polytheneMithrilDialog.DialogInstance
+  }));
+  var DrawerToggle = polytheneMithrilBase.ComponentCreator(polytheneCore.coreConditional);
+  DrawerToggle["displayName"] = "DrawerToggle";
+  var Drawer = {
+    /**
+     * @param {Vnode} vnode
+     */
+    view: function view(vnode) {
+      return polytheneMithrilBase.renderer(DrawerToggle, _objectSpread({}, vnode.attrs, {
+        placeholderClassName: classes.placeholder,
+        instance: DrawerInstance,
+        permanent: vnode.attrs.permanent || vnode.attrs.mini // passed to Conditional
+
+      }));
+    }
+  };
+  Drawer["displayName"] = "Drawer";
+
+  exports.Drawer = Drawer;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-mithril-drawer.js.map

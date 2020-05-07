@@ -1,2 +1,64 @@
-!function(e,n){"object"==typeof exports&&"undefined"!=typeof module?n(exports):"function"==typeof define&&define.amd?define(["exports"],n):n((e=e||self).polythene={})}(this,function(e){"use strict";function n(){return(n=Object.assign||function(e){for(var n=1;n<arguments.length;n++){var t=arguments[n];for(var o in t)Object.prototype.hasOwnProperty.call(t,o)&&(e[o]=t[o])}return e}).apply(this,arguments)}var t={component:"pe-ios-spinner",blades:"pe-ios-spinner__blades",blade:"pe-ios-spinner__blade"},o=Object.freeze({createProps:function(e,o){var r=o.renderer,s=e.state,a=e.attrs;return s.content=s.content||r("div",{key:"content",className:t.blades},[0,1,2,3,4,5,6,7,8,9,10,11].map(function(e){return function(e,n){return n("div",{key:"blade-".concat(e),className:t.blade})}(e,r)})),n({},a,{className:[t.component,a.className].join(" "),content:s.content})}});e.coreIOSSpinner=o,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (global = global || self, factory(global.polythene = {}));
+}(this, function (exports) { 'use strict';
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  var classes = {
+    component: "pe-ios-spinner",
+    // elements
+    blades: "pe-ios-spinner__blades",
+    blade: "pe-ios-spinner__blade"
+  };
+
+  var blade = function blade(num, h) {
+    return h("div", {
+      key: "blade-".concat(num),
+      className: classes.blade
+    });
+  };
+
+  var createProps = function createProps(vnode, _ref) {
+    var h = _ref.renderer;
+    var state = vnode.state;
+    var attrs = vnode.attrs;
+    state.content = state.content || h("div", {
+      key: "content",
+      className: classes.blades
+    }, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(function (num) {
+      return blade(num, h);
+    }));
+    return _extends({}, attrs, {
+      className: [classes.component, attrs.className].join(" "),
+      content: state.content
+    });
+  };
+
+  var spinner = /*#__PURE__*/Object.freeze({
+    createProps: createProps
+  });
+
+  exports.coreIOSSpinner = spinner;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-core-ios-spinner.js.map

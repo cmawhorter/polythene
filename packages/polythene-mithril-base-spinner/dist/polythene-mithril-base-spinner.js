@@ -1,2 +1,74 @@
-!function(e,n){"object"==typeof exports&&"undefined"!=typeof module?n(exports,require("polythene-mithril-base"),require("polythene-core-base-spinner"),require("polythene-mithril-shadow")):"function"==typeof define&&define.amd?define(["exports","polythene-mithril-base","polythene-core-base-spinner","polythene-mithril-shadow"],n):n((e=e||self).polythene={},e["polythene-mithril-base"],e["polythene-core-base-spinner"],e["polythene-mithril-shadow"])}(this,function(e,n,r,i){"use strict";function t(e,n,r){return n in e?Object.defineProperty(e,n,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[n]=r,e}function o(e){for(var n=1;n<arguments.length;n++){var r=null!=arguments[n]?arguments[n]:{},i=Object.keys(r);"function"==typeof Object.getOwnPropertySymbols&&(i=i.concat(Object.getOwnPropertySymbols(r).filter(function(e){return Object.getOwnPropertyDescriptor(r,e).enumerable}))),i.forEach(function(n){t(e,n,r[n])})}return e}var p=n.ComponentCreator(o({},r.coreBaseSpinner,{createContent:function(e,n){return r.coreBaseSpinner.createContent(e,o({},n,{Shadow:i.Shadow}))}}));p.classes={component:"pe-spinner",animation:"pe-spinner__animation",placeholder:"pe-spinner__placeholder",animated:"pe-spinner--animated",fab:"pe-spinner--fab",large:"pe-spinner--large",medium:"pe-spinner--medium",permanent:"pe-spinner--permanent",raised:"pe-spinner--raised",regular:"pe-spinner--regular",singleColor:"pe-spinner--single-color",small:"pe-spinner--small",visible:"pe-spinner--visible"},p.displayName="BaseSpinner",e.BaseSpinner=p,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-mithril-base'), require('polythene-core-base-spinner'), require('polythene-mithril-shadow')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-mithril-base', 'polythene-core-base-spinner', 'polythene-mithril-shadow'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-mithril-base'], global['polythene-core-base-spinner'], global['polythene-mithril-shadow']));
+}(this, function (exports, polytheneMithrilBase, polytheneCoreBaseSpinner, polytheneMithrilShadow) { 'use strict';
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _objectSpread(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+      var ownKeys = Object.keys(source);
+
+      if (typeof Object.getOwnPropertySymbols === 'function') {
+        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+        }));
+      }
+
+      ownKeys.forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    }
+
+    return target;
+  }
+
+  var classes = {
+    component: "pe-spinner",
+    // elements
+    animation: "pe-spinner__animation",
+    placeholder: "pe-spinner__placeholder",
+    // states
+    animated: "pe-spinner--animated",
+    fab: "pe-spinner--fab",
+    large: "pe-spinner--large",
+    medium: "pe-spinner--medium",
+    permanent: "pe-spinner--permanent",
+    raised: "pe-spinner--raised",
+    regular: "pe-spinner--regular",
+    singleColor: "pe-spinner--single-color",
+    small: "pe-spinner--small",
+    visible: "pe-spinner--visible"
+  };
+
+  var BaseSpinner = polytheneMithrilBase.ComponentCreator(_objectSpread({}, polytheneCoreBaseSpinner.coreBaseSpinner, {
+    createContent: function createContent(vnode, args) {
+      return polytheneCoreBaseSpinner.coreBaseSpinner.createContent(vnode, _objectSpread({}, args, {
+        Shadow: polytheneMithrilShadow.Shadow
+      }));
+    }
+  }));
+  BaseSpinner["classes"] = classes;
+  BaseSpinner["displayName"] = "BaseSpinner";
+
+  exports.BaseSpinner = BaseSpinner;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-mithril-base-spinner.js.map

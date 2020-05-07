@@ -1,2 +1,71 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-react-base"),require("polythene-core-tabs"),require("polythene-react-icon"),require("polythene-react-button"),require("polythene-react-icon-button")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core-tabs","polythene-react-icon","polythene-react-button","polythene-react-icon-button"],t):t((e=e||self).polythene={},e["polythene-react-base"],e["polythene-core-tabs"],e["polythene-react-icon"],e["polythene-react-button"],e["polythene-react-icon-button"])}(this,function(e,t,o,n,r,c){"use strict";function a(e,t,o){return t in e?Object.defineProperty(e,t,{value:o,enumerable:!0,configurable:!0,writable:!0}):e[t]=o,e}function u(e){for(var t=1;t<arguments.length;t++){var o=null!=arguments[t]?arguments[t]:{},n=Object.keys(o);"function"==typeof Object.getOwnPropertySymbols&&(n=n.concat(Object.getOwnPropertySymbols(o).filter(function(e){return Object.getOwnPropertyDescriptor(o,e).enumerable}))),n.forEach(function(t){a(e,t,o[t])})}return e}var l=t.ComponentCreator(u({},o.coreTab,{createProps:function(e,t){return o.coreTab.createProps(e,u({},t,{Icon:n.Icon}))},component:r.Button}));l.displayName="Tab";var p=t.ComponentCreator(u({},o.coreScrollButton,{component:c.IconButton}));p.displayName="ScrollButton";var i=t.ComponentCreator(u({},o.coreTabs,{createContent:function(e,t){return o.coreTabs.createContent(e,u({},t,{Tab:l,ScrollButton:p}))}}));i.displayName="Tabs",e.Tabs=i,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core-tabs'), require('polythene-react-icon'), require('polythene-react-button'), require('polythene-react-icon-button')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core-tabs', 'polythene-react-icon', 'polythene-react-button', 'polythene-react-icon-button'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-react-base'], global['polythene-core-tabs'], global['polythene-react-icon'], global['polythene-react-button'], global['polythene-react-icon-button']));
+}(this, function (exports, polytheneReactBase, polytheneCoreTabs, polytheneReactIcon, polytheneReactButton, polytheneReactIconButton) { 'use strict';
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _objectSpread(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+      var ownKeys = Object.keys(source);
+
+      if (typeof Object.getOwnPropertySymbols === 'function') {
+        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+        }));
+      }
+
+      ownKeys.forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    }
+
+    return target;
+  }
+
+  var Tab = polytheneReactBase.ComponentCreator(_objectSpread({}, polytheneCoreTabs.coreTab, {
+    createProps: function createProps(vnode, args) {
+      return polytheneCoreTabs.coreTab.createProps(vnode, _objectSpread({}, args, {
+        Icon: polytheneReactIcon.Icon
+      }));
+    },
+    component: polytheneReactButton.Button
+  }));
+  Tab["displayName"] = "Tab";
+
+  var ScrollButton = polytheneReactBase.ComponentCreator(_objectSpread({}, polytheneCoreTabs.coreScrollButton, {
+    component: polytheneReactIconButton.IconButton
+  }));
+  ScrollButton["displayName"] = "ScrollButton";
+
+  var Tabs = polytheneReactBase.ComponentCreator(_objectSpread({}, polytheneCoreTabs.coreTabs, {
+    createContent: function createContent(vnode, args) {
+      return polytheneCoreTabs.coreTabs.createContent(vnode, _objectSpread({}, args, {
+        Tab: Tab,
+        ScrollButton: ScrollButton
+      }));
+    }
+  }));
+  Tabs["displayName"] = "Tabs";
+
+  exports.Tabs = Tabs;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-react-tabs.js.map

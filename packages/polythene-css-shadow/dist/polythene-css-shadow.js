@@ -1,2 +1,188 @@
-!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports,require("polythene-core-css"),require("polythene-theme")):"function"==typeof define&&define.amd?define(["exports","polythene-core-css","polythene-theme"],e):e((t=t||self).polythene={},t["polythene-core-css"],t["polythene-theme"])}(this,function(t,e,o){"use strict";function n(t,e,o){return e in t?Object.defineProperty(t,e,{value:o,enumerable:!0,configurable:!0,writable:!0}):t[e]=o,t}function r(){return(r=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var o=arguments[e];for(var n in o)Object.prototype.hasOwnProperty.call(o,n)&&(t[n]=o[n])}return t}).apply(this,arguments)}var a=function(t,o){return function(r,a){return e.sel(r,n({}," .pe-shadow__".concat(t,".pe-shadow--depth-").concat(o),{boxShadow:a["shadow_".concat(t,"_depth_").concat(o)]}))}},p=function(t,o,r,a){return e.sel(t,n({}," .pe-shadow__".concat(a),{boxShadow:o["shadow_".concat(a,"_depth_").concat(r)]}))},s=function(t,e,o){return[p(t,e,o,"top"),p(t,e,o,"bottom")]},d=function(t,e){return void 0!==e.shadow_depth?s(t,e,e.shadow_depth):null},h={shadow_depth:d},_=r({},{general_styles:function(t,o){return[e.sel(t,[e.mixin.fit(),s(t,o,1),{borderRadius:"inherit",pointerEvents:"none"," .pe-shadow__bottom, .pe-shadow__top":[e.mixin.fit(),{borderRadius:"inherit"}]}])]},transition:function(t,o){return[e.sel(t,{".pe-shadow--animated":{" .pe-shadow__bottom, .pe-shadow__top":{transition:o.transition}}})]},shadow_depth:d},[0,1,2,3,4,5].reduce(function(t,e){return t["shadow_top_depth_".concat(e)]=a("top",e),t["shadow_bottom_depth_".concat(e)]=a("bottom",e),t},{})),c=e.createLayout({varFns:_}),i={shadow_top_depth_0:"none",shadow_bottom_depth_0:"none",shadow_top_depth_1:"none",shadow_bottom_depth_1:"0 1px 4px 0 rgba(0, 0, 0, 0.37)",shadow_top_depth_2:"0 2px 2px 0 rgba(0, 0, 0, 0.2)",shadow_bottom_depth_2:"0 6px 10px 0 rgba(0, 0, 0, 0.3)",shadow_top_depth_3:"0 11px 7px 0 rgba(0, 0, 0, 0.19)",shadow_bottom_depth_3:"0 13px 25px 0 rgba(0, 0, 0, 0.3)",shadow_top_depth_4:"0 14px 12px 0 rgba(0, 0, 0, 0.17)",shadow_bottom_depth_4:"0 20px 40px 0 rgba(0, 0, 0, 0.3)",shadow_top_depth_5:"0 17px 17px 0 rgba(0, 0, 0, 0.15)",shadow_bottom_depth_5:"0 27px 55px 0 rgba(0, 0, 0, 0.3)",shadow_depth:void 0},u=function(t){for(var e=1;e<arguments.length;e++){var o=null!=arguments[e]?arguments[e]:{},r=Object.keys(o);"function"==typeof Object.getOwnPropertySymbols&&(r=r.concat(Object.getOwnPropertySymbols(o).filter(function(t){return Object.getOwnPropertyDescriptor(o,t).enumerable}))),r.forEach(function(e){n(t,e,o[e])})}return t}({general_styles:!0,transition:"box-shadow ".concat(o.vars.animation_duration," ease-out")},i),l=[c],b=".".concat("pe-shadow"),f=e.styler.createAddStyle(b,l,u),w=e.styler.createGetStyle(b,l,u);e.styler.addStyle({selectors:[b],fns:l,vars:u}),t.addStyle=f,t.getStyle=w,t.layout=c,t.vars=u,t.sharedVars=i,t.sharedVarFns=h,Object.defineProperty(t,"__esModule",{value:!0})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme'], factory) :
+  (global = global || self, factory(global.polythene = {}, global['polythene-core-css'], global['polythene-theme']));
+}(this, function (exports, polytheneCoreCss, polytheneTheme) { 'use strict';
+
+  var classes = {
+    component: "pe-shadow",
+    // elements
+    bottomShadow: "pe-shadow__bottom",
+    topShadow: "pe-shadow__top",
+    // states
+    animated: "pe-shadow--animated",
+    depth_n: "pe-shadow--depth-"
+  };
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  function _objectSpread(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+      var ownKeys = Object.keys(source);
+
+      if (typeof Object.getOwnPropertySymbols === 'function') {
+        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+        }));
+      }
+
+      ownKeys.forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    }
+
+    return target;
+  }
+
+  var _createShadowForSelector = function _createShadowForSelector(which, depth) {
+    return function (selector, vars) {
+      return polytheneCoreCss.sel(selector, _defineProperty({}, " .pe-shadow__".concat(which, ".pe-shadow--depth-").concat(depth), {
+        boxShadow: vars["shadow_".concat(which, "_depth_").concat(depth)]
+      }));
+    };
+  };
+  /**
+   * @param {string} selector 
+   * @param {object} vars 
+   * @param {number} depth 
+   * @param {"top"|"bottom"} which 
+   */
+
+
+  var _createShadow = function _createShadow(selector, vars, depth, which) {
+    return polytheneCoreCss.sel(selector, _defineProperty({}, " .pe-shadow__".concat(which), {
+      boxShadow: vars["shadow_".concat(which, "_depth_").concat(depth)]
+    }));
+  };
+  /**
+   * @param {string} selector 
+   * @param {object} vars 
+   * @param {number} depth
+   * @returns {object}
+   */
+
+
+  var shadow = function shadow(selector, vars, depth) {
+    return [_createShadow(selector, vars, depth, "top"), _createShadow(selector, vars, depth, "bottom")];
+  };
+  /**
+   * @param {string} selector 
+   * @param {object} vars 
+   * @returns {object}
+   */
+
+
+  var shadow_depth = function shadow_depth(selector, vars) {
+    return vars.shadow_depth !== undefined ? shadow(selector, vars, vars.shadow_depth) : null;
+  };
+
+  var sharedVarFns = {
+    shadow_depth: shadow_depth
+  };
+
+  var varFns = _extends({}, {
+    general_styles: function general_styles(selector, vars) {
+      return [polytheneCoreCss.sel(selector, [polytheneCoreCss.mixin.fit(), shadow(selector, vars, 1), {
+        borderRadius: "inherit",
+        pointerEvents: "none",
+        " .pe-shadow__bottom, .pe-shadow__top": [polytheneCoreCss.mixin.fit(), {
+          borderRadius: "inherit"
+        }]
+      }])];
+    },
+    transition: function transition(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-shadow--animated": {
+          " .pe-shadow__bottom, .pe-shadow__top": {
+            transition: vars.transition
+          }
+        }
+      })];
+    },
+    shadow_depth: shadow_depth
+  }, [0, 1, 2, 3, 4, 5].reduce(function (acc, depth) {
+    return acc["shadow_top_depth_".concat(depth)] = _createShadowForSelector("top", depth), acc["shadow_bottom_depth_".concat(depth)] = _createShadowForSelector("bottom", depth), acc;
+  }, {}));
+
+  var layout = polytheneCoreCss.createLayout({
+    varFns: varFns
+  });
+
+  var sharedVars = {
+    shadow_top_depth_0: "none",
+    shadow_bottom_depth_0: "none",
+    shadow_top_depth_1: "none",
+    shadow_bottom_depth_1: "0 1px 4px 0 rgba(0, 0, 0, 0.37)",
+    shadow_top_depth_2: "0 2px 2px 0 rgba(0, 0, 0, 0.2)",
+    shadow_bottom_depth_2: "0 6px 10px 0 rgba(0, 0, 0, 0.3)",
+    shadow_top_depth_3: "0 11px 7px 0 rgba(0, 0, 0, 0.19)",
+    shadow_bottom_depth_3: "0 13px 25px 0 rgba(0, 0, 0, 0.3)",
+    shadow_top_depth_4: "0 14px 12px 0 rgba(0, 0, 0, 0.17)",
+    shadow_bottom_depth_4: "0 20px 40px 0 rgba(0, 0, 0, 0.3)",
+    shadow_top_depth_5: "0 17px 17px 0 rgba(0, 0, 0, 0.15)",
+    shadow_bottom_depth_5: "0 27px 55px 0 rgba(0, 0, 0, 0.3)",
+    // theme vars
+    shadow_depth: undefined
+  };
+  var vars = _objectSpread({
+    /**
+     * Generate general styles, not defined by variables
+     */
+    general_styles: true,
+    transition: "box-shadow ".concat(polytheneTheme.vars.animation_duration, " ease-out")
+  }, sharedVars);
+
+  // @ts-check
+  var fns = [layout];
+  var selector = ".".concat(classes.component);
+  var addStyle = polytheneCoreCss.styler.createAddStyle(selector, fns, vars);
+  var getStyle = polytheneCoreCss.styler.createGetStyle(selector, fns, vars);
+  polytheneCoreCss.styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: vars
+  });
+
+  exports.addStyle = addStyle;
+  exports.getStyle = getStyle;
+  exports.layout = layout;
+  exports.vars = vars;
+  exports.sharedVars = sharedVars;
+  exports.sharedVarFns = sharedVarFns;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
 //# sourceMappingURL=polythene-css-shadow.js.map
