@@ -17,9 +17,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-toolbar": "^1.5.4",
-    "polythene-mithril-base": "^1.5.4",
-    "polythene-mithril-shadow": "^1.5.4"
+    "polythene-core-toolbar": "1.5.4",
+    "polythene-mithril-base": "1.5.4",
+    "polythene-mithril-shadow": "1.5.4"
   },
   "devDependencies": {
     "@types/mithril": "^1.1.14"

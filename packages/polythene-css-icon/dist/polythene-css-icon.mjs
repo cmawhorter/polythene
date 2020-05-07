@@ -55,14 +55,14 @@ var generalFns = {
 var tintFns = function tintFns(tint) {
   var _ref;
 
-  return _ref = {}, _defineProperty(_ref, "color_" + tint, function (selector, vars) {
+  return _ref = {}, _defineProperty(_ref, "color_" + tint, function (selector, vars$$1) {
     return [sel(selector, {
-      color: vars["color_" + tint]
+      color: vars$$1["color_" + tint]
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_avatar_background", function (selector, vars) {
+  }), _defineProperty(_ref, "color_" + tint + "_avatar_background", function (selector, vars$$1) {
     return [sel(selector, {
       ".pe-icon--avatar": {
-        backgroundColor: vars["color_" + tint + "_avatar_background"]
+        backgroundColor: vars$$1["color_" + tint + "_avatar_background"]
       }
     })];
   }), _ref;
@@ -80,10 +80,10 @@ var color = createColor({
 });
 
 var sizeDirective = function sizeDirective(size) {
-  return function (selector, vars) {
+  return function (selector, vars$$1) {
     return sel(selector, _defineProperty({}, ".pe-icon--".concat(size), {
-      width: vars["size_".concat(size)] + "px",
-      height: vars["size_".concat(size)] + "px"
+      width: vars$$1["size_".concat(size)] + "px",
+      height: vars$$1["size_".concat(size)] + "px"
     }));
   };
 };

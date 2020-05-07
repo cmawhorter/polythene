@@ -1,5 +1,5 @@
 import { createColor, sel, rgba, createLayout, flex, createMarker, mixin, styler } from 'polythene-core-css';
-import { fullScreen as fullScreen$1 } from 'polythene-css-dialog-pane';
+import { fullScreen } from 'polythene-css-dialog-pane';
 import { sharedVars, sharedVarFns } from 'polythene-css-shadow';
 import { vars } from 'polythene-theme';
 
@@ -136,22 +136,22 @@ var generalFns = {
 var tintFns = function tintFns(tint) {
   var _ref;
 
-  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars) {
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
     return [sel(selector, {
       " .pe-dialog__content": {
-        backgroundColor: vars["color_" + tint + "_background"]
+        backgroundColor: vars$$1["color_" + tint + "_background"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_text", function (selector, vars) {
+  }), _defineProperty(_ref, "color_" + tint + "_text", function (selector, vars$$1) {
     return [sel(selector, {
       " .pe-dialog__content": {
-        color: vars["color_" + tint + "_text"]
+        color: vars$$1["color_" + tint + "_text"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_backdrop_background", function (selector, vars) {
+  }), _defineProperty(_ref, "color_" + tint + "_backdrop_background", function (selector, vars$$1) {
     return [sel(selector, {
       " .pe-dialog__backdrop": {
-        backgroundColor: vars["color_" + tint + "_backdrop_background"]
+        backgroundColor: vars$$1["color_" + tint + "_backdrop_background"]
       }
     })];
   }), _ref;
@@ -209,7 +209,7 @@ var minWidth = "320px";
  * @param {object} vars 
  */
 
-var _backdrop = function backdrop(selector, vars) {
+var _backdrop = function backdrop(selector, vars$$1) {
   return (// eslint-disable-line no-unused-vars
     sel(selector, {
       ".pe-dialog--visible .pe-dialog__backdrop": {
@@ -220,18 +220,18 @@ var _backdrop = function backdrop(selector, vars) {
   );
 };
 
-var fullScreen = function fullScreen(selector, vars) {
-  return sel(selector, [createMarker(vars, behaviorVars), {
+var fullScreen$1 = function fullScreen$$1(selector, vars$$1) {
+  return sel(selector, [createMarker(vars$$1, behaviorVars), {
     padding: 0,
     " .pe-dialog__content": {
       width: "100%" // for IE 11
 
     }
-  }, fullScreen$1(selector, vars)]);
+  }, fullScreen(selector, vars$$1)]);
 };
 
-var _modal = function modal(selector, vars) {
-  return sel(selector, [createMarker(vars, behaviorVars)]);
+var _modal = function modal(selector, vars$$1) {
+  return sel(selector, [createMarker(vars$$1, behaviorVars)]);
 };
 
 var varFns = _objectSpread({
@@ -239,18 +239,18 @@ var varFns = _objectSpread({
    * @param {string} selector
    * @param {object} vars 
    */
-  general_styles: function general_styles(selector, vars) {
+  general_styles: function general_styles(selector, vars$$1) {
     return [sel(selector, [flex.layoutCenterCenter, {
       top: 0,
       left: 0,
       right: 0,
       bottom: 0,
-      zIndex: vars.z_index,
+      zIndex: vars$$1.z_index,
       height: "100%",
       // 100vh would make the dialog go beneath Mobile Safari toolbar        
       transitionProperty: "opacity,background-color,transform",
-      ".pe-dialog--full-screen": fullScreen(selector, vars),
-      ".pe-dialog--modal": _modal(selector, vars),
+      ".pe-dialog--full-screen": fullScreen$1(selector, vars$$1),
+      ".pe-dialog--modal": _modal(selector, vars$$1),
       " .pe-dialog__content": {
         position: "relative",
         transitionProperty: "all"
@@ -265,7 +265,7 @@ var varFns = _objectSpread({
         bottom: 0,
         pointerEvents: "none"
       }],
-      ".pe-dialog--backdrop": _backdrop(selector, vars)
+      ".pe-dialog--backdrop": _backdrop(selector, vars$$1)
     }]), {
       ".pe-dialog__holder": {
         height: "100%",
@@ -273,59 +273,59 @@ var varFns = _objectSpread({
       }
     }];
   },
-  animation_hide_css: function animation_hide_css(selector, vars) {
-    return [sel(selector, [vars.animation_hide_css])];
+  animation_hide_css: function animation_hide_css(selector, vars$$1) {
+    return [sel(selector, [vars$$1.animation_hide_css])];
   },
-  position: function position(selector, vars) {
+  position: function position(selector, vars$$1) {
     return [sel(selector, {
-      position: vars.position
+      position: vars$$1.position
     })];
   },
-  animation_delay: function animation_delay(selector, vars) {
+  animation_delay: function animation_delay(selector, vars$$1) {
     return [sel(selector, {
       "&, .pe-dialog__content": {
-        transitionDelay: vars.animation_delay
+        transitionDelay: vars$$1.animation_delay
       }
     })];
   },
-  animation_duration: function animation_duration(selector, vars) {
+  animation_duration: function animation_duration(selector, vars$$1) {
     return [sel(selector, {
       "&, .pe-dialog__content": {
-        transitionDuration: vars.animation_duration
+        transitionDuration: vars$$1.animation_duration
       }
     })];
   },
-  animation_timing_function: function animation_timing_function(selector, vars) {
+  animation_timing_function: function animation_timing_function(selector, vars$$1) {
     return [sel(selector, {
       "&, .pe-dialog__content": {
-        transitionTimingFunction: vars.animation_timing_function
+        transitionTimingFunction: vars$$1.animation_timing_function
       }
     })];
   },
-  animation_show_css: function animation_show_css(selector, vars) {
+  animation_show_css: function animation_show_css(selector, vars$$1) {
     return [sel(selector, {
-      ".pe-dialog--visible": vars.animation_show_css
+      ".pe-dialog--visible": vars$$1.animation_show_css
     })];
   },
-  border_radius: function border_radius(selector, vars) {
-    return [!vars.full_screen && sel(selector, {
+  border_radius: function border_radius(selector, vars$$1) {
+    return [!vars$$1.full_screen && sel(selector, {
       " .pe-dialog__content": {
-        borderTopLeftRadius: vars.border_radius + "px",
-        borderTopRightRadius: vars.border_radius + "px",
-        borderBottomLeftRadius: vars.border_radius + "px",
-        borderBottomRightRadius: vars.border_radius + "px"
+        borderTopLeftRadius: vars$$1.border_radius + "px",
+        borderTopRightRadius: vars$$1.border_radius + "px",
+        borderBottomLeftRadius: vars$$1.border_radius + "px",
+        borderBottomRightRadius: vars$$1.border_radius + "px"
       }
     })];
   },
   // Theme vars
-  backdrop: function backdrop(selector, vars) {
-    return vars.backdrop && _backdrop(selector, vars);
+  backdrop: function backdrop(selector, vars$$1) {
+    return vars$$1.backdrop && _backdrop(selector, vars$$1);
   },
-  full_screen: function full_screen(selector, vars) {
-    return vars.full_screen && fullScreen(selector, vars);
+  full_screen: function full_screen(selector, vars$$1) {
+    return vars$$1.full_screen && fullScreen$1(selector, vars$$1);
   },
-  modal: function modal(selector, vars) {
-    return vars.modal && _modal(selector, vars);
+  modal: function modal(selector, vars$$1) {
+    return vars$$1.modal && _modal(selector, vars$$1);
   }
 }, sharedVarFns);
 

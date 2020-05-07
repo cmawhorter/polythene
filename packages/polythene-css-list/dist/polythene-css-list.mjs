@@ -86,25 +86,25 @@ var generalFns = {
 var tintFns = function tintFns(tint) {
   var _ref;
 
-  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars) {
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
     return [sel(selector, {
-      backgroundColor: vars["color_" + tint + "_background"]
+      backgroundColor: vars$$1["color_" + tint + "_background"]
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_border", function (selector, vars) {
+  }), _defineProperty(_ref, "color_" + tint + "_border", function (selector, vars$$1) {
     var _sel;
 
     return [sel(selector, (_sel = {}, _defineProperty(_sel, "& + .pe-list", {
-      borderTopColor: vars["color_" + tint + "_border"]
+      borderTopColor: vars$$1["color_" + tint + "_border"]
     }), _defineProperty(_sel, ".pe-list--border", {
       " .pe-list-tile": {
         ":not(:last-child)": {
-          borderColor: vars["color_" + tint + "_border"]
+          borderColor: vars$$1["color_" + tint + "_border"]
         }
       }
     }), _defineProperty(_sel, ".pe-list--indented-border", {
       " .pe-list-tile": {
         " .pe-list-tile__content:not(.pe-list-tile__content-front)": {
-          borderColor: vars["color_" + tint + "_border"]
+          borderColor: vars$$1["color_" + tint + "_border"]
         }
       }
     }), _sel))];
@@ -124,10 +124,10 @@ var color = createColor({
 
 // @ts-check
 
-var borderStyle = function borderStyle(vars) {
+var borderStyle = function borderStyle(vars$$1) {
   return {
     borderStyle: "none none solid none",
-    borderWidth: vars.border_width_bordered + "px"
+    borderWidth: vars$$1.border_width_bordered + "px"
   };
 };
 
@@ -143,47 +143,47 @@ var varFns = {
       }
     })];
   },
-  padding: function padding(selector, vars) {
+  padding: function padding(selector, vars$$1) {
     return [sel(selector, {
       ".pe-list--padding": {
-        padding: vars.padding + "px 0"
+        padding: vars$$1.padding + "px 0"
       },
       ".pe-list--padding-top": {
-        paddingTop: vars.padding + "px"
+        paddingTop: vars$$1.padding + "px"
       },
       ".pe-list--padding-bottom": {
-        paddingBottom: vars.padding + "px"
+        paddingBottom: vars$$1.padding + "px"
       }
     })];
   },
-  padding_compact: function padding_compact(selector, vars) {
+  padding_compact: function padding_compact(selector, vars$$1) {
     return [sel(selector, {
       ".pe-list--compact": {
-        padding: vars.padding_compact + "px 0"
+        padding: vars$$1.padding_compact + "px 0"
       }
     })];
   },
-  border_width_stacked: function border_width_stacked(selector, vars) {
+  border_width_stacked: function border_width_stacked(selector, vars$$1) {
     return [sel(selector, {
       "& + &": {
         borderStyle: "solid none none none",
-        borderWidth: vars.border_width_stacked + "px"
+        borderWidth: vars$$1.border_width_stacked + "px"
       }
     })];
   },
-  border_width_bordered: function border_width_bordered(selector, vars) {
+  border_width_bordered: function border_width_bordered(selector, vars$$1) {
     return [sel(selector, {
       ".pe-list--border": {
         " .pe-list-tile": {
           ":not(.pe-list-tile--header):not(:last-child)": {
-            "&": borderStyle(vars)
+            "&": borderStyle(vars$$1)
           }
         }
       },
       ".pe-list--indented-border": {
         " .pe-list-tile": {
           ":not(.pe-list-tile--header):not(:last-child)": {
-            " .pe-list-tile__content:not(.pe-list-tile__content-front)": borderStyle(vars)
+            " .pe-list-tile__content:not(.pe-list-tile__content-front)": borderStyle(vars$$1)
           }
         }
       }

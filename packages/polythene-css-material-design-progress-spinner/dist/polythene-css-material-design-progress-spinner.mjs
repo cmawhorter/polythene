@@ -1,4 +1,4 @@
-import { color as color$1, layout as layout$1 } from 'polythene-css-material-design-spinner';
+import { color, layout } from 'polythene-css-material-design-spinner';
 import { createColor, sel, createLayout, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
@@ -55,9 +55,9 @@ var generalFns = {
 };
 
 var tintFns = function tintFns(tint) {
-  return _defineProperty({}, "color_" + tint, function (selector, vars) {
+  return _defineProperty({}, "color_" + tint, function (selector, vars$$1) {
     return [sel(selector, {
-      color: vars["color_" + tint]
+      color: vars$$1["color_" + tint]
     })];
   });
 };
@@ -66,12 +66,12 @@ var lightTintFns = _extends({}, generalFns, tintFns("light"));
 
 var darkTintFns = _extends({}, generalFns, tintFns("dark"));
 
-var color = createColor({
+var color$1 = createColor({
   varFns: {
     lightTintFns: lightTintFns,
     darkTintFns: darkTintFns
   },
-  superColor: color$1
+  superColor: color
 });
 
 // @ts-check
@@ -98,17 +98,17 @@ var varFns = {
       }
     })];
   },
-  progress_animation_duration: function progress_animation_duration(selector, vars) {
+  progress_animation_duration: function progress_animation_duration(selector, vars$$1) {
     return [sel(selector, {
       " .pe-md-progress-spinner__animation": {
-        animationDuration: vars.progress_animation_duration
+        animationDuration: vars$$1.progress_animation_duration
       }
     })];
   }
 };
-var layout = createLayout({
+var layout$1 = createLayout({
   varFns: varFns,
-  superLayout: layout$1
+  superLayout: layout
 });
 
 // @ts-check
@@ -127,7 +127,7 @@ var materialDesignProgressSpinnerVars = {
 };
 
 // @ts-check
-var fns = [layout, color];
+var fns = [layout$1, color$1];
 var selector = ".".concat(classes.component);
 var addStyle = styler.createAddStyle(selector, fns, materialDesignProgressSpinnerVars);
 var getStyle = styler.createGetStyle(selector, fns, materialDesignProgressSpinnerVars);
@@ -137,4 +137,4 @@ styler.addStyle({
   vars: materialDesignProgressSpinnerVars
 });
 
-export { addStyle, getStyle, color, layout, materialDesignProgressSpinnerVars as vars };
+export { addStyle, getStyle, color$1 as color, layout$1 as layout, materialDesignProgressSpinnerVars as vars };

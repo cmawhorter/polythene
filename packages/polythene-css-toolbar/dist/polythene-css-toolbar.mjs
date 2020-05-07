@@ -1,5 +1,5 @@
 import { createColor, sel, createLayout, flex, mixin, selectorRTL, rgba, styler } from 'polythene-core-css';
-import { vars as vars$1 } from 'polythene-theme';
+import { vars } from 'polythene-theme';
 
 var classes = {
   // Toolbar
@@ -60,22 +60,22 @@ var generalFns = {
 var tintFns = function tintFns(tint) {
   var _ref;
 
-  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_text", function (selector, vars) {
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_text", function (selector, vars$$1) {
     return [sel(selector, {
       " .pe-toolbar__title": {
         "&, a:link, a:visited": {
-          color: vars["color_" + tint + "_text"]
+          color: vars$$1["color_" + tint + "_text"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars) {
+  }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
     return [sel(selector, {
-      backgroundColor: vars["color_" + tint + "_background"]
+      backgroundColor: vars$$1["color_" + tint + "_background"]
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_border", function (selector, vars) {
+  }), _defineProperty(_ref, "color_" + tint + "_border", function (selector, vars$$1) {
     return [sel(selector, {
       ".pe-toolbar--border": {
-        borderColor: vars["color_" + tint + "_border"]
+        borderColor: vars$$1["color_" + tint + "_border"]
       }
     })];
   }), _ref;
@@ -121,10 +121,10 @@ var indent_padding_side = function indent_padding_side(_ref2) {
   var _peToolbar__title;
 
   var selector = _ref2.selector,
-      vars = _ref2.vars,
+      vars$$1 = _ref2.vars,
       isRTL = _ref2.isRTL,
       isLarge = _ref2.isLarge;
-  var indent = isLarge ? vars.indent_large : vars.indent;
+  var indent = isLarge ? vars$$1.indent_large : vars$$1.indent;
   var fn = isLarge ? breakpointTabletPortraitUp : sel;
   return fn(selector, {
     " .pe-toolbar__title--indent, .pe-toolbar__title.pe-toolbar__title--indent": (_peToolbar__title = {}, _defineProperty(_peToolbar__title, isRTL ? "marginLeft" : "marginRight", 0), _defineProperty(_peToolbar__title, isRTL ? "marginRight" : "marginLeft", indent + "px"), _peToolbar__title)
@@ -143,10 +143,10 @@ var _title_padding = function title_padding(_ref3) {
   var _spanPeToolbar;
 
   var selector = _ref3.selector,
-      vars = _ref3.vars,
+      vars$$1 = _ref3.vars,
       isRTL = _ref3.isRTL,
       isLarge = _ref3.isLarge;
-  var title_padding = isLarge ? vars.title_padding_large : vars.title_padding;
+  var title_padding = isLarge ? vars$$1.title_padding_large : vars$$1.title_padding;
   var fn = isLarge ? breakpointTabletPortraitUp : sel;
   return fn(selector, {
     " > span, .pe-toolbar__title": (_spanPeToolbar = {}, _defineProperty(_spanPeToolbar, isRTL ? "marginLeft" : "marginRight", 0), _defineProperty(_spanPeToolbar, isRTL ? "marginRight" : "marginLeft", title_padding + "px"), _spanPeToolbar),
@@ -169,23 +169,23 @@ var title_padding_title_after_icon_padding = function title_padding_title_after_
   var _notPeToolbar_;
 
   var selector = _ref4.selector,
-      vars = _ref4.vars,
+      vars$$1 = _ref4.vars,
       isRTL = _ref4.isRTL,
       isLarge = _ref4.isLarge;
-  var padding = isLarge ? vars.title_after_icon_padding_large : vars.title_after_icon_padding;
+  var padding = isLarge ? vars$$1.title_after_icon_padding_large : vars$$1.title_after_icon_padding;
   var fn = isLarge ? breakpointTabletPortraitUp : sel;
   return fn(selector, {
     " > :not(.pe-toolbar__title):first-child:not(.pe-toolbar__title--indent):first-child": (_notPeToolbar_ = {}, _defineProperty(_notPeToolbar_, isRTL ? "marginRight" : "marginLeft", 0), _defineProperty(_notPeToolbar_, isRTL ? "marginLeft" : "marginRight", padding + "px"), _notPeToolbar_)
   });
 };
 
-var breakpointPhoneOnly = breakpoint("@media (min-width: ".concat(vars$1.breakpoint_for_phone_only, "px) and (orientation: landscape)"));
-var breakpointTabletPortraitUp = breakpoint("@media (min-width: ".concat(vars$1.breakpoint_for_tablet_portrait_up, "px)"));
+var breakpointPhoneOnly = breakpoint("@media (min-width: ".concat(vars.breakpoint_for_phone_only, "px) and (orientation: landscape)"));
+var breakpointTabletPortraitUp = breakpoint("@media (min-width: ".concat(vars.breakpoint_for_tablet_portrait_up, "px)"));
 var varFns = {
   general_styles: function general_styles(selector) {
     return [sel(selector, [flex.layout, flex.layoutHorizontal, flex.layoutCenter, {
       position: "relative",
-      zIndex: vars$1.z_toolbar,
+      zIndex: vars.z_toolbar,
       " > a": {
         textDecoration: "none"
       },
@@ -221,128 +221,128 @@ var varFns = {
       }]
     }])];
   },
-  height: function height(selector, vars) {
+  height: function height(selector, vars$$1) {
     return [sel(selector, {
-      height: vars.height + "px"
+      height: vars$$1.height + "px"
     })];
   },
-  height_compact: function height_compact(selector, vars) {
+  height_compact: function height_compact(selector, vars$$1) {
     return [sel(selector, {
       ".pe-toolbar--compact": {
-        height: vars.height_compact + "px"
+        height: vars$$1.height_compact + "px"
       }
     }), breakpointPhoneOnly(selector, {
-      height: vars.height + "px"
+      height: vars$$1.height + "px"
     })];
   },
-  line_height: function line_height(selector, vars) {
+  line_height: function line_height(selector, vars$$1) {
     return [sel(selector, {
-      lineHeight: vars.line_height + "em",
+      lineHeight: vars$$1.line_height + "em",
       " > span, .pe-toolbar__title, .pe-toolbar__title--indent": {
-        lineHeight: vars.line_height
+        lineHeight: vars$$1.line_height
       }
     })];
   },
-  font_size: function font_size(selector, vars) {
+  font_size: function font_size(selector, vars$$1) {
     return [sel(selector, {
       " > span, .pe-toolbar__title, .pe-toolbar__title--indent, .pe-action": {
-        fontSize: vars.font_size + "px"
+        fontSize: vars$$1.font_size + "px"
       }
     })];
   },
-  font_weight: function font_weight(selector, vars) {
+  font_weight: function font_weight(selector, vars$$1) {
     return [sel(selector, {
       " > span, .pe-toolbar__title, .pe-toolbar__title--indent": {
-        fontWeight: vars.font_weight
+        fontWeight: vars$$1.font_weight
       }
     })];
   },
-  padding_side: function padding_side(selector, vars) {
+  padding_side: function padding_side(selector, vars$$1) {
     return [sel(selector, {
-      padding: "0 " + vars.padding_side + "px"
+      padding: "0 " + vars$$1.padding_side + "px"
     }), indent_padding_side({
       selector: selector,
-      vars: vars
+      vars: vars$$1
     }), indent_padding_side({
       selector: selectorRTL(selector),
-      vars: vars,
+      vars: vars$$1,
       isRTL: true
     })];
   },
-  indent: function indent(selector, vars) {
+  indent: function indent(selector, vars$$1) {
     return [indent_padding_side({
       selector: selector,
-      vars: vars
+      vars: vars$$1
     }), indent_padding_side({
       selector: selectorRTL(selector),
-      vars: vars,
+      vars: vars$$1,
       isRTL: true
     })];
   },
-  indent_large: function indent_large(selector, vars) {
+  indent_large: function indent_large(selector, vars$$1) {
     return [indent_padding_side({
       selector: selector,
-      vars: vars,
+      vars: vars$$1,
       isLarge: true
     }), indent_padding_side({
       selector: selectorRTL(selector),
-      vars: vars,
+      vars: vars$$1,
       isRTL: true,
       isLarge: true
     })];
   },
-  title_padding: function title_padding(selector, vars) {
+  title_padding: function title_padding(selector, vars$$1) {
     return [_title_padding({
       selector: selector,
-      vars: vars
+      vars: vars$$1
     }), _title_padding({
       selector: selectorRTL(selector),
-      vars: vars,
+      vars: vars$$1,
       isRTL: true
     })];
   },
-  title_padding_large: function title_padding_large(selector, vars) {
+  title_padding_large: function title_padding_large(selector, vars$$1) {
     return [_title_padding({
       selector: selector,
-      vars: vars,
+      vars: vars$$1,
       isLarge: true
     }), _title_padding({
       selector: selectorRTL(selector),
-      vars: vars,
+      vars: vars$$1,
       isRTL: true,
       isLarge: true
     })];
   },
-  title_after_icon_padding: function title_after_icon_padding(selector, vars) {
+  title_after_icon_padding: function title_after_icon_padding(selector, vars$$1) {
     return [title_padding_title_after_icon_padding({
       selector: selector,
-      vars: vars
+      vars: vars$$1
     }), title_padding_title_after_icon_padding({
       selector: selectorRTL(selector),
-      vars: vars,
+      vars: vars$$1,
       isRTL: true
     })];
   },
-  title_after_icon_padding_large: function title_after_icon_padding_large(selector, vars) {
+  title_after_icon_padding_large: function title_after_icon_padding_large(selector, vars$$1) {
     return [title_padding_title_after_icon_padding({
       selector: selector,
-      vars: vars,
+      vars: vars$$1,
       isLarge: true
     }), title_padding_title_after_icon_padding({
       selector: selectorRTL(selector),
-      vars: vars,
+      vars: vars$$1,
       isRTL: true,
       isLarge: true
     })];
   },
-  height_large: function height_large(selector, vars) {
+  height_large: function height_large(selector, vars$$1) {
     return [breakpointTabletPortraitUp(selector, {
-      height: vars.height_large + "px"
+      height: vars$$1.height_large + "px"
     })];
   },
-  padding_side_large: function padding_side_large(selector, vars) {
+  padding_side_large: function padding_side_large(selector, vars$$1) {
     return [breakpointTabletPortraitUp(selector, {
-      padding: "0 " + vars.padding_side_large + "px"
+      padding: "0 " + vars$$1.padding_side_large + "px"
     })];
   }
 };
@@ -351,49 +351,49 @@ var layout = createLayout({
 });
 
 // @ts-check
-var padding_side = vars$1.grid_unit_component * 2 - 12; // 16 - 12 = 4
+var padding_side = vars.grid_unit_component * 2 - 12; // 16 - 12 = 4
 
-var padding_side_large = vars$1.grid_unit_component * 3 - 12; // 24 - 12 = 12
+var padding_side_large = vars.grid_unit_component * 3 - 12; // 24 - 12 = 12
 
-var vars = {
+var vars$1 = {
   /**
    * Generate general styles, not defined by variables
    */
   general_styles: true,
   font_size: 20,
   font_weight: 400,
-  height: vars$1.grid_unit_component * 7,
+  height: vars.grid_unit_component * 7,
   // 56
-  height_compact: vars$1.grid_unit_component * 6,
+  height_compact: vars.grid_unit_component * 6,
   // 48
-  height_large: vars$1.grid_unit_component * 8,
+  height_large: vars.grid_unit_component * 8,
   // 64
-  line_height: vars$1.line_height,
+  line_height: vars.line_height,
   padding_side: padding_side,
   padding_side_large: padding_side_large,
-  indent: vars$1.unit_indent - padding_side,
-  indent_large: vars$1.unit_indent_large - padding_side_large,
+  indent: vars.unit_indent - padding_side,
+  indent_large: vars.unit_indent_large - padding_side_large,
   title_after_icon_padding: 4,
   title_after_icon_padding_large: 12,
   title_padding: 16,
   title_padding_large: 8,
-  color_light_text: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_primary),
-  color_light_border: rgba(vars$1.color_light_foreground, vars$1.blend_light_border_light),
-  color_light_background: rgba(vars$1.color_light_background),
-  color_dark_text: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_primary),
-  color_dark_border: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_border_light),
-  color_dark_background: rgba(vars$1.color_dark_background)
+  color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
+  color_light_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
+  color_light_background: rgba(vars.color_light_background),
+  color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
+  color_dark_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light),
+  color_dark_background: rgba(vars.color_dark_background)
 };
 
 // @ts-check
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = styler.createAddStyle(selector, fns, vars);
-var getStyle = styler.createGetStyle(selector, fns, vars);
+var addStyle = styler.createAddStyle(selector, fns, vars$1);
+var getStyle = styler.createGetStyle(selector, fns, vars$1);
 styler.addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars
+  vars: vars$1
 });
 
-export { addStyle, getStyle, color, layout, vars };
+export { addStyle, getStyle, color, layout, vars$1 as vars };

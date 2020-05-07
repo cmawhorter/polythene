@@ -17,9 +17,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-icon": "^1.5.4",
-    "polythene-react-base": "^1.5.4",
-    "polythene-react-svg": "^1.5.4"
+    "polythene-core-icon": "1.5.4",
+    "polythene-react-base": "1.5.4",
+    "polythene-react-svg": "1.5.4"
   },
   "devDependencies": {
     "@types/react": "^16.7.20"

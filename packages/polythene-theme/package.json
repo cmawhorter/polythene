@@ -17,7 +17,7 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-style": "^1.5.4"
+    "polythene-style": "1.5.4"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

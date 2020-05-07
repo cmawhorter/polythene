@@ -17,8 +17,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.5.4",
-    "polythene-core-css": "^1.5.4",
+    "polythene-core": "1.5.4",
+    "polythene-core-css": "1.5.4",
     "webfontloader": "^1.6.27"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",

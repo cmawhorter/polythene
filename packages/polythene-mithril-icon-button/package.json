@@ -17,10 +17,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-icon-button": "^1.5.4",
-    "polythene-mithril-base": "^1.5.4",
-    "polythene-mithril-button": "^1.5.4",
-    "polythene-mithril-icon": "^1.5.4"
+    "polythene-core-icon-button": "1.5.4",
+    "polythene-mithril-base": "1.5.4",
+    "polythene-mithril-button": "1.5.4",
+    "polythene-mithril-icon": "1.5.4"
   },
   "devDependencies": {
     "@types/mithril": "^1.1.14"
